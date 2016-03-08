@@ -1,0 +1,86 @@
+"boxes in INTEGERerface??"
+//todo:
+// faire les constraINTEGERs NULL not NULL en fonction de participation
+// 
+
+/* proposition a new table for the relationship between note entity and title entity,
+	for a NOTE ID from Title.*/
+CREATE TABLE Title_Note (
+	note_id INTEGER, 
+	title_id INTEGER,
+	FOREIGN KEY(note_id) REFERENCES Notes(???remplacer ici???),
+	FOREIGN KEY(title_id) REFERENCES Title(id)
+)
+
+/*there is an attribute title sysnopsis that is an id referencing a note.
+* so i propose that we create a table for the synopsis, so during the parsing
+* phase we take care about doing a lookup in note.csv each time we see a synopsis
+*/ that is referenced in title.csv
+CREATE TABLE Synopsis (
+	id INTEGER, 
+	text CHAR(255) NOT NULL,
+	PRIMARY KEY(id),
+)
+--new relationship
+CREATE TABLE Title_Synopsis (
+	sid INTEGER,
+	tid INTEGER,
+	FOREIGN KEY(sid),
+	FOREIGN KEY(tid)
+)
+	
+--proposition: rename Title_series to Series et utiliser Title_Series comme relationship name
+	
+CREATE TABLE Title_Series (
+	tid INTEGER,
+	sid INTEGER,
+	volume_number INTEGER, --alias Series ID in pdf
+	FOREIGN KEY(tid) REFERENCES Title(id),
+	FOREIGN KEY(sid) REFERENCES ????SIMON	
+)
+	
+CREATE TABLE Series (
+	id INTEGER,
+	name CHAR(255) NOT NULL,/*alias Title in the pdf*/ 
+	Parent CHAR(255),	
+	note INTEGER
+)
+
+//a new relationship
+CREATE TABLE Title_to_Parent (
+	tid1 INTEGER,
+	tid2 INTEGER,
+	par_tid INTEGER, /*the tid of the parent among the 2(which is the one among tid1 or 2 that
+			is the translation )*/
+	FOREIGN KEY(tid1) REFERENCES Title(id),
+	FOREIGN KEY(tid2) REFERENCES Title(id)
+)
+
+--new relationship
+CREATE TABLE Title_Language (
+	tid INTEGER, 
+	lid SMALLINT UNSIGNED,
+	FOREIGN KEY(tid) REFERENCES Title(id),
+	FOREIGN KEY(lid) REFERENCES Language(id)
+)
+
+CREATE TABLE Language (
+	id SMALLINT UNSIGNED,
+	/*TODO*/
+)
+
+CREATE TABLE Title (
+	id INTEGER,
+	title CHAR(255) NOT NULL,
+	title_translator CHAR(255),
+	story_length_id TINYINT UNSIGNED NOT NULL, --??NOT NULL a priori???
+	/* <---- should we use another another type since it is enumerable(novel, short story
+		, juvenile fictoin)? like a small type that can hold 5 values and
+		then we reference a lookup table that contains the characters whenever we want
+	the real value of it?*/
+	Type TINYINT UNSIGNED NOT NULL, --same questionS as above but for 16 types
+	title_graphic BIT,
+	PRIMARY KEY(id),
+)
+	
+  	
