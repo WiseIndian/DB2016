@@ -82,5 +82,7 @@ CREATE TABLE Title (
 	title_graphic BIT,
 	PRIMARY KEY(id),
 )
+
+blabla
 	
   	
