@@ -1,0 +1,2 @@
+Regarder si les valeurs booléennes sont que "yes" ou "no"
+checker si un titre peut avoir été écrit par plusieurs autheurs
