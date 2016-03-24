@@ -188,6 +188,7 @@ case class Author(id: Int, name: String, legName: Option[String], lastName: Opti
 }
 trait AuthorParser extends ParserUtils {
 
+	//TODO déplacer addNullRule et asr dans ParserUtils une fois que ça marchera
 	def addNullRule[T](p: Parser[T]): Parser[Option[T]] =
 		p ^^ { Some(_) } ||| "\\N" ^^ { _ => None }
 
@@ -210,7 +211,7 @@ trait AuthorParser extends ParserUtils {
 	lazy val authorParser: Parser[Author] =
 		asr(id) ~ asr(authName) ~ asr(authLegName) ~ asr(authLastName) ~
 			asr(pseudo) ~ asr(birthPlace) ~ asr(birthDate) ~ asr(deathDate) ~
-			asr(email) ~ asr(imgUrl) ~ asr(lang) ~ (rep(" ") ~> noteID <~ rep(" ")) ^^ {
+			asr(addNullRule(email)) ~ asr(imgUrl) ~ asr(lang) ~ (rep(" ") ~> (noteID <~ rep(" "))) ^^ {
 				case id ~ n1 ~ n2 ~ n3 ~ ps ~ bp ~ bd ~ dd ~ em ~ img ~ lng ~ nid =>
 					Author(id.toInt, n1, n2, n3, ps, bp, bd, dd, img, lng.map(_.toInt), nid.map(_.toInt))
 			}
