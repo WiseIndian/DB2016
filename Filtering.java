@@ -81,4 +81,5 @@ public class Filtering {
             default: return false;      // In reality, should return NULL
         }
     }
+
 }
