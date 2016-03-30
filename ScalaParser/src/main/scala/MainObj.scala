@@ -22,26 +22,12 @@ trait PrintUtils {
 }
 
 object MainObj extends AuthorParser with PrintUtils {
+
 	def main(args: Array[String]): Unit = {
+		normalParsing
+	}
 
-		println(parseAll(email, "blabla@email.com"))
-		println(parseAll(email, "nqowinefoqinwef@goiwqngoinre.com.fowqiefonwq"))
-		println(parseAll(placeAddress, "qoiwnefoiwqnef qwef qwqfwoeni, qowienfiowqnfe, qwoienfoiewqnofnweq, qwoienfoiwqneoifnwqe, wqoinefoinwqofinwqoefnwqefqnwe, wqe"))
-		println(parseAll(placeAddress, "qoiwnefoiwqnef, qwoienfoiwqneoifnwqe, wqoinefoinwqofinwqoefnwqefqnwe,"))
-		println(parseAll(id, "123421"))
-		println(parseAll(authName, "john doe, oqiwneoinw"))
-		println(parseAll(pseudo, "qowiefoihwqoeifh oiwqefoihqw"))
-		println(parseAll(pseudo, "120394091230949012"))
-		println(parseAll(birthPlace, "ofwqineofinwqofiqnwef, qowinefoinwqfoinwqfeo, oiwqneofinwqeoifn     wefiowqnefoinwqeoinfwq,             qwoinefiowqne    ,     qowinefoinwq, qoinfew"))
-		println(parseAll(birthDate, "1994-09-29"))
-		println(parseAll(deathDate, "1934-09-27"))
-		println(parseAll(imgUrl, "http://www.img.qwefinqwoinfe.com"))
-		println(parseAll(lang, "123049123094"))
-		println(parseAll(noteID, "123409213"))
-
-		val s = "12342134\tJohn Doe\tJohn\tDoe\t1234\tWashington, Usa\t1987-01-01\t1989-02-02\tblabla@email.com\thttp://bolloss.com\t12308\t19"
-		println(parseAll(authorParser, s))
-
+	def normalParsing {
 		val authorPath = "/home/simonlbc/workspace/DB/CSV/authors.csv"
 		val f = new java.io.File(authorPath)
 		val in: InputStream = new FileInputStream(f)
@@ -50,12 +36,13 @@ object MainObj extends AuthorParser with PrintUtils {
 		printToFile(outFile) {
 			p =>
 
-				while (sc.hasNext()) {
-					val parsOut = parseAll(authorParser, sc.nextLine())
-					p.println(parsOut)
-					println(parsOut)
-				}
+				while (sc.hasNext()) parseAll(authorParser, sc.nextLine()) match { 
+						case f: Failure => p.println(f)
+						case _ => 
+					}
 
+				println("done")
+				
 		}
 	}
 }
@@ -103,20 +90,28 @@ trait ParserUtils extends TildeToListMethods with MyRegexUtils with RegexParsers
 
 	lazy val nameSep: Parser[String] = (
 		rep(" ") ~ "," ~ rep(" ") ^^ { _ => ", " }
-		||| "." ~ rep(" ") ^^ { _ => ". " }
-		||| rep1(" ") ^^ { _ => " " })
+		||| "." ~ rep1(" ") ^^ { _ => ". " }
+		||| rep1(" ") ^^ { _ => " " }
+		||| rep(" ") ~> "-" <~ rep(" ")
+		||| "'")
+	
+  lazy val nameTerminator: Parser[String] = (
+  		rep(" ")  ^^ { _ => ""}
+  		||| "." ~ rep(" ") ^^ { _ => "." }
+  	)
+
 
 	lazy val name: Parser[String] = (
-		rep1(alphaWord ~ nameSep) ~ alphaWord ~ opt(".") ^^ {
-			case ls ~ aw ~ dotOpt => ls.map { tilde => tilde._1 + tilde._2 }.mkString + aw + dotOpt.getOrElse("")
+		rep1(alphaWord ~ nameSep) ~ alphaWord ~ nameTerminator ^^ {
+			case ls ~ aw ~ term => ls.map { tilde => tilde._1 + tilde._2 }.mkString + aw + term
 		}
-		||| alphaWord ~ opt(".") ^^ { case w ~ dotOpt => w + dotOpt.getOrElse("") }
-
+		||| alphaWord ~ nameTerminator ^^ { case w ~ t => w + t }
 		| failure("unexpected character in name part"))
 
 	lazy val subSep: Parser[String] = (
 		(rep(" ") ~> "-") <~ rep(" ")
-		||| rep1(" ") ^^ { _ => " " })
+		||| rep1(" ") ^^ { _ => " " }
+		||| "." ~ rep1(" ") ^^ {  _ => ". "})
 
 	lazy val addrSub: Parser[String] = alphaWord ~ rep(subSep ~ alphaWord) ^^ {
 		case head ~ ls => head + ls.foldLeft("") { case (s, sep ~ w) => s + sep + w }
