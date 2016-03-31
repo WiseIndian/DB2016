@@ -3,20 +3,30 @@ import scala.util.parsing.combinator.Parsers
 import scala.util.parsing.combinator.RegexParsers
 import scala.util.matching.Regex
 import java.text.SimpleDateFormat
-import java.util.Date
 import java.io.File
 import java.io.FileInputStream
+import java.io.InputStreamReader
+import java.io.BufferedReader
 import java.io.InputStream
 import java.util.Scanner
+import java.time.LocalDate
+import java.nio.charset.StandardCharsets
+import java.time.Year
+import java.time.YearMonth
+import java.time.temporal.Temporal
+import java.time.format.DateTimeFormatter
+import java.time.format.DateTimeParseException
 import java.io.PrintStream
 import java.net.URL
 import java.text.ParseException
 import java.net.MalformedURLException
+import java.io.FileOutputStream
+import java.io.OutputStreamWriter
 //import parser.TildeToList._
 
 trait PrintUtils {
 	def printToFile(f: java.io.File)(op: java.io.PrintWriter => Unit) {
-		val p = new java.io.PrintWriter(f)
+		val p = new java.io.PrintWriter(new OutputStreamWriter(new FileOutputStream(f), StandardCharsets.UTF_8))
 		try { op(p) } finally { p.close() }
 	}
 }
@@ -30,19 +40,22 @@ object MainObj extends AuthorParser with PrintUtils {
 	def normalParsing {
 		val authorPath = "/home/simonlbc/workspace/DB/CSV/authors.csv"
 		val f = new java.io.File(authorPath)
-		val in: InputStream = new FileInputStream(f)
-		val sc: Scanner = new Scanner(in)
+		val in = new BufferedReader(new InputStreamReader(new FileInputStream(f), "UTF-8"))
 		val outFile = new File("/home/simonlbc/workspace/DB/DB2016/outputAuthor.txt")
 		printToFile(outFile) {
 			p =>
 
-				while (sc.hasNext()) parseAll(authorParser, sc.nextLine()) match { 
+				def lines: Stream[Option[String]] = Option(in.readLine()) #:: lines
+				lines.takeWhile(_.isDefined).flatten.foreach { s =>
+					parseAll(authorParser, s) match {
 						case f: Failure => p.println(f)
-						case _ => 
+						case _ =>
 					}
+				}
 
+				in.close()
 				println("done")
-				
+
 		}
 	}
 }
@@ -50,6 +63,7 @@ object MainObj extends AuthorParser with PrintUtils {
 trait MyRegexUtils {
 	val alpha = """[a-zA-Z]""".r
 	val alphaWord = """[a-zA-Z]+""".r
+	val latinWord = """\p{IsLatin}+""".r
 	val Null = "\\N"
 	val intgr = """\d+""".r
 	val year = """\d{4}""".r
@@ -94,26 +108,24 @@ trait ParserUtils extends TildeToListMethods with MyRegexUtils with RegexParsers
 		||| rep1(" ") ^^ { _ => " " }
 		||| rep(" ") ~> "-" <~ rep(" ")
 		||| "'")
-	
-  lazy val nameTerminator: Parser[String] = (
-  		rep(" ")  ^^ { _ => ""}
-  		||| "." ~ rep(" ") ^^ { _ => "." }
-  	)
 
+	lazy val nameTerminator: Parser[String] = (
+		rep(" ") ^^ { _ => "" }
+		||| "." ~ rep(" ") ^^ { _ => "." })
 
 	lazy val name: Parser[String] = (
-		rep1(alphaWord ~ nameSep) ~ alphaWord ~ nameTerminator ^^ {
+		rep1(latinWord ~ nameSep) ~ latinWord ~ nameTerminator ^^ {
 			case ls ~ aw ~ term => ls.map { tilde => tilde._1 + tilde._2 }.mkString + aw + term
 		}
-		||| alphaWord ~ nameTerminator ^^ { case w ~ t => w + t }
+		||| latinWord ~ nameTerminator ^^ { case w ~ t => w + t }
 		| failure("unexpected character in name part"))
 
 	lazy val subSep: Parser[String] = (
 		(rep(" ") ~> "-") <~ rep(" ")
 		||| rep1(" ") ^^ { _ => " " }
-		||| "." ~ rep1(" ") ^^ {  _ => ". "})
+		||| "." ~ rep1(" ") ^^ { _ => ". " })
 
-	lazy val addrSub: Parser[String] = alphaWord ~ rep(subSep ~ alphaWord) ^^ {
+	lazy val addrSub: Parser[String] = latinWord ~ rep(subSep ~ latinWord) ^^ {
 		case head ~ ls => head + ls.foldLeft("") { case (s, sep ~ w) => s + sep + w }
 	} | failure("addrSub failed")
 
@@ -127,16 +139,32 @@ trait ParserUtils extends TildeToListMethods with MyRegexUtils with RegexParsers
 	lazy val day: Parser[String] = day20 ||| day30 ||| failure("day format invalid")
 	lazy val month: Parser[String] = month0 ||| month1 | failure("month format invalid")
 
-	val formatter: SimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd")
-	formatter.setLenient(false)
-	lazy val simpleDate: Parser[String] = (
-		(year ~ "-" ~ month ~ "-" ~ day) ^^
-		{ case y ~ "-" ~ m ~ "-" ~ d => y + "-" + m + "-" + d }
-		| failure("wrong date format"))
+	val ymdFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
 
-	lazy val date: Parser[Date] = simpleDate >> (s =>
-		try success(formatter.parse(s))
-		catch { case pe: ParseException => failure("date format invalid") })
+	lazy val dateStrToParsRes = (s: String) => {
+		try success(LocalDate.parse(s, ymdFormatter))
+		catch { case pe: DateTimeParseException => failure("date format invalid") }
+	}
+
+	lazy val unknMthDayDate: Parser[Year] = year <~ "-00-00" >> { y =>
+		try success(Year.parse(y))
+		catch {
+			case dte: DateTimeParseException =>
+				failure("year format invalid in unknown month, day case")
+		}
+	}
+
+	val ymFormatter = DateTimeFormatter.ofPattern("yyyy-MM")
+	lazy val unknDayDate: Parser[YearMonth] = year ~ "-" ~ month <~ "-00" >> {
+		case y ~ "-" ~ m =>
+			try success(YearMonth.parse(y + "-" + m, ymFormatter))
+			catch { case dtpe: DateTimeParseException => failure("year-month format invalid in unknown day case") }
+	}
+
+	lazy val normalDate: Parser[LocalDate] = (year ~ "-" ~ month ~ "-" ~ day) >>
+		{ case y ~ "-" ~ m ~ "-" ~ d => dateStrToParsRes(y + "-" + m + "-" + d) }
+
+	lazy val date: Parser[Temporal] = normalDate ||| unknMthDayDate ||| unknDayDate
 
 	/* cf wikipedia https://en.wikipedia.org/wiki/Email_address#Valid_email_addresses 
   * j'ai pas ajouté "Other special characters are allowed with restrictions"
@@ -174,9 +202,9 @@ trait ParserUtils extends TildeToListMethods with MyRegexUtils with RegexParsers
 
 }
 
-
 case class Author(id: Int, name: String, legName: Option[String], lastName: Option[String],
-		pseudo: Option[String], birthPlace: Option[String], birthDate: Option[Date], deathDate: Option[Date], img: Option[URL], lang: Option[Int],
+		pseudo: Option[String], birthPlace: Option[String], birthDate: Option[Temporal],
+		deathDate: Option[Temporal], img: Option[URL], lang: Option[Int],
 		noteID: Option[Int]) {
 
 	override val toString: String = id + name + legName + lastName + pseudo + birthPlace + birthDate + deathDate + img + lang + noteID + "\n"
@@ -195,8 +223,8 @@ trait AuthorParser extends ParserUtils {
 	lazy val authLastName: Parser[Option[String]] = addNullRule(name)
 	lazy val pseudo: Parser[Option[String]] = addNullRule(name ||| intgr)
 	lazy val birthPlace: Parser[Option[String]] = addNullRule(placeAddress)
-	lazy val birthDate: Parser[Option[Date]] = addNullRule(date)
-	lazy val deathDate: Parser[Option[Date]] = addNullRule(date)
+	lazy val birthDate: Parser[Option[Temporal]] = addNullRule(date)
+	lazy val deathDate: Parser[Option[Temporal]] = addNullRule(date)
 	lazy val imgUrl: Parser[Option[URL]] = addNullRule(url)
 	lazy val lang: Parser[Option[String]] = addNullRule(intgr)
 	lazy val noteID: Parser[Option[String]] = addNullRule(intgr)
