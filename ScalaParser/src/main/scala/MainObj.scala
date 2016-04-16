@@ -26,7 +26,7 @@ import java.io.OutputStreamWriter
 
 trait PrintUtils {
 	def printToFile(f: java.io.File)(op: java.io.PrintWriter => Unit) {
-		val p = new java.io.PrintWriter(new OutputStreamWriter(new FileOutputStream(f), StandardCharsets.UTF_8))
+		val p = new java.io.PrintWriter(new OutputStreamWriter(new FileOutputStream(f), StandardCharsets.ISO_8859_1))
 		try { op(p) } finally { p.close() }
 	}
 }
@@ -40,7 +40,7 @@ object MainObj extends AuthorParser with PrintUtils {
 	def normalParsing {
 		val authorPath = "/home/simonlbc/workspace/DB/CSV/authors.csv"
 		val f = new java.io.File(authorPath)
-		val in = new BufferedReader(new InputStreamReader(new FileInputStream(f), "UTF-8"))
+		val in = new BufferedReader(new InputStreamReader(new FileInputStream(f), StandardCharsets.ISO_8859_1))
 		val outFile = new File("/home/simonlbc/workspace/DB/DB2016/outputAuthor.txt")
 		printToFile(outFile) {
 			p =>
@@ -64,14 +64,17 @@ trait MyRegexUtils {
 	val alpha = """[a-zA-Z]""".r
 	val alphaWord = """[a-zA-Z]+""".r
 	val latinWord = """\p{IsLatin}+""".r
+	val isocodePart = """&#\d+;""".r
 	val Null = "\\N"
-	val intgr = """\d+""".r
+	val intgrRegx = """\d+""".r
 	val year = """\d{4}""".r
 	val day20 = """[0-2]\d""".r
 	val day30 = """3[01]""".r
 	val month0 = """0\d""".r
 	val month1 = """1[0-2]""".r
 	val anyButTab = """[^\t]+""".r
+	val oSpc = " *".r // optional space
+	val cSpc = " +".r // compulsory space
 }
 
 trait TildeToList[T] {
@@ -97,45 +100,42 @@ trait TildeToListMethods extends RegexParsers {
 }
 
 trait ParserUtils extends TildeToListMethods with MyRegexUtils with RegexParsers {
-	import main.scala.TildeToList
-	//TODO rajouter les nulls
-	//TODO checker que j'ai bien ajouté space a la fin et au debut des parsers
 	override val skipWhitespace = false
 
-	lazy val nameSep: Parser[String] = (
-		rep(" ") ~ "," ~ rep(" ") ^^ { _ => ", " }
+	def asr[G, T, H](l: Parser[G], t: Parser[T], r: Parser[H]): Parser[T] =
+		(l ~> t) <~ r //aSR veut dire add surrounding rule
+
+	def asrSpaces[T](p: Parser[T]): Parser[T] = asr(oSpc, p, oSpc)
+	def tildeToStr[T <: _ ~ String](t: T)(implicit ttl: TildeToList[T]): String =
+		tildeToList(t).mkString
+
+	/*this subset of the grammar of name separators, included in nameSep can be used 
+	 * as name terminator too, thus the definition of the subset.
+	 */
+	lazy val nameSepSubset: Parser[String] = (
+		rep1(" ") ^^ { _ => " " }
 		||| "." ~ rep1(" ") ^^ { _ => ". " }
-		||| rep1(" ") ^^ { _ => " " }
-		||| rep(" ") ~> "-" <~ rep(" ")
+		||| ("." <~ oSpc) ~ ("," <~ oSpc) ^^ { _ => ".," }
+		||| ".")
+
+	lazy val nameSep: Parser[String] = (
+		nameSepSubset
+		||| oSpc ~ "," ~ oSpc ^^ { _ => ", " }
+		||| oSpc ~> "-" <~ oSpc
 		||| "'")
 
-	lazy val nameTerminator: Parser[String] = (
-		rep(" ") ^^ { _ => "" }
-		||| "." ~ rep(" ") ^^ { _ => "." })
+	lazy val nameChar = isocodePart ||| """\p{IsLatin}""".r
+	lazy val nameSub = rep1(nameChar) ^^ { _.mkString }
 
-	lazy val name: Parser[String] = (
-		rep1(latinWord ~ nameSep) ~ latinWord ~ nameTerminator ^^ {
-			case ls ~ aw ~ term => ls.map { tilde => tilde._1 + tilde._2 }.mkString + aw + term
-		}
-		||| latinWord ~ nameTerminator ^^ { case w ~ t => w + t }
-		| failure("unexpected character in name part"))
+	lazy val termPart: Parser[String] =
+		opt(nameSepSubset) ^^ { _.getOrElse("") }
 
-	lazy val subSep: Parser[String] = (
-		(rep(" ") ~> "-") <~ rep(" ")
-		||| rep1(" ") ^^ { _ => " " }
-		||| "." ~ rep1(" ") ^^ { _ => ". " })
+	lazy val name: Parser[String] =
+		(nameSub ~ nameSep ~ name ^^ { case sub ~ sep ~ tail => sub + sep + tail }
+			||| nameSub ~ (oSpc ~> termPart) ^^ { case w ~ t => w + t }
+			| failure("unexpected character in name part"))
 
-	lazy val addrSub: Parser[String] = latinWord ~ rep(subSep ~ latinWord) ^^ {
-		case head ~ ls => head + ls.foldLeft("") { case (s, sep ~ w) => s + sep + w }
-	} | failure("addrSub failed")
-
-	lazy val addrAtom: Parser[String] = ((rep(" ") ~> ",") <~ rep(" ")) ~ addrSub ^^ {
-		case "," ~ sub => "," + sub
-	} | failure("addrAtom failed")
-	lazy val placeAddress: Parser[String] = (addrSub <~ rep(" ")) ~ rep(addrAtom) ^^ {
-		case headSub ~ lsSubs => headSub + lsSubs.mkString
-	} | failure("placeAddress failed")
-
+	lazy val placeAddress: Parser[String] = rep1(name ||| """\d+""".r) ^^ { _.mkString }
 	lazy val day: Parser[String] = day20 ||| day30 ||| failure("day format invalid")
 	lazy val month: Parser[String] = month0 ||| month1 | failure("month format invalid")
 
@@ -202,42 +202,91 @@ trait ParserUtils extends TildeToListMethods with MyRegexUtils with RegexParsers
 
 }
 
-case class Author(id: Int, name: String, legName: Option[String], lastName: Option[String],
-		pseudo: Option[String], birthPlace: Option[String], birthDate: Option[Temporal],
-		deathDate: Option[Temporal], img: Option[URL], lang: Option[Int],
-		noteID: Option[Int]) {
-
-	override val toString: String = id + name + legName + lastName + pseudo + birthPlace + birthDate + deathDate + img + lang + noteID + "\n"
-}
 trait AuthorParser extends ParserUtils {
 
 	//TODO déplacer addNullRule et asr dans ParserUtils une fois que ça marchera
 	def addNullRule[T](p: Parser[T]): Parser[Option[T]] =
 		p ^^ { Some(_) } ||| "\\N" ^^ { _ => None }
 
-	lazy val id: Parser[String] = intgr
-	//apparemtn dans name il y a des exceptions: Gordon Cooper (1927 - 2004)
-	//un parser de nom pour les noms, legal name, et last name et pseudo
-	lazy val authName: Parser[String] = name
+	lazy val intParser: Parser[Int] = intgrRegx ^^ { _.toInt }
+	lazy val id: Parser[Int] = intParser
+
+	/**
+	 *  a trait for supplementary info that can follow an author name like (1994-2005) or (II) ...
+	 *  it allows us to parse this supplementary info and manipulate it in the tldToName, tldToBirthDate.. methods.
+	 */
+	sealed trait NameSupInfo
+	case class YearRange(begDate: String, endDate: String) extends NameSupInfo
+	lazy val yearRange1: Parser[String ~ String] = (year <~ oSpc <~ "-" <~ oSpc) ~ year
+	lazy val yearRange2: Parser[String ~ String] = oSpc ~> yearRange1 <~ oSpc
+	lazy val yearRange: Parser[YearRange] = "(" ~> yearRange2 <~ ")" ^^ { case beg ~ end => YearRange(beg, end) }
+
+	case class BirthYear(y: String) extends NameSupInfo
+
+	lazy val birthYear1: Parser[String] = (
+		year <~ oSpc <~ "-" <~ oSpc <~ ")"
+		||| year <~ oSpc <~ ")")
+	lazy val birthYear: Parser[BirthYear] = "(" ~> oSpc ~> birthYear1 ^^ { case y => BirthYear(y) }
+	//we first apply the parentheses
+
+	lazy val nameID: Parser[String] = (
+		("(" ~> rep1("I")) <~ ")" ^^ { "(" + _.mkString + ")" }
+		||| "(" ~> oSpc ~> year ~ "s" <~ oSpc <~ ")" ^^ { case y ~ "s" => y + "s" })
+
+	lazy val authName1: Parser[String] = name ~ (oSpc ~> opt(nameID)) ^^ { case n ~ opt => n + opt.getOrElse("") }
+	lazy val authName: Parser[String ~ Option[NameSupInfo]] = (
+		authName1 ~ (oSpc ~> opt(yearRange))
+		||| authName1 ~ (oSpc ~> opt(birthYear)))
+
 	lazy val authLegName: Parser[Option[String]] = addNullRule(name)
 	lazy val authLastName: Parser[Option[String]] = addNullRule(name)
-	lazy val pseudo: Parser[Option[String]] = addNullRule(name ||| intgr)
+	lazy val pseudo: Parser[Option[String]] = addNullRule(name ||| intgrRegx)
 	lazy val birthPlace: Parser[Option[String]] = addNullRule(placeAddress)
 	lazy val birthDate: Parser[Option[Temporal]] = addNullRule(date)
 	lazy val deathDate: Parser[Option[Temporal]] = addNullRule(date)
 	lazy val imgUrl: Parser[Option[URL]] = addNullRule(url)
-	lazy val lang: Parser[Option[String]] = addNullRule(intgr)
-	lazy val noteID: Parser[Option[String]] = addNullRule(intgr)
+	lazy val lang: Parser[Option[Int]] = addNullRule(intParser)
+	lazy val noteID: Parser[Option[Int]] = addNullRule(intParser)
 
-	def asr[T](t: Parser[T]): Parser[T] = rep(" ") ~> t <~ rep(" ") <~ "\t" //aSR veut dire add surrounding rule
+	def asrCSV[T](p: Parser[T]): Parser[T] = asr(oSpc, p, oSpc ~ "\t")
 
-	lazy val authorParser: Parser[Author] =
-		asr(id) ~ asr(authName) ~ asr(authLegName) ~ asr(authLastName) ~
-			asr(pseudo) ~ asr(birthPlace) ~ asr(birthDate) ~ asr(deathDate) ~
-			asr(addNullRule(email)) ~ asr(imgUrl) ~ asr(lang) ~ (rep(" ") ~> (noteID <~ rep(" "))) ^^ {
-				case id ~ n1 ~ n2 ~ n3 ~ ps ~ bp ~ bd ~ dd ~ em ~ img ~ lng ~ nid =>
-					Author(id.toInt, n1, n2, n3, ps, bp, bd, dd, img, lng.map(_.toInt), nid.map(_.toInt))
-			}
+	type AuthTilde = Int ~ ~[String, Option[NameSupInfo]] ~ Option[String] ~ Option[String] ~ Option[String] ~ Option[String] ~ Option[Temporal] ~ Option[Temporal] ~ Option[String] ~ Option[URL] ~ Option[Int] ~ Option[Int]
+
+	def tldToName(tld: AuthTilde): String = tld match {
+		case id ~ (n1 ~ _) ~ n2 ~ n3 ~ ps ~ bp ~ bd ~ dd ~ email ~ img ~ lng ~ nteId =>
+			n1
+	}
+	def tldToBirthDate(tld: AuthTilde): Option[Temporal] = tld match {
+		case id ~ (n1 ~ _) ~ n2 ~ n3 ~ ps ~ bp ~ Some(t) ~ dd ~ email ~ img ~ lng ~ nteId =>
+			Some(t)
+		case id ~ (n1 ~ Some(BirthYear(y))) ~ n2 ~ n3 ~ ps ~ bp ~ None ~ dd ~ email ~ img ~ lng ~ nteId =>
+			try Some(Year.parse(y))
+			catch { case e: DateTimeParseException => None }
+		case id ~ (n1 ~ Some(YearRange(beg, end))) ~ n2 ~ n3 ~ ps ~ bp ~ None ~ dd ~ email ~ img ~ lng ~ nteId =>
+			try Some(Year.parse(beg))
+			catch { case e: DateTimeParseException => None }
+		case id ~ (n1 ~ None) ~ n2 ~ n3 ~ ps ~ bp ~ None ~ dd ~ email ~ img ~ lng ~ nteId =>
+			None
+	}
+
+	lazy val authorTilde: Parser[AuthTilde] =
+		asrCSV(id) ~ asrCSV(authName) ~ asrCSV(authLegName) ~ asrCSV(authLastName) ~
+			asrCSV(pseudo) ~ asrCSV(birthPlace) ~ asrCSV(birthDate) ~ asrCSV(deathDate) ~
+			asrCSV(addNullRule(email)) ~ asrCSV(imgUrl) ~
+			asrCSV(lang) ~ (oSpc ~> (noteID <~ oSpc))
+
+	lazy val authorParser: Parser[Author] = authorTilde ^^ {
+		case t @ (id ~ (n1 ~ n1Tail) ~ n2 ~ n3 ~ ps ~ bp ~ bd ~ dd ~ email ~ img ~ lng ~ nteId) =>
+			Author(id, tldToName(t), n2, n3, ps, bp, tldToBirthDate(t), dd, email, img, lng, nteId)
+	}
+
+}
+
+case class Author(id: Int, name: String, legName: Option[String], lastName: Option[String],
+		pseudo: Option[String], birthPlace: Option[String], birthDate: Option[Temporal],
+		deathDate: Option[Temporal], email: Option[String], img: Option[URL], lang: Option[Int],
+		noteID: Option[Int]) {
+	override val toString: String = id + name + legName + lastName + pseudo + birthPlace + birthDate + deathDate + email + img + lang + noteID + "\n"
 }
 
 class AwardCategoriesParser {
