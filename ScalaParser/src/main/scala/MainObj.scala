@@ -34,7 +34,7 @@ trait PrintUtils {
 object MainObj extends AuthorParser with PrintUtils {
 
 	def main(args: Array[String]): Unit = {
-		normalParsing
+				normalParsing
 	}
 
 	def normalParsing {
@@ -73,8 +73,7 @@ trait MyRegexUtils {
 	val month0 = """0\d""".r
 	val month1 = """1[0-2]""".r
 	val anyButTab = """[^\t]+""".r
-	val oSpc = " *".r // optional space
-	val cSpc = " +".r // compulsory space
+	
 }
 
 trait TildeToList[T] {
@@ -108,20 +107,19 @@ trait ParserUtils extends TildeToListMethods with MyRegexUtils with RegexParsers
 	def asrSpaces[T](p: Parser[T]): Parser[T] = asr(oSpc, p, oSpc)
 	def tildeToStr[T <: _ ~ String](t: T)(implicit ttl: TildeToList[T]): String =
 		tildeToList(t).mkString
-
+	val oSpc: Parser[String] = rep(" ") ^^ { case ls =>  if (ls.size > 0) " " else "" } // optional space
+	val cSpc = " +".r ^^ { _ => " " }
 	/*this subset of the grammar of name separators, included in nameSep can be used 
 	 * as name terminator too, thus the definition of the subset.
 	 */
 	lazy val nameSepSubset: Parser[String] = (
-		rep1(" ") ^^ { _ => " " }
-		||| "." ~ rep1(" ") ^^ { _ => ". " }
-		||| ("." <~ oSpc) ~ ("," <~ oSpc) ^^ { _ => ".," }
-		||| ".")
+		"."
+		||| ("." <~ oSpc) ~ "," ^^ { _ => ". ," })
 
 	lazy val nameSep: Parser[String] = (
 		nameSepSubset
-		||| oSpc ~ "," ~ oSpc ^^ { _ => ", " }
-		||| oSpc ~> "-" <~ oSpc
+		||| ","
+		||| "-"
 		||| "'")
 
 	lazy val nameChar = isocodePart ||| """\p{IsLatin}""".r
@@ -130,9 +128,20 @@ trait ParserUtils extends TildeToListMethods with MyRegexUtils with RegexParsers
 	lazy val termPart: Parser[String] =
 		opt(nameSepSubset) ^^ { _.getOrElse("") }
 
+	lazy val nameOptInfo: Parser[String] =
+		"(" ~> latinWord ~ opt(".") <~ ")" ^^ { case lat ~ opt => lat + opt.getOrElse("") }
+
+	def toSingle(s: String): String = 	
+		if (s.matches{" +".r.toString}) return " " 
+		else s
+	
 	lazy val name: Parser[String] =
-		(nameSub ~ nameSep ~ name ^^ { case sub ~ sep ~ tail => sub + sep + tail }
-			||| nameSub ~ (oSpc ~> termPart) ^^ { case w ~ t => w + t }
+		(nameSub ~ oSpc ~ opt(nameOptInfo) ~ oSpc ~ opt(nameSep) ~ oSpc ~ name ^^ {
+			case sub ~ oSpc ~ optInf ~ oSpc2 ~ sep ~ oSpc3 ~ tail => sub + oSpc + optInf.getOrElse("") + oSpc2 + sep.getOrElse("") + oSpc3 + tail
+		} 
+		||| nameSub ~ oSpc ~ opt(nameOptInfo) ~ oSpc ~ termPart ^^ {
+				case sub ~ oSpc  ~ optInf ~ oSpc2 ~ t => sub + oSpc + optInf.getOrElse("") + oSpc2 + t
+			}
 			| failure("unexpected character in name part"))
 
 	lazy val placeAddress: Parser[String] = rep1(name ||| """\d+""".r) ^^ { _.mkString }
@@ -218,20 +227,21 @@ trait AuthorParser extends ParserUtils {
 	sealed trait NameSupInfo
 	case class YearRange(begDate: String, endDate: String) extends NameSupInfo
 	lazy val yearRange1: Parser[String ~ String] = (year <~ oSpc <~ "-" <~ oSpc) ~ year
-	lazy val yearRange2: Parser[String ~ String] = oSpc ~> yearRange1 <~ oSpc
-	lazy val yearRange: Parser[YearRange] = "(" ~> yearRange2 <~ ")" ^^ { case beg ~ end => YearRange(beg, end) }
+	lazy val yearRange: Parser[YearRange] =
+		"(" ~> oSpc ~> yearRange1 <~ oSpc <~ ")" ^^
+			{ case beg ~ end => YearRange(beg, end) }
 
 	case class BirthYear(y: String) extends NameSupInfo
 
 	lazy val birthYear1: Parser[String] = (
 		year <~ oSpc <~ "-" <~ oSpc <~ ")"
-		||| year <~ oSpc <~ ")")
+		||| year <~ oSpc <~ ")"
+		||| year <~ "s" <~ oSpc <~ ")"
+		||| "b." ~> oSpc ~> year <~ oSpc <~ ")")
 	lazy val birthYear: Parser[BirthYear] = "(" ~> oSpc ~> birthYear1 ^^ { case y => BirthYear(y) }
-	//we first apply the parentheses
 
-	lazy val nameID: Parser[String] = (
-		("(" ~> rep1("I")) <~ ")" ^^ { "(" + _.mkString + ")" }
-		||| "(" ~> oSpc ~> year ~ "s" <~ oSpc <~ ")" ^^ { case y ~ "s" => y + "s" })
+	lazy val nameID: Parser[String] =
+		"(" ~> rep1("I") <~ ")" ^^ { "(" + _.mkString + ")" }
 
 	lazy val authName1: Parser[String] = name ~ (oSpc ~> opt(nameID)) ^^ { case n ~ opt => n + opt.getOrElse("") }
 	lazy val authName: Parser[String ~ Option[NameSupInfo]] = (
