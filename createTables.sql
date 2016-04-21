@@ -56,6 +56,7 @@ CREATE TABLE Authors (
 	UNION
 	SELECT a.id, a.name, a.legal_name, a.last_name, a.pseudo, a.birthplace,
 		a.birthdate, a.deathdate, a.email, a.img_link, a.language_id, n.note 
+	FROM Authors_temp a, Notes n
 	WHERE a.note_id = n.id;
 
 /*https://dev.mysql.com/doc/refman/5.5/en/create-table-select.html
@@ -189,7 +190,7 @@ CREATE TABLE title_is_translated_in (
 
 );
 
-CREATE TABLE Award_Types (
+CREATE TABLE Award_Types_temp (
   id INTEGER,
   code CHAR(5),
   name CHAR(255),
@@ -204,7 +205,32 @@ CREATE TABLE Award_Types (
   CONTRAINT CK_not_null CHECK (name != NULL OR code != NULL)
 );
 
-CREATE TABLE Award_Categories (
+CREATE TABLE Award_types (
+  id INTEGER,
+  code CHAR(5),
+  name CHAR(255),
+  note TEXT,
+  awarded_by CHAR(255),
+  awarded_for CHAR(255),
+  short_name CHAR(255),
+  is_poll BOOLEAN,
+  non_genre BOOLEAN,
+  PRIMARY KEY (id),
+  CONTRAINT CK_not_null CHECK (name != NULL OR code != NULL) 
+) 
+SELECT a_t.id, code, name, n.note, awarded_by, awarded_for, short_name,
+	is_poll, non_genre  
+FROM Award_Types_temp a_t, Notes n
+WHERE a_t.note_id = n.id
+UNION
+SELECT a_t.id, code, name, NULL, awarded_by, awarded_for, short_name,
+	is_poll, non_genre  
+FROM Award_Types_temp a_t
+WHERE a_t.note_id = NULL
+;
+
+
+CREATE TABLE Award_Categories_temp (
   id INTEGER,
   name CHAR(255),
   type_id INTEGER,
@@ -215,6 +241,28 @@ CREATE TABLE Award_Categories (
   FOREIGN KEY (note_id) REFERENCES Notes(id) ON DELETE SET NULL,
   FOREIGN KEY (type_id) REFERENCES Award_Types(id) ON DELETE CASCADE
 );
+
+CREATE TABLE Award_Categories (
+  id INTEGER,
+  name CHAR(255),
+  type_id INTEGER,
+  category_order INTEGER, 
+  -- position INTEGER, TODO what is position, is this award category order?
+  note TEXT,
+  PRIMARY KEY (id, type_id),
+  FOREIGN KEY (type_id) REFERENCES Award_Types(id) ON DELETE CASCADE
+)
+SELECT a_c.id, name, type_id, category_order, note
+FROM Award_Categories_temp a_c, Notes n
+WHERE note_id = n.id  
+UNION
+SELECT id, name, type_id, category_order, NULL 
+FROM Award_Categories_temp 
+WHERE note_id = NULL
+;
+
+
+
 
 CREATE TABLE Awards (
   id INTEGER,
