@@ -344,13 +344,29 @@ WHERE n.id = NULL
 ;
 
 
-CREATE TABLE Publication_Series (
+CREATE TABLE Publication_Series_temp (
   id INTEGER
   name CHAR(255),
   note_id INTEGER,
   PRIMARY KEY (id),
   FOREIGN KEY (note_id) REFERENCES Notes(id) ON DELETE SET NULL
 );
+
+CREATE TABLE Publication_Series (
+  id INTEGER
+  name CHAR(255),
+  note TEXT,
+  PRIMARY KEY (id),
+)
+SELECT pb_s.id, name, note
+FROM Publication_Series_temp pb_s, Notes n
+WHERE pb_s.note_id = n.id 
+UNION 
+SELECT id, name, NULL
+FROM Publication_Series_temp 
+WHERE note_id = NULL
+;
+
 
 CREATE TABLE Publication_is_of_Publication_Series (
   publication_id  INTEGER,
