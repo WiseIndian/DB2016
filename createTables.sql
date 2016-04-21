@@ -280,7 +280,7 @@ CREATE TABLE Awards_temp (
 CREATE TABLE Awards (
   id INTEGER,
   title CHAR(255),
-  date DATE,
+  aw_date DATE,
   type_id INTEGER,
   category_id INTEGER,
   note_id TEXT,
@@ -352,7 +352,7 @@ CREATE TABLE Publications (
    * for more info on how to do it.
    */ 
   title CHAR(255), --stay closer to definition of the csv file as described in todoFromDeliv1Feedback 
-  date DATE,
+  pb_date DATE,
   publisher_id INTEGER,
   nb_pages INTEGER,
   packaging_type CHAR(255),
