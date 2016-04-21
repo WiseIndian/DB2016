@@ -67,10 +67,10 @@ CREATE TABLE Titles (
 
 CREATE TABLE authors_have_publications (
   author_id  INTEGER,
-  title_id INTEGER,
-  PRIMARY KEY (author_id, title_id),
+  pub_id INTEGER,
+  PRIMARY KEY (author_id, pub_id),
   FOREIGN KEY (author_id) REFERENCES Authors(id) ON DELETE CASCADE,
-  FOREIGN KEY (title_id) REFERENCES Titles(id) ON DELETE CASCADE
+  FOREIGN KEY (pub_id) REFERENCES Publications(id) ON DELETE CASCADE
 );
 
 CREATE TABLE title_is_reviewed_by (
