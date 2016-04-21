@@ -123,10 +123,13 @@ CREATE TABLE Award_Types (
 CREATE TABLE Award_Categories (
   id INTEGER,
   name CHAR(255),
-  position INTEGER,
+  type_id INTEGER,
+  category_order INTEGER, 
+  -- position INTEGER, TODO what is position, is this award category order?
   note_id INTEGER,
-  PRIMARY KEY (id),
-  FOREIGN KEY (note_id) REFERENCES Notes(id) ON DELETE SET NULL
+  PRIMARY KEY (id, type_id),
+  FOREIGN KEY (note_id) REFERENCES Notes(id) ON DELETE SET NULL,
+  FOREIGN KEY (type_id) REFERENCES Award_Types(id) ON DELETE CASCADE
 );
 
 CREATE TABLE Awards (
@@ -191,7 +194,11 @@ CREATE TABLE Publication_is_of_Publication_Series (
 
 CREATE TABLE Publications (
   id INTEGER,
-  title_id INTEGER,
+  /* we should use a view/relationship that just describes the many to many relationship
+   * and references of Titles id and Publications id, see todoFromDeliv1Feedback file(on github)
+   * for more info on how to do it.
+   */ 
+  title CHAR(255), --stay closer to definition of the csv file as described in todoFromDeliv1Feedback 
   date DATE,
   publisher_id INTEGER,
   nb_pages INTEGER,
