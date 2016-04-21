@@ -264,10 +264,10 @@ WHERE note_id = NULL
 
 
 
-CREATE TABLE Awards (
+CREATE TABLE Awards_temp (
   id INTEGER,
   title CHAR(255),
-  date DATE,
+  aw_date DATE,
   type_id INTEGER,
   category_id INTEGER,
   note_id INTEGER,
@@ -276,6 +276,27 @@ CREATE TABLE Awards (
   FOREIGN KEY (category_id) REFERENCES Award_Categories(id) ON DELETE SET NULL,
   FOREIGN KEY (type_id) REFERENCES Award_Types(id) ON DELETE SET NULL
 );
+
+CREATE TABLE Awards (
+  id INTEGER,
+  title CHAR(255),
+  date DATE,
+  type_id INTEGER,
+  category_id INTEGER,
+  note_id TEXT,
+  PRIMARY KEY (id),
+  FOREIGN KEY (category_id) REFERENCES Award_Categories(id) ON DELETE SET NULL,
+  FOREIGN KEY (type_id) REFERENCES Award_Types(id) ON DELETE SET NULL
+)
+SELECT aw.id, title, aw_date, type_id, category_id, note
+FROM Awards_temp aw, Notes n
+WHERE n.id = note_id 
+UNION 
+SELECT id, title, aw_date, type_id, category_id, NULL 
+FROM Awards_temp
+WHERE note_id = NULL
+;
+
 
 CREATE TABLE title_wins_award (
   award_id  INTEGER,
