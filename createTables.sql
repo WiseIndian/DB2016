@@ -58,14 +58,12 @@ CREATE TABLE Authors (
 		a.birthdate, a.deathdate, a.email, a.img_link, a.language_id, n.note 
 	WHERE a.note_id = n.id;
 
+/*https://dev.mysql.com/doc/refman/5.5/en/create-table-select.html
+ *for the syntax of CREATE TABLE ... SELECT
+ * http://stackoverflow.com/questions/4081842/sql-conditional-select-within-conditional-select#4081897
+ * for how to use it in our case.
+ */
 
-
-
-CREATE TABLE Synopsis (
-  id INTEGER,
-  synopsis TEXT NOT NULL,
-  PRIMARY KEY (id)
-);
 
 CREATE TABLE Title_Series_temp (
   id INTEGER,
@@ -95,7 +93,7 @@ CREATE TABLE Title_Series (
 	;
 
 
-CREATE TABLE Titles (
+CREATE TABLE Titles_temp (
   id INTEGER,
   title CHAR(255) NOT NULL,
   synopsis_id INTEGER,
@@ -108,10 +106,48 @@ CREATE TABLE Titles (
   language_id INTEGER,
   title_graphic BOOLEAN,
   PRIMARY KEY (id),
-  FOREIGN KEY (synopsis_id) REFERENCES Synopsis(id) ON DELETE SET NULL,
+  FOREIGN KEY (synopsis_id) REFERENCES Notes(id) ON DELETE SET NULL,
   FOREIGN KEY (note_id) REFERENCES Notes(id) ON DELETE SET NULL,
   FOREIGN KEY (language_id) REFERENCES Languages(id) ON DELETE SET NULL
 );
+
+CREATE TABLE Titles (
+	  id INTEGER,
+	  title CHAR(255) NOT NULL,
+	  synopsis TEXT,
+	  note TEXT,
+	  story_len ENUM('nv', 'ss', 'jvn', 'nvz', 'sf'),
+	  type ENUM('ANTHOLOGY', 'BACKCOVERART', 'COLLECTION', 'COVERART', 'INTERIORART',
+		  'EDITOR', 'ESSAY', 'INTERVIEW', 'NOVEL', 'NONFICTION', 'OMNIBUS', 'POEM',
+		  'REVIEW', 'SERIAL', 'SHORTFICTION', 'CHAPBOOK'),
+	  parent INTEGER,
+	  language_id INTEGER,
+	  title_graphic BOOLEAN,
+	  PRIMARY KEY (id),
+	  FOREIGN KEY (language_id) REFERENCES Languages(id) ON DELETE SET NULL
+	) --this solution is pretty unelegant as we have to look for all cases manually..
+	SELECT t.id, t.title, syn.note, n.note, t.story_len, t.parent, 
+		t.language_id, t.title_graphic
+	FROM Titles_temp t, Notes syn, Notes n
+	WHERE t.note_id = n.id AND t.synopsis_id = syn.id
+	UNION 
+	SELECT t.id, t.title, NULL, n.note, t.story_len, t.parent, 
+		t.language_id, t.title_graphic
+	FROM Titles_temp t, Notes n
+	WHERE t.synopsis_id = NULL AND t.note_id = n.id
+	UNION
+	SELECT t.id, t.title, syn.note, NULL, t.story_len, t.parent, 
+		t.language_id, t.title_graphic
+	FROM Titles_temp t, Notes syn
+	WHERE t.note_id = NULL AND t.synopsis_id = syn.id
+	UNION
+	SELECT t.id, t.title, NULL, NULL, t.story_len, t.parent, 
+	t.language_id, t.title_graphic
+	FROM Titles_temp t
+	WHERE t.note_id = NULL AND t.synopsis_id = NULL
+	;
+
+
 
 CREATE TABLE authors_have_publications (
   author_id  INTEGER,
