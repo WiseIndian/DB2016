@@ -39,21 +39,23 @@ CREATE TABLE Title_Publications (
 
 (REFERENCE: https://dev.mysql.com/doc/refman/5.5/en/create-table-select.html)
 
+
 * A general comment: Once you load the data, you may have to
 calibrate your participation and key constraints.
 Some may need to be more lax, and some more restrictive.
 For example, there actually are awards not corresponding to an
-explicit title in the dataset.
+explicit title in the dataset. (NOTE Simon: Example seems to be agree with our constraints)
 Are there publications without publishers? Authors without
 publications? Can a review refer to more than one titles, or only one
 of them?
-* Consider treating award categories as a weak entity of award types.
-Also reflect this modeling in the relational schema -- it will
+DONE: * Consider treating award categories as a weak entity of award types.
+*Also reflect this modeling in the relational schema -- it will
 probably simplify your rationale for award categories and types.
-After looking at the data, you will notice that there's a 1-1
+DONE:*After looking at the data, you will notice that there's a 1-1
 relationship between Notes and the rest of the tables. Therefore,
 perhaps it is more convenient to inline notes information in each
 table when translating to the relational model.
+
 DONE(on create table): * I wouldn't call a relationship 'can win'. Awards have already been
 won.
 DONE(on create table) : * You might want to treat currencies more explicitly, instead of just
