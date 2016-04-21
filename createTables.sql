@@ -200,7 +200,8 @@ CREATE TABLE Publications (
                          'NOVEL', 'OMNIBUS', 'FANZINE', 'CHAPBOOK'),
   isbn INTEGER,
   cover_img CHAR(255),
-  price CHAR(255),
+  price DECIMAL(6, 5), --valeurs un peu arbitraires, mais on peut imaginer qu'un livre 
+			-- aura pas un prix > un million dans n'importe quelle currency?
   currency CHAR(1),
   note_id INTEGER,
   PRIMARY KEY (id),
