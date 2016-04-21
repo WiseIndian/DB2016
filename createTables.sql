@@ -14,7 +14,7 @@ CREATE TABLE Languages (
   PRIMARY KEY (id)
 );
 
-CREATE TABLE Authors (
+CREATE TABLE Authors_temp (
   id INTEGER,
   name CHAR(64),
   legal_name CHAR(255),
@@ -31,6 +31,35 @@ CREATE TABLE Authors (
   FOREIGN KEY (note_id) REFERENCES Notes(id) ON DELETE SET NULL,
   FOREIGN KEY (language_id) REFERENCES Languages(id) ON DELETE SET NULL
 );
+--then import the data into Authors_temp
+--and do the following query:
+CREATE TABLE Authors (
+	  id INTEGER,
+	  name CHAR(64),
+	  legal_name CHAR(255),
+	  last_name CHAR(64),
+	  pseudo CHAR(64),
+	  birthplace CHAR(255),
+	  birthdate DATE,
+	  deathdate DATE,
+	  email CHAR(255),
+	  img_link CHAR(255),
+	  language_id INTEGER,
+	  note TEXT, 
+	  PRIMARY KEY (id),
+	  FOREIGN KEY (language_id) REFERENCES Languages(id) ON DELETE SET NULL
+	) 
+	SELECT a.id, a.name, a.legal_name, a.last_name, a.pseudo, a.birthplace,
+		a.birthdate, a.deathdate, a.email, a.img_link, a.language_id, NULL
+	FROM Authors_temp a
+	WHERE a.note_id = NULL
+	UNION
+	SELECT a.id, a.name, a.legal_name, a.last_name, a.pseudo, a.birthplace,
+		a.birthdate, a.deathdate, a.email, a.img_link, a.language_id, n.note 
+	WHERE a.note_id = n.id;
+
+
+
 
 CREATE TABLE Synopsis (
   id INTEGER,
