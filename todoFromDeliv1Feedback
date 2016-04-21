@@ -1,7 +1,44 @@
-* Authors are to be connected with Publications, not Titles.
+* DONE in create-table: Authors are to be connected with Publications, not Titles.
+
+(was already the case in the create table, we had created a relationship called
+title_is_reviewed_by that is clearly many to many from the code)
 * Not every title has a review.
-* There exist unpublished titles and publications that comprise
+
+DONE* There exist unpublished titles and publications that comprise
 multiple titles.
+Actually our create table code reflects already "There exist unpublished titles"  
+The dilemna now is that if we use the title in publications.csv as a way to find a title id
+we might indeed find many titles, because the title field in the csv file is a string.
+
+so, one option is to create a view/relationship called Title_Publications(or something like this) of the form whose schema represents the fact that there is a many to many relationship between title and
+publications (see Manos's comment deliv1):
+CREATE TABLE Title_Publications (
+  title_id INTEGER,
+  pub_id INTEGER, 
+  PRIMARY KEY (title_id, pub_id),
+  FOREIGN KEY (title_id) REFERENCES Titles(id),
+  FOREIGN KEY (pub_id) REFERENCES Publications(id)
+)
+We have to create it once we've create Publications(see changes on title field of Publications in 
+create table).
+once Title and Publications are created:
+use a sql command to create the Title_Publications view,
+that by doing the following query that also creates the table:
+
+
+CREATE TABLE Title_Publications ( 
+		title_id INTEGER,
+		pub_id INTEGER, 
+		PRIMARY KEY (title_id, pub_id),
+		FOREIGN KEY (title_id) REFERENCES Titles(id),
+		FOREIGN KEY (pub_id) REFERENCES Publications(id)
+	)
+	SELECT t.id AS title_id, p.id AS pub_id
+	FROM Publications p, Titles t
+	WHERE p.title = t.title
+
+(REFERENCE: https://dev.mysql.com/doc/refman/5.5/en/create-table-select.html)
+
 * A general comment: Once you load the data, you may have to
 calibrate your participation and key constraints.
 Some may need to be more lax, and some more restrictive.
@@ -17,8 +54,8 @@ After looking at the data, you will notice that there's a 1-1
 relationship between Notes and the rest of the tables. Therefore,
 perhaps it is more convenient to inline notes information in each
 table when translating to the relational model.
-* I wouldn't call a relationship 'can win'. Awards have already been
+DONE(on create table): * I wouldn't call a relationship 'can win'. Awards have already been
 won.
-* You might want to treat currencies more explicitly, instead of just
+DONE(on create table) : * You might want to treat currencies more explicitly, instead of just
 char values that will need parsing for every access to them.
 
