@@ -67,7 +67,7 @@ CREATE TABLE Synopsis (
   PRIMARY KEY (id)
 );
 
-CREATE TABLE Title_Series (
+CREATE TABLE Title_Series_temp (
   id INTEGER,
   title CHAR(255) NOT NULL,
   parent INTEGER,
@@ -75,6 +75,25 @@ CREATE TABLE Title_Series (
   PRIMARY KEY (id),
   FOREIGN KEY (note_id) REFERENCES Notes(id) ON DELETE SET NULL
 );
+
+--then
+
+CREATE TABLE Title_Series (
+	  id INTEGER,
+	  title CHAR(255) NOT NULL,
+	  parent INTEGER,
+	  note TEXT,
+	  PRIMARY KEY (id)
+	) 
+	SELECT t.id, t.title, t.parent, n.note 
+	FROM Title_Series_temp t, Notes n 
+	WHERE t.note_id = n.id 
+	UNION 
+	SELECT t.id, t.title, t.parent, NULL
+	FROM Title_Series_temp t
+	WHERE t.note_id = NULL
+	;
+
 
 CREATE TABLE Titles (
   id INTEGER,
