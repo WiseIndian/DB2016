@@ -320,13 +320,29 @@ CREATE TABLE title_has_tag (
   FOREIGN KEY (title_id) REFERENCES Titles(id) ON DELETE CASCADE
 );
 
-CREATE TABLE Publishers (
+CREATE TABLE Publishers_temp (
   id INTEGER,
   name CHAR(255),
   note_id INTEGER,
   PRIMARY KEY (id),
   FOREIGN KEY (note_id) REFERENCES Notes(id)  ON DELETE SET NULL
 );
+
+CREATE TABLE Publishers (
+  id INTEGER,
+  name CHAR(255),
+  note TEXT,
+  PRIMARY KEY (id)
+)
+SELECT pb.id, name, note
+FROM Publishers_temp pb, Notes n 
+WHERE n.id = pb.note_id
+UNION
+SELECT id, name, NULL
+FROM Publishers_temp 
+WHERE n.id = NULL
+;
+
 
 CREATE TABLE Publication_Series (
   id INTEGER
