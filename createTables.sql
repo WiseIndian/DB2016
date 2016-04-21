@@ -73,6 +73,8 @@ CREATE TABLE authors_have_publications (
   FOREIGN KEY (pub_id) REFERENCES Publications(id) ON DELETE CASCADE
 );
 
+--TODO: modifier le schéma du ER model de manière à bien montrer que c'est
+-- bien un many to many relationship(comme montré ici avec le code)
 CREATE TABLE title_is_reviewed_by (
   title_id  INTEGER,
   review_title_id INTEGER,
