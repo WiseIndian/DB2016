@@ -377,7 +377,7 @@ CREATE TABLE Publication_is_of_Publication_Series (
   FOREIGN KEY (series_id) REFERENCES Publication_Series(id) ON DELETE CASCADE
 );
 
-CREATE TABLE Publications (
+CREATE TABLE Publications_temp (
   id INTEGER,
   /* we should use a view/relationship that just describes the many to many relationship
    * and references of Titles id and Publications id, see todoFromDeliv1Feedback file(on github)
@@ -399,8 +399,57 @@ CREATE TABLE Publications (
   PRIMARY KEY (id),
   FOREIGN KEY (title_id) REFERENCES Titles(id) ON DELETE CASCADE,
   FOREIGN KEY (note_id) REFERENCES Notes(id) ON DELETE SET NULL,
-  FOREIGN KEY (publisher_id) REFERENCES Publishers(id) ON DELETE CASCADE,
+  FOREIGN KEY (publisher_id) REFERENCES Publishers(id) ON DELETE CASCADE
 );
+
+
+CREATE TABLE Publications (
+  id INTEGER,
+  /* we should use a view/relationship that just describes the many to many relationship
+   * and references of Titles id and Publications id, see todoFromDeliv1Feedback file(on github)
+   * for more info on how to do it.
+   */ 
+  title CHAR(255), --stay closer to definition of the csv file as described in todoFromDeliv1Feedback 
+  pb_date DATE,
+  publisher_id INTEGER,
+  nb_pages INTEGER,
+  packaging_type CHAR(255),
+  publication_type ENUM('ANTHOLOGY', 'COLLECTION', 'MAGAZINE', 'NONFICTION',
+                         'NOVEL', 'OMNIBUS', 'FANZINE', 'CHAPBOOK'),
+  isbn INTEGER,
+  cover_img CHAR(255),
+  price DECIMAL(6, 5), --valeurs un peu arbitraires, mais on peut imaginer qu'un livre 
+			-- aura pas un prix > un million dans n'importe quelle currency?
+  currency CHAR(1),
+  note TEXT,
+  PRIMARY KEY (id),
+  FOREIGN KEY (title_id) REFERENCES Titles(id) ON DELETE CASCADE,
+  FOREIGN KEY (publisher_id) REFERENCES Publishers(id) ON DELETE CASCADE
+)
+SELECT pb.id, title, pb_date, publisher_id, nb_pages, packaging_type, 
+	publication_type, isbn, cover_img, price, currency, note
+FROM Publications_temp pb, Notes n
+WHERE pb.note_id = n.id
+UNION
+SELECT id, title, pb_date, publisher_id, nb_pages, packaging_type, 
+	publication_type, isbn, cover_img, price, currency, NULL 
+FROM Publications_temp 
+WHERE pb.note_id = NULL
+;
+
+
+
+CREATE TABLE Title_Publications (
+                title_id INTEGER,
+                pub_id INTEGER,
+                PRIMARY KEY (title_id, pub_id),
+                FOREIGN KEY (title_id) REFERENCES Titles(id),
+                FOREIGN KEY (pub_id) REFERENCES Publications(id)
+        )
+        SELECT t.id AS title_id, p.id AS pub_id
+        FROM Publications p, Titles t
+        WHERE p.title = t.title
+	;
 
 CREATE TABLE Webpages (
   id INTEGER,
