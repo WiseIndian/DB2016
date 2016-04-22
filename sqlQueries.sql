@@ -59,8 +59,19 @@ WHERE t.title = p.title AND t.title_graphic = 1 AND nb_pages >= 50
 
 
 
-/*e) For every publisher, calculate the average price of its published novels (the ones that have a dollar
-price).
-f) What is the name of the author with the highest number of titles that are tagged as “science fiction”?
+/*e) For every publisher, calculate the average price of its published novels (the ones that have 
+a dollar price).
+*/
+
+SELECT pbsher.name AS "Publisher name", pbsher.id AS "Publisher id", 
+	AVG(pb.price) AS "Average Publisher publication price"
+FROM Publishers pbsher, Publications pb
+WHERE pbsher.id = pb.publisher_id
+GROUP BY pbsher.id
+
+/*
+ * f) What is the name of the author with the highest number of titles that are tagged as 
+ * “science fiction”?
+ */
 g) List the three most popular titles (i.e., the ones with the most awards and reviews).
 */
