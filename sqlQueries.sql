@@ -40,24 +40,38 @@ ORDER BY a.birthdate DESC
 -- d)How many comics (graphic titles) have publications with less than 50 pages, less than 100 pages, and
 --more (or equal) than 100 pages?
 
---Problème: Dans les csv, les publications ont un champs title, mais pas de référence 
--- vers une row précise de title, or, dans les create tables on a un id (INTEGER) vers 
--- une row précise de Titles, à mon avis dur de créer ça(parceque on a surement plusieurs
--- titles avec le même nom), je propose qu'on abandonne cette idée d'id INTEGER pour garder 
--- une string a la place, la query suivante suit cet "assumption", aussi ce champs serait
--- appelé title. 
-SELECT COUNT(*) AS "less than 50 pages"
-FROM Titles t, Publications p 
-WHERE t.title = p.title AND t.title_graphic = 1 AND nb_pages < 50
-UNION
-SELECT COUNT(*) AS "less than 100 pages"
-FROM Titles t, Publications p 
-WHERE t.title = p.title AND t.title_graphic = 1 AND nb_pages < 100 
-UNION
-SELECT COUNT(*) AS "more than 100 pages"
-FROM Titles t, Publications p 
-WHERE t.title = p.title AND t.title_graphic = 1 AND nb_pages >= 50
-;
+-- si on créé pas Title_Publications et que Publications suit un format proche du csv
+SELECT * FROM (
+	SELECT COUNT(*) AS "less than 50 pages"
+	FROM Titles t, Publications p 
+	WHERE t.title = p.title AND t.title_graphic = 1 AND nb_pages < 50
+	,
+	SELECT COUNT(*) AS "less than 100 pages"
+	FROM Titles t, Publications p 
+	WHERE t.title = p.title AND t.title_graphic = 1 AND nb_pages < 100
+	, 
+	SELECT COUNT(*) AS "more than 100 pages"
+	FROM Titles t, Publications p 
+	WHERE t.title = p.title AND t.title_graphic = 1 AND nb_pages >= 50
+);
+--si on créé Title_Publications:
+SELECT * FROM (
+	SELECT COUNT(*) AS "less than 50 pages"
+	FROM Titles t, Title_Publications t_p
+	WHERE t.id = t_p.title_id AND t.title_graphic = 1 AND nb_pages < 50
+	,
+	SELECT COUNT(*) AS "less than 100 pages"
+	FROM Titles t, Title_Publications t_p
+	WHERE t.id = t_p.title_id AND t.title_graphic = 1 AND nb_pages < 100
+	,
+	SELECT COUNT(*) AS "more than 100 pages"
+	FROM Titles t, Title_Publications t_p
+	WHERE t.id = t_p.title_id AND t.title_graphic = 1 AND nb_pages >= 100
+);
+
+
+
+
 
 
 
@@ -76,5 +90,18 @@ GROUP BY pbsher.id
  * f) What is the name of the author with the highest number of titles that are tagged as 
  * “science fiction”?
  */
-g) List the three most popular titles (i.e., the ones with the most awards and reviews).
-*/
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ *g) List the three most popular titles (i.e., the ones with the most awards and reviews).
+ */
