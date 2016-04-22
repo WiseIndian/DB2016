@@ -103,9 +103,31 @@ SELECT TOP 1 * FROM (
 ORDER BY "number of science fiction titles written" DESC ;
 
 
-
-
-
 /*
  *g) List the three most popular titles (i.e., the ones with the most awards and reviews).
  */
+-- we'll say that the degree of popularity of a title is equal to the sum of 
+-- the number of reviews and the number of awards for this title
+
+SELECT TOP 3 tr.title_id --if testing the query use * instead of tr.title_id
+FROM (
+	SELECT tr.title_id, nb_reviews + nb_awards AS popularity
+		FROM (
+			-- query that gets all tuples of the form:
+			-- (title_id, nb of reviews for title)
+			SELECT tr.title_id, COUNT(*) AS nb_reviews
+			FROM title_id_reviewed_by tr
+			GROUP BY tr.title_id
+			,
+			--query that gets all tuples of the form
+			-- (title_id, nb of awards for title)
+			SELECT twa.title_id, COUNT(*) AS nb_awards
+			FROM title_wins_award twa 
+			GROUP BY twa.title_id 
+		)
+	WHERE tr.title_id = twa.title_id
+)
+ORDER BY popularity DESC
+
+
+
