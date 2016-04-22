@@ -3,7 +3,7 @@
 --in the subset, and we output that number and the year
 SELECT year, COUNT(*) FROM
 	(SELECT id, YEAR(pb_date) AS year  FROM Publications)
-GROUP BY year 
+GROUP BY year;
 
 --b)Output the names of the ten authors with most publications.
 /**
@@ -19,22 +19,23 @@ SELECT TOP 10 * FROM (
 	WHERE a.id = pb_as.author_id 
 	GROUP BY a.id
 	ORDER BY nb_publications
-)
+);
 
 --c)What are the names of the youngest and oldest authors to publish something in 2010?
 -- can we do something more elegant? here we used two queries that are almost the same
 -- except for the DESC additional keyword in the second query.
 	-- query for the youngest author who published in 2010
-	SELECT TOP 1 a.name
-	FROM Authors a, authors_have_publications pb_as, Publications pb
-	WHERE YEAR(pb_date) = 2010 AND a.id = pb_as.author_id AND pb.id = pb_as.pub_id
-	ORDER BY a.birthdate
+SELECT TOP 1 a.name
+FROM Authors a, authors_have_publications pb_as, Publications pb
+WHERE YEAR(pb_date) = 2010 AND a.id = pb_as.author_id AND pb.id = pb_as.pub_id
+ORDER BY a.birthdate
 UNION
-	--query for the oldest author who published in 2010
-	SELECT TOP 1 a.name
-	FROM Authors a, authors_have_publications pb_as, Publications pb
-	WHERE YEAR(pb_date) = 2010 AND a.id = pb_as.author_id AND pb.id = pb_as.pub_id
-	ORDER BY a.birthdate DESC
+--query for the oldest author who published in 2010
+SELECT TOP 1 a.name
+FROM Authors a, authors_have_publications pb_as, Publications pb
+WHERE YEAR(pb_date) = 2010 AND a.id = pb_as.author_id AND pb.id = pb_as.pub_id
+ORDER BY a.birthdate DESC
+;
 
 -- d)How many comics (graphic titles) have publications with less than 50 pages, less than 100 pages, and
 --more (or equal) than 100 pages?
@@ -56,6 +57,7 @@ UNION
 SELECT COUNT(*) AS "more than 100 pages"
 FROM Titles t, Publications p 
 WHERE t.title = p.title AND t.title_graphic = 1 AND nb_pages >= 50
+;
 
 
 
@@ -68,6 +70,7 @@ SELECT pbsher.name AS "Publisher name", pbsher.id AS "Publisher id",
 FROM Publishers pbsher, Publications pb
 WHERE pbsher.id = pb.publisher_id
 GROUP BY pbsher.id
+;
 
 /*
  * f) What is the name of the author with the highest number of titles that are tagged as 
