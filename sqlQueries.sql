@@ -90,13 +90,17 @@ GROUP BY pbsher.id
  * f) What is the name of the author with the highest number of titles that are tagged as 
  * “science fiction”?
  */
-
-
-
-
-
-
-
+--first select all tuples of type (author, title) where title is tagged as science fiction
+--and group them by the author name
+SELECT TOP 1 * FROM (
+	SELECT a.name, COUNT(*) AS "number of science fiction titles written" 
+	FROM Authors a, authors_have_publications ap, Title_Publications tp, title_has_tag tt, Tags
+	WHERE a.id = ap.author_id AND ap.pub_id = tp.pub_id AND 
+		tp.title_id = tt.title_id AND tt.tag_id = Tags.id AND 
+		Tags.name = 'science fiction'
+	GROUP BY a.name
+)
+ORDER BY "number of science fiction titles written" DESC ;
 
 
 
