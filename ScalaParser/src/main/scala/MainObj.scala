@@ -42,18 +42,20 @@ object MainObj extends AuthorParser with PrintUtils {
 		val f = new java.io.File(authorPath)
 		val in = new BufferedReader(new InputStreamReader(new FileInputStream(f), StandardCharsets.ISO_8859_1))
 		val outFile = new File("/home/simonlbc/workspace/DB/DB2016/outputAuthor.txt")
+		var nbFails: Int = 0;
 		printToFile(outFile) {
 			p =>
 
 				def lines: Stream[Option[String]] = Option(in.readLine()) #:: lines
 				lines.takeWhile(_.isDefined).flatten.foreach { s =>
 					parseAll(authorParser, s) match {
-						case f: Failure => p.println(f)
+						case f: Failure => p.println(f); nbFails+=1;
 						case _ =>
 					}
 				}
 
 				in.close()
+				println(nbFails)
 				println("done")
 
 		}
@@ -237,11 +239,13 @@ trait AuthorParser extends ParserUtils {
 		year <~ oSpc <~ "-" <~ oSpc <~ ")"
 		||| year <~ oSpc <~ ")"
 		||| year <~ "s" <~ oSpc <~ ")"
-		||| "b." ~> oSpc ~> year <~ oSpc <~ ")")
+		||| "b." ~> oSpc ~> year <~ oSpc <~ ")"
+		||| "c." ~> oSpc ~> year <~ oSpc <~ ")")
 	lazy val birthYear: Parser[BirthYear] = "(" ~> oSpc ~> birthYear1 ^^ { case y => BirthYear(y) }
 
-	lazy val nameID: Parser[String] =
-		"(" ~> rep1("I") <~ ")" ^^ { "(" + _.mkString + ")" }
+	lazy val nameID: Parser[String] = (
+		"(" ~> rep1("I") <~ ")" ^^ { "(" + _.mkString + ")" } 
+		||| "(" ~> rep1sep(latinWord, oSpc) <~ ")" ^^ { _.mkString(" ") } )
 
 	lazy val authName1: Parser[String] = name ~ (oSpc ~> opt(nameID)) ^^ { case n ~ opt => n + opt.getOrElse("") }
 	lazy val authName: Parser[String ~ Option[NameSupInfo]] = (
