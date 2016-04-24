@@ -498,10 +498,10 @@
 
 110954	4sJ	\N	4sJ	\N	\N	\N	\N	\N	\N	17	\N
       	^
-[1.19] failure: `)' expected but ` ' found
+[1.43] failure: `	' expected but `)' found
 
 111091	A. Parra (y Figuerado)	\N	Figuerado)	\N	\N	\N	\N	\N	\N	\N	\N
-      	           ^
+      	                      	  	         ^
 [1.18] failure: `	' expected but `@' found
 
 111180	background@Jupiterimages	\N	Jupiterimages	\N	\N	\N	\N	\N	\N	\N	\N
@@ -590,10 +590,10 @@
 
 118214	Arnost Lustig	Lustig, Arnošt	Lustig	\N	Prague, Czechoslovakia	1926-12-21	2011-02-26	\N	\N	14	\N
       	             	            ^
-[1.20] failure: `)' expected but ` ' found
+[1.28] failure: `	' expected but `E' found
 
 118469	Jim (Looking Eagle) Estes	\N	Estes	\N	\N	\N	\N	\N	\N	\N	\N
-      	            ^
+      	                    ^
 [1.70] failure: date format invalid
 
 118535	Catherine Cheek	\N	Cheek	144757	Tempe, Arizona, USA	0000-05-01	\N	\N	\N	17	\N
@@ -642,14 +642,14 @@
 
 120866	'Doc' Travis S. Taylor	\N	Taylor	\N	\N	\N	\N	\N	\N	\N	\N
       	^
-[1.27] failure: `)' expected but ` ' found
+[1.28] failure: string matching regex `\p{IsLatin}+' expected but `1' found
 
 121158	Rebecca Brown (Born 1948)	\N	Brown	\N	\N	\N	\N	\N	\N	\N	\N
-      	                   ^
-[1.27] failure: `)' expected but ` ' found
+      	                    ^
+[1.28] failure: string matching regex `\p{IsLatin}+' expected but `1' found
 
 121159	Rebecca Brown (Born 1956)	\N	Brown	\N	\N	\N	\N	\N	\N	\N	\N
-      	                   ^
+      	                    ^
 [1.12] failure: `	' expected but `/' found
 
 121667	NASA/JPL-Caltech/O. Krause	\N	Krause	\N	\N	\N	\N	\N	\N	\N	\N
@@ -666,10 +666,6 @@
 
 122119	Arthur Morrison	Morrison, Arthur George	Morrison	\N	Poplar, Middlesex [now Borough of Tower Hamlets, London], England, UK	1863-11-01	1945-12-04	\N	\N	17	\N
       	               	                       	        	  	                  ^
-[1.18] failure: `)' expected but ` ' found
-
-122125	A Lady (c. 1904)	\N	Lady	\N	\N	\N	\N	\N	\N	\N	\N
-      	          ^
 [1.56] failure: `	' expected but `G' found
 
 122533	H. C. Adams	Adams, Henry Cadwallader	Adams	\N	6 Great James Street, St George Bloomsbury parish, Middlesex, England, UK	1817-11-04	1899-10-17	\N	\N	17	\N
@@ -698,10 +694,6 @@
 
 124319	R&D Studios	\N	Studios	\N	\N	\N	\N	\N	\N	17	\N
       	 ^
-[1.18] failure: `)' expected but ` ' found
-
-124487	A Lady (c. 1788)	\N	Lady	\N	\N	\N	\N	\N	\N	\N	\N
-      	          ^
 [1.69] failure: `	' expected but `G' found
 
 124884	E. L. Blanchard	Blanchard, Edward Litt Laman	Blanchard	\N	31 Great Queen Street, Parish of St Giles in the Fields, Middlesex, England, UK	1820-12-11	1889-09-04	\N	\N	17	\N
@@ -730,10 +722,6 @@
 
 125590	Alan Abramowitz / Stone	\N	Stone	\N	\N	\N	\N	\N	\N	\N	\N
       	                ^
-[1.27] failure: `)' expected but ` ' found
-
-125749	John Benson (Usenet Author)	\N	Benson	\N	\N	\N	\N	\N	\N	\N	\N
-      	                   ^
 [1.82] failure: `	' expected but `[' found
 
 125906	Captain F. N. Maude	Maude, Frederick Natusch	Maude	\N	Knostrop, Yorkshire [now a suburb of Leeds], England, UK	1854-11-12	1933-06-00	\N	\N	17	\N
@@ -742,10 +730,10 @@
 
 125910	F. Scudamore	Scudamore-Stanhope, Edwyn Francis, 10th Earl of Chesterfield	Scudamore	\N	Rome, Papal States	1854-03-15	1933-01-24	\N	\N	17	\N
       	            	                                   ^
-[1.21] failure: `)' expected but ` ' found
+[1.106] failure: `@' expected but ` ' found
 
 125969	Tim Jones (UK Novelist)	Jones, Richard Timothy	Jones	\N	Denbigh, North Wales, UK	1959-02-28	\N	Tim at vandah dot com	\N	17	\N
-      	             ^
+      	                       	                      	     	  	                        	          	  	   ^
 [1.70] failure: date format invalid
 
 126085	Brian Trent	\N	Trent	\N	Waterbury, Connecticut, USA	0000-09-18	\N	\N	\N	17	\N
@@ -758,7 +746,7 @@
 
 127317	Jay Werkheiser	\N	Werkheiser	\N	\N	0000-05-23	\N	\N	\N	17	\N
       	              	  	          	  	  	          ^
-[1.23] failure: `b.' expected but `2' found
+[1.23] failure: `c.' expected but `2' found
 
 127523	George Fowler (20th century)	\N	century)	\N	\N	\N	\N	\N	\N	\N	\N
       	               ^
@@ -826,7 +814,7 @@
 
 130550	Rex Stone	N/A - House Name	Stone	\N	\N	\N	\N	\N	\N	17	\N
       	         	 ^
-[1.16] failure: `b.' expected but `2' found
+[1.16] failure: `c.' expected but `2' found
 
 130594	Lucian (20th century)	Hobson, John Atkinson	Lucian	\N	Derby, Derbyshire, England, UK	1858-07-06	1940-04-01	\N	\N	17	\N
       	        ^
@@ -862,10 +850,10 @@
 
 132967	Mike Lewis (1950's)	\N	Lewis	\N	\N	\N	\N	\N	\N	\N	\N
       	                ^
-[1.29] failure: `)' expected but ` ' found
+[1.30] failure: string matching regex `\p{IsLatin}+' expected but `2' found
 
 133114	William Warren (early 20th)	\N	Warren	\N	\N	\N	\N	\N	\N	\N	\N
-      	                     ^
+      	                      ^
 [1.91] failure: `)' expected but `-' found
 
 133138	Itzhak Bentov	&#1497;&#1510;&#1495;&#1511; &#1489;&#1504;&#1496;&#1493;&#1489; (Ben-Tov, Itzhak)	Bentov	\N	Prague, Czechoslovakia	1923-08-09	1979-05-25	\N	\N	17	\N
@@ -890,7 +878,7 @@
 
 133991	Milovan Djilas	&#272;ilas, Milovan	Djilas	\N	Podbiš&#263;e, Kingdom of Montenegro	1911-06-04	1995-04-20	\N	\N	\N	\N
       	              	                   	      	  	     ^
-[1.22] failure: `b.' expected but `7' found
+[1.22] failure: `c.' expected but `7' found
 
 134220	Chris Butler (70's)	\N	Butler	\N	\N	\N	\N	\N	\N	\N	\N
       	              ^
@@ -986,7 +974,7 @@
 
 140771	Geoffrey Bromhead	Bromhead, Geoffrey W. .	Bromhead	\N	Calgary, Alberta, Canada	1979-00-00	\N	\N	\N	\N	\N
       	                 	                      ^
-[1.19] failure: `b.' expected but `?' found
+[1.19] failure: `c.' expected but `?' found
 
 141590	Paul West (?-)	West, Paul Clarendon	West	\N	\N	\N	\N	\N	\N	\N	\N
       	           ^
@@ -1030,7 +1018,7 @@
 
 143555	Paolo Mantegazza	\N	Mantegazza	\N	Monza, Kingdom of Lombardy–Venetia, Austrian Empire	1831-10-31	1910-08-28	\N	\N	36	\N
       	                	  	          	  	                          ^
-[1.22] failure: `b.' expected but `?' found
+[1.22] failure: `c.' expected but `?' found
 
 143807	Will Bradley (?-)	\N	Bradley	\N	\N	\N	\N	\N	\N	\N	\N
       	              ^
@@ -1078,10 +1066,10 @@
 
 146596	J. Twells Brex	Brex, John Twells	Brex	\N	Islington, Middlesex [now London], England, UK	1873-06-05	1920-01-07	\N	\N	17	\N
       	              	                 	    	  	                     ^
-[1.27] failure: `)' expected but ` ' found
+[1.49] failure: `	' expected but `)' found
 
 147198	Ben Robinson (cover designer)	\N	designer)	\N	\N	\N	\N	\N	\N	\N	\N
-      	                   ^
+      	                             	  	        ^
 [1.31] failure: `	' expected but `.' found
 
 147509	The Editors of imagine...	\N	imagine...	\N	\N	\N	\N	\N	\N	22	\N
@@ -1122,7 +1110,7 @@
 
 151148	Edwin Landseer	Landseer, Edwin Henry	Landseer	\N	88 Queen Anne Street East, St Marylebone, Middlesex, England, UK	1802-03-07	1873-10-01	\N	\N	17	\N
       	              	                     	        	  	   ^
-[1.23] failure: `b.' expected but `?' found
+[1.23] failure: `c.' expected but `?' found
 
 151575	Stuart Palmer (?-)	Palmer, Stuart A.	Palmer	148014	\N	\N	\N	\N	\N	\N	\N
       	               ^
@@ -1130,10 +1118,10 @@
 
 151727	Editors of 20 Story Magazine	\N	Magazine	\N	\N	\N	\N	\N	\N	\N	\N
       	           ^
-[1.34] failure: `)' expected but ` ' found
+[1.52] failure: `	' expected but `)' found
 
 151915	Edward Bulwer Lytton (Lord Lytton)	\N	Lytton)	\N	\N	\N	\N	\N	\N	\N	\N
-      	                          ^
+      	                                  	  	      ^
 [1.72] failure: date format invalid
 
 152346	Olivia Claire High	\N	High	\N	Waukegan, Illinois, USA	0000-07-31	\N	JoeClaire2424@Comcast.net	\N	17	\N
@@ -1142,10 +1130,10 @@
 
 152354	Flowers & Foliage	\N	Foliage	\N	\N	\N	\N	\N	\N	\N	\N
       	        ^
-[1.29] failure: `)' expected but ` ' found
+[1.31] failure: `)' expected but `.' found
 
 152505	Eric Brown (Frederick D. Brown)	\N	Brown)	\N	\N	\N	\N	\N	\N	\N	\N
-      	                     ^
+      	                       ^
 [1.13] failure: `	' expected but `!' found
 
 152520	Marvy!	\N	Marvy!	\N	\N	\N	\N	\N	\N	\N	\N
@@ -1230,7 +1218,7 @@
 
 155863	George Anson Byron, 7th Baron Byron	\N	Byron	\N	Bath, Somerset, England, Kingdom of Great Britain	1789-03-08	1868-03-01	\N	\N	17	\N
       	                    ^
-[1.22] failure: `b.' expected but `5' found
+[1.22] failure: `c.' expected but `5' found
 
 155993	John Stewart (50s artist)	\N	artist)	\N	\N	\N	\N	\N	\N	\N	\N
       	              ^
@@ -1258,18 +1246,18 @@
 
 157204	Dubravka Ugreši&#263;	\N	Ugresic	\N	Kutina, Croatia, Yugoslavia	1949-03-27	\N	\N	\N	17	\N
       	             ^
-[1.27] failure: `)' expected but ` ' found
+[1.45] failure: `	' expected but `)' found
 
 157461	Linda Evans (horror writer)	\N	writer)	\N	\N	\N	\N	\N	\N	17	\N
-      	                   ^
+      	                           	  	      ^
 [1.57] failure: date format invalid
 
 157482	R. S. Bohn	Bohn, Rebecca S.	Bohn	\N	\N	0000-09-18	\N	\N	\N	\N	\N
       	          	                	    	  	  	          ^
-[1.28] failure: `)' expected but ` ' found
+[1.29] failure: string matching regex `\p{IsLatin}+' expected but `2' found
 
 157485	Arthur Wilson (early 20th)	\N	Wilson	\N	\N	\N	\N	\N	\N	\N	\N
-      	                    ^
+      	                     ^
 [1.63] failure: `	' expected but `[' found
 
 158110	Editors of The Magazine of Fantasy and Science Fiction [UK]	\N	Editors of The Magazine of Fantasy and Science Fiction [UK]	\N	\N	\N	\N	\N	\N	\N	\N
@@ -1314,10 +1302,10 @@
 
 159324	Walter Spiegl	Spiegl, Walter	Spiegl	\N	Aš, Bohemia, Czechoslovakia	1934-07-28	\N	walter-spiegl@t-online.de	\N	26	\N
       	             	              	      	  	 ^
-[1.22] failure: `)' expected but ` ' found
+[1.46] failure: `	' expected but `)' found
 
 159659	Pat Lyons (nee Patterson)	\N	Patterson)	\N	\N	\N	\N	\N	\N	\N	\N
-      	              ^
+      	                         	  	         ^
 [1.80] failure: date format invalid
 
 160242	K. J. Wignall	Wignall, Kevin J.	Wignall	\N	Herentals, Belgium	0000-03-15	\N	\N	\N	\N	\N
@@ -1326,7 +1314,7 @@
 
 160548	Phil & Jeff	\N	Jeff	\N	\N	\N	\N	\N	\N	\N	\N
       	     ^
-[1.21] failure: `b.' expected but `?' found
+[1.21] failure: `c.' expected but `?' found
 
 160593	Peter Young (?-)	\N	Young	\N	\N	\N	\N	\N	\N	17	\N
       	             ^
@@ -1338,18 +1326,18 @@
 
 160792	'Pinky' Martin	\N	Martin	\N	\N	\N	\N	\N	\N	\N	\N
       	^
-[1.23] failure: `)' expected but ` ' found
+[1.45] failure: `	' expected but `)' found
 
 160877	Vavoq (Wojciech Wawoczny)	\N	Wawoczny)	\N	\N	\N	\N	\N	\N	\N	\N
-      	               ^
+      	                         	  	        ^
 [1.11] failure: `	' expected but `š' found
 
 160881	Aleš Haman	\N	Haman	\N	\N	\N	\N	\N	\N	17	\N
       	   ^
-[1.28] failure: `)' expected but ` ' found
+[1.52] failure: `	' expected but `)' found
 
 161222	Frank O'Connor (game developer)	\N	developer)	\N	\N	\N	\N	\N	\N	\N	\N
-      	                    ^
+      	                               	  	         ^
 [1.24] failure: `s' expected but `'' found
 
 161228	John Davis (1920's author)	\N	Davis	\N	\N	\N	\N	\N	\N	17	\N
@@ -1362,10 +1350,10 @@
 
 161614	Author of 'The Mummy'	\N	Author	\N	\N	\N	\N	\N	\N	17	\N
       	                     ^
-[1.26] failure: `)' expected but ` ' found
+[1.50] failure: `	' expected but `)' found
 
 161820	Paul Howard (house pseudonym)	\N	pseudonym)	\N	\N	\N	\N	\N	\N	\N	\N
-      	                  ^
+      	                             	  	         ^
 [1.25] failure: `	' expected but `/' found
 
 161859	Herborg Pedersen / Millennium	\N	Millennium	\N	\N	\N	\N	\N	\N	\N	\N
@@ -1406,19 +1394,19 @@
 
 163131	D. W. 'Prof' Smith	\N	Smith	\N	\N	\N	\N	\N	\N	\N	\N
       	      ^
-[1.23] failure: `b.' expected but `?' found
+[1.23] failure: `c.' expected but `?' found
 
 163527	Robert Watson (?-)	\N	Watson	\N	\N	\N	\N	\N	\N	\N	\N
       	               ^
-[1.20] failure: `b.' expected but `?' found
+[1.20] failure: `c.' expected but `?' found
 
 163533	Alan Grant (?-)	\N	Grant	\N	\N	\N	\N	\N	\N	\N	\N
       	            ^
-[1.19] failure: `b.' expected but `?' found
+[1.19] failure: `c.' expected but `?' found
 
 163534	Ed Gorman (?-)	\N	Gorman	\N	\N	\N	\N	\N	\N	\N	\N
       	           ^
-[1.25] failure: `b.' expected but `1' found
+[1.25] failure: `c.' expected but `1' found
 
 163696	Richard Johnson (18th Century)	\N	Century)	163695	\N	\N	\N	\N	\N	\N	\N
       	                 ^
@@ -1446,7 +1434,7 @@
 
 164913	Wu Ming 1	\N	Wu Ming 1	\N	\N	\N	\N	\N	\N	\N	\N
       	        ^
-[1.21] failure: `b.' expected but `?' found
+[1.21] failure: `c.' expected but `?' found
 
 164963	John Harris (?-?)	\N	Harris	\N	\N	\N	\N	\N	\N	\N	\N
       	             ^
@@ -1690,11 +1678,11 @@
 
 177077	The Author of 'Fallen Angels'	\N	Author	\N	\N	\N	\N	\N	\N	17	\N
       	                             ^
-[1.29] failure: `)' expected but ` ' found
+[1.51] failure: `	' expected but `)' found
 
 177268	Paul Williams (Doctor Who author)	\N	author)	\N	\N	\N	\N	\N	\N	\N	\N
-      	                     ^
-[1.28] failure: `b.' expected but `1' found
+      	                                 	  	      ^
+[1.28] failure: `c.' expected but `1' found
 
 177697	Editors of Galaxie (1ère série)	\N	Editors of Galaxie (1ère série)	\N	\N	\N	\N	\N	\N	22	\N
       	                    ^
@@ -1750,10 +1738,6 @@
 
 179872	R. 'Martin' Armstrong	\N	Armstrong	\N	\N	\N	\N	\N	\N	\N	\N
       	   ^
-[1.28] failure: `)' expected but ` ' found
-
-179916	John Phillips (house pseudonym)	\N	Phillips	\N	\N	\N	\N	\N	\N	17	\N
-      	                    ^
 [1.28] failure: `	' expected but `*' found
 
 179959	Redactie Meulenhoff *M	\N	Meulenhoff	\N	\N	\N	\N	\N	\N	16	\N
@@ -1834,10 +1818,10 @@
 
 182773	You & Me Creative	\N	Creative	\N	\N	\N	\N	\N	\N	\N	\N
       	    ^
-[1.26] failure: `)' expected but ` ' found
+[1.49] failure: `	' expected but `)' found
 
 182805	The Publishers (of the Oz Books)	\N	Books)	\N	\N	\N	\N	\N	\N	\N	\N
-      	                  ^
+      	                                	  	     ^
 [1.10] failure: `	' expected but `<' found
 
 182816	SF<sup>3</sup> Publications Committee	\N	Committee	\N	\N	\N	\N	\N	\N	\N	\N
@@ -1894,10 +1878,6 @@
 
 185054	E. 'Gomma' Guarneri	\N	Guarneri	\N	\N	\N	\N	\N	\N	36	\N
       	   ^
-[1.27] failure: `)' expected but ` ' found
-
-185056	Richard Taylor (New Zealand)	Taylor, Richard Leslie	Taylor	\N	New Zealand	\N	\N	\N	\N	17	\N
-      	                   ^
 [1.53] failure: date format invalid
 
 185099	Jane Nickerson	\N	Nickerson	\N	USA	0000-11-17	\N	\N	\N	17	\N
@@ -1930,10 +1910,6 @@
 
 186214	The Author of 'Pelham,' 'Eugene Aram,' &c. &c.	\N	Author	\N	\N	\N	\N	\N	\N	17	\N
       	                      ^
-[1.13] failure: `)' expected but `t' found
-
-186245	P. (Italy)	\N	P	\N	\N	\N	\N	\N	\N	17	\N
-      	     ^
 [1.30] failure: unexpected character in name part
 
 186249	The Author of 'Pelham,' 'Eugene Aram,' &c.	\N	Author	\N	\N	\N	\N	\N	\N	17	\N
@@ -1958,14 +1934,14 @@
 
 186889	J*hn Cl*te	\N	Cl*te	\N	\N	\N	\N	\N	\N	\N	\N
       	 ^
-[1.34] failure: `)' expected but ` ' found
+[1.42] failure: string matching regex `\p{IsLatin}+' expected but `&' found
 
 187063	Valentine Williams (female writer & poet)	Williams, Valentine	Williams	\N	\N	\N	\N	\N	\N	17	\N
-      	                          ^
-[1.15] failure: `b.' expected but `T' found
+      	                                  ^
+[1.28] failure: `	' expected but `G' found
 
 187217	S. E. (The Seagull) Goll	\N	Goll	\N	\N	\N	\N	\N	\N	\N	\N
-      	       ^
+      	                    ^
 [1.35] failure: unexpected character in name part
 
 187243	The Author of 'Vivian Grey,' 'Contarini Fleming,' &c.	\N	Author	\N	\N	\N	\N	\N	\N	17	\N
@@ -2114,10 +2090,6 @@
 
 191223	'Titus'	Simon, Titus H. J.	'Titus'	\N	\N	\N	\N	\N	\N	26	\N
       	^
-[1.31] failure: `)' expected but ` ' found
-
-191245	Chris Jones (Australian poet)	\N	Jones	\N	Malaysia	\N	\N	\N	\N	17	\N
-      	                       ^
 [1.83] failure: `	' expected but `[' found
 
 191556	Lester Lurgan	Knowles, Mabel Winifred	Lurgan	\N	Streatham, Lambeth, Surrey [now London], England, UK	1875-01-01	1949-11-29	\N	\N	17	\N
@@ -2146,10 +2118,10 @@
 
 191949	Raimond Paley	\N	Raimond Paley	\N	\N	\N	\N	\N	\N	36	\N
       	       ^
-[1.17] failure: `)' expected but ` ' found
+[1.37] failure: `	' expected but `V' found
 
 192000	The (Deep and Authoritative) Voice o' History	\N	History	\N	\N	\N	\N	\N	\N	\N	\N
-      	         ^
+      	                             ^
 [1.10] failure: `	' expected but `_' found
 
 192013	HR_Duff_n_Stuff	\N	Stuff	\N	\N	\N	\N	\N	\N	17	\N
@@ -2318,10 +2290,10 @@
 
 197149	H.-H. Browning	\N	Browning	\N	\N	\N	\N	\N	\N	22	\N
       	  ^
-[1.30] failure: `)' expected but ` ' found
+[1.46] failure: `	' expected but `)' found
 
 197195	Frederick Rolfe (Baron Corvo)	\N	Corvo)	\N	\N	\N	\N	\N	\N	\N	\N
-      	                      ^
+      	                             	  	     ^
 [1.15] failure: `	' expected but `1' found
 
 197253	nowicki1283	\N	nowicki1283	\N	\N	\N	\N	\N	\N	\N	\N
@@ -2370,10 +2342,10 @@
 
 198977	Menton 3	\N	3	\N	\N	\N	\N	\N	\N	\N	\N
       	       ^
-[1.31] failure: `)' expected but ` ' found
+[1.41] failure: `	' expected but `)' found
 
 199011	Patricia Schmitt (Picky Me)	\N	Me)	\N	\N	\N	\N	\N	\N	\N	\N
-      	                       ^
+      	                           	  	  ^
 [1.13] failure: `	' expected but `?' found
 
 199034	Mitch?	Mitchell, Anthony	Mitch?	\N	\N	\N	\N	\N	\N	17	\N
@@ -2414,7 +2386,7 @@
 
 200592	'Kino' Scialabba	\N	Scialabba	\N	\N	\N	\N	\N	\N	\N	\N
       	^
-[1.21] failure: `b.' expected but `2' found
+[1.21] failure: `c.' expected but `2' found
 
 200940	M. R. James (21 century)	\N	James	\N	\N	\N	\N	mrjamesspooky@gmail.com	\N	17	\N
       	             ^
@@ -2438,7 +2410,7 @@
 
 201442	'Doc' Weir	\N	Weir	\N	\N	\N	\N	\N	\N	\N	\N
       	^
-[1.24] failure: `b.' expected but `1' found
+[1.24] failure: `c.' expected but `1' found
 
 201473	James Reynolds (19th Century)	\N	Century)	\N	\N	\N	\N	\N	\N	\N	\N
       	                ^
@@ -2498,10 +2470,6 @@
 
 204029	Sidney Dark	Dark, Sidney Ernest	Dark	\N	35 St John's Wood Road, St Marylebone, Middlesex, England, UK	1872-01-14	1947-10-11	\N	\N	17	\N
       	           	                   	    	  	   ^
-[1.16] failure: `)' expected but ` ' found
-
-204083	X (Frank Attfield Fawkes)	Fawkes, Frank Attfield	Fawkes	\N	Camberwell, Surrey, England, UK	1849-00-00	1941-01-18	\N	\N	17	\N
-      	        ^
 [1.17] failure: `	' expected but `&' found
 
 204266	Fiorello & Marmaras	\N	Marmaras	\N	\N	\N	\N	\N	\N	\N	\N
@@ -2594,10 +2562,10 @@
 
 206926	Argh! Nottingham	\N	Nottingham	\N	\N	\N	\N	\N	\N	\N	\N
       	    ^
-[1.15] failure: `b.' expected but `P' found
+[1.22] failure: `	' expected but `R' found
 
 206936	M. T. (Penny) Ross	\N	Ross	\N	\N	\N	\N	\N	\N	\N	\N
-      	       ^
+      	              ^
 [1.33] failure: `	' expected but `/' found
 
 207417	Jean Printemps	Lhuissier / L'Huissier, Léon-Henri	Printemps	\N	\N	\N	\N	\N	\N	22	\N
@@ -2618,7 +2586,7 @@
 
 207994	Maurice120	\N	Maurice120	\N	\N	\N	\N	\N	\N	\N	\N
       	       ^
-[1.19] failure: `b.' expected but `1' found
+[1.19] failure: `c.' expected but `1' found
 
 208028	John Gray (1)	\N	Gray	\N	\N	\N	\N	\N	\N	17	\N
       	           ^
@@ -2634,7 +2602,7 @@
 
 208449	Andreas Okopenko	Okopenko, Andreas	Okopenko	\N	Košice, Slovakia, Czechoslovakia	1930-03-15	2010-06-27	\N	http://www.isfdb.org/wiki/images/e/e2/Andreas_Okopenko.jpg	26	\N
       	                	                 	        	  	  ^
-[1.20] failure: `b.' expected but `2' found
+[1.20] failure: `c.' expected but `2' found
 
 208724	John Bowen (21st century)	\N	Bowen	\N	\N	\N	\N	johnybwrites@gmail.com	\N	17	\N
       	            ^
@@ -2674,7 +2642,7 @@
 
 209871	Mario Vargas Llosa	Vargas Llosa, Jorge Mario Pedro, 1st Marquis of Vargas Llosa	Vargas Llosa	\N	Arequipa, Arequipa Region, Peru	1936-03-28	\N	\N	http://www.isfdb.org/wiki/images/9/9a/Mario_Vargas_Llosa.jpg	59	\N
       	                  	                                 ^
-[1.20] failure: `b.' expected but `?' found
+[1.20] failure: `c.' expected but `?' found
 
 209926	John Moore (?-)	\N	Moore	\N	\N	\N	\N	\N	\N	\N	\N
       	            ^
@@ -2734,7 +2702,7 @@
 
 211894	Rzewuski	Rzewuski, Aleksander Czes&#322;aw (Polish form) / Rzewuski, Alex-Ceslas (French form)	Rzewuski	\N	\N	1892-00-00	1983-00-00	\N	\N	22	\N
       	        	                                         ^
-[1.15] failure: `b.' expected but `'' found
+[1.15] failure: `c.' expected but `'' found
 
 212052	James ('Jocko') Allen	\N	James	\N	\N	\N	\N	\N	\N	\N	\N
       	       ^
@@ -2810,10 +2778,6 @@
 
 214630	Leon de Winter	Winter, Leon de	Winter	\N	's-Hertogenbosch, North Brabant, Netherlands	1954-02-24	\N	\N	\N	16	\N
       	              	               	      	  	^
-[1.27] failure: `)' expected but ` ' found
-
-214722	Michael Müller (fan artist)	Müller, Michael	Müller	\N	\N	\N	\N	\N	\N	26	\N
-      	                   ^
 [1.22] failure: `	' expected but `/' found
 
 215100	S. R. Nicholl / Fotolia	\N	Fotolia	\N	\N	\N	\N	\N	\N	\N	\N
@@ -2874,10 +2838,6 @@
 
 217679	Tom Angleberger	\N	Angleberger	165782	\N	0000-10-24	\N	\N	\N	17	\N
       	               	  	           	      	  	          ^
-[1.20] failure: `)' expected but ` ' found
-
-217692	Gam (english artist)	\N	Gam	\N	\N	\N	\N	\N	\N	\N	\N
-      	            ^
 [1.19] failure: `	' expected but `/' found
 
 218079	Bliznetsov / istockphoto.com	\N	istockphoto.com	\N	\N	\N	\N	\N	\N	\N	\N
@@ -2894,10 +2854,6 @@
 
 218415	The6thDoctor	\N	The6thDoctor	\N	\N	\N	\N	\N	\N	\N	\N
       	   ^
-[1.34] failure: `)' expected but ` ' found
-
-218433	Richard Phillips (Lecturer in Geography)	\N	Phillips	\N	\N	\N	\N	\N	\N	\N	\N
-      	                          ^
 [1.16] failure: `	' expected but `8' found
 
 218512	bikerboy82	\N	bikerboy82	\N	\N	\N	\N	\N	\N	\N	\N
@@ -2910,10 +2866,6 @@
 
 218655	J.-C. Maillard	\N	Maillard	\N	\N	\N	\N	\N	\N	22	\N
       	  ^
-[1.24] failure: `)' expected but ` ' found
-
-218677	Tom Smith (comic colorist)	\N	Smith	\N	\N	\N	\N	\N	\N	\N	\N
-      	                ^
 [1.8] failure: unexpected character in name part
 
 218852	...oid design	\N	design	\N	\N	\N	\N	\N	\N	17	\N
@@ -2974,7 +2926,7 @@
 
 221043	garysan97	\N	garysan97	\N	\N	\N	\N	\N	\N	\N	\N
       	       ^
-[1.26] failure: `b.' expected but `2' found
+[1.26] failure: `c.' expected but `2' found
 
 221134	William Holloway (21st century)	\N	Holloway	\N	Texas, USA	\N	\N	\N	\N	17	\N
       	                  ^
@@ -2998,11 +2950,11 @@
 
 222119	The Author of 'The Dancing Imps of the Wine'	\N	Author	\N	\N	\N	\N	\N	\N	17	\N
       	                                            ^
-[1.23] failure: `b.' expected but `2' found
+[1.23] failure: `c.' expected but `2' found
 
 222184	Charles Dixon (20th century)	\N	Dixon	\N	\N	\N	\N	\N	\N	\N	\N
       	               ^
-[1.16] failure: `b.' expected but `1' found
+[1.16] failure: `c.' expected but `1' found
 
 222269	Thomas (12th century)	Thomas	Thomas	\N	\N	\N	\N	\N	\N	100	\N
       	        ^
@@ -3034,10 +2986,6 @@
 
 223136	A.-M. Debet	Debet, Anne-Marie	Debet	\N	France	\N	\N	\N	\N	22	\N
       	  ^
-[1.25] failure: `)' expected but ` ' found
-
-223290	Richard Doyle (UK thriller author)	\N	Doyle	\N	UK	1948-00-00	\N	\N	\N	17	\N
-      	                 ^
 [1.14] failure: `	' expected but `'' found
 
 223481	M. J. 'Simo' Simpson	\N	Simpson	\N	\N	\N	\N	\N	\N	\N	\N
@@ -3054,17 +3002,9 @@
 
 223753	P.-B. Gheusi	\N	Gheusi	\N	\N	\N	\N	\N	\N	22	\N
       	  ^
-[1.21] failure: `b.' expected but `1' found
+[1.21] failure: `c.' expected but `1' found
 
 223763	John Wilson (19th century)	\N	Wilson	\N	Paisley, Renfrewshire, Scotland, Kingdom of Great Britain	1785-05-18	1854-04-03	\N	\N	17	\N
-      	             ^
-[1.20] failure: `)' expected but ` ' found
-
-223777	Wilson (John Mackay Wilson)	\N	Wilson	\N	\N	\N	\N	\N	\N	\N	\N
-      	            ^
-[1.21] failure: `)' expected but ` ' found
-
-223823	Ferrier (John Ferriar)	Ferriar, John	Ferriar	\N	Roxburghshire, Scotland, Kingdom of Great Britain	1761-00-00	1815-02-04	\N	\N	17	\N
       	             ^
 [1.16] failure: `	' expected but `š' found
 
