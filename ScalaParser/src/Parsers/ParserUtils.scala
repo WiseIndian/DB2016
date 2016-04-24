@@ -1,6 +1,7 @@
 package Parsers
 
 import scala.util.parsing.combinator.RegexParsers
+import scala.util.parsing.combinator.Parsers
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.Year
@@ -27,6 +28,19 @@ trait MyRegexUtils {
 	val anyButTab = """[^\t]+""".r
 	val anyButNull = """(?!\\N)""".r
 	
+}
+
+trait CSVAble
+
+sealed trait MyTemporal 
+case class MyLocalDate(d: LocalDate) extends MyTemporal {
+	override def toString: String = d.getYear + "-" + d.getMonthValue+ "-" +  d.getDayOfMonth
+}
+case class MyYear(y: Year) extends MyTemporal {
+	override def toString: String = y + "-" + "00" + "-" + "00"
+}
+case class MyYearMonth(yMth: YearMonth) extends MyTemporal {
+	override def toString: String = yMth.getYear + "-" + yMth.getMonthValue + "-" + "00"
 }
 
 trait ParserUtils extends TildeToListMethods with MyRegexUtils with RegexParsers {
@@ -88,8 +102,8 @@ trait ParserUtils extends TildeToListMethods with MyRegexUtils with RegexParsers
 		catch { case pe: DateTimeParseException => failure("date format invalid") }
 	}
 
-	lazy val unknMthDayDate: Parser[Year] = year <~ "-00-00" >> { y =>
-		try success(Year.parse(y))
+	lazy val unknMthDayDate: Parser[MyYear] = year <~ "-00-00" >> { y =>
+		try success(MyYear(Year.parse(y)))
 		catch {
 			case dte: DateTimeParseException =>
 				failure("year format invalid in unknown month, day case")
@@ -97,16 +111,17 @@ trait ParserUtils extends TildeToListMethods with MyRegexUtils with RegexParsers
 	}
 
 	val ymFormatter = DateTimeFormatter.ofPattern("yyyy-MM")
-	lazy val unknDayDate: Parser[YearMonth] = year ~ "-" ~ month <~ "-00" >> {
+	lazy val unknDayDate: Parser[MyYearMonth] = year ~ "-" ~ month <~ "-00" >> {
 		case y ~ "-" ~ m =>
-			try success(YearMonth.parse(y + "-" + m, ymFormatter))
+			try success(MyYearMonth(YearMonth.parse(y + "-" + m, ymFormatter)))
 			catch { case dtpe: DateTimeParseException => failure("year-month format invalid in unknown day case") }
 	}
 
-	lazy val normalDate: Parser[LocalDate] = (year ~ "-" ~ month ~ "-" ~ day) >>
-		{ case y ~ "-" ~ m ~ "-" ~ d => dateStrToParsRes(y + "-" + m + "-" + d) }
+	lazy val normalDate: Parser[MyLocalDate] = (year ~ "-" ~ month ~ "-" ~ day) >>
+		{ case y ~ "-" ~ m ~ "-" ~ d => dateStrToParsRes(y + "-" + m + "-" + d) } ^^
+		{ MyLocalDate(_) }
 
-	lazy val date: Parser[Temporal] = normalDate ||| unknMthDayDate ||| unknDayDate
+	lazy val date: Parser[MyTemporal] = normalDate ||| unknMthDayDate ||| unknDayDate
 
 	/* cf wikipedia https://en.wikipedia.org/wiki/Email_address#Valid_email_addresses 
   * j'ai pas ajouté "Other special characters are allowed with restrictions"

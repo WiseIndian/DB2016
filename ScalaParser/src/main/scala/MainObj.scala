@@ -17,57 +17,79 @@ import java.io.PrintStream
 import java.io.FileOutputStream
 import java.io.OutputStreamWriter
 import Parsers.AuthorParser
+import Parsers.Notes
 //import parser.TildeToList._
 
 trait PrintUtils {
-	def printToFile(f: java.io.File)(op: java.io.PrintWriter => Unit) {
-		val p = new java.io.PrintWriter(new OutputStreamWriter(new FileOutputStream(f), StandardCharsets.ISO_8859_1))
+	import java.nio.charset.Charset
+	import java.io.PrintWriter
+	def newPrintWriter(f: File, chSet: Charset) =
+		new PrintWriter(new OutputStreamWriter(new FileOutputStream(f), chSet))
+
+	def printToFile(f: File, chSet: Charset)(op: PrintWriter => Unit) {
+		val p = newPrintWriter(f, chSet)
 		try { op(p) } finally { p.close() }
 	}
-}
 
-trait  ExprsParsers extends RegexParsers {
-	 val value = 3
-   lazy val mult: Parser[Int] = 
-  		 "(" ~> mult <~ ")" ^^ { _ * value }  |||
-  		 "()" ^^ { _ => value }
-  
-   lazy val plus: Parser[Int] = 
-  	 (mult <~ "+") ~ plus ^^ { case m ~ p => m + p } ||| 
-  	 mult
-}
-
-object MainObj extends AuthorParser with PrintUtils {
-
-	def main(args: Array[String]): Unit = {
-		parse("/home/simonlbc/workspace/DB/CSV/authors.csv", authorParser)	
-	}
-	
-	def parse[T](csvFilePath: String, parser: Parser[T]) {
-		val f = new File(csvFilePath)
-		
-		val in = new BufferedReader(new InputStreamReader(new FileInputStream(f), StandardCharsets.ISO_8859_1))
-		val outFile = new File(f.getParent + "/" + f.getName.split("\\.")(0) + "_output.txt" )
-		var nbFails: Int = 0;
-		printToFile(outFile) {
-			p =>
-
-				def lines: Stream[Option[String]] = Option(in.readLine()) #:: lines
-				lines.takeWhile(_.isDefined).flatten.foreach { s =>
-					parseAll(parser, s) match {
-						case f: Failure => p.println(f); nbFails+=1;
-						case _ =>
-					}
-				}
-
-				in.close()
-				println(s"""${csvFilePath} : number of parse failures: ${nbFails}""")
-				println("done")
-
+	def printTo2File(f1: File, f2: File, chSet: Charset)(op: (PrintWriter, PrintWriter) => Unit) {
+		val p1 = newPrintWriter(f1, chSet)
+		val p2 = newPrintWriter(f2, chSet)
+		try {
+			op(p1, p2)
+		} finally {
+			p1.close()
+			p2.close()
 		}
 	}
 }
 
+trait ExprsParsers extends RegexParsers {
+	val value = 3
+	lazy val mult: Parser[Int] =
+		"(" ~> mult <~ ")" ^^ { _ * value } |||
+			"()" ^^ { _ => value }
+
+	lazy val plus: Parser[Int] =
+		(mult <~ "+") ~ plus ^^ { case m ~ p => m + p } |||
+			mult
+}
+
+object MainObj extends AuthorParser with PrintUtils with Notes {
+
+	val base = "/home/simonlbc/workspace/DB/DB2016/CSV/"
+
+	def main(args: Array[String]): Unit = {
+		parse(base + "authors.csv", authorParser)
+	}
+	import Parsers.Wrappers.CSVAble
+	def parse[T <: CSVAble](csvFilePath: String, parser: Parser[T]) {
+		val f = new File(csvFilePath)
+
+		val in = new BufferedReader(new InputStreamReader(new FileInputStream(f), StandardCharsets.ISO_8859_1))
+		val fileParsedName = f.getParent + "/" + f.getName.split("\\.")(0)
+		val errFile = new File(fileParsedName + "_output.txt")
+		val cleanCSVFile = new File(fileParsedName + "_clean.csv")
+		var nbFails: Int = 0;
+		printTo2File(errFile, cleanCSVFile, StandardCharsets.ISO_8859_1) { (pErr, pSucc) =>
+
+			def lines: Stream[Option[String]] = Option(in.readLine()) #:: lines
+			
+			lines.takeWhile(_.isDefined).flatten.foreach { s =>
+				parseAll(parser, s) match {
+					case f: NoSuccess =>
+						pErr.println(f); nbFails += 1
+					case Success(t, _) => pSucc.println(t.toCSV)
+				}
+			}
+
+			in.close()
+			println(s"""${csvFilePath} : number of parse failures: ${nbFails}""")
+			println("done")
+
+		}
+	}
+
+}
 
 class AwardCategoriesParser {
 

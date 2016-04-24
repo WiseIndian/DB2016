@@ -9,6 +9,7 @@ import java.time.format.DateTimeParseException
 import java.net.URL
 import java.text.ParseException
 import java.net.MalformedURLException
+import Wrappers.Author
 
 trait AuthorParser extends ParserUtils {
 	//TODO déplacer addNullRule et asr dans ParserUtils une fois que ça marchera
@@ -51,27 +52,28 @@ trait AuthorParser extends ParserUtils {
 	lazy val authLastName: Parser[Option[String]] = addNullRule(name)
 	lazy val pseudo: Parser[Option[String]] = addNullRule(name ||| intgrRegx)
 	lazy val birthPlace: Parser[Option[String]] = addNullRule(placeAddress)
-	lazy val birthDate: Parser[Option[Temporal]] = addNullRule(date)
-	lazy val deathDate: Parser[Option[Temporal]] = addNullRule(date)
+	lazy val birthDate: Parser[Option[MyTemporal]] = addNullRule(date)
+	lazy val deathDate: Parser[Option[MyTemporal]] = addNullRule(date)
 	lazy val imgUrl: Parser[Option[URL]] = addNullRule(url)
 	lazy val lang: Parser[Option[Int]] = addNullRule(intParser)
 	lazy val noteID: Parser[Option[Int]] = addNullRule(intParser)
 
 
-	type AuthTilde = Int ~ ~[String, Option[NameSupInfo]] ~ Option[String] ~ Option[String] ~ Option[String] ~ Option[String] ~ Option[Temporal] ~ Option[Temporal] ~ Option[String] ~ Option[URL] ~ Option[Int] ~ Option[Int]
+	type AuthTilde = Int ~ ~[String, Option[NameSupInfo]] ~ Option[String] ~ Option[String] ~ Option[String] ~ 
+	Option[String] ~ Option[MyTemporal] ~ Option[MyTemporal] ~ Option[String] ~ Option[URL] ~ Option[Int] ~ Option[Int]
 
 	def tldToName(tld: AuthTilde): String = tld match {
 		case id ~ (n1 ~ _) ~ n2 ~ n3 ~ ps ~ bp ~ bd ~ dd ~ email ~ img ~ lng ~ nteId =>
 			n1
 	}
-	def tldToBirthDate(tld: AuthTilde): Option[Temporal] = tld match {
+	def tldToBirthDate(tld: AuthTilde): Option[MyTemporal] = tld match {
 		case id ~ (n1 ~ _) ~ n2 ~ n3 ~ ps ~ bp ~ Some(t) ~ dd ~ email ~ img ~ lng ~ nteId =>
 			Some(t)
 		case id ~ (n1 ~ Some(BirthYear(y))) ~ n2 ~ n3 ~ ps ~ bp ~ None ~ dd ~ email ~ img ~ lng ~ nteId =>
-			try Some(Year.parse(y))
+			try Some(MyYear(Year.parse(y)))
 			catch { case e: DateTimeParseException => None }
 		case id ~ (n1 ~ Some(YearRange(beg, end))) ~ n2 ~ n3 ~ ps ~ bp ~ None ~ dd ~ email ~ img ~ lng ~ nteId =>
-			try Some(Year.parse(beg))
+			try Some(MyYear(Year.parse(beg)))
 			catch { case e: DateTimeParseException => None }
 		case id ~ (n1 ~ None) ~ n2 ~ n3 ~ ps ~ bp ~ None ~ dd ~ email ~ img ~ lng ~ nteId =>
 			None
@@ -89,9 +91,3 @@ trait AuthorParser extends ParserUtils {
 	}
 }
 
-case class Author(id: Int, name: String, legName: Option[String], lastName: Option[String],
-		pseudo: Option[String], birthPlace: Option[String], birthDate: Option[Temporal],
-		deathDate: Option[Temporal], email: Option[String], img: Option[URL], lang: Option[Int],
-		noteID: Option[Int]) {
-	override val toString: String = id + name + legName + lastName + pseudo + birthPlace + birthDate + deathDate + email + img + lang + noteID + "\n"
-}
