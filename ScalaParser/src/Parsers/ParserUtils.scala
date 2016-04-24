@@ -25,11 +25,14 @@ trait MyRegexUtils {
 	val month0 = """0\d""".r
 	val month1 = """1[0-2]""".r
 	val anyButTab = """[^\t]+""".r
+	val anyButNull = """(?!\\N)""".r
 	
 }
 
 trait ParserUtils extends TildeToListMethods with MyRegexUtils with RegexParsers {
 	override val skipWhitespace = false
+
+  lazy val intParser: Parser[Int] = intgrRegx ^^ { _.toInt }
 
 	def asr[G, T, H](l: Parser[G], t: Parser[T], r: Parser[H]): Parser[T] =
 		(l ~> t) <~ r //aSR veut dire add surrounding rule
@@ -139,4 +142,5 @@ trait ParserUtils extends TildeToListMethods with MyRegexUtils with RegexParsers
 			catch { case m: MalformedURLException => failure("error parsing from URL class:" + m) }
 		}
 
+	def asrCSV[T](p: Parser[T]): Parser[T] = asr(oSpc, p, oSpc ~ "\t")
 }

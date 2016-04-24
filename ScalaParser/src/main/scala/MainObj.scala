@@ -61,7 +61,7 @@ object MainObj extends AuthorParser with PrintUtils {
 				}
 
 				in.close()
-				println(s"""$csvFilePath : number of parse failures: $nbFails""")
+				println(s"""${csvFilePath} : number of parse failures: ${nbFails}""")
 				println("done")
 
 		}

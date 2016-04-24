@@ -15,7 +15,6 @@ trait AuthorParser extends ParserUtils {
 	def addNullRule[T](p: Parser[T]): Parser[Option[T]] =
 		p ^^ { Some(_) } ||| "\\N" ^^ { _ => None }
 
-	lazy val intParser: Parser[Int] = intgrRegx ^^ { _.toInt }
 	lazy val id: Parser[Int] = intParser
 
 	/**
@@ -58,7 +57,6 @@ trait AuthorParser extends ParserUtils {
 	lazy val lang: Parser[Option[Int]] = addNullRule(intParser)
 	lazy val noteID: Parser[Option[Int]] = addNullRule(intParser)
 
-	def asrCSV[T](p: Parser[T]): Parser[T] = asr(oSpc, p, oSpc ~ "\t")
 
 	type AuthTilde = Int ~ ~[String, Option[NameSupInfo]] ~ Option[String] ~ Option[String] ~ Option[String] ~ Option[String] ~ Option[Temporal] ~ Option[Temporal] ~ Option[String] ~ Option[URL] ~ Option[Int] ~ Option[Int]
 
