@@ -6,6 +6,16 @@ CREATE TABLE Notes (
   PRIMARY KEY (id)
 );
 
+	
+LOAD DATA LOCAL INFILE '/home/simonlbc/workspace/DB/DB2016/CSV/notes_rem.csv'
+INTO TABLE Notes
+CHARACTER SET UTF8
+FIELDS TERMINATED BY '\t' ENCLOSED BY '' ESCAPED BY '\\'
+LINES TERMINATED BY '\n' STARTING BY '';
+
+	
+
+
 CREATE TABLE Languages (
   id INTEGER,
   name CHAR(32),
@@ -13,6 +23,13 @@ CREATE TABLE Languages (
   script BOOLEAN,
   PRIMARY KEY (id)
 );
+
+LOAD DATA LOCAL INFILE '/home/simonlbc/workspace/DB/DB2016/CSV/languages_rem.csv'
+INTO TABLE Languages 
+CHARACTER SET UTF8
+FIELDS TERMINATED BY '\t' ENCLOSED BY '' ESCAPED BY '\\'
+LINES TERMINATED BY '\n' STARTING BY '';
+
 
 CREATE TABLE Authors_temp (
   id INTEGER,
@@ -31,8 +48,16 @@ CREATE TABLE Authors_temp (
   FOREIGN KEY (note_id) REFERENCES Notes(id) ON DELETE SET NULL,
   FOREIGN KEY (language_id) REFERENCES Languages(id) ON DELETE SET NULL
 );
---then import the data into Authors_temp
---and do the following query:
+
+LOAD DATA LOCAL INFILE '/home/simonlbc/workspace/DB/DB2016/CSV/authors_rem.csv'
+INTO TABLE Authors_temp 
+CHARACTER SET UTF8
+FIELDS TERMINATED BY '\t' ENCLOSED BY '' ESCAPED BY '\\'
+LINES TERMINATED BY '\n' STARTING BY '';
+
+
+/*then import the data into Authors_temp
+and do the following query:*/
 CREATE TABLE Authors (
 	  id INTEGER,
 	  name CHAR(64),
@@ -75,7 +100,12 @@ CREATE TABLE Title_Series_temp (
   FOREIGN KEY (note_id) REFERENCES Notes(id) ON DELETE SET NULL
 );
 
---then
+LOAD DATA LOCAL INFILE '/home/simonlbc/workspace/DB/DB2016/CSV/title_series_rem.csv'
+INTO TABLE Title_Series_temp
+CHARACTER SET UTF8
+FIELDS TERMINATED BY '\t' ENCLOSED BY '' ESCAPED BY '\\'
+LINES TERMINATED BY '\n' STARTING BY '';
+
 
 CREATE TABLE Title_Series (
 	  id INTEGER,
@@ -97,10 +127,13 @@ CREATE TABLE Title_Series (
 CREATE TABLE Titles_temp (
   id INTEGER,
   title CHAR(255) NOT NULL,
+  title_translator CHAR(64),
   synopsis_id INTEGER,
   note_id INTEGER,
+  series_id INTEGER,
+  series_number INTEGER,
   story_len ENUM('nv', 'ss', 'jvn', 'nvz', 'sf'),
-  type ENUM('ANTHOLOGY', 'BACKCOVERART', 'COLLECTION', 'COVERART', 'INTERIORART',
+  title_type ENUM('ANTHOLOGY', 'BACKCOVERART', 'COLLECTION', 'COVERART', 'INTERIORART',
           'EDITOR', 'ESSAY', 'INTERVIEW', 'NOVEL', 'NONFICTION', 'OMNIBUS', 'POEM',
           'REVIEW', 'SERIAL', 'SHORTFICTION', 'CHAPBOOK'),
   parent INTEGER,
@@ -111,6 +144,29 @@ CREATE TABLE Titles_temp (
   FOREIGN KEY (note_id) REFERENCES Notes(id) ON DELETE SET NULL,
   FOREIGN KEY (language_id) REFERENCES Languages(id) ON DELETE SET NULL
 );
+
+LOAD DATA LOCAL INFILE '/home/simonlbc/workspace/DB/DB2016/CSV/titles_rem.csv'
+INTO TABLE Titles_temp
+CHARACTER SET UTF8
+FIELDS TERMINATED BY '\t' ENCLOSED BY '' ESCAPED BY '\\'
+LINES TERMINATED BY '\n' STARTING BY '';
+
+CREATE TABLE title_is_translated_in (
+  title_id  INTEGER,
+  trans_title_id INTEGER,
+  language_id INTEGER NOT NULL,
+  translator CHAR(64),
+  PRIMARY KEY (trans_title_id),
+  FOREIGN KEY (title_id) REFERENCES Titles(id) ON DELETE CASCADE,
+  FOREIGN KEY (trans_title_id) REFERENCES Titles(id) ON DELETE CASCADE,
+  FOREIGN KEY (language_id) REFERENCES Languages(id) ON DELETE CASCADE
+
+)
+SELECT parent, title_id, language_id, title_translator
+FROM Titles_temp 
+WHERE parent IS NOT NULL AND title_id IS NOT NULL AND language_id IS NOT NULL
+AND title_translator IS NOT NULL;
+
 
 CREATE TABLE Titles (
 	  id INTEGER,
@@ -126,7 +182,7 @@ CREATE TABLE Titles (
 	  title_graphic BOOLEAN,
 	  PRIMARY KEY (id),
 	  FOREIGN KEY (language_id) REFERENCES Languages(id) ON DELETE SET NULL
-	) --this solution is pretty unelegant as we have to look for all cases manually..
+	) /*this solution is pretty unelegant as we have to look for all cases manually..*/
 	SELECT t.id, t.title, syn.note, n.note, t.story_len, t.parent, 
 		t.language_id, t.title_graphic
 	FROM Titles_temp t, Notes syn, Notes n
@@ -158,8 +214,15 @@ CREATE TABLE authors_have_publications (
   FOREIGN KEY (pub_id) REFERENCES Publications(id) ON DELETE CASCADE
 );
 
---TODO: modifier le schéma du ER model de manière à bien montrer que c'est
--- bien un many to many relationship(comme montré ici avec le code)
+LOAD DATA LOCAL INFILE '/home/simonlbc/workspace/DB/DB2016/CSV/publications_authors_rem.csv'
+INTO TABLE authors_have_publications
+CHARACTER SET UTF8
+FIELDS TERMINATED BY '\t' ENCLOSED BY '' ESCAPED BY '\\'
+LINES TERMINATED BY '\n' STARTING BY '';
+
+
+/*TODO: modifier le schéma du ER model de manière à bien montrer que c'est
+ bien un many to many relationship(comme montré ici avec le code)*/
 CREATE TABLE title_is_reviewed_by (
   title_id  INTEGER,
   review_title_id INTEGER,
@@ -168,6 +231,13 @@ CREATE TABLE title_is_reviewed_by (
   FOREIGN KEY (review_title_id) REFERENCES Titles(id) ON DELETE CASCADE,
   CONSTRAINT CK_rule CHECK (title_id != review_title_id)
 );
+
+LOAD DATA LOCAL INFILE '/home/simonlbc/workspace/DB/DB2016/CSV/reviews_rem.csv'
+INTO TABLE title_is_reviewed_by 
+CHARACTER SET UTF8
+FIELDS TERMINATED BY '\t' ENCLOSED BY '' ESCAPED BY '\\'
+LINES TERMINATED BY '\n' STARTING BY '';
+
 
 CREATE TABLE title_is_part_of_Title_Series (
   title_id  INTEGER,
@@ -178,17 +248,16 @@ CREATE TABLE title_is_part_of_Title_Series (
   FOREIGN KEY (series_id) REFERENCES Title_Series(id) ON DELETE CASCADE
 );
 
-CREATE TABLE title_is_translated_in (
-  title_id  INTEGER,
-  trans_title_id INTEGER,
-  language_id INTEGER NOT NULL,
-  translator CHAR(64),
-  PRIMARY KEY (trans_title_id),
-  FOREIGN KEY (title_id) REFERENCES Titles(id) ON DELETE CASCADE,
-  FOREIGN KEY (trans_title_id) REFERENCES Titles(id) ON DELETE CASCADE,
-  FOREIGN KEY (language_id) REFERENCES Languages(id) ON DELETE CASCADE
+LOAD DATA LOCAL INFILE '/home/simonlbc/workspace/DB/DB2016/CSV/titles_series_rem.csv'
+INTO TABLE title_is_part_of_Title_Series 
+CHARACTER SET UTF8
+FIELDS TERMINATED BY '\t' ENCLOSED BY '' ESCAPED BY '\\'
+LINES TERMINATED BY '\n' STARTING BY '';
 
-);
+
+
+
+
 
 CREATE TABLE Award_Types_temp (
   id INTEGER,
@@ -204,6 +273,13 @@ CREATE TABLE Award_Types_temp (
   FOREIGN KEY (note_id) REFERENCES Notes(id) ON DELETE SET NULL
   CONTRAINT CK_not_null CHECK (name != NULL OR code != NULL)
 );
+
+LOAD DATA LOCAL INFILE '/home/simonlbc/workspace/DB/DB2016/CSV/award_types_rem.csv'
+INTO TABLE Award_Types_temp
+CHARACTER SET UTF8
+FIELDS TERMINATED BY '\t' ENCLOSED BY '' ESCAPED BY '\\'
+LINES TERMINATED BY '\n' STARTING BY '';
+
 
 CREATE TABLE Award_types (
   id INTEGER,
@@ -235,19 +311,26 @@ CREATE TABLE Award_Categories_temp (
   name CHAR(255),
   type_id INTEGER,
   category_order INTEGER, 
-  -- position INTEGER, TODO what is position, is this award category order?
+  /* position INTEGER, TODO what is position, is this award category order?*/
   note_id INTEGER,
   PRIMARY KEY (id, type_id),
   FOREIGN KEY (note_id) REFERENCES Notes(id) ON DELETE SET NULL,
   FOREIGN KEY (type_id) REFERENCES Award_Types(id) ON DELETE CASCADE
 );
 
+LOAD DATA LOCAL INFILE '/home/simonlbc/workspace/DB/DB2016/CSV/award_categories_rem.csv'
+INTO TABLE Award_Categories_temp
+CHARACTER SET UTF8
+FIELDS TERMINATED BY '\t' ENCLOSED BY '' ESCAPED BY '\\'
+LINES TERMINATED BY '\n' STARTING BY '';
+
+
 CREATE TABLE Award_Categories (
   id INTEGER,
   name CHAR(255),
   type_id INTEGER,
   category_order INTEGER, 
-  -- position INTEGER, TODO what is position, is this award category order?
+  /* position INTEGER, TODO what is position, is this award category order?*/
   note TEXT,
   PRIMARY KEY (id, type_id),
   FOREIGN KEY (type_id) REFERENCES Award_Types(id) ON DELETE CASCADE
@@ -276,6 +359,13 @@ CREATE TABLE Awards_temp (
   FOREIGN KEY (category_id) REFERENCES Award_Categories(id) ON DELETE SET NULL,
   FOREIGN KEY (type_id) REFERENCES Award_Types(id) ON DELETE SET NULL
 );
+
+LOAD DATA LOCAL INFILE '/home/simonlbc/workspace/DB/DB2016/CSV/awards_rem.csv'
+INTO TABLE Awards_temp
+CHARACTER SET UTF8
+FIELDS TERMINATED BY '\t' ENCLOSED BY '' ESCAPED BY '\\'
+LINES TERMINATED BY '\n' STARTING BY '';
+
 
 CREATE TABLE Awards (
   id INTEGER,
@@ -383,7 +473,7 @@ CREATE TABLE Publications_temp (
    * and references of Titles id and Publications id, see todoFromDeliv1Feedback file(on github)
    * for more info on how to do it.
    */ 
-  title CHAR(255), --stay closer to definition of the csv file as described in todoFromDeliv1Feedback 
+  title CHAR(255), /*stay closer to definition of the csv file as described in todoFromDeliv1Feedback */
   pb_date DATE,
   publisher_id INTEGER,
   nb_pages INTEGER,
@@ -392,8 +482,8 @@ CREATE TABLE Publications_temp (
                          'NOVEL', 'OMNIBUS', 'FANZINE', 'CHAPBOOK'),
   isbn INTEGER,
   cover_img CHAR(255),
-  price DECIMAL(6, 5), --valeurs un peu arbitraires, mais on peut imaginer qu'un livre 
-			-- aura pas un prix > un million dans n'importe quelle currency?
+  price DECIMAL(6, 5), /*valeurs un peu arbitraires, mais on peut imaginer qu'un livre 
+			 aura pas un prix > un million dans n'importe quelle currency?*/
   currency CHAR(1),
   note_id INTEGER,
   PRIMARY KEY (id),
@@ -409,7 +499,7 @@ CREATE TABLE Publications (
    * and references of Titles id and Publications id, see todoFromDeliv1Feedback file(on github)
    * for more info on how to do it.
    */ 
-  title CHAR(255), --stay closer to definition of the csv file as described in todoFromDeliv1Feedback 
+  title CHAR(255), /*stay closer to definition of the csv file as described in todoFromDeliv1Feedback */
   pb_date DATE,
   publisher_id INTEGER,
   nb_pages INTEGER,
@@ -418,8 +508,8 @@ CREATE TABLE Publications (
                          'NOVEL', 'OMNIBUS', 'FANZINE', 'CHAPBOOK'),
   isbn INTEGER,
   cover_img CHAR(255),
-  price DECIMAL(6, 5), --valeurs un peu arbitraires, mais on peut imaginer qu'un livre 
-			-- aura pas un prix > un million dans n'importe quelle currency?
+  price DECIMAL(6, 5), /*valeurs un peu arbitraires, mais on peut imaginer qu'un livre 
+			 aura pas un prix > un million dans n'importe quelle currency?*/
   currency CHAR(1),
   note TEXT,
   PRIMARY KEY (id),
