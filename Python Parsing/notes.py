@@ -18,14 +18,9 @@ f.seek(0)
 fields = ['id', 'note']
 reader = csv.DictReader(f, dialect='excel-tab', fieldnames=fields)
 
-data = []
+db = DB.Database('localhost','group8','toto123', 'cs322')
+
 for row in reader:
-    data.append((row['id'],row['note']))
-
-
-# Insert data into Database
-
-# db = DB.Database('db4free.net','group8','toto123', 'cs322')
-#
-# sql = 'INSERT INTO Notes (id, note) VALUES (%s, %s);'
-# db.insertMany(sql, data)
+    tuple = (row['id'],row['note'])
+    sql = 'INSERT INTO Notes (id, note) VALUES (%s, %s);'
+    db.insert(sql, tuple)
