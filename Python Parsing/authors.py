@@ -13,32 +13,23 @@ import csv
 
 # Parse data from csv file
 
-filename = 'Books/authors.csv'
-f = open(filename, 'rU')
-f.seek(0)
+db = DB.Database('localhost', 'group8', 'toto123', 'cs322')
 
-fields = ['id', 'name', 'legal_name', 'last_name', 'pseudo', 'birthplace', 'birthdate', 'deathdate', 'email', 'img', 'language_id', 'note_id']
-reader = csv.DictReader(f, dialect='excel-tab', fieldnames=fields)
+# this query should populate the Authors table if Authors_temp 
+# has already been populated.
+db.query('''
+	INSERT INTO
+	Authors (id,  name,  legal_name ,  last_name,
+	  pseudo,  birthplace,  birthdate,  deathdate,  email, 
+	  img_link,  language_id,  note)
+	SELECT a.id, a.name, a.legal_name, a.last_name, a.pseudo, a.birthplace,
+        a.birthdate, a.deathdate, a.email, a.img_link, a.language_id, NULL
+	FROM Authors_temp a
+	WHERE a.note_id = NULL
+	UNION
+	SELECT a.id, a.name, a.legal_name, a.last_name, a.pseudo, a.birthplace,
+		a.birthdate, a.deathdate, a.email, a.img_link, a.language_id, n.note
+	FROM Authors_temp a, Notes n
+	WHERE a.note_id = n.id;''')
+	
 
-data = []
-for row in reader:
-
-    legal_name = Parse.nullize(row['legal_name'])
-    pseudo = Parse.nullize(row['pseudo'])
-    birthplace = Parse.nullize(row['birthplace'])
-    birthdate = Parse.nullize(row['birthdate'])
-    deathdate = Parse.nullize(row['deathdate'])
-    email = Parse.nullize(row['email'])
-    img = Parse.nullize(row['img'])
-    language_id = Parse.nullize(row['language_id'])
-    note_id = Parse.nullize(row['note_id'])
-
-    data.append( (row['id'], row['name'], legal_name, row['last_name'], pseudo, birthplace, birthdate, deathdate, email, img, language_id, note_id) )
-
-
-# Insert data into Database
-
-# db = DB.Database('db4free.net','group8','toto123', 'cs322')
-#
-# sql = 'INSERT INTO Authors (id, name, ...) VALUES (%s, %s, ...);'
-# db.insertMany(sql, data)
