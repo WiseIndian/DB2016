@@ -26,9 +26,9 @@ for row in reader:
 	 row['last_name'], row['pseudo'], row['birthplace'], row['birthdate'], 
 	row['deathdate'], row['email'], row['img_link'], row['language_id'], 
 	row['note_id'])
-    sql = 'INSERT INTO Notes (id, name, legal_name, last_name, pseudo, 
+    sql = '''INSERT INTO Notes (id, name, legal_name, last_name, pseudo, 
 	birthplace, birthdate, deathdate, email, img_link, 
 	language_id, note_id) 
-	VALUE (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);'
+	VALUE (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);'''
     db.insert(sql, tuple)
 
