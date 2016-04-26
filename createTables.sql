@@ -18,8 +18,8 @@ LINES TERMINATED BY '\n' STARTING BY '';
 
 CREATE TABLE Languages (
   id INTEGER,
-  name CHAR(32),
-  code CHAR(10),
+  name VARCHAR(32),
+  code VARCHAR(10),
   script BOOLEAN,
   PRIMARY KEY (id)
 );
@@ -33,15 +33,15 @@ LINES TERMINATED BY '\n' STARTING BY '';
 
 CREATE TABLE Authors_temp (
   id INTEGER,
-  name CHAR(64),
-  legal_name CHAR(255),
-  last_name CHAR(64),
-  pseudo CHAR(64),
-  birthplace CHAR(255),
+  name VARCHAR(64),
+  legal_name VARCHAR(255),
+  last_name VARCHAR(64),
+  pseudo VARCHAR(64),
+  birthplace VARCHAR(255),
   birthdate DATE,
   deathdate DATE,
-  email CHAR(255),
-  img_link CHAR(255),
+  email VARCHAR(255),
+  img_link VARCHAR(255),
   language_id INTEGER,
   note_id INTEGER,
   PRIMARY KEY (id),
@@ -60,15 +60,15 @@ LINES TERMINATED BY '\n' STARTING BY '';
 and do the following query:*/
 CREATE TABLE Authors (
 	  id INTEGER,
-	  name CHAR(64),
-	  legal_name CHAR(255),
-	  last_name CHAR(64),
-	  pseudo CHAR(64),
-	  birthplace CHAR(255),
+	  name VARCHAR(64),
+	  legal_name VARCHAR(255),
+	  last_name VARCHAR(64),
+	  pseudo VARCHAR(64),
+	  birthplace VARCHAR(255),
 	  birthdate DATE,
 	  deathdate DATE,
-	  email CHAR(255),
-	  img_link CHAR(255),
+	  email VARCHAR(255),
+	  img_link VARCHAR(255),
 	  language_id INTEGER,
 	  note TEXT, 
 	  PRIMARY KEY (id),
@@ -93,7 +93,7 @@ CREATE TABLE Authors (
 
 CREATE TABLE Title_Series_temp (
   id INTEGER,
-  title CHAR(255) NOT NULL,
+  title VARCHAR(255) NOT NULL,
   parent INTEGER,
   note_id INTEGER,
   PRIMARY KEY (id),
@@ -109,7 +109,7 @@ LINES TERMINATED BY '\n' STARTING BY '';
 
 CREATE TABLE Title_Series (
 	  id INTEGER,
-	  title CHAR(255) NOT NULL,
+	  title VARCHAR(255) NOT NULL,
 	  parent INTEGER,
 	  note TEXT,
 	  PRIMARY KEY (id)
@@ -126,8 +126,8 @@ CREATE TABLE Title_Series (
 
 CREATE TABLE Titles_temp (
   id INTEGER,
-  title CHAR(255) NOT NULL,
-  title_translator CHAR(64),
+  title VARCHAR(255) NOT NULL,
+  title_translator VARCHAR(64),
   synopsis_id INTEGER,
   note_id INTEGER,
   series_id INTEGER,
@@ -155,7 +155,7 @@ CREATE TABLE title_is_translated_in (
   title_id  INTEGER,
   trans_title_id INTEGER,
   language_id INTEGER NOT NULL,
-  translator CHAR(64),
+  translator VARCHAR(64),
   PRIMARY KEY (trans_title_id),
   FOREIGN KEY (title_id) REFERENCES Titles(id) ON DELETE CASCADE,
   FOREIGN KEY (trans_title_id) REFERENCES Titles(id) ON DELETE CASCADE,
@@ -170,7 +170,7 @@ AND title_translator IS NOT NULL;
 
 CREATE TABLE Titles (
 	  id INTEGER,
-	  title CHAR(255) NOT NULL,
+	  title VARCHAR(255) NOT NULL,
 	  synopsis TEXT,
 	  note TEXT,
 	  story_len ENUM('nv', 'ss', 'jvn', 'nvz', 'sf'),
@@ -261,12 +261,12 @@ LINES TERMINATED BY '\n' STARTING BY '';
 
 CREATE TABLE Award_Types_temp (
   id INTEGER,
-  code CHAR(5),
-  name CHAR(255),
+  code VARCHAR(5),
+  name VARCHAR(255),
   note_id INTEGER,
-  awarded_by CHAR(255),
-  awarded_for CHAR(255),
-  short_name CHAR(255),
+  awarded_by VARCHAR(255),
+  awarded_for VARCHAR(255),
+  short_name VARCHAR(255),
   is_poll BOOLEAN,
   non_genre BOOLEAN,
   PRIMARY KEY (id),
@@ -283,12 +283,12 @@ LINES TERMINATED BY '\n' STARTING BY '';
 
 CREATE TABLE Award_types (
   id INTEGER,
-  code CHAR(5),
-  name CHAR(255),
+  code VARCHAR(5),
+  name VARCHAR(255),
   note TEXT,
-  awarded_by CHAR(255),
-  awarded_for CHAR(255),
-  short_name CHAR(255),
+  awarded_by VARCHAR(255),
+  awarded_for VARCHAR(255),
+  short_name VARCHAR(255),
   is_poll BOOLEAN,
   non_genre BOOLEAN,
   PRIMARY KEY (id),
@@ -308,7 +308,7 @@ WHERE a_t.note_id = NULL
 
 CREATE TABLE Award_Categories_temp (
   id INTEGER,
-  name CHAR(255),
+  name VARCHAR(255),
   type_id INTEGER,
   category_order INTEGER, 
   /* position INTEGER, TODO what is position, is this award category order?*/
@@ -327,7 +327,7 @@ LINES TERMINATED BY '\n' STARTING BY '';
 
 CREATE TABLE Award_Categories (
   id INTEGER,
-  name CHAR(255),
+  name VARCHAR(255),
   type_id INTEGER,
   category_order INTEGER, 
   /* position INTEGER, TODO what is position, is this award category order?*/
@@ -349,7 +349,7 @@ WHERE note_id = NULL
 
 CREATE TABLE Awards_temp (
   id INTEGER,
-  title CHAR(255),
+  title VARCHAR(255),
   aw_date DATE,
   type_id INTEGER,
   category_id INTEGER,
@@ -369,7 +369,7 @@ LINES TERMINATED BY '\n' STARTING BY '';
 
 CREATE TABLE Awards (
   id INTEGER,
-  title CHAR(255),
+  title VARCHAR(255),
   aw_date DATE,
   type_id INTEGER,
   category_id INTEGER,
@@ -398,7 +398,7 @@ CREATE TABLE title_wins_award (
 
 CREATE TABLE Tags (
   id INTEGER,
-  name CHAR(255),
+  name VARCHAR(255),
   PRIMARY KEY (id)
 );
 
@@ -412,7 +412,7 @@ CREATE TABLE title_has_tag (
 
 CREATE TABLE Publishers_temp (
   id INTEGER,
-  name CHAR(255),
+  name VARCHAR(255),
   note_id INTEGER,
   PRIMARY KEY (id),
   FOREIGN KEY (note_id) REFERENCES Notes(id)  ON DELETE SET NULL
@@ -420,7 +420,7 @@ CREATE TABLE Publishers_temp (
 
 CREATE TABLE Publishers (
   id INTEGER,
-  name CHAR(255),
+  name VARCHAR(255),
   note TEXT,
   PRIMARY KEY (id)
 )
@@ -436,7 +436,7 @@ WHERE n.id = NULL
 
 CREATE TABLE Publication_Series_temp (
   id INTEGER
-  name CHAR(255),
+  name VARCHAR(255),
   note_id INTEGER,
   PRIMARY KEY (id),
   FOREIGN KEY (note_id) REFERENCES Notes(id) ON DELETE SET NULL
@@ -444,7 +444,7 @@ CREATE TABLE Publication_Series_temp (
 
 CREATE TABLE Publication_Series (
   id INTEGER
-  name CHAR(255),
+  name VARCHAR(255),
   note TEXT,
   PRIMARY KEY (id),
 )
@@ -473,18 +473,18 @@ CREATE TABLE Publications_temp (
    * and references of Titles id and Publications id, see todoFromDeliv1Feedback file(on github)
    * for more info on how to do it.
    */ 
-  title CHAR(255), /*stay closer to definition of the csv file as described in todoFromDeliv1Feedback */
+  title VARCHAR(255), /*stay closer to definition of the csv file as described in todoFromDeliv1Feedback */
   pb_date DATE,
   publisher_id INTEGER,
   nb_pages INTEGER,
-  packaging_type CHAR(255),
+  packaging_type VARCHAR(255),
   publication_type ENUM('ANTHOLOGY', 'COLLECTION', 'MAGAZINE', 'NONFICTION',
                          'NOVEL', 'OMNIBUS', 'FANZINE', 'CHAPBOOK'),
   isbn INTEGER,
-  cover_img CHAR(255),
+  cover_img VARCHAR(255),
   price DECIMAL(6, 5), /*valeurs un peu arbitraires, mais on peut imaginer qu'un livre 
 			 aura pas un prix > un million dans n'importe quelle currency?*/
-  currency CHAR(1),
+  currency VARCHAR(1),
   note_id INTEGER,
   PRIMARY KEY (id),
   FOREIGN KEY (title_id) REFERENCES Titles(id) ON DELETE CASCADE,
@@ -499,18 +499,18 @@ CREATE TABLE Publications (
    * and references of Titles id and Publications id, see todoFromDeliv1Feedback file(on github)
    * for more info on how to do it.
    */ 
-  title CHAR(255), /*stay closer to definition of the csv file as described in todoFromDeliv1Feedback */
+  title VARCHAR(255), /*stay closer to definition of the csv file as described in todoFromDeliv1Feedback */
   pb_date DATE,
   publisher_id INTEGER,
   nb_pages INTEGER,
-  packaging_type CHAR(255),
+  packaging_type VARCHAR(255),
   publication_type ENUM('ANTHOLOGY', 'COLLECTION', 'MAGAZINE', 'NONFICTION',
                          'NOVEL', 'OMNIBUS', 'FANZINE', 'CHAPBOOK'),
   isbn INTEGER,
-  cover_img CHAR(255),
+  cover_img VARCHAR(255),
   price DECIMAL(6, 5), /*valeurs un peu arbitraires, mais on peut imaginer qu'un livre 
 			 aura pas un prix > un million dans n'importe quelle currency?*/
-  currency CHAR(1),
+  currency VARCHAR(1),
   note TEXT,
   PRIMARY KEY (id),
   FOREIGN KEY (title_id) REFERENCES Titles(id) ON DELETE CASCADE,
@@ -543,7 +543,7 @@ CREATE TABLE Title_Publications (
 
 CREATE TABLE Webpages (
   id INTEGER,
-  url CHAR(255),
+  url VARCHAR(255),
   PRIMARY KEY (id)
 );
 
