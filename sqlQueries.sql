@@ -18,7 +18,7 @@ SELECT TOP 10 * FROM (
 	FROM Authors a, authors_have_publications pb_as 
 	WHERE a.id = pb_as.author_id 
 	GROUP BY a.id
-	ORDER BY nb_publications
+	ORDER BY nb_publications DESC
 );
 
 --c)What are the names of the youngest and oldest authors to publish something in 2010?
