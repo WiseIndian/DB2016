@@ -59,30 +59,30 @@ LINES TERMINATED BY '\n' STARTING BY '';
 /*then import the data into Authors_temp
 and do the following query:*/
 CREATE TABLE Authors (
-	  id INTEGER,
-	  name VARCHAR(64),
-	  legal_name VARCHAR(255),
-	  last_name VARCHAR(64),
-	  pseudo VARCHAR(64),
-	  birthplace VARCHAR(255),
-	  birthdate DATE,
-	  deathdate DATE,
-	  email VARCHAR(255),
-	  img_link VARCHAR(255),
-	  language_id INTEGER,
-	  note TEXT, 
-	  PRIMARY KEY (id),
-	  FOREIGN KEY (language_id) REFERENCES Languages(id) ON DELETE SET NULL
-	) 
-	SELECT a.id, a.name, a.legal_name, a.last_name, a.pseudo, a.birthplace,
-		a.birthdate, a.deathdate, a.email, a.img_link, a.language_id, NULL
-	FROM Authors_temp a
-	WHERE a.note_id = NULL
-	UNION
-	SELECT a.id, a.name, a.legal_name, a.last_name, a.pseudo, a.birthplace,
-		a.birthdate, a.deathdate, a.email, a.img_link, a.language_id, n.note 
-	FROM Authors_temp a, Notes n
-	WHERE a.note_id = n.id;
+  id INTEGER,
+  name VARCHAR(64),
+  legal_name VARCHAR(255),
+  last_name VARCHAR(64),
+  pseudo VARCHAR(64),
+  birthplace VARCHAR(255),
+  birthdate DATE,
+  deathdate DATE,
+  email VARCHAR(255),
+  img_link VARCHAR(255),
+  language_id INTEGER,
+  note TEXT, 
+  PRIMARY KEY (id),
+  FOREIGN KEY (language_id) REFERENCES Languages(id) ON DELETE SET NULL
+) 
+SELECT a.id, a.name, a.legal_name, a.last_name, a.pseudo, a.birthplace,
+	a.birthdate, a.deathdate, a.email, a.img_link, a.language_id, NULL
+FROM Authors_temp a
+WHERE a.note_id = NULL
+UNION
+SELECT a.id, a.name, a.legal_name, a.last_name, a.pseudo, a.birthplace,
+	a.birthdate, a.deathdate, a.email, a.img_link, a.language_id, n.note 
+FROM Authors_temp a, Notes n
+WHERE a.note_id = n.id;
 
 /*https://dev.mysql.com/doc/refman/5.5/en/create-table-select.html
  *for the syntax of CREATE TABLE ... SELECT
@@ -108,20 +108,20 @@ LINES TERMINATED BY '\n' STARTING BY '';
 
 
 CREATE TABLE Title_Series (
-	  id INTEGER,
-	  title VARCHAR(255) NOT NULL,
-	  parent INTEGER,
-	  note TEXT,
-	  PRIMARY KEY (id)
-	) 
-	SELECT t.id, t.title, t.parent, n.note 
-	FROM Title_Series_temp t, Notes n 
-	WHERE t.note_id = n.id 
-	UNION 
-	SELECT t.id, t.title, t.parent, NULL
-	FROM Title_Series_temp t
-	WHERE t.note_id = NULL
-	;
+  id INTEGER,
+  title_id VARCHAR(255) NOT NULL,
+  parent INTEGER,
+  note TEXT,
+  PRIMARY KEY (id)
+) 
+SELECT t.id, t.title, t.parent, n.note 
+FROM Title_Series_temp t, Notes n
+WHERE t.note_id = n.id 
+UNION 
+SELECT t.id, t.title, t.parent, NULL
+FROM Title_Series_temp t
+WHERE t.note_id = NULL
+;
 
 
 CREATE TABLE Titles_temp (
@@ -151,6 +151,44 @@ CHARACTER SET UTF8
 FIELDS TERMINATED BY '\t' ENCLOSED BY '' ESCAPED BY '\\'
 LINES TERMINATED BY '\n' STARTING BY '';
 
+
+
+CREATE TABLE Titles (
+  id INTEGER,
+  title VARCHAR(255) NOT NULL,
+  synopsis TEXT,
+  note TEXT,
+  story_len ENUM('nv', 'ss', 'jvn', 'nvz', 'sf'),
+  type ENUM('ANTHOLOGY', 'BACKCOVERART', 'COLLECTION', 'COVERART', 'INTERIORART',
+	  'EDITOR', 'ESSAY', 'INTERVIEW', 'NOVEL', 'NONFICTION', 'OMNIBUS', 'POEM',
+	  'REVIEW', 'SERIAL', 'SHORTFICTION', 'CHAPBOOK'),
+  parent INTEGER,
+  language_id INTEGER,
+  title_graphic BOOLEAN,
+  PRIMARY KEY (id),
+  FOREIGN KEY (language_id) REFERENCES Languages(id) ON DELETE SET NULL
+) /*this solution is pretty unelegant as we have to look for all cases manually..*/
+SELECT t.id, t.title, syn.note, n.note, t.story_len, t.parent, 
+	t.language_id, t.title_graphic
+FROM Titles_temp t, Notes syn, Notes n
+WHERE t.note_id = n.id AND t.synopsis_id = syn.id
+UNION 
+SELECT t.id, t.title, NULL, n.note, t.story_len, t.parent, 
+	t.language_id, t.title_graphic
+FROM Titles_temp t, Notes n
+WHERE t.synopsis_id = NULL AND t.note_id = n.id
+UNION
+SELECT t.id, t.title, syn.note, NULL, t.story_len, t.parent, 
+	t.language_id, t.title_graphic
+FROM Titles_temp t, Notes syn
+WHERE t.note_id = NULL AND t.synopsis_id = syn.id
+UNION
+SELECT t.id, t.title, NULL, NULL, t.story_len, t.parent, 
+t.language_id, t.title_graphic
+FROM Titles_temp t
+WHERE t.note_id = NULL AND t.synopsis_id = NULL
+;
+
 CREATE TABLE title_is_translated_in (
   title_id  INTEGER,
   trans_title_id INTEGER,
@@ -160,65 +198,12 @@ CREATE TABLE title_is_translated_in (
   FOREIGN KEY (title_id) REFERENCES Titles(id) ON DELETE CASCADE,
   FOREIGN KEY (trans_title_id) REFERENCES Titles(id) ON DELETE CASCADE,
   FOREIGN KEY (language_id) REFERENCES Languages(id) ON DELETE CASCADE
-
 )
 SELECT parent, title_id, language_id, title_translator
 FROM Titles_temp 
 WHERE parent IS NOT NULL AND title_id IS NOT NULL AND language_id IS NOT NULL
 AND title_translator IS NOT NULL;
 
-
-CREATE TABLE Titles (
-	  id INTEGER,
-	  title VARCHAR(255) NOT NULL,
-	  synopsis TEXT,
-	  note TEXT,
-	  story_len ENUM('nv', 'ss', 'jvn', 'nvz', 'sf'),
-	  type ENUM('ANTHOLOGY', 'BACKCOVERART', 'COLLECTION', 'COVERART', 'INTERIORART',
-		  'EDITOR', 'ESSAY', 'INTERVIEW', 'NOVEL', 'NONFICTION', 'OMNIBUS', 'POEM',
-		  'REVIEW', 'SERIAL', 'SHORTFICTION', 'CHAPBOOK'),
-	  parent INTEGER,
-	  language_id INTEGER,
-	  title_graphic BOOLEAN,
-	  PRIMARY KEY (id),
-	  FOREIGN KEY (language_id) REFERENCES Languages(id) ON DELETE SET NULL
-	) /*this solution is pretty unelegant as we have to look for all cases manually..*/
-	SELECT t.id, t.title, syn.note, n.note, t.story_len, t.parent, 
-		t.language_id, t.title_graphic
-	FROM Titles_temp t, Notes syn, Notes n
-	WHERE t.note_id = n.id AND t.synopsis_id = syn.id
-	UNION 
-	SELECT t.id, t.title, NULL, n.note, t.story_len, t.parent, 
-		t.language_id, t.title_graphic
-	FROM Titles_temp t, Notes n
-	WHERE t.synopsis_id = NULL AND t.note_id = n.id
-	UNION
-	SELECT t.id, t.title, syn.note, NULL, t.story_len, t.parent, 
-		t.language_id, t.title_graphic
-	FROM Titles_temp t, Notes syn
-	WHERE t.note_id = NULL AND t.synopsis_id = syn.id
-	UNION
-	SELECT t.id, t.title, NULL, NULL, t.story_len, t.parent, 
-	t.language_id, t.title_graphic
-	FROM Titles_temp t
-	WHERE t.note_id = NULL AND t.synopsis_id = NULL
-	;
-
-
-
-CREATE TABLE authors_have_publications (
-  author_id  INTEGER,
-  pub_id INTEGER,
-  PRIMARY KEY (author_id, pub_id),
-  FOREIGN KEY (author_id) REFERENCES Authors(id) ON DELETE CASCADE,
-  FOREIGN KEY (pub_id) REFERENCES Publications(id) ON DELETE CASCADE
-);
-
-LOAD DATA LOCAL INFILE '/home/simonlbc/workspace/DB/DB2016/CSV/publications_authors_rem.csv'
-INTO TABLE authors_have_publications
-CHARACTER SET UTF8
-FIELDS TERMINATED BY '\t' ENCLOSED BY '' ESCAPED BY '\\'
-LINES TERMINATED BY '\n' STARTING BY '';
 
 
 /*TODO: modifier le schéma du ER model de manière à bien montrer que c'est
@@ -526,6 +511,20 @@ SELECT id, title, pb_date, publisher_id, nb_pages, packaging_type,
 FROM Publications_temp 
 WHERE pb.note_id = NULL
 ;
+
+CREATE TABLE authors_have_publications (
+  author_id  INTEGER,
+  pub_id INTEGER,
+  PRIMARY KEY (author_id, pub_id),
+  FOREIGN KEY (author_id) REFERENCES Authors(id) ON DELETE CASCADE,
+  FOREIGN KEY (pub_id) REFERENCES Publications(id) ON DELETE CASCADE
+);
+
+LOAD DATA LOCAL INFILE '/home/simonlbc/workspace/DB/DB2016/CSV/publications_authors_rem.csv'
+INTO TABLE authors_have_publications
+CHARACTER SET UTF8
+FIELDS TERMINATED BY '\t' ENCLOSED BY '' ESCAPED BY '\\'
+LINES TERMINATED BY '\n' STARTING BY '';
 
 
 
