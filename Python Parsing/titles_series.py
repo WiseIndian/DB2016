@@ -11,24 +11,14 @@ import csv
 
 # Parse data from csv file
 
-filename = 'Books/titles_series.csv'
-f = open(filename, 'rU')
-f.seek(0)
+db = DB.Database('localhost','group8','toto123', 'cs322')
+# query to populate Title_Seires using Title_Series_temp
+db.query('''    INSERT INTO Title_Series (id, title_id, parent, note) 
+		SELECT t.id, t.title, t.parent, n.note
+		FROM Title_Series_temp t, Notes n
+		WHERE t.note_id = n.id
+		UNION
+		SELECT t.id, t.title, t.parent, NULL
+		FROM Title_Series_temp t
+		WHERE t.note_id = NULL; ''')
 
-fields = ['id', 'title', 'parent', 'note_id']
-reader = csv.DictReader(f, dialect='excel-tab', fieldnames=fields)
-
-data = []
-for row in reader:
-    parent = Parse.nullize(row['parent'])
-    note_id = Parse.nullize(row['note_id'])
-
-    data.append( (row['id'], row['title'], parent, note_id) )
-
-
-# Insert data into Database
-
-# db = DB.Database('db4free.net','group8','toto123', 'cs322')
-#
-# sql = 'INSERT INTO Awards (id, title, date, type_id, category_id, note_id) VALUES (%s, %s, %s, %s, %s, %s);'
-# db.insertMany(sql, to_db)
