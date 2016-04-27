@@ -331,7 +331,7 @@ def createAllTables():
 	  id INTEGER,
 	  name VARCHAR(255),
 	  note TEXT,
-	  PRIMARY KEY (id),
+	  PRIMARY KEY (id)
 	) ENGINE=InnoDB;'''
 	createTable(publication_series)
 
