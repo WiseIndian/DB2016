@@ -393,7 +393,6 @@ def createAllTables():
 	  currency VARCHAR(1),
 	  note TEXT,
 	  PRIMARY KEY (id),
-	  FOREIGN KEY (title_id) REFERENCES Titles(id) ON DELETE CASCADE,
 	  FOREIGN KEY (publisher_id) REFERENCES Publishers(id) ON DELETE CASCADE
 	) ENGINE=InnoDB;'''
 	createTable(publications)
