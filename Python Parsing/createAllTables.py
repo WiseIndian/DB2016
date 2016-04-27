@@ -192,7 +192,7 @@ def createAllTables():
 	  is_poll BOOLEAN,
 	  non_genre BOOLEAN,
 	  PRIMARY KEY (id),
-	  FOREIGN KEY (note_id) REFERENCES Notes(id) ON DELETE SET NULL
+	  FOREIGN KEY (note_id) REFERENCES Notes(id) ON DELETE SET NULL,
 	  CHECK (name IS NOT NULL OR code IS NOT NULL)
 	) ENGINE=InnoDB;'''
 	createTable(award_types_temp)
@@ -219,7 +219,6 @@ def createAllTables():
 	  name VARCHAR(255),
 	  type_id INTEGER,
 	  category_order INTEGER,
-	  /* position INTEGER, TODO what is position, is this award category order?*/
 	  note_id INTEGER,
 	  PRIMARY KEY (id, type_id),
 	  FOREIGN KEY (note_id) REFERENCES Notes(id) ON DELETE SET NULL,
