@@ -198,7 +198,7 @@ def createAllTables():
 	createTable(award_types_temp)
 
 	award_types = '''
-	CREATE TABLE Award_types (
+	CREATE TABLE Award_Types (
 	  id INTEGER,
 	  code VARCHAR(5),
 	  name VARCHAR(255),
@@ -222,7 +222,7 @@ def createAllTables():
 	  note_id INTEGER,
 	  PRIMARY KEY (id, type_id),
 	  FOREIGN KEY (note_id) REFERENCES Notes(id) ON DELETE SET NULL,
-	  FOREIGN KEY (type_id) REFERENCES Award_types(id) ON DELETE CASCADE
+	  FOREIGN KEY (type_id) REFERENCES Award_Types(id) ON DELETE CASCADE
 	) ENGINE=InnoDB;'''
 	createTable(award_categories_temp)
 
@@ -318,7 +318,7 @@ def createAllTables():
 
 	publication_series_temp = '''
 	CREATE TABLE Publication_Series_temp (
-	  id INTEGER
+	  id INTEGER,
 	  name VARCHAR(255),
 	  note_id INTEGER,
 	  PRIMARY KEY (id),
@@ -328,7 +328,7 @@ def createAllTables():
 
 	publication_series = '''
 	CREATE TABLE Publication_Series (
-	  id INTEGER
+	  id INTEGER,
 	  name VARCHAR(255),
 	  note TEXT,
 	  PRIMARY KEY (id),
