@@ -335,16 +335,6 @@ def createAllTables():
 	) ENGINE=InnoDB;'''
 	createTable(publication_series)
 
-	publication_is_of_Publication_Series = '''
-	CREATE TABLE Publication_is_of_Publication_Series (
-	publication_id  INTEGER,
-	series_id INTEGER,
-	series_number INTEGER,
-	PRIMARY KEY (publication_id),
-	FOREIGN KEY (publication_id) REFERENCES Publications(id) ON DELETE CASCADE,
-	FOREIGN KEY (series_id) REFERENCES Publication_Series(id) ON DELETE CASCADE
-	) ENGINE=InnoDB;'''
-	createTable(publication_is_of_Publication_Series)
 
 	publications_temp = '''
 	CREATE TABLE Publications_temp (
@@ -396,6 +386,18 @@ def createAllTables():
 	  FOREIGN KEY (publisher_id) REFERENCES Publishers(id) ON DELETE CASCADE
 	) ENGINE=InnoDB;'''
 	createTable(publications)
+
+	publication_is_of_Publication_Series = '''
+	CREATE TABLE Publication_is_of_Publication_Series (
+	publication_id  INTEGER,
+	series_id INTEGER,
+	series_number INTEGER,
+	PRIMARY KEY (publication_id),
+	FOREIGN KEY (publication_id) REFERENCES Publications(id) ON DELETE CASCADE,
+	FOREIGN KEY (series_id) REFERENCES Publication_Series(id) ON DELETE CASCADE
+	) ENGINE=InnoDB;'''
+	createTable(publication_is_of_Publication_Series)
+
 
 	authors_have_publications = '''
 	CREATE TABLE authors_have_publications (
