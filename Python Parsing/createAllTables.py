@@ -222,7 +222,7 @@ def createAllTables():
 	  note_id INTEGER,
 	  PRIMARY KEY (id, type_id),
 	  FOREIGN KEY (note_id) REFERENCES Notes(id) ON DELETE SET NULL,
-	  FOREIGN KEY (type_id) REFERENCES Award_Types(id) ON DELETE CASCADE
+	  FOREIGN KEY (type_id) REFERENCES Award_types(id) ON DELETE CASCADE
 	) ENGINE=InnoDB;'''
 	createTable(award_categories_temp)
 
