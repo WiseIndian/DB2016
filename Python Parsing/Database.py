@@ -12,17 +12,17 @@ class Database:
         self.connection = MySQLdb.connect(self.host, self.user, self.password, self.db_name)
         self.cursor = self.connection.cursor()
 
-    def insert(self, query):
+    def insert(self, query, dataTuple):
         try:
-            self.cursor.execute(query)
+            self.cursor.execute(query, dataTuple)
             self.connection.commit()
         except MySQLdb.Error, e:
             print "MySQL Error [%d]: %s" % (e.args[0], e.args[1])
             self.connection.rollback()
 
-    def insertMany(self, query, data):  # data is an array of tuples (to insert in database)
+    def insertMany(self, query, manyData):  # data is an array of tuples (to insert in database)
         try:
-            self.cursor.executemany(query, data)
+            self.cursor.executemany(query, manyData)
             self.connection.commit()
         except MySQLdb.Error, e:
             print "MySQL Error [%d]: %s" % (e.args[0], e.args[1])
