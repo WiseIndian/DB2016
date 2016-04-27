@@ -26,7 +26,7 @@ def createAllTables():
 	id INTEGER,
 	note TEXT NOT NULL,
 	PRIMARY KEY (id)
-	);'''
+	) ENGINE=InnoDB;'''
 	createTable(notes)
 
 	languages = '''
@@ -36,7 +36,7 @@ def createAllTables():
 	code VARCHAR(10),
 	script BOOLEAN,
 	PRIMARY KEY (id)
-	);'''
+	) ENGINE=InnoDB;'''
 	createTable(languages)
 
 	authorsTemp = '''
@@ -56,7 +56,7 @@ def createAllTables():
 	PRIMARY KEY (id),
 	FOREIGN KEY (note_id) REFERENCES Notes(id) ON DELETE SET NULL,
 	FOREIGN KEY (language_id) REFERENCES Languages(id) ON DELETE SET NULL
-	);'''
+	) ENGINE=InnoDB;'''
 	createTable(authorsTemp)
 
 	authors = '''
@@ -75,7 +75,7 @@ def createAllTables():
 	note TEXT,
 	PRIMARY KEY (id),
 	FOREIGN KEY (language_id) REFERENCES Languages(id) ON DELETE SET NULL
-	);'''
+	) ENGINE=InnoDB;'''
 	createTable(authors)
 
 	title_series_temp ='''
@@ -86,7 +86,7 @@ def createAllTables():
 	note_id INTEGER,
 	PRIMARY KEY (id),
 	FOREIGN KEY (note_id) REFERENCES Notes(id) ON DELETE SET NULL
-	);'''
+	) ENGINE=InnoDB;'''
 	createTable(title_series_temp)
 
 
@@ -97,7 +97,7 @@ def createAllTables():
 	parent INTEGER,
 	note TEXT,
 	PRIMARY KEY (id)
-	);'''
+	) ENGINE=InnoDB;'''
 	createTable(title_series)
 
 	titles_temp ='''
@@ -120,7 +120,7 @@ def createAllTables():
 	  FOREIGN KEY (synopsis_id) REFERENCES Notes(id) ON DELETE SET NULL,
 	  FOREIGN KEY (note_id) REFERENCES Notes(id) ON DELETE SET NULL,
 	  FOREIGN KEY (language_id) REFERENCES Languages(id) ON DELETE SET NULL
-	);'''
+	) ENGINE=InnoDB;'''
 	createTable(titles_temp)
 
 
@@ -140,7 +140,7 @@ def createAllTables():
 	  title_graphic BOOLEAN,
 	  PRIMARY KEY (id),
 	  FOREIGN KEY (language_id) REFERENCES Languages(id) ON DELETE SET NULL
-	);'''
+	) ENGINE=InnoDB;'''
 	createTable(titles)
 
 	title_is_translated_in = '''
@@ -153,7 +153,7 @@ def createAllTables():
 	  FOREIGN KEY (title_id) REFERENCES Titles(id) ON DELETE CASCADE,
 	  FOREIGN KEY (trans_title_id) REFERENCES Titles(id) ON DELETE CASCADE,
 	  FOREIGN KEY (language_id) REFERENCES Languages(id) ON DELETE CASCADE
-	);'''
+	) ENGINE=InnoDB;'''
 	createTable(title_is_translated_in);
 
 
@@ -165,7 +165,7 @@ def createAllTables():
 	FOREIGN KEY (title_id) REFERENCES Titles(id) ON DELETE CASCADE,
 	FOREIGN KEY (review_title_id) REFERENCES Titles(id) ON DELETE CASCADE,
 	CHECK (title_id != review_title_id)
-	); '''
+	) ENGINE=InnoDB;'''
 	createTable(title_is_reviewed_by)
 
 	title_is_part_of_Title_Series = '''
@@ -176,7 +176,7 @@ def createAllTables():
 	PRIMARY KEY (title_id),
 	FOREIGN KEY (title_id) REFERENCES Titles(id) ON DELETE CASCADE,
 	FOREIGN KEY (series_id) REFERENCES Title_Series(id) ON DELETE CASCADE
-	); '''
+	) ENGINE=InnoDB;'''
 	createTable(title_is_part_of_Title_Series)
 
 
@@ -194,7 +194,7 @@ def createAllTables():
 	  PRIMARY KEY (id),
 	  FOREIGN KEY (note_id) REFERENCES Notes(id) ON DELETE SET NULL
 	  CHECK (name IS NOT NULL OR code IS NOT NULL)
-	);'''
+	) ENGINE=InnoDB;'''
 	createTable(award_types_temp)
 
 	award_types = '''
@@ -210,7 +210,7 @@ def createAllTables():
 	  non_genre BOOLEAN,
 	  PRIMARY KEY (id),
 	  CHECK (name IS NOT NULL OR code IS NOT NULL)
-	);'''
+	) ENGINE=InnoDB;'''
 	createTable(award_types)
 
 	award_categories_temp = '''
@@ -224,7 +224,7 @@ def createAllTables():
 	  PRIMARY KEY (id, type_id),
 	  FOREIGN KEY (note_id) REFERENCES Notes(id) ON DELETE SET NULL,
 	  FOREIGN KEY (type_id) REFERENCES Award_Types(id) ON DELETE CASCADE
-	);'''
+	) ENGINE=InnoDB;'''
 	createTable(award_categories_temp)
 
 	award_categories = '''
@@ -237,7 +237,7 @@ def createAllTables():
 	  note TEXT,
 	  PRIMARY KEY (id, type_id),
 	  FOREIGN KEY (type_id) REFERENCES Award_Types(id) ON DELETE CASCADE
-	);'''
+	) ENGINE=InnoDB;'''
 	createTable(award_categories);
 
 
@@ -253,7 +253,7 @@ def createAllTables():
 	  FOREIGN KEY (note_id) REFERENCES Notes(id) ON DELETE SET NULL,
 	  FOREIGN KEY (category_id) REFERENCES Award_Categories(id) ON DELETE SET NULL,
 	  FOREIGN KEY (type_id) REFERENCES Award_Types(id) ON DELETE SET NULL
-	);'''
+	) ENGINE=InnoDB;'''
 	createTable(awards_temp)
 
 	awards = '''
@@ -267,7 +267,7 @@ def createAllTables():
 	  PRIMARY KEY (id),
 	  FOREIGN KEY (category_id) REFERENCES Award_Categories(id) ON DELETE SET NULL,
 	  FOREIGN KEY (type_id) REFERENCES Award_Types(id) ON DELETE SET NULL
-	);'''
+	) ENGINE=InnoDB;'''
 	createTable(awards)
 
 	title_wins_award = '''
@@ -277,7 +277,7 @@ def createAllTables():
 	PRIMARY KEY (award_id, title_id),
 	FOREIGN KEY (award_id) REFERENCES Awards(id) ON DELETE CASCADE,
 	FOREIGN KEY (title_id) REFERENCES Titles(id) ON DELETE CASCADE
-	); '''
+	) ENGINE=InnoDB;'''
 	createTable(title_wins_award)
 
 	tags = '''
@@ -285,7 +285,7 @@ def createAllTables():
 	id INTEGER,
 	name VARCHAR(255),
 	PRIMARY KEY (id)
-	); '''
+	) ENGINE=InnoDB;'''
 	createTable(tags)
 
 	title_has_tag = '''
@@ -295,7 +295,7 @@ def createAllTables():
 	PRIMARY KEY (tag_id, title_id),
 	FOREIGN KEY (tag_id) REFERENCES Tags(id) ON DELETE CASCADE,
 	FOREIGN KEY (title_id) REFERENCES Titles(id) ON DELETE CASCADE
-	); '''
+	) ENGINE=InnoDB;'''
 	createTable(title_has_tag)
 
 	publishers_temp = '''
@@ -305,7 +305,7 @@ def createAllTables():
 	  note_id INTEGER,
 	  PRIMARY KEY (id),
 	  FOREIGN KEY (note_id) REFERENCES Notes(id)  ON DELETE SET NULL
-	);'''
+	) ENGINE=InnoDB;'''
 	createTable(publishers_temp)
 
 	publishers = '''
@@ -314,7 +314,7 @@ def createAllTables():
 	  name VARCHAR(255),
 	  note TEXT,
 	  PRIMARY KEY (id)
-	); '''
+	) ENGINE=InnoDB;'''
 	createTable(publishers)
 
 	publication_series_temp = '''
@@ -324,7 +324,7 @@ def createAllTables():
 	  note_id INTEGER,
 	  PRIMARY KEY (id),
 	  FOREIGN KEY (note_id) REFERENCES Notes(id) ON DELETE SET NULL
-	);'''
+	) ENGINE=InnoDB;'''
 	createTable(publication_series_temp)
 
 	publication_series = '''
@@ -333,7 +333,7 @@ def createAllTables():
 	  name VARCHAR(255),
 	  note TEXT,
 	  PRIMARY KEY (id),
-	); '''
+	) ENGINE=InnoDB;'''
 	createTable(publication_series)
 
 	publication_is_of_Publication_Series = '''
@@ -344,7 +344,7 @@ def createAllTables():
 	PRIMARY KEY (publication_id),
 	FOREIGN KEY (publication_id) REFERENCES Publications(id) ON DELETE CASCADE,
 	FOREIGN KEY (series_id) REFERENCES Publication_Series(id) ON DELETE CASCADE
-	); '''
+	) ENGINE=InnoDB;'''
 	createTable(publication_is_of_Publication_Series)
 
 	publications_temp = '''
@@ -371,7 +371,7 @@ def createAllTables():
 	  FOREIGN KEY (title_id) REFERENCES Titles(id) ON DELETE CASCADE,
 	  FOREIGN KEY (note_id) REFERENCES Notes(id) ON DELETE SET NULL,
 	  FOREIGN KEY (publisher_id) REFERENCES Publishers(id) ON DELETE CASCADE
-	);'''
+	) ENGINE=InnoDB;'''
 	createTable(publications_temp)
 
 	publications = '''
@@ -397,7 +397,7 @@ def createAllTables():
 	  PRIMARY KEY (id),
 	  FOREIGN KEY (title_id) REFERENCES Titles(id) ON DELETE CASCADE,
 	  FOREIGN KEY (publisher_id) REFERENCES Publishers(id) ON DELETE CASCADE
-	); '''
+	) ENGINE=InnoDB;'''
 	createTable(publications)
 
 	authors_have_publications = '''
@@ -407,7 +407,7 @@ def createAllTables():
 	  PRIMARY KEY (author_id, pub_id),
 	  FOREIGN KEY (author_id) REFERENCES Authors(id) ON DELETE CASCADE,
 	  FOREIGN KEY (pub_id) REFERENCES Publications(id) ON DELETE CASCADE
-	);'''
+	) ENGINE=InnoDB;'''
 	createTable(authors_have_publications)
 
 	title_publications = '''
@@ -417,7 +417,7 @@ def createAllTables():
                 PRIMARY KEY (title_id, pub_id),
                 FOREIGN KEY (title_id) REFERENCES Titles(id),
                 FOREIGN KEY (pub_id) REFERENCES Publications(id)
-        );'''
+        ) ENGINE=InnoDB;'''
 	createTable(title_publications)
 
 	webpages = '''
@@ -425,7 +425,7 @@ def createAllTables():
 	id INTEGER,
 	url VARCHAR(255),
 	PRIMARY KEY (id)
-	); '''
+	) ENGINE=InnoDB;'''
 	createTable(webpages)
 
 	authors_referenced_by = '''
@@ -435,7 +435,7 @@ def createAllTables():
 	PRIMARY KEY (webpage_id, author_id),
 	FOREIGN KEY (webpage_id) REFERENCES Webpages(id) ON DELETE CASCADE,
 	FOREIGN KEY (webpage_id) REFERENCES Authors(id) ON DELETE CASCADE
-	); '''
+	) ENGINE=InnoDB;'''
 	createTable(authors_referenced_by)
 
 	publishers_referenced_by = '''
@@ -445,7 +445,7 @@ def createAllTables():
 	PRIMARY KEY (webpage_id, publisher_id),
 	FOREIGN KEY (webpage_id) REFERENCES Webpages(id) ON DELETE CASCADE,
 	FOREIGN KEY (publisher_id) REFERENCES Publishers(id) ON DELETE CASCADE
-	); '''
+	) ENGINE=InnoDB;'''
 	createTable(publishers_referenced_by)
 
 	titles_referenced_by = '''
@@ -455,7 +455,7 @@ def createAllTables():
 	PRIMARY KEY (webpage_id, title_id),
 	FOREIGN KEY (webpage_id) REFERENCES Webpages(id) ON DELETE CASCADE,
 	FOREIGN KEY (title_id) REFERENCES Titles(id) ON DELETE CASCADE
-	); '''
+	) ENGINE=InnoDB;'''
 	createTable(titles_referenced_by)
 
 	title_series_referenced_by = '''
@@ -465,7 +465,7 @@ def createAllTables():
 	PRIMARY KEY (webpage_id, title_series_id),
 	FOREIGN KEY (webpage_id) REFERENCES Webpages(id) ON DELETE CASCADE,
 	FOREIGN KEY (title_series_id) REFERENCES Title_Series(id) ON DELETE CASCADE
-	); '''
+	) ENGINE=InnoDB;'''
 	createTable(title_series_referenced_by)
 
 	publication_series_referenced_by = '''
@@ -475,7 +475,7 @@ def createAllTables():
 	PRIMARY KEY (webpage_id, publication_series_id),
 	FOREIGN KEY (webpage_id) REFERENCES Webpages(id) ON DELETE CASCADE,
 	FOREIGN KEY (publication_series_id) REFERENCES Publications_Series(id) ON DELETE CASCADE
-	); '''
+	) ENGINE=InnoDB;'''
 	createTable(publication_series_referenced_by)
 
 	award_types_referenced_by = '''
@@ -485,7 +485,7 @@ def createAllTables():
 	PRIMARY KEY (webpage_id, award_type_id),
 	FOREIGN KEY (webpage_id) REFERENCES Webpages(id) ON DELETE CASCADE,
 	FOREIGN KEY (award_type_id) REFERENCES Award_Types(id) ON DELETE CASCADE
-	); '''
+	) ENGINE=InnoDB;'''
 	createTable(award_types_referenced_by)
 
 	award_categories_referenced_by = '''
@@ -495,7 +495,7 @@ def createAllTables():
 	PRIMARY KEY (webpage_id, award_category_id),
 	FOREIGN KEY (webpage_id) REFERENCES Webpages(id) ON DELETE CASCADE,
 	FOREIGN KEY (award_category_id) REFERENCES Award_Categories(id) ON DELETE CASCADE
-	); '''
+	) ENGINE=InnoDB;'''
 	createTable(award_categories_referenced_by)
 
 
