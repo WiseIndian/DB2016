@@ -14,7 +14,8 @@ def createTable(createTableQuerry):
         cursor.execute(createTableQuerry)
         db.commit()
     except Exception:
-	print(traceback.format_exc()) 
+	print(traceback.format_exc(15)) 
+	print(createTableQuerry)
         db.rollback()
 
 
@@ -163,7 +164,7 @@ def createAllTables():
 	PRIMARY KEY (title_id, review_title_id),
 	FOREIGN KEY (title_id) REFERENCES Titles(id) ON DELETE CASCADE,
 	FOREIGN KEY (review_title_id) REFERENCES Titles(id) ON DELETE CASCADE,
-	CONSTRAINT CK_rule CHECK (title_id != review_title_id)
+	CHECK (title_id != review_title_id)
 	); '''
 	createTable(title_is_reviewed_by)
 
@@ -192,7 +193,7 @@ def createAllTables():
 	  non_genre BOOLEAN,
 	  PRIMARY KEY (id),
 	  FOREIGN KEY (note_id) REFERENCES Notes(id) ON DELETE SET NULL
-	  CONSTRAINT CK_not_null CHECK (name != NULL OR code != NULL)
+	  CHECK (name IS NOT NULL OR code IS NOT NULL)
 	);'''
 	createTable(award_types_temp)
 
@@ -208,7 +209,7 @@ def createAllTables():
 	  is_poll BOOLEAN,
 	  non_genre BOOLEAN,
 	  PRIMARY KEY (id),
-	  CONSTRAINT CK_not_null CHECK (name != NULL OR code != NULL)
+	  CHECK (name IS NOT NULL OR code IS NOT NULL)
 	);'''
 	createTable(award_types)
 
