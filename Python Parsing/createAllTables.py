@@ -6,13 +6,15 @@
 #################################################################
 
 import MySQLdb
+import traceback
 
 
 def createTable(createTableQuerry):
     try:
         cursor.execute(createTableQuerry)
         db.commit()
-    except:
+    except Exception:
+	print(traceback.format_exc()) 
         db.rollback()
 
 
@@ -190,7 +192,7 @@ def createAllTables():
 	  non_genre BOOLEAN,
 	  PRIMARY KEY (id),
 	  FOREIGN KEY (note_id) REFERENCES Notes(id) ON DELETE SET NULL
-	  CONTRAINT CK_not_null CHECK (name != NULL OR code != NULL)
+	  CONSTRAINT CK_not_null CHECK (name != NULL OR code != NULL)
 	);'''
 	createTable(award_types_temp)
 
@@ -206,9 +208,9 @@ def createAllTables():
 	  is_poll BOOLEAN,
 	  non_genre BOOLEAN,
 	  PRIMARY KEY (id),
-	  CONTRAINT CK_not_null CHECK (name != NULL OR code != NULL)
+	  CONSTRAINT CK_not_null CHECK (name != NULL OR code != NULL)
 	);'''
-	create(award_types)
+	createTable(award_types)
 
 	award_categories_temp = '''
 	CREATE TABLE Award_Categories_temp (
@@ -251,7 +253,7 @@ def createAllTables():
 	  FOREIGN KEY (category_id) REFERENCES Award_Categories(id) ON DELETE SET NULL,
 	  FOREIGN KEY (type_id) REFERENCES Award_Types(id) ON DELETE SET NULL
 	);'''
-	create(awards_temp)
+	createTable(awards_temp)
 
 	awards = '''
 	CREATE TABLE Awards (
@@ -405,7 +407,7 @@ def createAllTables():
 	  FOREIGN KEY (author_id) REFERENCES Authors(id) ON DELETE CASCADE,
 	  FOREIGN KEY (pub_id) REFERENCES Publications(id) ON DELETE CASCADE
 	);'''
-	ĉreateTable(authors_have_publications)
+	createTable(authors_have_publications)
 
 	title_publications = '''
 	CREATE TABLE Title_Publications (
