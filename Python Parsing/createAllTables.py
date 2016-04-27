@@ -18,14 +18,12 @@ def createTable(createTableQuerry):
 
 def createAllTables():
 
-	notes = 
-	'''
+	notes = '''
 	CREATE TABLE Notes (
 	id INTEGER,
 	note TEXT NOT NULL,
 	PRIMARY KEY (id)
-	); 
-	'''
+	);'''
 	createTable(notes)
 
 	languages = '''
@@ -39,8 +37,7 @@ def createAllTables():
 	'''
 	createTable(languages)
 
-	authorsTemp = 
-	'''
+	authorsTemp = '''
 	CREATE TABLE Authors_temp (
 	id INTEGER,
 	name VARCHAR(64),
@@ -79,8 +76,7 @@ def createAllTables():
 	);'''
 	createTable(authors)
 
-	title_series_temp = 
-	'''
+	title_series_temp ='''
 	CREATE TABLE Title_Series_temp (
 	id INTEGER,
 	title VARCHAR(255) NOT NULL,
@@ -103,8 +99,7 @@ def createAllTables():
 	);'''
 	createTable(title_series)
 
-	titles_temp = 
-	'''
+	titles_temp ='''
 	CREATE TABLE Titles_temp (
 	  id INTEGER,
 	  title VARCHAR(255) NOT NULL,
@@ -145,8 +140,7 @@ def createAllTables():
 	  title_graphic BOOLEAN,
 	  PRIMARY KEY (id),
 	  FOREIGN KEY (language_id) REFERENCES Languages(id) ON DELETE SET NULL
-	); 
-	'''
+	);'''
 	createTable(titles)
 
 	title_is_translated_in = '''
