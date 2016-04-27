@@ -508,7 +508,7 @@ def createAllTables():
 
 if __name__ == '__main__':
 
-    db = MySQLdb.connect('db4free.net','group8','toto123', 'cs322')
+    db = MySQLdb.connect('localhost','group8','toto123', 'cs322')
     cursor = db.cursor()
 
     createAllTables()
