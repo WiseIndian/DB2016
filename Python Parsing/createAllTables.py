@@ -33,8 +33,7 @@ def createAllTables():
 	code VARCHAR(10),
 	script BOOLEAN,
 	PRIMARY KEY (id)
-	);
-	'''
+	);'''
 	createTable(languages)
 
 	authorsTemp = '''
@@ -88,8 +87,7 @@ def createAllTables():
 	createTable(title_series_temp)
 
 
-	title_series=
-	'''
+	title_series='''
 	CREATE TABLE Title_Series (
 	id INTEGER,
 	title VARCHAR(255) NOT NULL,
@@ -119,8 +117,7 @@ def createAllTables():
 	  FOREIGN KEY (synopsis_id) REFERENCES Notes(id) ON DELETE SET NULL,
 	  FOREIGN KEY (note_id) REFERENCES Notes(id) ON DELETE SET NULL,
 	  FOREIGN KEY (language_id) REFERENCES Languages(id) ON DELETE SET NULL
-	);
-	'''
+	);'''
 	createTable(titles_temp)
 
 
@@ -253,8 +250,7 @@ def createAllTables():
 	  FOREIGN KEY (note_id) REFERENCES Notes(id) ON DELETE SET NULL,
 	  FOREIGN KEY (category_id) REFERENCES Award_Categories(id) ON DELETE SET NULL,
 	  FOREIGN KEY (type_id) REFERENCES Award_Types(id) ON DELETE SET NULL
-	);
-	'''
+	);'''
 	create(awards_temp)
 
 	awards = '''
