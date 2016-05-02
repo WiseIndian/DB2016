@@ -15,4 +15,6 @@ sh rmRet.sh #delete ^M and other bullshit carriage return \r...
 
 #--local-infile=1 option used to be able to import from csv(which is done in loadNotes.sql)
 mysql -h localhost -u group8 --password=toto123 cs322 < loadNotes.sql --local-infile=1
+#par la suite on peut générer automatiquement nos load*.sql et on peut itérer dessus
+#et lancé la commande précédente pour chaucne de ces fichiers #puissance
 
