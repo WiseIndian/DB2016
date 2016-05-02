@@ -20,8 +20,20 @@ reader = csv.DictReader(f, dialect='excel-tab', fieldnames=fields)
 
 db = DB.Database('localhost','group8','toto123', 'cs322')
 
-for row in reader:
-	tuple = (row['id'], row['name'], row['code'], row['script'])
-	sql = 'INSERT INTO Languages (id, name, code, script) VALUES (%s, %s, %s, %s)'
-	db.insert(sql, tuple)
+def multiInsert():
+	for row in reader:
+		tuple = (row['id'], row['name'], row['code'], row['script'])
+		sql = 'INSERT INTO Languages (id, name, code, script) VALUES (%s, %s, %s, %s)'
+		db.insert(sql, tuple)
 
+def load():
+	sql = '''
+	LOAD DATA LOCAL INFILE '/home/simonlbc/workspace/DB/DB2016/CSV/languages_rem.csv'
+	INTO TABLE Languages
+	CHARACTER SET UTF8
+	FIELDS TERMINATED BY '\t' ENCLOSED BY '' ESCAPED BY '\\'
+	LINES TERMINATED BY '\n' STARTING BY '';
+	'''
+	db.query(sql)
+	
+load()
