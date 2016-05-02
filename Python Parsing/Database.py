@@ -29,9 +29,12 @@ class Database:
             self.connection.rollback()
 
     def query(self, query):
-        cursor = self.connection.cursor(MySQLdb.cursors.DictCursor) # Return data as a dict, whose keys are columns names in the DB
-        cursor.execute(query)
-        return cursor.fetchall()
+	try: 
+		cursor = self.connection.cursor(MySQLdb.cursors.DictCursor) # Return data as a dict, whose keys are columns names in the DB
+		cursor.execute(query)
+		return cursor.fetchall()
+	except MySQLdb.Error, e:
+            print "MySQL Error [%d]: %s" % (e.args[0], e.args[1])
 
     def __del__(self):
         self.cursor.close()
