@@ -35,4 +35,4 @@
  DELETE FROM title_is_translated_in               
  DELETE FROM title_series_referenced_by           
  DELETE FROM title_wins_award                     
- DELETE FROM titles_referenced_by                 
+ DELETE FROM titles_referenced_by;
