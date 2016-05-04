@@ -132,7 +132,7 @@ def createAllTables():
 	  synopsis TEXT,
 	  note TEXT,
 	  story_len ENUM('nv', 'ss', 'jvn', 'nvz', 'sf'),
-	  type ENUM('ANTHOLOGY', 'BACKCOVERART', 'COLLECTION', 'COVERART', 'INTERIORART',
+	  title_type ENUM('ANTHOLOGY', 'BACKCOVERART', 'COLLECTION', 'COVERART', 'INTERIORART',
 		  'EDITOR', 'ESSAY', 'INTERVIEW', 'NOVEL', 'NONFICTION', 'OMNIBUS', 'POEM',
 		  'REVIEW', 'SERIAL', 'SHORTFICTION', 'CHAPBOOK'),
 	  parent INTEGER,
