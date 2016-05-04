@@ -1,4 +1,4 @@
-INSERT INTO Title_Series (id, title_id, parent, note) 
+INSERT INTO Title_Series (id, title, parent, note) 
 SELECT t.id, t.title, t.parent, n.note
 FROM Title_Series_temp t, Notes n
 WHERE t.note_id = n.id
