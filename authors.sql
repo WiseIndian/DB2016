@@ -5,7 +5,7 @@ Authors (id,  name,  legal_name ,  last_name,
 SELECT a.id, a.name, a.legal_name, a.last_name, a.pseudo, a.birthplace,
 a.birthdate, a.deathdate, a.email, a.img_link, a.language_id, NULL
 FROM Authors_temp a
-WHERE a.note_id = NULL
+WHERE a.note_id IS NULL
 UNION
 SELECT a.id, a.name, a.legal_name, a.last_name, a.pseudo, a.birthplace,
 	a.birthdate, a.deathdate, a.email, a.img_link, a.language_id, n.note
