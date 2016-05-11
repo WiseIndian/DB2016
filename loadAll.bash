@@ -30,10 +30,15 @@ function sqlConn {
 	echo "$sqlLoad"
 	eval "$sqLoad"
 }
+#call this function like:
+#loadTuples "csv1.csv,Table1 csv2.csv,Table2" "<additional-sql-code-to-append-to-loadCommand3>"
+#tuples is "csv1.csv,...,Table2" 
+#and appendable is "<additional-sql-code-to-append-to-loadCommand3>"
 function loadTuples { 
 	OLDIFS=$IFS
-	tuples="$@" #load arguments of loadTuples into tuples
-
+	tuples="$1" #load arguments of loadTuples into tuples
+	appendable="$2" #will be an empty string if nothing specified
+	
 	if [ -f sqlLoadFile.sql ]; then
 		rm sqlLoadFile.sql
 	fi
@@ -44,7 +49,7 @@ function loadTuples {
 		#set $1, $2 ... to all comma separated values
 		temp1="$loadCommand1""$1"
 		temp2="$loadCommand2""$2""$loadCommand3"
-		sqlCmd="$temp1""$temp2"
+		sqlCmd="$temp1""$temp2""$appendable"
 		echo "$sqlCmd"
 		echo "$sqlCmd" >> sqlLoadFile.sql
 	done
@@ -73,139 +78,30 @@ function deleteAllRowsFromAllTables {
 
 deleteAllRowsFromAllTables
 #calling loadTuples
-loadTuples "notes_rem.csv,Notes languages_rem.csv,Languages authors_rem.csv,Authors_temp"
+loadTuples "notes_rem.csv,Notes
+	    languages_rem.csv,Languages 
+	    authors_rem.csv,Authors_temp"
  
 sqlConn " < authors.sql" #checked
 
-loadTuples "title_series_rem.csv, Title_Series_temp"
+loadTuples "title_series_rem.csv,Title_Series_temp"
 sqlConn " < title_series.sql" #checked
 
 loadTuples "titles_rem.csv,Titles_temp"
 sqlConn  " < titles.sql"
-sqlConn " < title_is_translated_in"
-
-#	title_is_reviewed_by = '''
-#	CREATE TABLE title_is_reviewed_by (
-#	title_id  INTEGER,
-#	review_title_id INTEGER,
-#	PRIMARY KEY (title_id, review_title_id),
-#	FOREIGN KEY (title_id) REFERENCES Titles(id) ON DELETE CASCADE,
-#	FOREIGN KEY (review_title_id) REFERENCES Titles(id) ON DELETE CASCADE,
-#	CHECK (title_id != review_title_id)
-#	) ENGINE=InnoDB;'''
-#	createTable(title_is_reviewed_by)
-#
-#	title_is_part_of_Title_Series = '''
-#	CREATE TABLE title_is_part_of_Title_Series (
-#	title_id  INTEGER,
-#	series_id INTEGER NOT NULL,
-#	series_number INTEGER,
-#	PRIMARY KEY (title_id),
-#	FOREIGN KEY (title_id) REFERENCES Titles(id) ON DELETE CASCADE,
-#	FOREIGN KEY (series_id) REFERENCES Title_Series(id) ON DELETE CASCADE
-#	) ENGINE=InnoDB;'''
-#	createTable(title_is_part_of_Title_Series)
-#
-#
-#	award_types_temp = '''
-#	CREATE TABLE Award_Types_temp (
-#	  id INTEGER,
-#	  code VARCHAR(5),
-#	  name VARCHAR(255),
-#	  note_id INTEGER,
-#	  awarded_by VARCHAR(255),
-#	  awarded_for VARCHAR(255),
-#	  short_name VARCHAR(255),
-#	  is_poll BOOLEAN,
-#	  non_genre BOOLEAN,
-#	  PRIMARY KEY (id),
-#	  FOREIGN KEY (note_id) REFERENCES Notes(id) ON DELETE SET NULL,
-#	  CHECK (name IS NOT NULL OR code IS NOT NULL)
-#	) ENGINE=InnoDB;'''
-#	createTable(award_types_temp)
-#
-#	award_types = '''
-#	CREATE TABLE Award_Types (
-#	  id INTEGER,
-#	  code VARCHAR(5),
-#	  name VARCHAR(255),
-#	  note TEXT,
-#	  awarded_by VARCHAR(255),
-#	  awarded_for VARCHAR(255),
-#	  short_name VARCHAR(255),
-#	  is_poll BOOLEAN,
-#	  non_genre BOOLEAN,
-#	  PRIMARY KEY (id),
-#	  CHECK (name IS NOT NULL OR code IS NOT NULL)
-#	) ENGINE=InnoDB;'''
-#	createTable(award_types)
-#
-#	award_categories_temp = '''
-#	CREATE TABLE Award_Categories_temp (
-#	  id INTEGER,
-#	  name VARCHAR(255),
-#	  type_id INTEGER,
-#	  category_order INTEGER,
-#	  note_id INTEGER,
-#	  PRIMARY KEY (id, type_id),
-#	  FOREIGN KEY (note_id) REFERENCES Notes(id) ON DELETE SET NULL,
-#	  FOREIGN KEY (type_id) REFERENCES Award_Types(id) ON DELETE CASCADE
-#	) ENGINE=InnoDB;'''
-#	createTable(award_categories_temp)
-#
-#	award_categories = '''
-#	CREATE TABLE Award_Categories (
-#	  id INTEGER,
-#	  name VARCHAR(255),
-#	  type_id INTEGER,
-#	  category_order INTEGER,
-#	  /* position INTEGER, TODO what is position, is this award category order?*/
-#	  note TEXT,
-#	  PRIMARY KEY (id, type_id),
-#	  FOREIGN KEY (type_id) REFERENCES Award_Types(id) ON DELETE CASCADE
-#	) ENGINE=InnoDB;'''
-#	createTable(award_categories);
-#
-#
-#	awards_temp = '''
-#	CREATE TABLE Awards_temp (
-#	  id INTEGER,
-#	  title VARCHAR(255),
-#	  aw_date DATE,
-#	  type_id INTEGER,
-#	  category_id INTEGER,
-#	  note_id INTEGER,
-#	  PRIMARY KEY (id),
-#	  FOREIGN KEY (note_id) REFERENCES Notes(id) ON DELETE SET NULL,
-#	  FOREIGN KEY (category_id) REFERENCES Award_Categories(id) ON DELETE SET NULL,
-#	  FOREIGN KEY (type_id) REFERENCES Award_Types(id) ON DELETE SET NULL
-#	) ENGINE=InnoDB;'''
-#	createTable(awards_temp)
-#
-#	awards = '''
-#	CREATE TABLE Awards (
-#	  id INTEGER,
-#	  title VARCHAR(255),
-#	  aw_date DATE,
-#	  type_id INTEGER,
-#	  category_id INTEGER,
-#	  note_id TEXT,
-#	  PRIMARY KEY (id),
-#	  FOREIGN KEY (category_id) REFERENCES Award_Categories(id) ON DELETE SET NULL,
-#	  FOREIGN KEY (type_id) REFERENCES Award_Types(id) ON DELETE SET NULL
-#	) ENGINE=InnoDB;'''
-#	createTable(awards)
-#
-#	title_wins_award = '''
-#	CREATE TABLE title_wins_award (
-#	award_id  INTEGER,
-#	title_id INTEGER,
-#	PRIMARY KEY (award_id, title_id),
-#	FOREIGN KEY (award_id) REFERENCES Awards(id) ON DELETE CASCADE,
-#	FOREIGN KEY (title_id) REFERENCES Titles(id) ON DELETE CASCADE
-#	) ENGINE=InnoDB;'''
-#	createTable(title_wins_award)
-#
+sqlConn " < title_is_translated_in.sql"
+loadTuples "reviews_rem.csv,title_is_reviewed_by 
+	    titles_series_rem.csv,title_is_part_of_Title_Series
+	    award_types_rem.csv,Award_Types_temp"
+sqlConn " < awardsTypes.sql"
+loadTuples "award_categories_rem.csv,Award_Categories_temp"
+sqlConn " < awardCategories.sql"
+loadTuples "awards_rem.csv,Awards_temp"
+sqlConn " < awards.sql"
+#see http://stackoverflow.com/questions/4202564/how-to-insert-selected-columns-from-csv-file-to-mysql-using-load-data-infile  
+#for following 2 lines of code
+selectCsvColumns="(@col1, @col2, @col3) set award_id=@col2, title_id=@col3"
+loadTuples "titles_awards_rem.csv,title_wins_award" "$selectCsvColumns"
 #	tags = '''
 #	CREATE TABLE Tags (
 #	id INTEGER,
