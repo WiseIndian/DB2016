@@ -82,39 +82,8 @@ sqlConn " < title_series.sql" #checked
 
 loadTuples "titles_rem.csv,Titles_temp"
 sqlConn  " < titles.sql"
-#
-#	titles = '''
-#	CREATE TABLE Titles (
-#	  id INTEGER,
-#	  title VARCHAR(255) NOT NULL,
-#	  synopsis TEXT,
-#	  note TEXT,
-#	  story_len ENUM('nv', 'ss', 'jvn', 'nvz', 'sf'),
-#	  type ENUM('ANTHOLOGY', 'BACKCOVERART', 'COLLECTION', 'COVERART', 'INTERIORART',
-#		  'EDITOR', 'ESSAY', 'INTERVIEW', 'NOVEL', 'NONFICTION', 'OMNIBUS', 'POEM',
-#		  'REVIEW', 'SERIAL', 'SHORTFICTION', 'CHAPBOOK'),
-#	  parent INTEGER,
-#	  language_id INTEGER,
-#	  title_graphic BOOLEAN,
-#	  PRIMARY KEY (id),
-#	  FOREIGN KEY (language_id) REFERENCES Languages(id) ON DELETE SET NULL
-#	) ENGINE=InnoDB;'''
-#	createTable(titles)
-#
-#	title_is_translated_in = '''
-#	CREATE TABLE title_is_translated_in (
-#	  title_id  INTEGER,
-#	  trans_title_id INTEGER,
-#	  language_id INTEGER NOT NULL,
-#	  translator VARCHAR(64),
-#	  PRIMARY KEY (trans_title_id),
-#	  FOREIGN KEY (title_id) REFERENCES Titles(id) ON DELETE CASCADE,
-#	  FOREIGN KEY (trans_title_id) REFERENCES Titles(id) ON DELETE CASCADE,
-#	  FOREIGN KEY (language_id) REFERENCES Languages(id) ON DELETE CASCADE
-#	) ENGINE=InnoDB;'''
-#	createTable(title_is_translated_in);
-#
-#
+sqlConn " < title_is_translated_in"
+
 #	title_is_reviewed_by = '''
 #	CREATE TABLE title_is_reviewed_by (
 #	title_id  INTEGER,
