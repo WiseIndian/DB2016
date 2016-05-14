@@ -100,36 +100,9 @@ loadTuples "awards_rem.csv,Awards_temp"
 sqlConn " < awards.sql"
 #see http://stackoverflow.com/questions/4202564/how-to-insert-selected-columns-from-csv-file-to-mysql-using-load-data-infile  
 #for following 2 lines of code
-selectCsvColumns="(@col1, @col2, @col3) set award_id=@col2, title_id=@col3"
-loadTuples "titles_awards_rem.csv,title_wins_award" "$selectCsvColumns"
-#	tags = '''
-#	CREATE TABLE Tags (
-#	id INTEGER,
-#	name VARCHAR(255),
-#	PRIMARY KEY (id)
-#	) ENGINE=InnoDB;'''
-#	createTable(tags)
-#
-#	title_has_tag = '''
-#	CREATE TABLE title_has_tag (
-#	tag_id  INTEGER,
-#	title_id INTEGER,
-#	PRIMARY KEY (tag_id, title_id),
-#	FOREIGN KEY (tag_id) REFERENCES Tags(id) ON DELETE CASCADE,
-#	FOREIGN KEY (title_id) REFERENCES Titles(id) ON DELETE CASCADE
-#	) ENGINE=InnoDB;'''
-#	createTable(title_has_tag)
-#
-#	publishers_temp = '''
-#	CREATE TABLE Publishers_temp (
-#	  id INTEGER,
-#	  name VARCHAR(255),
-#	  note_id INTEGER,
-#	  PRIMARY KEY (id),
-#	  FOREIGN KEY (note_id) REFERENCES Notes(id)  ON DELETE SET NULL
-#	) ENGINE=InnoDB;'''
-#	createTable(publishers_temp)
-#
+csvColumnsTitleAwards="(@col1, @col2, @col3) set award_id=@col2, title_id=@col3"
+loadTuples "titles_awards_rem.csv,title_wins_award" "$csvColumnsTitleAwards"
+loadTuples "tags_rem.csv,Tags titles_tag_rem.csv,title_has_tag publishers_rem.csv,Publishers_temp"
 #	publishers = '''
 #	CREATE TABLE Publishers (
 #	  id INTEGER,
