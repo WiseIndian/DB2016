@@ -256,7 +256,7 @@ CREATE TABLE Award_Types_temp (
   non_genre BOOLEAN,
   PRIMARY KEY (id),
   FOREIGN KEY (note_id) REFERENCES Notes(id) ON DELETE SET NULL
-  CONTRAINT CK_not_null CHECK (name != NULL OR code != NULL)
+  CONTRAINT CK_not_null CHECK (name IS NOT NULL OR code IS NOT NULL)
 );
 
 LOAD DATA LOCAL INFILE '/home/simonlbc/workspace/DB/DB2016/CSV/award_types_rem.csv'
@@ -277,7 +277,7 @@ CREATE TABLE Award_types (
   is_poll BOOLEAN,
   non_genre BOOLEAN,
   PRIMARY KEY (id),
-  CONTRAINT CK_not_null CHECK (name != NULL OR code != NULL) 
+  CONTRAINT CK_not_null CHECK (name IS NOT NULL OR code IS NOT NULL) 
 ) 
 SELECT a_t.id, code, name, n.note, awarded_by, awarded_for, short_name,
 	is_poll, non_genre  
