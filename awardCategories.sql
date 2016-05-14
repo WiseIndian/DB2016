@@ -6,6 +6,6 @@ WHERE note_id = n.id
 UNION
 SELECT id, name, type_id, category_order, NULL
 FROM Award_Categories_temp
-WHERE note_id = NULL
+WHERE note_id IS NULL
 ;
 

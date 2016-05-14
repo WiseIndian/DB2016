@@ -5,6 +5,6 @@ WHERE n.id = note_id
 UNION
 SELECT id, title, aw_date, type_id, category_id, NULL
 FROM Awards_temp
-WHERE note_id = NULL
+WHERE note_id IS NULL
 ;
 

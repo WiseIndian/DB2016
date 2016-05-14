@@ -8,6 +8,6 @@ UNION
 SELECT a_t.id, code, name, NULL, awarded_by, awarded_for, short_name,
         is_poll, non_genre
 FROM Award_Types_temp a_t
-WHERE a_t.note_id = NULL
+WHERE a_t.note_id IS NULL
 ;
 
