@@ -356,9 +356,12 @@ def createAllTables():
 				 aura pas un prix > un million dans n'importe quelle currency?*/
 	  currency VARCHAR(1),
 	  note_id INTEGER,
+	  publication_series_id INTEGER,
+	  publication_series_number INTEGER,
 	  PRIMARY KEY (id),
 	  FOREIGN KEY (note_id) REFERENCES Notes(id) ON DELETE SET NULL,
-	  FOREIGN KEY (publisher_id) REFERENCES Publishers(id) ON DELETE CASCADE
+	  FOREIGN KEY (publisher_id) REFERENCES Publishers(id) ON DELETE CASCADE,
+	  FOREIGN KEY (publication_series_id) REFERENCES Publications_Series
 	) ENGINE=InnoDB;'''
 	createTable(publications_temp)
 
@@ -382,8 +385,11 @@ def createAllTables():
 				 aura pas un prix > un million dans n'importe quelle currency?*/
 	  currency VARCHAR(1),
 	  note TEXT,
+	  publication_series_id INTEGER,
+	  publication_series_number INTEGER,
 	  PRIMARY KEY (id),
 	  FOREIGN KEY (publisher_id) REFERENCES Publishers(id) ON DELETE CASCADE
+	  FOREIGN KEY (publication_series_id) REFERENCES Publications_Series
 	) ENGINE=InnoDB;'''
 	createTable(publications)
 
