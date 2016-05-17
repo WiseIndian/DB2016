@@ -339,11 +339,7 @@ def createAllTables():
 	publications_temp = '''
 	CREATE TABLE Publications_temp (
 	  id INTEGER,
-	  /* we should use a view/relationship that just describes the many to many relationship
-	   * and references of Titles id and Publications id, see todoFromDeliv1Feedback file(on github)
-	   * for more info on how to do it.
-	   */
-	  title VARCHAR(255), /*stay closer to definition of the csv file as described in todoFromDeliv1Feedback */
+	  title VARCHAR(255), /*stay closer to definition of the csv file as described in todoFromDeliv1Feedback and then we'll use this field to create view Title_Publications*/
 	  pb_date DATE,
 	  publisher_id INTEGER,
 	  nb_pages INTEGER,
@@ -368,11 +364,6 @@ def createAllTables():
 	publications = '''
 	CREATE TABLE Publications (
 	  id INTEGER,
-	  /* we should use a view/relationship that just describes the many to many relationship
-	   * and references of Titles id and Publications id, see todoFromDeliv1Feedback file(on github)
-	   * for more info on how to do it.
-	   */
-	  title VARCHAR(255), /*stay closer to definition of the csv file as described in todoFromDeliv1Feedback */
 	  pb_date DATE,
 	  publisher_id INTEGER,
 	  nb_pages INTEGER,
