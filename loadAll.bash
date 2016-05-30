@@ -1,9 +1,12 @@
 #!/bin/bash
 
+source dbConfig.bash
+
 #you have to execute this script in base of repo i.e. from DB2016
 #and that because the load*.sql files use paths relative to the current directory!
 
 csvLocation=CSV #don't put a directory name containing spaces it won't work
+
 
 #used to connect to the database and execute some sql script
 
@@ -12,7 +15,7 @@ function sqlConn { # "$@" could be < aSqlScript.sql
 }
 
 function countRowsFromEveryTables { # can be used as useful feedback
-	bash countRowsNumber.bash cs322 
+	bash countRowsNumber.bash "$database"
 }
 
 function clean {
@@ -23,9 +26,6 @@ function clean {
 	fi
 }
 
-clean
-
-sh rmRet.sh #delete ^M and other bullshit carriage return \r...
 
 loadCommand1="LOAD DATA LOCAL INFILE '"$csvLocation"/"
 #add csv file name in between loadCommand1 and 2 in for loop
@@ -58,12 +58,12 @@ function loadTuples {
 		temp1="$loadCommand1""$1"
 		temp2="$loadCommand2""$2""$loadCommand3"
 		sqlCmd="$temp1""$temp2""$appendable"
-		echo "$sqlCmd"
 		echo "$sqlCmd" >> sqlLoadFile.sql
 	done
-	sqlConn --local-infile=1 < sqlLoadFile.sql
+	sqlConn --local-infile=1 '<' sqlLoadFile.sql
 	#--local-infile=1 option used to be able to import from csv
 	IFS=$OLDIFS
+	echo "loaded csvs into: $tuples"
 }
 
 function deleteFromTables {
@@ -77,37 +77,49 @@ function deleteFromTables {
 		set -- $t
 		echo "DELETE FROM $t" >> sqlDeleteFile
 	done
-	sqlConn < sqlDeleteFile
+	sqlConn '<' sqlDeleteFile 
 }
 
 function deleteAllRowsFromAllTables {
-	sqlConn < deleteAll.sql
+	sqlConn '<' deleteAll.sql
+	echo "deleted all rows"
 }
 
+
+echo "hello"
+clean
+
+echo "hello2"
+sh rmRet.sh #delete ^M and other bullshit carriage return \r...
+echo "hello3"
+
 deleteAllRowsFromAllTables
-countRowsFromEveryTables #to check if deleting all rows worked
+
+echo "hello4"
+nbRows=countRowsFromEveryTables
+echo "number of rows in all tables: $nbRows"  #to check if deleting all rows worked
 
 #calling loadTuples
 loadTuples "notes_rem.csv,Notes
 	    languages_rem.csv,Languages 
 	    authors_rem.csv,Authors_temp"
  
-sqlConn < authors.sql #checked
+sqlConn '<' authors.sql #checked
 
 loadTuples "titles_series_rem.csv,Title_Series_temp"
-sqlConn < title_series.sql #checked
+sqlConn '<' title_series.sql #checked
 
 loadTuples "titles_rem.csv,Titles_temp"
-sqlConn  < titles.sql
-sqlConn < title_is_translated_in.sql
+sqlConn  '<' titles.sql
+sqlConn '<' title_is_translated_in.sql
 loadTuples "reviews_rem.csv,title_is_reviewed_by 
 	    titles_series_rem.csv,title_is_part_of_Title_Series
 	    award_types_rem.csv,Award_Types_temp"
-sqlConn < awardsTypes.sql
+sqlConn '<' awardsTypes.sql
 loadTuples "award_categories_rem.csv,Award_Categories_temp"
-sqlConn < awardCategories.sql
+sqlConn '<' awardCategories.sql
 loadTuples "awards_rem.csv,Awards_temp"
-sqlConn < awards.sql
+sqlConn '<' awards.sql
 
 #see http://stackoverflow.com/questions/4202564/how-to-insert-selected-columns-from-csv-file-to-mysql-using-load-data-infile  
 #for following 2 lines of code
@@ -115,9 +127,9 @@ csvColumnsTitleAwards="(@col1, @col2, @col3) set award_id=@col2, title_id=@col3"
 loadTuples "titles_awards_rem.csv,title_wins_award" "$csvColumnsTitleAwards"
 
 loadTuples "tags_rem.csv,Tags titles_tag_rem.csv,title_has_tag publishers_rem.csv,Publishers_temp"
-sqlConn < publishers.sql
+sqlConn '<' publishers.sql
 loadTuples "publications_series_rem.csv,Publication_Series_temp"
-sqlConn < publications_series.sql
+sqlConn '<' publications_series.sql
 
 bash parsePublicationsMore.bash
 
