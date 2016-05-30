@@ -379,7 +379,7 @@ def createAllTables():
 	  publication_series_id INTEGER,
 	  publication_series_number INTEGER,
 	  PRIMARY KEY (id),
-	  FOREIGN KEY (publisher_id) REFERENCES Publishers(id) ON DELETE CASCADE
+	  FOREIGN KEY (publisher_id) REFERENCES Publishers(id) ON DELETE CASCADE,
 	  FOREIGN KEY (publication_series_id) REFERENCES Publication_Series(id)
 	) ENGINE=InnoDB;'''
 	createTable(publications)
