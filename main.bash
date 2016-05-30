@@ -12,6 +12,7 @@ if [ "$needInstall" -eq 1 ]
 then 
 	echo doingInstall
 	sudo bash installSql.bash 
+	sudo apt-get install python-mysqldb #for python scripts in Python\ Parsing
 fi
 replaceConfigVar needInstall 0
 
@@ -25,4 +26,12 @@ then
 fi
 replaceConfigVar needConfig 0
 
-#bash loadAll.bash #load all data into the database (can take around 5 minutes)
+if [ "$needCreateTables" -eq 1 ]
+then 
+	cd Python\ Parsing
+	python createAllTables.py
+	cd -
+fi
+replaceConfigVar needCreateTables 0
+
+bash loadAll.bash #load all data into the database (can take around 5 minutes)
