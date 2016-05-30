@@ -1,9 +1,11 @@
-sqlConnBase="mysql -h localhost -u group8 --password=toto123"
-dbName="cs322"
+#!/bin/bash
+
+sqlConnBase="mysql -h localhost -u group8 -ptoto123 cs322"
 
 function sqlConn {
-        sqlLoad="$sqlConnBase $@ $dbName"
+        sqlLoad="$sqlConnBase $@"
         echo "$sqlLoad"
-        eval "$sqLoad"
+        eval "$sqlLoad"
 }
 
+sqlConn "$@"
