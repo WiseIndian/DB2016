@@ -132,6 +132,9 @@ loadTuples "publications_series_rem.csv,Publication_Series_temp"
 sqlConn '<' publications_series.sql
 
 bash parsePublicationsMore.bash
+loadTuples "publications_rem.csv,Publications_temp"
+
+#TODO continue loading of tables here!!!
 
 #useful feedback to check if inserting has worked well
 totalRowsInDB=countRowsFromEveryTables 
