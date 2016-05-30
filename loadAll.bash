@@ -4,13 +4,10 @@
 #and that because the load*.sql files use paths relative to the current directory!
 
 csvLocation=CSV #don't put a directory name containing spaces it won't work
-sqlConnBase="mysql -h localhost -u group8 --password=toto123"
-dbName="cs322"
 
-function sqlConn {
-	sqlLoad="$sqlConnBase $@ $dbName"
-	echo "$sqlLoad"
-	eval "$sqLoad"
+#used to connect to the database and execute some sql script
+function sqlConn { # "$@" could be < aSqlScript.sql 
+	bash sqlConn.bash $@ 
 }
 
 function clean {
