@@ -12,7 +12,7 @@ function countRowsFromEveryTables { # can be used as useful feedback
          FROM INFORMATION_SCHEMA.TABLES 
          WHERE TABLE_SCHEMA = '$1';"
         echo "$sqlQuery" > tempSqlScript.sql
-        sqlConn < tempSqlScript.sql | sed -n '/^[0-9]\+$/p'
+        sqlConn < tempSqlScript.sql | grep '^[0-9][0-9]*$'
         #could rm tempSqlScript.sql if we wanted
 }
 
