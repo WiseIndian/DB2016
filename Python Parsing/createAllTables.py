@@ -357,7 +357,7 @@ def createAllTables():
 	  PRIMARY KEY (id),
 	  FOREIGN KEY (note_id) REFERENCES Notes(id) ON DELETE SET NULL,
 	  FOREIGN KEY (publisher_id) REFERENCES Publishers(id) ON DELETE CASCADE,
-	  FOREIGN KEY (publication_series_id) REFERENCES Publications_Series
+	  FOREIGN KEY (publication_series_id) REFERENCES Publications_Series(id)
 	) ENGINE=InnoDB;'''
 	createTable(publications_temp)
 
@@ -380,7 +380,7 @@ def createAllTables():
 	  publication_series_number INTEGER,
 	  PRIMARY KEY (id),
 	  FOREIGN KEY (publisher_id) REFERENCES Publishers(id) ON DELETE CASCADE
-	  FOREIGN KEY (publication_series_id) REFERENCES Publications_Series
+	  FOREIGN KEY (publication_series_id) REFERENCES Publications_Series(id)
 	) ENGINE=InnoDB;'''
 	createTable(publications)
 
