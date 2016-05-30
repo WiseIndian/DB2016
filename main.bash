@@ -22,16 +22,22 @@ then
 	echo "create database $db;
 	CREATE USER '$user'@'localhost' IDENTIFIED BY '$password';
 	GRANT ALL PRIVILEGES ON $db"".* TO '$user'@'localhost';" > sqlConfTmp.sql
-	mysql -u root -p < sqlConfTmp.sql
+	echo "connecting as root to create user group8 and create database!!"
+	mysql -u root -h "$host" -p < sqlConfTmp.sql
 fi
 replaceConfigVar needConfig 0
 
 if [ "$needCreateTables" -eq 1 ]
-then 
-	cd Python\ Parsing
+then    
+	echo "DROP DATABASE IF EXISTS $db; 
+	create database $db;
+	GRANT ALL PRIVILEGES ON $db"".* TO '$user'@'localhost';" > tmpSql.sql
+	echo "connecting as root to create databases!!"
+	mysql -u root -h "$host" -p  < tmpSql.sql #need root here sorry a bit annoying
+	cd Python\ Parsing				#but its painful o.w.
 	python createAllTables.py
 	cd -
 fi
 replaceConfigVar needCreateTables 0
 
-bash loadAll.bash #load all data into the database (can take around 5 minutes)
+#bash loadAll.bash #load all data into the database (can take around 5 minutes)
