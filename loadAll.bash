@@ -12,12 +12,7 @@ function sqlConn { # "$@" could be < aSqlScript.sql
 }
 
 function countRowsFromEveryTables { # can be used as useful feedback
-	sqlQuery='SELECT SUM(TABLE_ROWS)
-         FROM INFORMATION_SCHEMA.TABLES 
-         WHERE TABLE_SCHEMA = 'cs322';'
-	echo "$sqlQuery" > tempSqlScript.sql
-	sqlConn " < tempSqlScript.sql"
-	#could rm tempSqlScript.sql if we wanted
+	bash countRowsNumber.bash cs322 
 }
 
 function clean {
