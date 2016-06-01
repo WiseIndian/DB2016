@@ -6,11 +6,7 @@ sqlConnBase="mysql -h $host -u $user -p$password $db"
 
 pWarn="Warning: Using a password on the command line interface can be insecure"
 function sqlConn { 
-	if  [ -z "$@" ]; then
-		sqlCmd="$sqlConnBase $@"
-	else 
-		sqlCmd="$sqlConnBase"
-	fi
+	sqlCmd="$sqlConnBase $@"
         `eval "$sqlCmd" 2>stderrFile`
 	cat stderrFile | sed '/^.*'"$pWarn"'.*$/d' 1>&2 ;
 	#the before code redirects stderr to a file so that we can
@@ -18,7 +14,7 @@ function sqlConn {
 	# we're just trying to debug our program:
 }
 
-if [ ! -z "$@" ]; then
+if [ "${#}" -ne 0 ]; then
 	sqlConn "$@"
 else 
 	eval "$sqlConnBase"
