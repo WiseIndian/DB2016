@@ -14,7 +14,7 @@ import re
 
 # Parse data from csv file
 
-filename = 'Books/publications.csv'
+filename = '../CSV/publications_rem.csv'
 f = open(filename, 'rU')
 f.seek(0)
 
@@ -24,39 +24,31 @@ reader = csv.DictReader(f, dialect='excel-tab', fieldnames=fields)
 data = []
 for row in reader:
 
-    publisher_id = Parse.nullize(row['publisher_id'])
-
-    nb_pages = Parse.nullize(row['nb_pages'])
-    if nb_pages:
+    nb_pages = row['nb_pages']
+    if nb_pages != '\N':
         nb_pages = re.sub('[^0-9]', '', nb_pages) # Only keep integers within the number of pages
 
     publication_type = Parse.publicationTypeFormat(row['publication_type'])
-    isbn = Parse.nullize(row['isbn'])
-    cover_img = Parse.nullize(row['cover_img'])
 
-    price = Parse.nullize(row['price'])
-    currency = None
-    if price:
+    price = row['price']
+    currency = '\N'
+    if price != '\N':
         if hex(ord(price[0])) == '0x24':
             currency = 'DOLLAR'
         elif hex(ord(price[0])) == '0xa3':
             currency = 'POUND'
         else:
-            currency = None
+            currency = '\N'
         price = price[1:]
 
-    note_id = Parse.nullize(row['note_id'])
-    publication_series_id = Parse.nullize(row['publication_series_id'])
-    publication_series_nb = Parse.nullize(row['publication_series_nb'])
-
-    data.append( (row['id'], row['title'], row['date'], publisher_id, nb_pages, row['packaging_type'], publication_type, isbn, cover_img, price, currency, note_id, publication_series_id, publication_series_nb) )
+    tuple = ( row['id'], row['title'], row['date'], row['publisher_id'], nb_pages, row['packaging_type'], publication_type, row['isbn'], row['cover_img'], currency, price, row['note_id'], row['publication_series_id'], row['publication_series_nb'] )
+    data.append(tuple)
 
 
-# Insert data into Database
+# Create a clean CSV file
 
-# db = DB.Database('db4free.net','group8','toto123', 'cs322')
-#
-# sql = 'INSERT INTO Authors (id, name, ...) VALUES (%s, %s, ...);'
-# db.insertMany(sql, data)
+with open('publicationsCLEAN.csv','w') as out:
+    csv_out = csv.writer(out, delimiter='\t')
 
-# ATTENTION : Currency est une ENUM !!!
+    for tuple in data:
+        csv_out.writerow(tuple)
