@@ -348,7 +348,7 @@ def createAllTables():
 				 'NOVEL', 'OMNIBUS', 'FANZINE', 'CHAPBOOK'),
 	  isbn INTEGER,
 	  cover_img VARCHAR(255),
-	  currency VARCHAR(1),
+	  currency ENUM('DOLLAR', 'POUND'),
 	  price DECIMAL(6, 5), /*valeurs un peu arbitraires, mais on peut imaginer qu'un livre 
 				 aura pas un prix > un million dans n'importe quelle currency?*/
 	  note_id INTEGER,
@@ -372,7 +372,7 @@ def createAllTables():
 				 'NOVEL', 'OMNIBUS', 'FANZINE', 'CHAPBOOK'),
 	  isbn INTEGER,
 	  cover_img VARCHAR(255),
-	  currency VARCHAR(1),
+	  currency ENUM('DOLLAR', 'POUND'),
 	  price DECIMAL(6, 5), /*valeurs un peu arbitraires, mais on peut imaginer qu'un livre 
 				 aura pas un prix > un million dans n'importe quelle currency?*/
 	  note TEXT,
