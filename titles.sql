@@ -1,4 +1,4 @@
-INSERT INTO Title(id, title, synopsis, note,
+INSERT INTO Titles(id, title, synopsis, note,
 		 story_len, title_type, parent, language_id, title_graphic) 
 SELECT t.id, t.title, syn.note, n.note, t.story_len, t.title_type, t.parent,
         t.language_id, t.title_graphic
