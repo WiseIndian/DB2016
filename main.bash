@@ -40,4 +40,4 @@ then
 fi
 replaceConfigVar needCreateTables 0
 
-#bash loadAll.bash #load all data into the database (can take around 5 minutes)
+bash loadAll.bash #load all data into the database (can take around 5 minutes)
