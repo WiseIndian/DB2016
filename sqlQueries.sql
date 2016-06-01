@@ -13,28 +13,29 @@ GROUP BY year;
  * ensuite on count le nombre de publication_id pour chaque set identifié par author_id
  * on sort ensuite le resultat et on output TOP 10
  */
-SELECT TOP 10 * FROM (
-	SELECT  a.name, COUNT(*) AS nb_publications  
-	FROM Authors a, authors_have_publications pb_as 
-	WHERE a.id = pb_as.author_id 
-	GROUP BY a.id
-	ORDER BY nb_publications DESC
-);
+SELECT  a.name, COUNT(*) AS nb_publications  
+FROM Authors a, authors_have_publications pb_as 
+WHERE a.id = pb_as.author_id 
+GROUP BY a.id
+ORDER BY nb_publications DESC
+LIMIT 10
 
 --c)What are the names of the youngest and oldest authors to publish something in 2010?
 -- can we do something more elegant? here we used two queries that are almost the same
 -- except for the DESC additional keyword in the second query.
 	-- query for the youngest author who published in 2010
-SELECT TOP 1 a.name
+SELECT a.name
 FROM Authors a, authors_have_publications pb_as, Publications pb
 WHERE YEAR(pb_date) = 2010 AND a.id = pb_as.author_id AND pb.id = pb_as.pub_id
 ORDER BY a.birthdate
+LIMIT 1
 UNION
 --query for the oldest author who published in 2010
-SELECT TOP 1 a.name
+SELECT a.name
 FROM Authors a, authors_have_publications pb_as, Publications pb
 WHERE YEAR(pb_date) = 2010 AND a.id = pb_as.author_id AND pb.id = pb_as.pub_id
 ORDER BY a.birthdate DESC
+LIMIT 1
 ;
 
 -- d)How many comics (graphic titles) have publications with less than 50 pages, less than 100 pages, and
@@ -92,7 +93,7 @@ GROUP BY pbsher.id
  */
 --first select all tuples of type (author, title) where title is tagged as science fiction
 --and group them by the author name
-SELECT TOP 1 * FROM (
+SELECT * FROM (
 	SELECT a.name, COUNT(*) AS "number of science fiction titles written" 
 	FROM Authors a, authors_have_publications ap, Title_Publications tp, title_has_tag tt, Tags
 	WHERE a.id = ap.author_id AND ap.pub_id = tp.pub_id AND 
@@ -100,7 +101,8 @@ SELECT TOP 1 * FROM (
 		Tags.name = 'science fiction'
 	GROUP BY a.name
 )
-ORDER BY "number of science fiction titles written" DESC ;
+ORDER BY "number of science fiction titles written" DESC 
+LIMIT 1;
 
 
 /*
@@ -109,7 +111,7 @@ ORDER BY "number of science fiction titles written" DESC ;
 -- we'll say that the degree of popularity of a title is equal to the sum of 
 -- the number of reviews and the number of awards for this title
 
-SELECT TOP 3 tr.title_id --if testing the query use * instead of tr.title_id
+SELECT tr.title_id --if testing the query use * instead of tr.title_id
 FROM (
 	SELECT tr.title_id, nb_reviews + nb_awards AS popularity
 		FROM (
@@ -128,6 +130,6 @@ FROM (
 	WHERE tr.title_id = twa.title_id
 )
 ORDER BY popularity DESC
-
+LIMIT 3;
 
 
