@@ -1,0 +1,5 @@
+regexp format:
+soit \d = [0-9]
+et \w= [
+for id(integers): ' '*(\d)' '*
+for all that is char255: ' '*(\w[\w' ']*)

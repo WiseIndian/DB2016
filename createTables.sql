@@ -77,7 +77,7 @@ CREATE TABLE Authors (
 SELECT a.id, a.name, a.legal_name, a.last_name, a.pseudo, a.birthplace,
 	a.birthdate, a.deathdate, a.email, a.img_link, a.language_id, NULL
 FROM Authors_temp a
-WHERE a.note_id = NULL
+WHERE a.note_id IS NULL
 UNION
 SELECT a.id, a.name, a.legal_name, a.last_name, a.pseudo, a.birthplace,
 	a.birthdate, a.deathdate, a.email, a.img_link, a.language_id, n.note 
@@ -120,7 +120,7 @@ WHERE t.note_id = n.id
 UNION 
 SELECT t.id, t.title, t.parent, NULL
 FROM Title_Series_temp t
-WHERE t.note_id = NULL
+WHERE t.note_id IS NULL
 ;
 
 
@@ -176,17 +176,17 @@ UNION
 SELECT t.id, t.title, NULL, n.note, t.story_len, t.parent, 
 	t.language_id, t.title_graphic
 FROM Titles_temp t, Notes n
-WHERE t.synopsis_id = NULL AND t.note_id = n.id
+WHERE t.synopsis_id IS NULL AND t.note_id = n.id
 UNION
 SELECT t.id, t.title, syn.note, NULL, t.story_len, t.parent, 
 	t.language_id, t.title_graphic
 FROM Titles_temp t, Notes syn
-WHERE t.note_id = NULL AND t.synopsis_id = syn.id
+WHERE t.note_id IS NULL AND t.synopsis_id = syn.id
 UNION
 SELECT t.id, t.title, NULL, NULL, t.story_len, t.parent, 
 t.language_id, t.title_graphic
 FROM Titles_temp t
-WHERE t.note_id = NULL AND t.synopsis_id = NULL
+WHERE t.note_id IS NULL AND t.synopsis_id IS NULL
 ;
 
 CREATE TABLE title_is_translated_in (
@@ -256,7 +256,7 @@ CREATE TABLE Award_Types_temp (
   non_genre BOOLEAN,
   PRIMARY KEY (id),
   FOREIGN KEY (note_id) REFERENCES Notes(id) ON DELETE SET NULL
-  CONTRAINT CK_not_null CHECK (name != NULL OR code != NULL)
+  CONTRAINT CK_not_null CHECK (name IS NOT NULL OR code IS NOT NULL)
 );
 
 LOAD DATA LOCAL INFILE '/home/simonlbc/workspace/DB/DB2016/CSV/award_types_rem.csv'
@@ -277,7 +277,7 @@ CREATE TABLE Award_types (
   is_poll BOOLEAN,
   non_genre BOOLEAN,
   PRIMARY KEY (id),
-  CONTRAINT CK_not_null CHECK (name != NULL OR code != NULL) 
+  CONTRAINT CK_not_null CHECK (name IS NOT NULL OR code IS NOT NULL) 
 ) 
 SELECT a_t.id, code, name, n.note, awarded_by, awarded_for, short_name,
 	is_poll, non_genre  
@@ -287,7 +287,7 @@ UNION
 SELECT a_t.id, code, name, NULL, awarded_by, awarded_for, short_name,
 	is_poll, non_genre  
 FROM Award_Types_temp a_t
-WHERE a_t.note_id = NULL
+WHERE a_t.note_id IS NULL
 ;
 
 
@@ -326,7 +326,7 @@ WHERE note_id = n.id
 UNION
 SELECT id, name, type_id, category_order, NULL 
 FROM Award_Categories_temp 
-WHERE note_id = NULL
+WHERE note_id IS NULL
 ;
 
 
@@ -369,7 +369,7 @@ WHERE n.id = note_id
 UNION 
 SELECT id, title, aw_date, type_id, category_id, NULL 
 FROM Awards_temp
-WHERE note_id = NULL
+WHERE note_id IS NULL
 ;
 
 
@@ -415,7 +415,7 @@ WHERE n.id = pb.note_id
 UNION
 SELECT id, name, NULL
 FROM Publishers_temp 
-WHERE n.id = NULL
+WHERE n.id IS NULL
 ;
 
 
@@ -439,7 +439,7 @@ WHERE pb_s.note_id = n.id
 UNION 
 SELECT id, name, NULL
 FROM Publication_Series_temp 
-WHERE note_id = NULL
+WHERE note_id IS NULL
 ;
 
 
@@ -509,7 +509,7 @@ UNION
 SELECT id, title, pb_date, publisher_id, nb_pages, packaging_type, 
 	publication_type, isbn, cover_img, price, currency, NULL 
 FROM Publications_temp 
-WHERE pb.note_id = NULL
+WHERE pb.note_id IS NULL
 ;
 
 CREATE TABLE authors_have_publications (

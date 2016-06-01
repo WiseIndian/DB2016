@@ -1,0 +1,3024 @@
+[1.53] failure: `	' expected but `;' found
+
+325	David Belden	Belden, David Corderoy	Belden	\N	UK;USA	1949-00-00	\N	\N	\N	17	\N
+   	            	                      	      	  	  ^
+[1.51] failure: string matching regex `\p{IsLatin}+' expected but `4' found
+
+574	Stefan Wul	Pairault, Pierre	Wul	141041	Paris (4th arrondissement), Seine, France	1922-03-27	2003-11-26	\N	http://www.fantascienza.com/catalogo/imgbank/foto/5764.jpg	22	\N
+   	          	                	   	      	       ^
+[1.33] failure: `	' expected but `~' found
+
+799	Rocio Escobar-Blanco	Escobar~Blanco, Rocio	Escobar-Blanco	\N	San Salvador, El Salvador	1961-00-00	\N	\N	\N	\N	263
+   	                    	       ^
+[1.54] failure: unexpected character in name part
+
+823	Lord Dunsany	Plunkett, Edward John Moreton Drax, 18th Baron Dunsany	Dunsany	110171	London, England, UK	1878-07-24	1957-10-25	\N	http://www.librarything.com/authorpics/dunsanylord8638-big.jpg	17	275
+   	            	                                    ^
+[1.100] failure: date format invalid
+
+948	Suzanne J. Barbieri	Barbieri, Suzanne Jacqueline	Barbieri	141120	London, England, UK	0000-01-02	\N	\N	\N	\N	\N
+   	                   	                            	        	      	                   	          ^
+[1.90] failure: `	' expected but `1' found
+
+956	James Van Pelt	Van Pelt, James	Pelt	\N	Akron, Ohio, USA	1954-00-00	\N	jvanpelt@mesa.k12.co.us	\N	17	334
+   	              	               	    	  	                	          	  	               ^
+[1.51] failure: `	' expected but `/' found
+
+1120	Edmund Nagele	Nagele, Edmund	Nagele	\N	Erfurt/Germany	1942-00-00	\N	\N	\N	\N	\N
+    	             	              	      	  	      ^
+[1.30] failure: `\N' expected but `	' found
+
+1617	Adrienne Martine-Barnes		Martine-Barnes	\N	Los Angeles, California, USA	1942-00-00	2015-07-20	\N	\N	17	\N
+    	                       	^
+[1.58] failure: `	' expected but `G' found
+
+1746	Owen Barfield	Barfield, Arthur Owen	Barfield	6454	6 Grosvenor Gardens, Muswell Hill, Middlesex, England, UK	1898-11-09	1997-12-14	\N	\N	17	526
+    	             	                     	        	    	  ^
+[1.86] failure: `	' expected but `–' found
+
+1902	Ludvig Holberg	Holberg, Ludvig	Holberg	116984	Bergen, Norway, Kingdom of Denmark–Norway	1684-12-03	1754-01-28	\N	\N	43	548
+    	              	               	       	      	                                  ^
+[1.58] failure: `	' expected but `=' found
+
+1912	Zhaxi Dawa	&#25166;&#35199;&#36798;&#23043;&#33879; =	Dawa	171035	Batang, China	1959-00-00	\N	\N	\N	13	\N
+    	          	                                         ^
+[1.72] failure: `	' expected but `4' found
+
+1962	Joseph Sheridan Le Fanu	Le Fanu, Joseph Sheridan	LeFanu	81537	No. 45 Lower Dominick Steet, Dublin, Ireland, UK	1814-08-28	1873-02-07	\N	http://www.isfdb.org/wiki/images/1/16/Le_Fanu.jpg	17	\N
+    	                       	                        	      	     	    ^
+[1.97] failure: `	' expected but `B' found
+
+2019	Edward Bulwer-Lytton	Bulwer-Lytton, Sir Edward George Earle Lytton	Bulwer-Lytton	128217	31 Baker Street, St Marylebone, Middlesex, England, UK	1803-05-25	1873-01-18	\N	http://www.isfdb.org/wiki/images/2/2b/Edward_Bulwer-Lytton.jpg	17	\N
+    	                    	                                             	             	      	   ^
+[1.65] failure: `	' expected but `[' found
+
+2349	Nevil Shute	Norway, Nevil Shute	Shute	\N	Ealing, Middlesex [now London], England, UK	1899-01-17	1960-01-12	\N	\N	17	\N
+    	           	                   	     	  	                  ^
+[1.59] failure: date format invalid
+
+3156	Peg Kerr	\N	Kerr	\N	Chicago, Illinois, USA	0000-04-28	\N	\N	http://www.tc.umn.edu/~d-lena/peg2.jpg	17	\N
+    	        	  	    	  	                      	          ^
+[1.34] failure: `	' expected but `[' found
+
+3508	Richard Powers (I)	\N	Powers[2]	\N	Evanston, Illinois, USA	1957-06-18	\N	\N	\N	17	\N
+    	                  	  	      ^
+[1.68] failure: `	' expected but `œ' found
+
+4175	Michel Butor	Butor, Michel Marie François	Butor	\N	Mons-en-Barœul, Nord, France	1926-09-14	\N	\N	http://www.isfdb.org/wiki/images/0/07/Michel_Butor.jpg	22	\N
+    	            	                            	     	  	           ^
+[1.80] failure: `	' expected but `Y' found
+
+4178	Frances Hodgson Burnett	Burnett, Frances Eliza Hodgson	Burnett	153902	141 York Street, Cheetham, Manchester, Lancashire, England, UK	1849-11-24	1924-10-29	\N	\N	17	\N
+    	                       	                              	       	      	    ^
+[1.22] failure: `s' expected but `–' found
+
+4371	John White (1924–2002)	\N	White	\N	Liverpool, Lancashire, England, UK	1924-03-05	2002-05-11	\N	\N	17	\N
+    	                ^
+[1.95] failure: string matching regex `\p{IsLatin}+' expected but `6' found
+
+4483	Simone de Beauvoir	Bertrand de Beauvoir, Simone-Lucie-Ernestine-Marie	Beauvoir	\N	Paris (6th arrondissement), Seine, France	1908-01-09	1986-04-14	\N	http://www.isfdb.org/wiki/images/4/43/Simone_de_Beauvoir.jpg	22	\N
+    	                  	                                                  	        	  	       ^
+[1.80] failure: `	' expected but `–' found
+
+4935	Jan Potocki	Potocki, Count Jan Nepomucen	Potocki	\N	Pikov, Podolia, Polish–Lithuanian Commonwealth	1761-03-08	1815-11-20	\N	http://www.isfdb.org/wiki/images/4/4b/Jan_Potocki.jpg	22	\N
+    	           	                            	       	  	                      ^
+[1.87] failure: `@' expected but `	' found
+
+6085	Carl Deuker	\N	Deuker	\N	San Francisco, California, USA	1950-08-26	\N	hotmail.com	\N	\N	\N
+    	           	  	      	  	                              	          	  	           ^
+[1.57] failure: `.' expected but ` ' found
+
+6300	Sandra Heath	\N	Heath	\N	\N	\N	\N	sandraheath@bluey onder.co.uk	\N	17	\N
+    	            	  	     	  	  	  	  	                 ^
+[1.45] failure: date format invalid
+
+6352	Rob Brezsny	\N	Brezsny	\N	\N	0000-06-23	\N	\N	\N	\N	\N
+    	           	  	       	  	  	          ^
+[1.57] failure: `	' expected but `R' found
+
+6504	Jocelyn Brooke	Brooke, Bernard Jocelyn	Brooke	\N	9 Radnor Cliff, Sandgate, Folkestone, Kent, England, UK	1908-11-30	1966-10-29	\N	\N	17	\N
+    	              	                       	      	  	  ^
+[1.47] failure: `	' expected but `+' found
+
+6711	Erckmann-Chatrian	Erckmann, Émile (left) + Chatrian, Alexandre (right)	Erckmann-Chatrian	\N	\N	\N	\N	\N	http://www.isfdb.org/wiki/images/0/08/Erckmann-Chatrian.jpg	22	\N
+    	                 	                       ^
+[1.51] failure: `@' expected but ` ' found
+
+6767	Paul Griner	\N	Griner	\N	\N	\N	\N	paul.griner @ louisville.edu	\N	17	\N
+    	           	  	      	  	  	  	  	           ^
+[1.10] failure: `	' expected but `!' found
+
+8280	Stan!	\N	Stan!	\N	\N	\N	\N	\N	\N	\N	\N
+    	    ^
+[1.89] failure: date format invalid
+
+8768	Paul Sagsoorian	\N	Sagsoorian	\N	Manhattan, New York City, New York, USA	1923-00-26	\N	\N	\N	17	\N
+    	               	  	          	  	                                       	          ^
+[1.61] failure: `	' expected but `[' found
+
+10278	Barbara Brooks Wallace	\N	Wallace	\N	Soochow, Kiangsu [now Suzhou, Jiangsu], China	1922-12-03	\N	\N	\N	17	\N
+     	                      	  	       	  	                 ^
+[1.69] failure: `	' expected but `M' found
+
+11634	Walter de la Mare	de la Mare, Walter John	de la Mare	19830	83 Maryon Road, Charlton, Kent, London, England, UK	1873-04-25	1956-06-22	\N	http://www.isfdb.org/wiki/images/c/c9/Walter_de_la_Mare.jpg	17	\N
+     	                 	                       	          	     	   ^
+[1.9] failure: unexpected character in name part
+
+12897	G---r G---n	\N	G---n	\N	\N	\N	\N	\N	\N	\N	\N
+     	  ^
+[1.42] failure: `)' expected but ` ' found
+
+13775	T. D. Hamm	Evans, Thelma Hamm (Mrs. E. E. Evans)	Hamm	16157	\N	1905-00-00	1994-00-00	\N	\N	17	\N
+     	          	                        ^
+[1.90] failure: `	' expected but `[' found
+
+18255	E. Phillips Oppenheim	Oppenheim, Edward Phillips	Oppenheim	\N	Tottenham, Middlesex [now London], England, UK	1866-10-22	1946-02-03	\N	\N	17	\N
+     	                     	                          	         	  	                     ^
+[1.9] failure: `	' expected but `-' found
+
+18406	J.-J. des Ormeaux	\N	Ormeaux	\N	\N	\N	\N	\N	\N	\N	\N
+     	  ^
+[1.9] failure: `	' expected but `*' found
+
+18750	Gr*g *g*n	\N	*g*n	\N	\N	\N	\N	\N	\N	\N	\N
+     	  ^
+[1.13] failure: `	' expected but `Ž' found
+
+18773	Zoran Živkovi&#263;	&#1047;&#1086;&#1088;&#1072;&#1085; &#1046;&#1080;&#1074;&#1082;&#1086;&#1074;&#1080;&#1115;	Živkovi&#263;	\N	Belgrade, Serbia, Yugoslavia	1948-10-05	\N	\N	\N	60	\N
+     	      ^
+[1.35] failure: `	' expected but `H' found
+
+19491	John Ruskin	\N	Ruskin	\N	54 Hunter Street, Brunswick Square, Bloomsbury, Middlesex, England, UK	1819-02-08	1900-01-20	\N	\N	17	\N
+     	           	  	      	  	   ^
+[1.249] failure: `	' expected but `–' found
+
+19709	Faddei Bulgarin	&#1041;&#1091;&#1083;&#1075;&#1072;&#1088;&#1080;&#1085;, &#1060;&#1072;&#1076;&#1076;&#1077;&#1081; &#1042;&#1077;&#1085;&#1077;&#1076;&#1080;&#1082;&#1090;&#1086;&#1074;&#1080;&#1095;	Bulgarin	\N	Peryshevo, Lithuania, Polish–Lithuanian Commonwealth	1789-07-05	1859-09-13	\N	\N	55	\N
+     	               	                                                                                                                                                                                         	        	  	                            ^
+[1.78] failure: `	' expected but `G' found
+
+19743	Dr. John William Polidori	Polidori, Dr. John William	Polidori	78921	38 Great Pulteney Street, Soho, Westminster, Middlesex, England, Kingdom of Great Britain	1795-09-07	1821-08-24	\N	http://www.isfdb.org/wiki/images/5/53/John_William_Polidori.jpg	17	\N
+     	                         	                          	        	     	   ^
+[1.13] failure: unexpected character in name part
+
+19819	Mr. M---	\N	M---	\N	\N	\N	\N	\N	\N	\N	\N
+     	      ^
+[1.88] failure: `)' expected but ` ' found
+
+19918	Ovid	Naso, Publius Ovidius	Ovid	194765	Sulmo, Paeligni, Roman Republic (Birthdate below is B.C.)	0043-03-20	0017-00-00	\N	\N	43	\N
+     	    	                     	    	      	                                          ^
+[1.58] failure: `	' expected but `B' found
+
+19930	E. E. Kellett	Kellett, Ernest Edward	Kellett	\N	21 Brewer Street, Maidstone, Kent, England, UK	1864-08-23	1950-10-23	\N	\N	17	\N
+     	             	                      	       	  	   ^
+[1.73] failure: `	' expected but `H' found
+
+19966	Lord George Gordon Byron	Byron, George Gordon Noel	Byron	92237	24 Holles Street, St Marylebone, Middlesex, England, Kingdom of Great Britain	1788-01-22	1824-04-19	\N	http://www.isfdb.org/wiki/images/4/4c/Lord_George_Gordon_Byron_.jpg	17	\N
+     	                        	                         	     	     	   ^
+[1.59] failure: `	' expected but `Q' found
+
+20394	Morley Roberts	Roberts, Morley Charles	Roberts	\N	5 Queen's Road, Paddington, Middlesex, England, UK	1857-12-29	1942-06-08	\N	\N	17	\N
+     	              	                       	       	  	  ^
+[1.56] failure: `	' expected but `W' found
+
+20855	Simon Raven	Raven, Simon Arthur Noël	Raven	\N	27 Wellbeck Street, St Marylebone, London, England, UK	1927-12-28	2001-05-12	\N	\N	17	\N
+     	           	                        	     	  	   ^
+[1.86] failure: `	' expected but `/' found
+
+22256	Decimus Magnus Ausonius	Decius or Decimus Magnus Ausonius	Ausonius	\N	Bordeaux / Burdigalia, Gallia Aquitania, Roman Empire	0310-00-00	0395-00-00	\N	http://www.isfdb.org/wiki/images/7/75/Ausonius.jpg	43	\N
+     	                       	                                 	        	  	         ^
+[1.11] failure: `	' expected but `1' found
+
+23462	The 1992 James Tiptree, Jr Award Judges	\N	Judges	\N	\N	\N	\N	\N	\N	\N	\N
+     	    ^
+[1.18] failure: `	' expected but `š' found
+
+23494	Jaroslav Olša, Jr.	\N	Olša	158767	Prague, Czechoslovakia	1964-08-04	\N	\N	\N	17	\N
+     	           ^
+[1.47] failure: date format invalid
+
+23974	James H. Burns	\N	Burns	\N	\N	0000-04-10	\N	\N	\N	17	\N
+     	              	  	     	  	  	          ^
+[1.9] failure: `	' expected but `-' found
+
+24103	J.-P. Vernier	\N	Vernier	\N	\N	\N	\N	\N	\N	\N	\N
+     	  ^
+[1.75] failure: date format invalid
+
+24469	Augusto Uribe	Jaureguízar, Agustin	Uribe	\N	Ferrol, Spain	0000-07-18	\N	\N	\N	\N	\N
+     	             	                    	     	  	             	          ^
+[1.13] failure: unexpected character in name part
+
+24942	Dr. H-	\N	H-	\N	\N	\N	\N	\N	\N	\N	\N
+     	      ^
+[1.7] failure: unexpected character in name part
+
+24943	'Triona Law	\N	Law	\N	\N	\N	\N	\N	\N	\N	\N
+     	^
+[1.17] failure: `	' expected but `?' found
+
+24950	Quien Sabe?	\N	Sabe?	\N	\N	\N	\N	\N	\N	\N	\N
+     	          ^
+[1.27] failure: `	' expected but `š' found
+
+25715	Nenad Jakesevic	Jakeševi&#263;, Nenad	Jakesevic	155986	\N	1950-00-00	\N	\N	\N	17	\N
+     	               	    ^
+[1.71] failure: `\N' expected but `'' found
+
+26314	Hieronymus Bosch	van Aken, Jheronimus Anthoniszoon	Bosch	164885	's-Hertogenbosch, Duchy of Brabant, Burgundian Netherlands	1450-00-00	1516-08-09	\N	http://www.isfdb.org/wiki/images/a/af/Hieronymus_Bosch.jpg	16	\N
+     	                	                                 	     	      	^
+[1.55] failure: `	' expected but `š' found
+
+26494	Zdenek Burian	Burian, Zden&#283;k Michael František	Burian	223356	Kop&#345;ivnice, Moravia, Austro-Hungarian Empire	1905-02-11	1981-07-01	\N	\N	17	\N
+     	             	                                  ^
+[1.35] failure: `	' expected but `"' found
+
+27568	Nodel	Nodel, Nochem Yeshaya "Norman"	Nodel	\N	Phoebus, Virginia, USA	1922-06-09	2000-02-25	\N	\N	17	\N
+     	     	                      ^
+[1.21] failure: `	' expected but `š' found
+
+27705	Ludek Pesek	Pešek, Lud&#283;k	Pesek	\N	Kladno, Bohemia, Czechoslovakia	1919-04-26	1999-12-04	\N	\N	14	\N
+     	           	  ^
+[1.51] failure: `	' expected but `[' found
+
+29472	David Punter	\N	Punter	\N	Harrow, Middlesex [now London], England, UK	1949-11-19	\N	\N	\N	17	\N
+     	            	  	      	  	                  ^
+[1.35] failure: `	' expected but `"' found
+
+30731	M. J. Simpson	Simpson, Mike "Simo"	Simpson	221480	\N	\N	\N	\N	\N	17	\N
+     	             	              ^
+[1.7] failure: unexpected character in name part
+
+33833	'Scoop' Goodstuff	\N	Goodstuff	\N	\N	\N	\N	\N	\N	\N	\N
+     	^
+[1.18] failure: `	' expected but `2' found
+
+33992	Kevin Dole 2	\N	Dole	\N	\N	\N	\N	\N	\N	\N	\N
+     	           ^
+[1.33] failure: `)' expected but ` ' found
+
+34019	Col. John Drake, SIS (ret. )	\N	Drake	\N	\N	\N	\N	\N	\N	\N	\N
+     	                          ^
+[1.18] failure: unexpected character in name part
+
+34326	Diane Tine'-Donner	\N	Tine'-Donner	\N	\N	\N	\N	\N	\N	\N	\N
+     	           ^
+[1.46] failure: date format invalid
+
+36694	Christina Dodd	\N	Dodd	\N	\N	0000-07-14	\N	\N	\N	17	\N
+     	              	  	    	  	  	          ^
+[1.59] failure: `	' expected but `/' found
+
+36758	Madelyn Alt	Alt, Madelyn	Alt	\N	Landstuhl, Rheinland/Pfalz, West Germany	1969-00-00	\N	\N	\N	\N	\N
+     	           	            	   	  	                    ^
+[1.45] failure: `	' expected but `-' found
+
+37286	Nicky Singer	\N	Singer	\N	Chalfont-St.-Peter, Buckinghamshire, England, UK	1956-00-00	\N	\N	\N	17	\N
+     	            	  	      	  	            ^
+[1.13] failure: `	' expected but `&' found
+
+39391	USAF R&D Command Headquarters	\N	Headquarters	\N	\N	\N	\N	\N	\N	\N	\N
+     	      ^
+[1.20] failure: `	' expected but `/' found
+
+39961	Harry Willock/Ink Studio	\N	Studio	\N	\N	\N	\N	\N	\N	\N	\N
+     	             ^
+[1.87] failure: date format invalid
+
+40951	Erzebet YellowBoy	\N	YellowBoy	118899	Philadelphia, Pennsylvania, USA	0000-06-12	\N	\N	\N	17	\N
+     	                 	  	         	      	                               	          ^
+[1.76] failure: `	' expected but `[' found
+
+44901	Hermann Oberth	Oberth, Herman Julius	Oberth	\N	Hermannstadt, Hungary [now Sibiu, Romania], Austro-Hungarian Empire	1894-06-25	1989-12-28	\N	\N	26	\N
+     	              	                     	      	  	                      ^
+[1.40] failure: `	' expected but `/' found
+
+49931	Ken Liu	&#21016;&#23431;&#26118; / Liú Y&#468;k&#363;n	Liu	\N	Lanzhou, China	1976-00-00	\N	\N	\N	17	\N
+     	       	                         ^
+[1.71] failure: `	' expected but `A' found
+
+51491	C. M. Woodhouse	Woodhouse, Christopher Montague	Woodhouse	\N	14 Abingdon Court, Kensington, London, England, UK	1917-05-11	2001-02-13	\N	\N	17	\N
+     	               	                               	         	  	   ^
+[1.12] failure: `	' expected but `/' found
+
+52811	Aster/Winslow Creative, Inc.	Aster/Winslow Creative	Aster/Winslow Creative	\N	\N	\N	\N	\N	\N	\N	\N
+     	     ^
+[1.11] failure: `	' expected but `3' found
+
+54501	gray318	Gray, Jonathan	Gray	\N	\N	\N	\N	\N	\N	17	\N
+     	    ^
+[1.15] failure: `	' expected but `/' found
+
+57011	Rickards/Vargo	\N	Rickards/Vargo	\N	\N	\N	\N	\N	\N	\N	\N
+     	        ^
+[1.8] failure: `	' expected but `*' found
+
+59951	S*ndr* M**s*l	\N	M**s*l	\N	\N	\N	\N	\N	\N	\N	\N
+     	 ^
+[1.13] failure: `	' expected but `'' found
+
+59991	E. E. 'Doc' Smith	\N	Smith	\N	\N	\N	\N	\N	\N	17	\N
+     	      ^
+[1.7] failure: unexpected character in name part
+
+60121	12E Design	\N	Design	\N	\N	\N	\N	\N	\N	\N	\N
+     	^
+[1.19] failure: `	' expected but `/' found
+
+66031	Digital Art / Corbis	\N	Corbis	\N	\N	\N	\N	\N	\N	\N	\N
+     	            ^
+[1.15] failure: `	' expected but `&' found
+
+69911	Adelson & Eichinger	\N	Eichinger	170235	\N	\N	\N	\N	\N	\N	\N
+     	        ^
+[1.10] failure: `	' expected but `&' found
+
+74051	F. & J. Silversmiths, Inc.	\N	Inc.	\N	\N	\N	\N	\N	\N	\N	\N
+     	   ^
+[1.14] failure: `	' expected but `*' found
+
+75721	A. P. H*rb*rt	\N	H*rb*rt	\N	\N	\N	\N	\N	\N	\N	\N
+     	       ^
+[1.79] failure: `	' expected but `A' found
+
+76449	Osbert Sitwell	Sitwell, Sir Francis Osbert Sacheverell	Sitwell	170143	3 Arlington Street, Westminster, Middlesex [now London], England, UK	1892-12-06	1969-05-04	\N	\N	17	\N
+     	              	                                       	       	      	  ^
+[1.17] failure: `	' expected but `&' found
+
+78653	Appelbaum & Curtis, Inc.	\N	Inc.	\N	\N	\N	\N	\N	\N	\N	\N
+     	          ^
+[1.15] failure: `	' expected but `6' found
+
+79245	Concept 60 Seven	\N	Seven	\N	\N	\N	\N	\N	\N	\N	\N
+     	        ^
+[1.7] failure: unexpected character in name part
+
+81653	5555 Communications	\N	Communications	\N	\N	\N	\N	\N	\N	\N	\N
+     	^
+[1.13] failure: `	' expected but `3' found
+
+82469	Total 333	\N	Total 333	\N	\N	\N	\N	\N	\N	\N	\N
+     	      ^
+[1.17] failure: `	' expected but `&' found
+
+82893	Saksa Art & Design	\N	Design	\N	\N	\N	\N	\N	\N	\N	\N
+     	          ^
+[1.17] failure: `	' expected but `@' found
+
+83585	The Senate@ Fourth Estate	\N	Estate	\N	\N	\N	\N	\N	\N	\N	\N
+     	          ^
+[1.24] failure: unexpected character in name part
+
+83949	The Editors of L-5 News	\N	News	\N	\N	\N	\N	\N	\N	\N	\N
+     	                 ^
+[1.58] failure: `	' expected but `[' found
+
+85413	Mrs. Richard S. Greenough	Greenough, Mrs. Richard S[altonstall] (Sarah Dana [Loring])	Greenough	\N	\N	1827-00-00	1885-00-00	\N	\N	17	\N
+     	                         	                         ^
+[1.16] failure: `	' expected but `&' found
+
+86413	Neuwirth & Associates	\N	Associates	\N	\N	\N	\N	\N	\N	\N	\N
+     	         ^
+[1.17] failure: `	' expected but `/' found
+
+87481	Powers LAZ/org	\N	LAZ/org	\N	\N	\N	\N	\N	\N	17	\N
+     	          ^
+[1.75] failure: `	' expected but `[' found
+
+88489	Charles Robinson	Robinson, Charles	Robinson	\N	Islington, Middlesex [now London], England, UK	1870-10-22	1937-00-00	\N	\N	17	\N
+     	                	                 	        	  	                     ^
+[1.146] failure: `	' expected but `(' found
+
+89981	W. E. Bowman	Bowman, William Ernest	Bowman	\N	Scarborough, North Riding of Yorkshire, England, UK	1911-09-30	1985-01-01	gbowman@gn.apc.org (author's son)	\N	17	\N
+     	            	                      	      	  	                                                   	          	          	                   ^
+[1.66] failure: date format invalid
+
+91125	Sarah Hines-Stephens	\N	Hines-Stephens	133089	\N	0000-06-18	\N	\N	\N	\N	\N
+     	                    	  	              	      	  	          ^
+[1.18] failure: `	' expected but `/' found
+
+92753	Thayer Syme/FPG	\N	Syme/FPG	\N	\N	\N	\N	\N	\N	\N	\N
+     	           ^
+[1.44] failure: date format invalid
+
+99853	T. C. Rypel	\N	Rypel	\N	\N	0000-11-13	\N	\N	\N	17	\N
+     	           	  	     	  	  	          ^
+[1.48] failure: `)' expected but `,' found
+
+100461	Lin Yutang	&#26519;&#35821;&#22530; (Lin, Yü-t'ang)	Lin	\N	Banzai, Pinghe, Zhangzhou, Fujian, China	1895-10-10	1976-03-26	\N	\N	17	\N
+      	          	                             ^
+[1.50] failure: `	' expected but `/' found
+
+101489	Jörg Steiner	Steiner, Jörg	Steiner	\N	Biel/Bienne, Canton of Bern, Switzerland	1930-10-26	2013-01-20	\N	\N	26	\N
+      	            	             	       	  	    ^
+[1.25] failure: `	' expected but `&' found
+
+101981	Visions Graphics & Film	\N	Film	\N	\N	\N	\N	\N	\N	\N	\N
+      	                 ^
+[1.91] failure: `)' expected but ` ' found
+
+102013	Ivar Lissner	Lissner, Ivar Arthur Nicolai	Lissner	\N	Lievenhof, Russian Empire (now L&#299;v&#257;ni, Latvia)	1909-04-23	1967-09-04	\N	\N	\N	\N
+      	            	                            	       	  	                              ^
+[1.52] failure: `	' expected but `ž' found
+
+103861	Ladislav Klima	Klíma, Ladislav	Klima	\N	Domažlice, Kingdom of Bohemia, Austro-Hungarian Empire	1878-08-22	1928-04-19	\N	\N	14	\N
+      	              	               	     	  	    ^
+[1.62] failure: `	' expected but `/' found
+
+104441	Heinz Edelmann	Edelmann, Heinz	Edelmann	170335	Aussig / Ústí nad Labem, Czechoslovakia	1934-06-20	2009-07-21	\N	\N	26	\N
+      	              	               	        	      	       ^
+[1.9] failure: `	' expected but `*' found
+
+107461	L*z*r*s L*ng	\N	L*ng	\N	\N	\N	\N	\N	\N	\N	\N
+      	 ^
+[1.71] failure: `	' expected but `&' found
+
+107706	I. J. Gelb	Gelb, Ignace Jay	Gelb	\N	Tarnau, Kingdom of Galicia & Lodomeria, Austro-Hungarian Empire	1907-10-14	1985-12-22	\N	\N	17	\N
+      	          	                	    	  	                           ^
+[1.52] failure: `	' expected but `[' found
+
+107760	Hanif Kureishi	\N	Kureishi	\N	Bromley, Kent [now London], England, UK	1954-12-05	\N	\N	\N	17	\N
+      	              	  	        	  	              ^
+[1.58] failure: date format invalid
+
+107999	Geoffrey H. Goodwin	\N	Goodwin	21007	\N	0000-12-30	\N	\N	\N	17	\N
+      	                   	  	       	     	  	          ^
+[1.26] failure: `	' expected but `/' found
+
+108080	Pablo Corral Vega / Corbis	\N	Corbis	\N	\N	\N	\N	\N	\N	\N	\N
+      	                  ^
+[1.13] failure: `	' expected but `-' found
+
+108341	Brig.-Gen. Thomas H. Crouch, U.S.A.F.	\N	Crouch	\N	\N	\N	\N	\N	\N	\N	\N
+      	     ^
+[1.50] failure: `	' expected but `(' found
+
+108935	C. M. Chakrabarti	Chakrabarti, Cheryll M. (Conaway)	Chakrabarti	\N	Pittsburgh, Pennsylvania, USA	\N	\N	\N	\N	\N	\N
+      	                 	                        ^
+[1.19] failure: `	' expected but `&' found
+
+109279	Zab Design & Typography	\N	Typography	\N	\N	\N	\N	\N	\N	\N	\N
+      	           ^
+[1.67] failure: date format invalid
+
+110105	Vicki Lewis Thompson	\N	Thompson	\N	Arizona, USA	0000-10-11	\N	\N	\N	17	\N
+      	                    	  	        	  	            	          ^
+[1.43] failure: `	' expected but `"' found
+
+110302	Michael Turner	Michael Lane Turner "MLT"	Turner	\N	Crossville, Tennessee, USA	1971-04-21	2008-06-27	\N	\N	17	\N
+      	              	                    ^
+[1.9] failure: `	' expected but `*' found
+
+110419	R*b*rt H**nl**n	\N	H**nl**n	\N	\N	\N	\N	\N	\N	\N	\N
+      	 ^
+[1.8] failure: unexpected character in name part
+
+110421	*s**c *s*m*v	\N	smv	\N	\N	\N	\N	\N	\N	\N	\N
+      	^
+[1.9] failure: `	' expected but `*' found
+
+110424	H*g* G*rnsb*ck	\N	G*rnsb*ck	\N	\N	\N	\N	\N	\N	\N	\N
+      	 ^
+[1.10] failure: `	' expected but `*' found
+
+110425	Ph*l*p K. D*ck	\N	D*ck	\N	\N	\N	\N	\N	\N	\N	\N
+      	  ^
+[1.12] failure: `	' expected but `*' found
+
+110504	O. H*nry	\N	H*nry	\N	\N	\N	\N	\N	\N	17	\N
+      	    ^
+[1.59] failure: `	' expected but `B' found
+
+110669	Carola Oman	Lenanton, Carola Mary Anima	Oman	\N	32 Beaumont Street, Oxford, Oxfordshire, England, UK	1897-05-11	1978-06-11	\N	\N	17	\N
+      	           	                           	    	  	   ^
+[1.15] failure: `	' expected but `*' found
+
+110692	J. G. B******	\N	B******	\N	\N	\N	\N	\N	\N	\N	\N
+      	       ^
+[1.8] failure: unexpected character in name part
+
+110954	4sJ	\N	4sJ	\N	\N	\N	\N	\N	\N	17	\N
+      	^
+[1.43] failure: `	' expected but `)' found
+
+111091	A. Parra (y Figuerado)	\N	Figuerado)	\N	\N	\N	\N	\N	\N	\N	\N
+      	                      	  	         ^
+[1.18] failure: `	' expected but `@' found
+
+111180	background@Jupiterimages	\N	Jupiterimages	\N	\N	\N	\N	\N	\N	\N	\N
+      	          ^
+[1.32] failure: `	' expected but `!' found
+
+111662	The Editors of CosmoGIRL!	\N	CosmoGIRL!	\N	\N	\N	\N	\N	\N	\N	\N
+      	                        ^
+[1.63] failure: date format invalid
+
+111785	Elizabeth C. Bunce	\N	Bunce	\N	Virginia, USA	0000-07-03	\N	\N	\N	\N	\N
+      	                  	  	     	  	             	          ^
+[1.26] failure: `s' expected but `'' found
+
+111926	Robert Scott (1960's)	\N	Scott	\N	\N	\N	\N	\N	\N	\N	\N
+      	                  ^
+[1.57] failure: unexpected character in name part
+
+112177	A. B. Mitford	Freeman-Mitford, Algernon Bertram, 1st Baron Redesdale	Mitford	191609	\N	1837-02-24	1916-08-17	\N	\N	17	\N
+      	             	                                   ^
+[1.15] failure: `	' expected but `&' found
+
+112731	Craven & Evans	\N	Evans	\N	\N	\N	\N	\N	\N	\N	\N
+      	       ^
+[1.16] failure: `	' expected but `&' found
+
+112989	Charles & Cuffari	\N	Cuffari	\N	\N	\N	\N	\N	\N	\N	\N
+      	        ^
+[1.52] failure: unexpected character in name part
+
+113438	Sir Frederick Treves	Treves, Sir Frederick, 1st Baronet	Treves	25390	Dorchester, Dorset, England, UK	1853-02-15	1923-12-07	\N	\N	17	\N
+      	                    	                       ^
+[1.12] failure: `	' expected but `'' found
+
+114007	Dr. 'A'	\N	Dr. 'A'	\N	\N	\N	\N	\N	\N	\N	\N
+      	    ^
+[1.20] failure: unexpected character in name part
+
+114047	Bill Noble, 3rd	\N	Noble	\N	\N	\N	\N	\N	\N	\N	\N
+      	            ^
+[1.13] failure: `	' expected but `5' found
+
+114220	Wang 5/1	\N	Wang 5/1	\N	\N	\N	\N	\N	\N	\N	\N
+      	     ^
+[1.17] failure: `	' expected but `/' found
+
+114696	C. Sagel / Zefa	\N	Zefa	\N	\N	\N	\N	\N	\N	\N	\N
+      	         ^
+[1.56] failure: `	' expected but `U' found
+
+114763	Alistair Horne	Horne, Alistair Allan	Horne	\N	6 Upper Grosvenor Street, Mayfair, Westminster, London, England, UK	1925-11-09	\N	\N	\N	17	\N
+      	              	                     	     	  	  ^
+[1.8] failure: unexpected character in name part
+
+115085	4E Ackerman	\N	Ackerman	\N	\N	\N	\N	\N	\N	17	\N
+      	^
+[1.22] failure: `s' expected but `'' found
+
+116271	Lawrence (1960's)	\N	Lawrence	\N	\N	\N	\N	\N	\N	17	\N
+      	              ^
+[1.18] failure: `	' expected but `'' found
+
+116970	Edward E. 'Doc' Smith	\N	Smith	\N	\N	\N	\N	\N	\N	\N	\N
+      	          ^
+[1.26] failure: `	' expected but `/' found
+
+117265	Illustration Works/Antar Dayal/Corbis	\N	Dayal/Corbis	\N	\N	\N	\N	\N	\N	\N	\N
+      	                  ^
+[1.70] failure: date format invalid
+
+117489	Linda A. B. Davis	Davis, Linda A. Barry	Davis	\N	\N	0000-07-30	\N	\N	\N	\N	\N
+      	                 	                     	     	  	  	          ^
+[1.14] failure: `	' expected but `@' found
+
+117506	images@shutterstock	\N	images@shutterstock	\N	\N	\N	\N	\N	\N	\N	\N
+      	      ^
+[1.28] failure: `\N' expected but `	' found
+
+117721	Arthur Edward Waite		Waite	\N	Brooklyn, New York, USA	1857-10-02	1942-05-19	\N	\N	\N	\N
+      	                   	^
+[1.102] failure: `	' expected but `[' found
+
+117755	John Nanovic	Nanovic, John Leonard	Nanovic	159517	Vágújhely, Hungary, Austro-Hungarian Empire [now Nové Mesto nad Váhom, Slovakia]	1906-10-07	2001-02-09	\N	\N	17	\N
+      	            	                     	       	      	                                            ^
+[1.34] failure: `	' expected but `š' found
+
+118214	Arnost Lustig	Lustig, Arnošt	Lustig	\N	Prague, Czechoslovakia	1926-12-21	2011-02-26	\N	\N	14	\N
+      	             	            ^
+[1.28] failure: `	' expected but `E' found
+
+118469	Jim (Looking Eagle) Estes	\N	Estes	\N	\N	\N	\N	\N	\N	\N	\N
+      	                    ^
+[1.70] failure: date format invalid
+
+118535	Catherine Cheek	\N	Cheek	144757	Tempe, Arizona, USA	0000-05-01	\N	\N	\N	17	\N
+      	               	  	     	      	                   	          ^
+[1.8] failure: unexpected character in name part
+
+118571	¿Quien Sabe?	\N	Sabe?	\N	\N	\N	\N	\N	\N	\N	\N
+      	^
+[1.18] failure: `	' expected but `/' found
+
+118748	Griesbach / Martucci	\N	Martucci	\N	\N	\N	\N	\N	\N	17	\N
+      	          ^
+[1.16] failure: `	' expected but `5' found
+
+119403	Highway 51	\N	Highway 51	\N	\N	\N	\N	\N	\N	\N	\N
+      	        ^
+[1.48] failure: unexpected character in name part
+
+119442	Duke of Northumberland	Percy, Alan Ian, 8th Duke of Northumberland	Northumberland	\N	London, England, UK	1880-04-17	1930-08-23	\N	\N	17	\N
+      	                      	                 ^
+[1.20] failure: `	' expected but `/' found
+
+119559	Getty Images/EkhornForss	\N	Images/EkhornForss	187162	\N	\N	\N	\N	\N	\N	\N
+      	            ^
+[1.12] failure: `	' expected but `/' found
+
+119567	NASA/FPG International	\N	International	\N	\N	\N	\N	\N	\N	\N	\N
+      	    ^
+[1.18] failure: `	' expected but `/' found
+
+119568	G. Randall/FPG International	\N	International	\N	\N	\N	\N	\N	\N	\N	\N
+      	          ^
+[1.86] failure: `)' expected but `-' found
+
+120139	Rose Champion de Crespigny	Champion de Crespigny, Annie Rose Charlotte (Cooper-Key)	Champion de Crespigny	\N	London, England, UK	1859-00-00	1935-02-10	\N	\N	17	\N
+      	                          	                                                   ^
+[1.45] failure: `	' expected but `G' found
+
+120292	Mary Angela Dickens	\N	Dickens	\N	46 Gloucester Road, Kensington, Middlesex, England, UK	1862-10-31	1948-02-07	\N	\N	17	\N
+      	                   	  	       	  	   ^
+[1.106] failure: `	' expected but `[' found
+
+120819	Leconte de Lisle	Leconte de Lisle, Charles Marie René	Leconte de Lisle	\N	Saint-Paul, Île Bourbon [now Réunion], France	1818-10-22	1894-07-17	\N	http://www.isfdb.org/wiki/images/c/c1/Leconte_de_Lisle.jpg	22	\N
+      	                	                                    	                	  	                        ^
+[1.8] failure: unexpected character in name part
+
+120866	'Doc' Travis S. Taylor	\N	Taylor	\N	\N	\N	\N	\N	\N	\N	\N
+      	^
+[1.28] failure: string matching regex `\p{IsLatin}+' expected but `1' found
+
+121158	Rebecca Brown (Born 1948)	\N	Brown	\N	\N	\N	\N	\N	\N	\N	\N
+      	                    ^
+[1.28] failure: string matching regex `\p{IsLatin}+' expected but `1' found
+
+121159	Rebecca Brown (Born 1956)	\N	Brown	\N	\N	\N	\N	\N	\N	\N	\N
+      	                    ^
+[1.12] failure: `	' expected but `/' found
+
+121667	NASA/JPL-Caltech/O. Krause	\N	Krause	\N	\N	\N	\N	\N	\N	\N	\N
+      	    ^
+[1.68] failure: unexpected character in name part
+
+121694	Edward Plunkett, Lord Dunsany	Plunkett, Edward John Carlos, 20th Baron of Dunsany	Plunkett	\N	Dublin, Ireland	1939-09-10	2011-05-24	\N	\N	17	\N
+      	                             	                              ^
+[1.14] failure: `	' expected but `'' found
+
+121955	J. R. 'Mad Dog' Madden	\N	Madden	\N	\N	\N	\N	\N	\N	\N	\N
+      	      ^
+[1.78] failure: `	' expected but `[' found
+
+122119	Arthur Morrison	Morrison, Arthur George	Morrison	\N	Poplar, Middlesex [now Borough of Tower Hamlets, London], England, UK	1863-11-01	1945-12-04	\N	\N	17	\N
+      	               	                       	        	  	                  ^
+[1.56] failure: `	' expected but `G' found
+
+122533	H. C. Adams	Adams, Henry Cadwallader	Adams	\N	6 Great James Street, St George Bloomsbury parish, Middlesex, England, UK	1817-11-04	1899-10-17	\N	\N	17	\N
+      	           	                        	     	  	  ^
+[1.43] failure: unexpected character in name part
+
+122664	Sir Edward Frederick Lindley Wood, 1st Earl of Halifax	Wood, Edward Frederick Lindley	Wood	122659	Powderham Castle, Devonshire, England, UK	1881-04-16	1959-12-23	\N	http://www.thepeerage.com/022580_002.jpg	17	\N
+      	                                   ^
+[1.9] failure: `	' expected but `3' found
+
+123046	A3R Roberts	\N	Roberts	\N	\N	\N	\N	\N	\N	17	\N
+      	 ^
+[1.58] failure: unexpected character in name part
+
+123207	Jean d'Esme	Esmenard, Jean Marie Henri, Vicomte d'	Esme	\N	Shanghai, China	1893-09-27	1966-02-24	\N	\N	22	\N
+      	           	                                      ^
+[1.59] failure: `	' expected but `'' found
+
+123657	Cecil Madden	Madden, Cecil Charles	Madden	\N	H.B.M.'s Consulate, Mogador, Morocco	1902-11-29	1987-05-27	\N	\N	17	\N
+      	            	                     	      	  	      ^
+[1.14] failure: `	' expected but `&' found
+
+124078	Smith & Jones	\N	Jones	\N	\N	\N	\N	\N	\N	\N	\N
+      	      ^
+[1.9] failure: `	' expected but `&' found
+
+124319	R&D Studios	\N	Studios	\N	\N	\N	\N	\N	\N	17	\N
+      	 ^
+[1.69] failure: `	' expected but `G' found
+
+124884	E. L. Blanchard	Blanchard, Edward Litt Laman	Blanchard	\N	31 Great Queen Street, Parish of St Giles in the Fields, Middlesex, England, UK	1820-12-11	1889-09-04	\N	\N	17	\N
+      	               	                            	         	  	   ^
+[1.49] failure: unexpected character in name part
+
+124997	Editors of Fraser's Magazine	\N	Magazine,	\N	\N	\N	\N	\N	\N	\N	\N
+      	                            	  	         ^
+[1.33] failure: `)' expected but `,' found
+
+125109	Editors of The Argosy (UK, 19th Century)	\N	Century)	\N	\N	\N	\N	\N	\N	\N	\N
+      	                         ^
+[1.124] failure: `	' expected but `9' found
+
+125251	Jim Eldridge	\N	Eldridge	\N	Kings Cross, St Pancras, London, England, UK	1944-11-25	\N	jimeldridge@jimeldridge.force9.co.uk	\N	17	\N
+      	            	  	        	  	                                            	          	  	                             ^
+[1.71] failure: `	' expected but `A' found
+
+125285	Rev. William Barry, D.D.	Barry, William Francis	Barry	185418	4 Adams Street, St Marlebone, Middlesex [now Robert Adams Street, London], England, UK	1849-04-21	1930-12-15	\N	\N	17	\N
+      	                        	                      	     	      	  ^
+[1.16] failure: `	' expected but `/' found
+
+125348	Alperium/Shutterstock.com	\N	Alperium/Shutterstock.com	\N	\N	\N	\N	\N	\N	\N	\N
+      	        ^
+[1.24] failure: `	' expected but `/' found
+
+125590	Alan Abramowitz / Stone	\N	Stone	\N	\N	\N	\N	\N	\N	\N	\N
+      	                ^
+[1.82] failure: `	' expected but `[' found
+
+125906	Captain F. N. Maude	Maude, Frederick Natusch	Maude	\N	Knostrop, Yorkshire [now a suburb of Leeds], England, UK	1854-11-12	1933-06-00	\N	\N	17	\N
+      	                   	                        	     	  	                    ^
+[1.56] failure: unexpected character in name part
+
+125910	F. Scudamore	Scudamore-Stanhope, Edwyn Francis, 10th Earl of Chesterfield	Scudamore	\N	Rome, Papal States	1854-03-15	1933-01-24	\N	\N	17	\N
+      	            	                                   ^
+[1.106] failure: `@' expected but ` ' found
+
+125969	Tim Jones (UK Novelist)	Jones, Richard Timothy	Jones	\N	Denbigh, North Wales, UK	1959-02-28	\N	Tim at vandah dot com	\N	17	\N
+      	                       	                      	     	  	                        	          	  	   ^
+[1.70] failure: date format invalid
+
+126085	Brian Trent	\N	Trent	\N	Waterbury, Connecticut, USA	0000-09-18	\N	\N	\N	17	\N
+      	           	  	     	  	                           	          ^
+[1.15] failure: `	' expected but `œ' found
+
+126787	Henri Lœvenbruck	\N	Lœvenbruck	\N	\N	\N	\N	\N	\N	22	\N
+      	       ^
+[1.53] failure: date format invalid
+
+127317	Jay Werkheiser	\N	Werkheiser	\N	\N	0000-05-23	\N	\N	\N	17	\N
+      	              	  	          	  	  	          ^
+[1.23] failure: `c.' expected but `2' found
+
+127523	George Fowler (20th century)	\N	century)	\N	\N	\N	\N	\N	\N	\N	\N
+      	               ^
+[1.57] failure: `	' expected but `G' found
+
+127799	Gilbert Cannan	Cannan, Gilbert Eric	Cannan	\N	24 Great Cheetham Street West, Broughton, Salford, Lancashire, England, UK	1884-06-25	1955-06-30	\N	\N	17	\N
+      	              	                    	      	  	   ^
+[1.22] failure: `	' expected but `/' found
+
+127811	Max Dannenbaum/Getty Images	\N	Images	\N	\N	\N	\N	\N	\N	\N	\N
+      	              ^
+[1.25] failure: `	' expected but `&' found
+
+128113	Editors of Dazed & Confused	\N	Confused	\N	\N	\N	\N	\N	\N	\N	\N
+      	                 ^
+[1.57] failure: unexpected character in name part
+
+128664	The Earl of Halsbury	Giffard, Hardinge Golbourn, 2nd Earl of Halsbury	Halsbury	\N	Marylebone, Westminster, Middlesex, England, UK	1880-06-20	1943-09-15	\N	\N	17	\N
+      	                    	                            ^
+[1.27] failure: `	' expected but `:' found
+
+128779	Editors of Zoetrope: All-Story	\N	All-Story	\N	\N	\N	\N	\N	\N	\N	\N
+      	                   ^
+[1.105] failure: date format invalid
+
+128954	H. W. Hillman	Hillman, Harry W.	Hillman	\N	Manchester City, New Jersey, USA	1870-08-03	0000-08-30	\N	\N	17	\N
+      	             	                 	       	  	                                	          	          ^
+[1.18] failure: unexpected character in name part
+
+129417	V. Bondar'	&#1041;&#1086;&#1085;&#1076;&#1072;&#1088;&#1100;, &#1042;&#1083;&#1072;&#1076;&#1080;&#1084;&#1080;&#1088; &#1054;&#1083;&#1077;&#1075;&#1086;&#1074;&#1080;&#1095;	Bondar'	210598	Kharkiv, Kharkiv oblast, Ukraine, USSR	1975-00-00	\N	\N	\N	55	\N
+      	          ^
+[1.17] failure: `	' expected but `š' found
+
+129597	Zdenko Baši&#263;	\N	Baši&#263;	\N	Zagreb, Croatia	1980-01-27	\N	\N	\N	17	\N
+      	         ^
+[1.23] failure: `	' expected but `@' found
+
+129894	Army of Trolls @ NB Illustration	\N	Illustration	\N	\N	\N	\N	\N	\N	\N	\N
+      	               ^
+[1.18] failure: `	' expected but `/' found
+
+130021	Tony Sweet/Getty Images	\N	Images	\N	\N	\N	\N	\N	\N	\N	\N
+      	          ^
+[1.80] failure: `	' expected but `[' found
+
+130089	Alfred Lawson	Lawson, Alfred William	Lawson	\N	Bethnal Green, Middlesex [now London], England, UK	1869-03-24	1954-11-29	\N	\N	17	\N
+      	             	                      	      	  	                         ^
+[1.12] failure: `	' expected but `2' found
+
+130147	www.25design.co.uk	\N	www.25design.co.uk	\N	\N	\N	\N	\N	\N	\N	\N
+      	    ^
+[1.10] failure: `	' expected but `-' found
+
+130284	J.-H. Rosny the Elder	\N	Elder	\N	\N	\N	\N	\N	\N	\N	\N
+      	  ^
+[1.60] failure: `)' expected but `-' found
+
+130327	The Countess of Munster	Munster, Wilhelmina (Kennedy-Erskine) Fitzclarence	Munster	\N	Dun House, Montrose, Scotland, UK	1830-06-27	1906-10-09	\N	\N	17	\N
+      	                       	                            ^
+[1.38] failure: `\N' expected but `Ž' found
+
+130423	Juraj Cervenák	\N	Cervenák	\N	Žiar nad Hronom, Banská Bystrica, Czechoslovakia	1974-06-16	\N	\N	\N	57	\N
+      	              	  	        	  	^
+[1.19] failure: `	' expected but `/' found
+
+130550	Rex Stone	N/A - House Name	Stone	\N	\N	\N	\N	\N	\N	17	\N
+      	         	 ^
+[1.16] failure: `c.' expected but `2' found
+
+130594	Lucian (20th century)	Hobson, John Atkinson	Lucian	\N	Derby, Derbyshire, England, UK	1858-07-06	1940-04-01	\N	\N	17	\N
+      	        ^
+[1.78] failure: `	' expected but `[' found
+
+130822	Albert Camus	Camus, Albert	Camus	\N	Mondovi near Bône, French Algeria [today Annaba, Algeria]	1913-11-07	1960-01-04	\N	http://www.isfdb.org/wiki/images/d/d0/Albert_Camus.jpg	22	\N
+      	            	             	     	  	                                  ^
+[1.51] failure: `)' expected but `&' found
+
+131760	Hans Ticha	Ticha, Hans	Ticha	\N	Tetschen (D&#283;&#269;ín), Czechoslovakia	1940-09-02	\N	\N	\N	26	\N
+      	          	           	     	  	           ^
+[1.14] failure: `	' expected but `'' found
+
+131781	C. C. 'Buck' Coffman	Coffman, Clovis Clyde	Coffman	\N	New Orleans, Louisiana, USA	1931-12-12	2001-08-31	\N	\N	17	\N
+      	      ^
+[1.16] failure: `	' expected but `-' found
+
+132353	Tanya S.-Victor	\N	S.-Victor	\N	\N	\N	\N	\N	\N	\N	\N
+      	        ^
+[1.58] failure: date format invalid
+
+132536	Josh Lanyon	Killian, Diana	Lanyon	\N	\N	0000-01-13	\N	\N	\N	17	\N
+      	           	              	      	  	  	          ^
+[1.22] failure: `	' expected but `/' found
+
+132784	Lars Topelmann/Graphistock	\N	Topelmann/Graphistock	\N	\N	\N	\N	\N	\N	\N	\N
+      	              ^
+[1.13] failure: `	' expected but `1' found
+
+132890	satan165	\N	satan165	\N	\N	\N	\N	\N	\N	\N	\N
+      	     ^
+[1.24] failure: `s' expected but `'' found
+
+132967	Mike Lewis (1950's)	\N	Lewis	\N	\N	\N	\N	\N	\N	\N	\N
+      	                ^
+[1.30] failure: string matching regex `\p{IsLatin}+' expected but `2' found
+
+133114	William Warren (early 20th)	\N	Warren	\N	\N	\N	\N	\N	\N	\N	\N
+      	                      ^
+[1.91] failure: `)' expected but `-' found
+
+133138	Itzhak Bentov	&#1497;&#1510;&#1495;&#1511; &#1489;&#1504;&#1496;&#1493;&#1489; (Ben-Tov, Itzhak)	Bentov	\N	Prague, Czechoslovakia	1923-08-09	1979-05-25	\N	\N	17	\N
+      	             	                                                                     ^
+[1.12] failure: `	' expected but `/' found
+
+133191	NASA/JPL-Caltech	\N	NASA/JPL-Caltech	\N	\N	\N	\N	\N	\N	\N	\N
+      	    ^
+[1.10] failure: `	' expected but `-' found
+
+133460	J.-H. Rosny aîné	\N	Rosny aîné	\N	\N	\N	\N	\N	\N	22	\N
+      	  ^
+[1.26] failure: `	' expected but `;' found
+
+133647	Editors of Electra; A Belles Lettres Monthly for Young People	\N	People	\N	\N	\N	\N	\N	\N	\N	\N
+      	                  ^
+[1.66] failure: unexpected character in name part
+
+133757	Jean de La Hire	Espie, Comte Adolphe Ferdinand Célestin d'	La Hire	213549	Banyuls-sur-Mer, Pyrénées-Orientales, France	1878-01-28	1956-09-06	\N	\N	22	\N
+      	               	                                          ^
+[1.58] failure: `	' expected but `š' found
+
+133991	Milovan Djilas	&#272;ilas, Milovan	Djilas	\N	Podbiš&#263;e, Kingdom of Montenegro	1911-06-04	1995-04-20	\N	\N	\N	\N
+      	              	                   	      	  	     ^
+[1.22] failure: `c.' expected but `7' found
+
+134220	Chris Butler (70's)	\N	Butler	\N	\N	\N	\N	\N	\N	\N	\N
+      	              ^
+[1.14] failure: `	' expected but `/' found
+
+134249	Archer/Quinnell	\N	Archer/Quinnell	\N	\N	\N	\N	\N	\N	\N	\N
+      	      ^
+[1.58] failure: unexpected character in name part
+
+134255	Editors of People's Favorite Magazine	\N	Magazine,	\N	\N	\N	\N	\N	\N	\N	\N
+      	                                     	  	         ^
+[1.23] failure: unexpected character in name part
+
+134399	Sugiura Hinako,	&#26441;&#28006; &#26085;&#21521;&#23376;	Sugiura	\N	Shiba, Minato, Tokyo, Japan	1958-11-30	2005-07-22	\N	\N	37	\N
+      	               ^
+[1.69] failure: `	' expected but `M' found
+
+134467	C. St. John Sprigg	Sprigg, Christopher St. John	Sprigg	\N	53 Montserrat Road, Putney, Wandsworth, London, England, UK	1907-10-20	1937-02-12	\N	\N	17	\N
+      	                  	                            	      	  	   ^
+[1.23] failure: `	' expected but `/' found
+
+134568	Nicolas Bouvier/Sparth	\N	Bouvier/Sparth	\N	\N	\N	\N	\N	\N	\N	\N
+      	               ^
+[1.75] failure: date format invalid
+
+135649	Belinda McBride	\N	McBride	\N	Inglewood, California, USA	0000-03-07	\N	\N	\N	17	\N
+      	               	  	       	  	                          	          ^
+[1.8] failure: unexpected character in name part
+
+135975	7ARS	\N	7ARS	\N	\N	\N	\N	\N	\N	17	\N
+      	^
+[1.67] failure: date format invalid
+
+136877	Nicola Rhodes	\N	Rhodes	\N	Cheshire, England, UK	0000-08-27	\N	\N	\N	17	\N
+      	             	  	      	  	                     	          ^
+[1.16] failure: `	' expected but `6' found
+
+136975	Concept 67	\N	Concept 67	\N	\N	\N	\N	\N	\N	\N	\N
+      	        ^
+[1.77] failure: date format invalid
+
+137009	Jaclyn Reding	Reding, Jaclyn Adamowicz	Reding	\N	Ohio, USA	0000-03-23	\N	\N	\N	\N	\N
+      	             	                        	      	  	         	          ^
+[1.21] failure: `	' expected but `/' found
+
+137546	Lisa Whitsitt/Swanstock	\N	Whitsitt/Swanstock	\N	\N	\N	\N	\N	\N	\N	\N
+      	             ^
+[1.10] failure: `	' expected but `-' found
+
+138096	J.-M. Lofficier	\N	Lofficier	\N	\N	\N	\N	\N	\N	22	\N
+      	  ^
+[1.70] failure: date format invalid
+
+138757	Dale R. Cozort	\N	Cozort	\N	Rockford, Illinois, USA	0000-02-25	\N	\N	\N	\N	\N
+      	              	  	      	  	                       	          ^
+[1.32] failure: `\N' expected but `Š' found
+
+138818	Vlado Zabot	\N	Zabot	\N	Šafarsko, Slovenia, Yugoslavia	1958-08-11	\N	\N	\N	\N	\N
+      	           	  	     	  	^
+[1.27] failure: `	' expected but `/' found
+
+139353	Hemera Technologies/Jupiterimages	\N	Technologies/Jupiterimages	\N	\N	\N	\N	\N	\N	\N	\N
+      	                   ^
+[1.14] failure: `	' expected but `'' found
+
+139402	J. J. 'Buddy' Connors, III, M.D.	\N	Connors	\N	\N	\N	\N	\N	\N	\N	\N
+      	      ^
+[1.42] failure: `	' expected but `:' found
+
+139406	Editors of The Centennial Magazine: An Australian Monthly	\N	Monthly	\N	\N	\N	\N	\N	\N	\N	\N
+      	                                  ^
+[1.10] failure: `	' expected but `1' found
+
+139847	WT1	\N	WT1	\N	\N	\N	\N	\N	\N	\N	\N
+      	  ^
+[1.26] failure: `	' expected but `ž' found
+
+140160	Boban Knezevic	Kneževi&#263;, Boban	Knezevic	\N	Belgrade, Serbia, Yugoslavia	1959-00-00	\N	\N	\N	\N	\N
+      	              	   ^
+[1.18] failure: `	' expected but `'' found
+
+140219	Irving F. 'Bud' Foote	\N	Foote	\N	\N	\N	\N	\N	\N	\N	\N
+      	          ^
+[1.8] failure: unexpected character in name part
+
+140315	'Red' Knuckles	\N	Knuckles	\N	\N	\N	\N	\N	\N	\N	\N
+      	^
+[1.21] failure: `	' expected but `/' found
+
+140432	Doreen Rogers/Parker	\N	Rogers/Parker	\N	\N	\N	\N	\N	\N	\N	\N
+      	             ^
+[1.48] failure: `	' expected but `.' found
+
+140771	Geoffrey Bromhead	Bromhead, Geoffrey W. .	Bromhead	\N	Calgary, Alberta, Canada	1979-00-00	\N	\N	\N	\N	\N
+      	                 	                      ^
+[1.19] failure: `c.' expected but `?' found
+
+141590	Paul West (?-)	West, Paul Clarendon	West	\N	\N	\N	\N	\N	\N	\N	\N
+      	           ^
+[1.20] failure: `	' expected but `/' found
+
+141603	Barnaby Hall/Photonica	\N	Hall/Photonica	\N	\N	\N	\N	\N	\N	\N	\N
+      	            ^
+[1.10] failure: `	' expected but `-' found
+
+141849	J.-C. Sayag	\N	Sayag	181838	\N	\N	\N	\N	\N	22	\N
+      	  ^
+[1.10] failure: `	' expected but `-' found
+
+141972	J.-P. Lamerand	\N	Lamerand	\N	\N	\N	\N	\N	\N	\N	\N
+      	  ^
+[1.9] failure: `	' expected but `*' found
+
+142057	P**l K*****d	\N	K*****d	\N	\N	\N	\N	\N	\N	\N	\N
+      	 ^
+[1.22] failure: `	' expected but `/' found
+
+142097	WireImageStock/Masterfile	\N	WireImageStock/Masterfile	\N	\N	\N	\N	\N	\N	\N	\N
+      	              ^
+[1.15] failure: `	' expected but `6' found
+
+142227	concept60seven	\N	concept60seven	\N	\N	\N	\N	\N	\N	\N	\N
+      	       ^
+[1.10] failure: `	' expected but `-' found
+
+142267	J.-P. Dufour	\N	Dufour	\N	\N	\N	\N	\N	\N	22	\N
+      	  ^
+[1.14] failure: `	' expected but `2' found
+
+142825	Spooky2006	\N	Spooky2006	\N	\N	\N	\N	\N	\N	\N	\N
+      	      ^
+[1.22] failure: `	' expected but `/' found
+
+143161	Leo Blanchette/Fotolia	\N	Blanchette/Fotolia	\N	\N	\N	\N	\N	\N	\N	\N
+      	              ^
+[1.68] failure: `	' expected but `–' found
+
+143555	Paolo Mantegazza	\N	Mantegazza	\N	Monza, Kingdom of Lombardy–Venetia, Austrian Empire	1831-10-31	1910-08-28	\N	\N	36	\N
+      	                	  	          	  	                          ^
+[1.22] failure: `c.' expected but `?' found
+
+143807	Will Bradley (?-)	\N	Bradley	\N	\N	\N	\N	\N	\N	\N	\N
+      	              ^
+[1.68] failure: `	' expected but `C' found
+
+144122	H. F. W. Tatham	Tatham, Herbert Francis William	Tatham	\N	6 Cleveland Gardens, Paddington, Middlesex, England, UK	1861-12-02	1909-08-04	\N	\N	17	\N
+      	               	                               	      	  	  ^
+[1.19] failure: `	' expected but `&' found
+
+144209	Ward, Lock & Co,	\N	Co,	\N	\N	\N	\N	\N	\N	\N	\N
+      	           ^
+[1.15] failure: `	' expected but `/' found
+
+144235	Bettman/Corbis	\N	Bettman/Corbis	\N	\N	\N	\N	\N	\N	\N	\N
+      	       ^
+[1.16] failure: `	' expected but `š' found
+
+145209	Janka Kaš&#269;áková	\N	Kaš&#269;áková	\N	\N	\N	\N	\N	\N	\N	\N
+      	        ^
+[1.16] failure: `	' expected but `“' found
+
+145565	William “Nick” Johns	\N	Johns	\N	\N	\N	\N	\N	\N	\N	\N
+      	        ^
+[1.32] failure: `	' expected but `!' found
+
+145605	Editors of Help Yourself! Annual	\N	Annual	\N	\N	\N	\N	\N	\N	\N	\N
+      	                        ^
+[1.26] failure: `\N' expected but `Ž' found
+
+145830	Aleksandar Ziljak	Žiljak, Aleksandar	Ziljak	190891	Zagreb, Croatia	1963-00-00	\N	\N	\N	31	\N
+      	                 	^
+[1.86] failure: `	' expected but `-' found
+
+145858	Peter Gendolla	Gendolla, Peter	Gendolla	\N	\N	1950-00-00	\N	gendolla@fk615.uni-siegen.de	\N	26	\N
+      	              	               	        	  	  	          	  	                  ^
+[1.16] failure: `	' expected but `&' found
+
+146201	Fedogan & Bremer	\N	Bremer	\N	\N	\N	\N	\N	\N	\N	\N
+      	        ^
+[1.75] failure: date format invalid
+
+146573	Lauri J. Owen	\N	Owen	\N	Camp Pendleton, California, USA	0000-05-23	\N	\N	\N	17	\N
+      	             	  	    	  	                               	          ^
+[1.70] failure: `	' expected but `[' found
+
+146596	J. Twells Brex	Brex, John Twells	Brex	\N	Islington, Middlesex [now London], England, UK	1873-06-05	1920-01-07	\N	\N	17	\N
+      	              	                 	    	  	                     ^
+[1.49] failure: `	' expected but `)' found
+
+147198	Ben Robinson (cover designer)	\N	designer)	\N	\N	\N	\N	\N	\N	\N	\N
+      	                             	  	        ^
+[1.31] failure: `	' expected but `.' found
+
+147509	The Editors of imagine...	\N	imagine...	\N	\N	\N	\N	\N	\N	22	\N
+      	                       ^
+[1.24] failure: `	' expected but `9' found
+
+147510	Editors of Zone 9	\N	Editors of Zone 9	\N	\N	\N	\N	\N	\N	\N	\N
+      	                ^
+[1.12] failure: `	' expected but `/' found
+
+148138	Mary/ACMEvsART Inc.	\N	Inc.	\N	\N	\N	\N	\N	\N	\N	\N
+      	    ^
+[1.24] failure: unexpected character in name part
+
+148146	James Carnegie, 9th Earl of Southesk	\N	Carnegie	\N	Edinburgh, Scotland, UK	1827-11-16	1905-02-21	\N	\N	17	\N
+      	                ^
+[1.13] failure: `	' expected but `6' found
+
+148776	Danik63	\N	Danik63	\N	\N	\N	\N	\N	\N	\N	\N
+      	     ^
+[1.59] failure: string matching regex `\p{IsLatin}+' expected but `1' found
+
+148986	Kari Lee Townsend	\N	Townsend	\N	Terceira, Azores (1605th US Air Force Base), Portugal	1968-04-29	\N	\N	\N	17	\N
+      	                 	  	        	  	                  ^
+[1.22] failure: `	' expected but `@' found
+
+149012	Charlesharbour@hotmail.com	\N	Charlesharbour@hotmail.com	\N	\N	\N	\N	\N	\N	\N	\N
+      	              ^
+[1.22] failure: `	' expected but `&' found
+
+150470	Atelier Frank & Zaugg	\N	Zaugg	180576	\N	\N	\N	\N	\N	26	\N
+      	              ^
+[1.12] failure: `	' expected but `/' found
+
+150471	Argo/Shutterstock	\N	Argo/Shutterstock	\N	\N	\N	\N	\N	\N	\N	\N
+      	    ^
+[1.60] failure: `	' expected but `Q' found
+
+151148	Edwin Landseer	Landseer, Edwin Henry	Landseer	\N	88 Queen Anne Street East, St Marylebone, Middlesex, England, UK	1802-03-07	1873-10-01	\N	\N	17	\N
+      	              	                     	        	  	   ^
+[1.23] failure: `c.' expected but `?' found
+
+151575	Stuart Palmer (?-)	Palmer, Stuart A.	Palmer	148014	\N	\N	\N	\N	\N	\N	\N
+      	               ^
+[1.19] failure: `	' expected but `2' found
+
+151727	Editors of 20 Story Magazine	\N	Magazine	\N	\N	\N	\N	\N	\N	\N	\N
+      	           ^
+[1.52] failure: `	' expected but `)' found
+
+151915	Edward Bulwer Lytton (Lord Lytton)	\N	Lytton)	\N	\N	\N	\N	\N	\N	\N	\N
+      	                                  	  	      ^
+[1.72] failure: date format invalid
+
+152346	Olivia Claire High	\N	High	\N	Waukegan, Illinois, USA	0000-07-31	\N	JoeClaire2424@Comcast.net	\N	17	\N
+      	                  	  	    	  	                       	          ^
+[1.16] failure: `	' expected but `&' found
+
+152354	Flowers & Foliage	\N	Foliage	\N	\N	\N	\N	\N	\N	\N	\N
+      	        ^
+[1.31] failure: `)' expected but `.' found
+
+152505	Eric Brown (Frederick D. Brown)	\N	Brown)	\N	\N	\N	\N	\N	\N	\N	\N
+      	                       ^
+[1.13] failure: `	' expected but `!' found
+
+152520	Marvy!	\N	Marvy!	\N	\N	\N	\N	\N	\N	\N	\N
+      	     ^
+[1.37] failure: `)' expected but ` ' found
+
+152584	David Graham	Wright, Evan (or Wilbur)	Graham	\N	South Shields, County Durham, England, UK	1919-00-00	1994-02-00	\N	\N	17	\N
+      	            	                ^
+[1.42] failure: `	' expected but `'' found
+
+152689	Editor of the 'Library of Romance.'	\N	Romance.'	\N	\N	\N	\N	\N	\N	\N	\N
+      	                                  ^
+[1.72] failure: unexpected character in name part
+
+152789	Marguerite de Navarre	Angoulême, reine de Navarre, Marguerite d'	Navarre	\N	Angoulême, Angoumois, France	1492-04-11	1549-12-21	\N	http://www.isfdb.org/wiki/images/8/84/Marguerite_d%27Angoul%C3%AAme.jpg	22	\N
+      	                     	                                          ^
+[1.77] failure: date format invalid
+
+152904	Kali Wallace	\N	Wallace	\N	Colorado Springs, Colorado, USA	0000-11-08	\N	\N	\N	17	\N
+      	            	  	       	  	                               	          ^
+[1.18] failure: `	' expected but `/' found
+
+153304	Yoji Kondo/Eric Kotani	\N	Kotani	\N	\N	\N	\N	\N	\N	\N	\N
+      	          ^
+[1.82] failure: `	' expected but `[' found
+
+153381	Hector C. Bywater	Bywater, Hector Charles	Bywater	\N	Tottenham, Middlesex [now London], England, UK	1884-10-21	1940-08-17	\N	\N	17	\N
+      	                 	                       	       	  	                     ^
+[1.19] failure: `	' expected but `/' found
+
+153474	Josh Finney/Glitchwerk	\N	Finney/Glitchwerk	\N	\N	\N	\N	\N	\N	\N	\N
+      	           ^
+[1.26] failure: `	' expected but `&' found
+
+153524	Chapford Bounford & Associates	\N	Associates	\N	\N	\N	\N	\N	\N	\N	\N
+      	                  ^
+[1.80] failure: date format invalid
+
+153634	Lisa Grabenstetter	Grabenstetter, Lisa A.	Grabenstetter	\N	\N	0000-08-15	\N	\N	\N	\N	\N
+      	                  	                      	             	  	  	          ^
+[1.12] failure: `	' expected but `/' found
+
+153744	NASA/JPL/Texas A & M/Cornell	\N	M/Cornell	\N	\N	\N	\N	\N	\N	\N	\N
+      	    ^
+[1.61] failure: date format invalid
+
+153918	K. S. Riggin	Riggin, Karen S.	Riggin	\N	\N	0000-08-06	\N	shaarvan@aol.com	\N	\N	\N
+      	            	                	      	  	  	          ^
+[1.30] failure: unexpected character in name part
+
+153921	Andrew Jackson Davis, 'The Seer'	Davis, Andrew Jackson	Davis	\N	Blooming Grove, New York, USA	1826-08-11	1910-01-13	\N	\N	17	\N
+      	                      ^
+[1.66] failure: date format invalid
+
+154474	Elissa Elliott	\N	Elliott	\N	Dallas, Texas, USA	0000-10-10	\N	\N	\N	\N	\N
+      	              	  	       	  	                  	          ^
+[1.76] failure: date format invalid
+
+154679	Marilyn Sadler	\N	Sadler	\N	Pittsburgh, Pennsylvania, USA	0000-11-17	\N	\N	\N	17	\N
+      	              	  	      	  	                             	          ^
+[1.16] failure: `)' expected but ` ' found
+
+154866	Hank (H. M.) Gold	\N	Gold	\N	\N	\N	\N	\N	\N	\N	\N
+      	        ^
+[1.8] failure: unexpected character in name part
+
+154965	'Joke' Miller	\N	Miller	\N	\N	\N	\N	\N	\N	\N	\N
+      	^
+[1.20] failure: `	' expected but `&' found
+
+155069	Roger Pring & Associates	\N	Associates	\N	\N	\N	\N	\N	\N	\N	\N
+      	            ^
+[1.14] failure: `	' expected but `'' found
+
+155555	D. W. 'Doc' Kennedy	\N	Kennedy	\N	\N	\N	\N	\N	\N	17	\N
+      	      ^
+[1.13] failure: `	' expected but `7' found
+
+155677	Bruce7	\N	Bruce7	\N	\N	\N	\N	\N	\N	\N	\N
+      	     ^
+[1.28] failure: unexpected character in name part
+
+155863	George Anson Byron, 7th Baron Byron	\N	Byron	\N	Bath, Somerset, England, Kingdom of Great Britain	1789-03-08	1868-03-01	\N	\N	17	\N
+      	                    ^
+[1.22] failure: `c.' expected but `5' found
+
+155993	John Stewart (50s artist)	\N	artist)	\N	\N	\N	\N	\N	\N	\N	\N
+      	              ^
+[1.180] failure: `)' expected but `,' found
+
+156165	John Cournos	&#1050;&#1086;&#1088;&#1096;&#1091;&#1085;, &#1048;&#1074;&#1072;&#1085; &#1043;&#1088;&#1080;&#1075;&#1086;&#1088;&#1100;&#1077;&#1074;&#1080;&#1095; (Korshun, Ivan Grigorievich)	Cournos	\N	Zhitomir, Volhynian Governorate, Russian Empire	1881-03-06	1966-08-27	\N	\N	17	\N
+      	            	                                                                                                                                                               ^
+[1.13] failure: `	' expected but `&' found
+
+156240	Stan & Vince	\N	Vince	\N	\N	\N	\N	\N	\N	\N	\N
+      	     ^
+[1.21] failure: `	' expected but `2' found
+
+156358	Transmission 23	\N	Transmission 23	\N	\N	\N	\N	\N	\N	\N	\N
+      	             ^
+[1.29] failure: `	' expected but `[' found
+
+156644	James Black	\N	Black [II]	\N	\N	\N	\N	\N	\N	\N	\N
+      	           	  	      ^
+[1.18] failure: `	' expected but `&' found
+
+156875	Hal Hager & Associates	\N	Associates	\N	\N	\N	\N	\N	\N	\N	\N
+      	          ^
+[1.21] failure: `	' expected but `š' found
+
+157204	Dubravka Ugreši&#263;	\N	Ugresic	\N	Kutina, Croatia, Yugoslavia	1949-03-27	\N	\N	\N	17	\N
+      	             ^
+[1.45] failure: `	' expected but `)' found
+
+157461	Linda Evans (horror writer)	\N	writer)	\N	\N	\N	\N	\N	\N	17	\N
+      	                           	  	      ^
+[1.57] failure: date format invalid
+
+157482	R. S. Bohn	Bohn, Rebecca S.	Bohn	\N	\N	0000-09-18	\N	\N	\N	\N	\N
+      	          	                	    	  	  	          ^
+[1.29] failure: string matching regex `\p{IsLatin}+' expected but `2' found
+
+157485	Arthur Wilson (early 20th)	\N	Wilson	\N	\N	\N	\N	\N	\N	\N	\N
+      	                     ^
+[1.63] failure: `	' expected but `[' found
+
+158110	Editors of The Magazine of Fantasy and Science Fiction [UK]	\N	Editors of The Magazine of Fantasy and Science Fiction [UK]	\N	\N	\N	\N	\N	\N	\N	\N
+      	                                                       ^
+[1.8] failure: unexpected character in name part
+
+158470	'2'	\N	2	\N	\N	\N	\N	\N	\N	\N	\N
+      	^
+[1.83] failure: `	' expected but `;' found
+
+158674	Edward R. Morris	Morris Jr., Edward Robert	Morris	20610	Seymour Johnson AFB; Goldsboro, North Carolina, USA	1975-10-08	\N	Dante3000@gmail.com	\N	17	\N
+      	                	                         	      	     	                   ^
+[1.69] failure: `	' expected but `C' found
+
+158720	Daniel Counihan	Counihan, Daniel John Patrick	Counihan	\N	12 Culvert Road, Tottenham, Middlesex [now London], England, UK	1917-12-14	2001-03-25	\N	\N	17	\N
+      	               	                             	        	  	   ^
+[1.26] failure: `	' expected but `&' found
+
+158811	Atelier Heinrichs & Bachmann	\N	Bachmann	\N	\N	\N	\N	\N	\N	26	\N
+      	                  ^
+[1.33] failure: unexpected character in name part
+
+158836	Harold Billings	Billings,\	Harold Wayne	Billings	\N	Cain City, Texas, USA	1931-11-12	\N	\N	\N	17	\N
+      	               	         ^
+[1.23] failure: `	' expected but `&' found
+
+159161	Highpoint Type & Graphics	\N	Graphics	\N	\N	\N	\N	\N	\N	\N	\N
+      	               ^
+[1.8] failure: unexpected character in name part
+
+159249	85	\N	85	\N	\N	\N	\N	\N	\N	26	\N
+      	^
+[1.15] failure: `	' expected but `*' found
+
+159302	H. G. W*lls	\N	W*lls	\N	\N	\N	\N	\N	\N	\N	\N
+      	       ^
+[1.16] failure: unexpected character in name part
+
+159309	J. G. B-	\N	B-	\N	\N	\N	\N	\N	\N	\N	\N
+      	        ^
+[1.48] failure: `	' expected but `š' found
+
+159324	Walter Spiegl	Spiegl, Walter	Spiegl	\N	Aš, Bohemia, Czechoslovakia	1934-07-28	\N	walter-spiegl@t-online.de	\N	26	\N
+      	             	              	      	  	 ^
+[1.46] failure: `	' expected but `)' found
+
+159659	Pat Lyons (nee Patterson)	\N	Patterson)	\N	\N	\N	\N	\N	\N	\N	\N
+      	                         	  	         ^
+[1.80] failure: date format invalid
+
+160242	K. J. Wignall	Wignall, Kevin J.	Wignall	\N	Herentals, Belgium	0000-03-15	\N	\N	\N	\N	\N
+      	             	                 	       	  	                  	          ^
+[1.13] failure: `	' expected but `&' found
+
+160548	Phil & Jeff	\N	Jeff	\N	\N	\N	\N	\N	\N	\N	\N
+      	     ^
+[1.21] failure: `c.' expected but `?' found
+
+160593	Peter Young (?-)	\N	Young	\N	\N	\N	\N	\N	\N	17	\N
+      	             ^
+[1.73] failure: date format invalid
+
+160601	Rosalie Lario	\N	Lario	\N	New York City, New York, USA	0000-11-27	\N	\N	\N	17	\N
+      	             	  	     	  	                            	          ^
+[1.8] failure: unexpected character in name part
+
+160792	'Pinky' Martin	\N	Martin	\N	\N	\N	\N	\N	\N	\N	\N
+      	^
+[1.45] failure: `	' expected but `)' found
+
+160877	Vavoq (Wojciech Wawoczny)	\N	Wawoczny)	\N	\N	\N	\N	\N	\N	\N	\N
+      	                         	  	        ^
+[1.11] failure: `	' expected but `š' found
+
+160881	Aleš Haman	\N	Haman	\N	\N	\N	\N	\N	\N	17	\N
+      	   ^
+[1.52] failure: `	' expected but `)' found
+
+161222	Frank O'Connor (game developer)	\N	developer)	\N	\N	\N	\N	\N	\N	\N	\N
+      	                               	  	         ^
+[1.24] failure: `s' expected but `'' found
+
+161228	John Davis (1920's author)	\N	Davis	\N	\N	\N	\N	\N	\N	17	\N
+      	                ^
+[1.24] failure: `s' expected but `'' found
+
+161229	John Davis (1990's author)	\N	Davis	\N	\N	\N	\N	\N	\N	17	\N
+      	                ^
+[1.29] failure: unexpected character in name part
+
+161614	Author of 'The Mummy'	\N	Author	\N	\N	\N	\N	\N	\N	17	\N
+      	                     ^
+[1.50] failure: `	' expected but `)' found
+
+161820	Paul Howard (house pseudonym)	\N	pseudonym)	\N	\N	\N	\N	\N	\N	\N	\N
+      	                             	  	         ^
+[1.25] failure: `	' expected but `/' found
+
+161859	Herborg Pedersen / Millennium	\N	Millennium	\N	\N	\N	\N	\N	\N	\N	\N
+      	                 ^
+[1.18] failure: `	' expected but `&' found
+
+161873	Hauptmann & Kompanie Werbeagentur	\N	Werbeagentur	\N	\N	\N	\N	\N	\N	26	\N
+      	          ^
+[1.56] failure: `	' expected but `/' found
+
+161943	Martin Eisele	Eisele, Martin	Eisele	\N	Eislingen/Fils, Baden-Württemberg, West Germany	1954-00-00	\N	\N	\N	26	\N
+      	             	              	      	  	         ^
+[1.71] failure: date format invalid
+
+161989	Lin Oliver	\N	Oliver	\N	Los Angeles, California, USA	0000-02-02	\N	\N	\N	17	\N
+      	          	  	      	  	                            	          ^
+[1.14] failure: `	' expected but `&' found
+
+162017	Billy & Hells	\N	Hells	\N	\N	\N	\N	\N	\N	26	\N
+      	      ^
+[1.83] failure: unexpected character in name part
+
+162040	Barthélemy d'Herbelot de Molainville	Herbelot de Molainville, Barthélemy d'	Herbelot de Molainville	\N	Paris, Île-de-France, France	1625-12-14	1695-12-08	\N	http://www.isfdb.org/wiki/images/0/02/Barth%C3%A9lemy_d%27Herbelot_de_Molainville.jpg	22	\N
+      	                                    	                                      ^
+[1.273] failure: `)' expected but ` ' found
+
+162125	Rokeya Sakhawat Hossain	&#2489;&#2507;&#2488;&#2503;&#2472;, &#2476;&#2503;&#2455;&#2478; &#2480;&#2507;&#2453;&#2503;&#2479;&#2492;&#2494; &#2488;&#2494;&#2454;&#2494;&#2451;&#2479;&#2492;&#2494;&#2468;	Hossain	167164	Rangpur, Bengal Presidency, British India (Now Bangladesh)	1880-12-09	1932-12-09	\N	\N	9	\N
+      	                       	                                                                                                                                                                                   	       	      	                                              ^
+[1.11] failure: `	' expected but `3' found
+
+162725	Alb3	Burton, III, Arthur L.	Alb3	\N	\N	\N	\N	\N	\N	\N	\N
+      	   ^
+[1.50] failure: date format invalid
+
+162814	Virginia Farmer	\N	Farmer	\N	\N	0000-10-27	\N	\N	\N	17	\N
+      	               	  	      	  	  	          ^
+[1.14] failure: `	' expected but `'' found
+
+163131	D. W. 'Prof' Smith	\N	Smith	\N	\N	\N	\N	\N	\N	\N	\N
+      	      ^
+[1.23] failure: `c.' expected but `?' found
+
+163527	Robert Watson (?-)	\N	Watson	\N	\N	\N	\N	\N	\N	\N	\N
+      	               ^
+[1.20] failure: `c.' expected but `?' found
+
+163533	Alan Grant (?-)	\N	Grant	\N	\N	\N	\N	\N	\N	\N	\N
+      	            ^
+[1.19] failure: `c.' expected but `?' found
+
+163534	Ed Gorman (?-)	\N	Gorman	\N	\N	\N	\N	\N	\N	\N	\N
+      	           ^
+[1.25] failure: `c.' expected but `1' found
+
+163696	Richard Johnson (18th Century)	\N	Century)	163695	\N	\N	\N	\N	\N	\N	\N
+      	                 ^
+[1.37] failure: unexpected character in name part
+
+164009	Kevin Preece 'The Zombieking'	\N	Zombieking'	\N	\N	\N	\N	\N	\N	\N	\N
+      	                             ^
+[1.8] failure: unexpected character in name part
+
+164103	'Ubaid All&#257;h	\N	All&#257;h	\N	\N	\N	\N	\N	\N	30	\N
+      	^
+[1.65] failure: `)' expected but ` ' found
+
+164408	Edward Dyson	Dyson, Edward George	Dyson	\N	Morrison (near Ballarat), Victoria, Australia	1865-03-04	1931-08-22	\N	\N	17	\N
+      	            	                    	     	  	              ^
+[1.13] failure: `	' expected but `[' found
+
+164879	Buck [Robert] Coulson	\N	Coulson	\N	\N	\N	\N	\N	\N	\N	\N
+      	     ^
+[1.16] failure: `	' expected but `“' found
+
+164908	Heather “Kyoht” Luterman	\N	Luterman	\N	\N	\N	\N	\N	\N	\N	\N
+      	        ^
+[1.16] failure: `	' expected but `1' found
+
+164913	Wu Ming 1	\N	Wu Ming 1	\N	\N	\N	\N	\N	\N	\N	\N
+      	        ^
+[1.21] failure: `c.' expected but `?' found
+
+164963	John Harris (?-?)	\N	Harris	\N	\N	\N	\N	\N	\N	\N	\N
+      	             ^
+[1.18] failure: `	' expected but `“' found
+
+165414	Anastasia “Balaa” Korochansckaja	\N	Korochansckaja	\N	\N	\N	\N	\N	\N	\N	\N
+      	          ^
+[1.12] failure: `	' expected but `!' found
+
+165569	YARF! Staff	\N	Staff	\N	\N	\N	\N	\N	\N	17	\N
+      	    ^
+[1.106] failure: `	' expected but `[' found
+
+165691	Aino Kallas	Kallas, Aino Julia Maria (Krohn)	Kallas	\N	Kiiskilä, Viipuri, Finland, Russian Empire [now Vyborg, Russia]	1878-08-02	1956-11-09	\N	\N	21	\N
+      	           	                                	      	  	                                           ^
+[1.25] failure: `	' expected but `/' found
+
+165848	Alloy Photography/Veer	\N	Photography/Veer	\N	\N	\N	\N	\N	\N	\N	\N
+      	                 ^
+[1.8] failure: unexpected character in name part
+
+166154	33 artists	\N	artists	\N	\N	\N	\N	\N	\N	\N	\N
+      	^
+[1.8] failure: unexpected character in name part
+
+166232	'Tommy-Boy' Canty	\N	Canty	\N	\N	\N	\N	\N	\N	\N	\N
+      	^
+[1.64] failure: unexpected character in name part
+
+166246	Colonel Sir Harry Mackworth	Mackworth, Harry Llewellyn, 8th Baronet Mackworth of the Gnoll, Glamorgan	Mackworth	\N	Dixton, Monmouthshire, Wales, UK	1878-03-17	1952-11-18	\N	\N	17	\N
+      	                           	                            ^
+[1.8] failure: unexpected character in name part
+
+166488	'Cataroo'	\N	Cataroo	\N	\N	\N	\N	\N	\N	\N	\N
+      	^
+[1.14] failure: `	' expected but `1' found
+
+166502	Image 100	\N	Image 100	\N	\N	\N	\N	\N	\N	\N	\N
+      	      ^
+[1.15] failure: `	' expected but `8' found
+
+166581	Nummer 85	\N	Nummer 85	159249	\N	\N	\N	\N	\N	26	\N
+      	       ^
+[1.42] failure: `	' expected but `G' found
+
+166671	Gilbert Frankau	\N	Frankau	\N	103 Gloucester Terrace, Paddington, Middlesex, England, UK	1884-04-21	1952-11-04	\N	\N	17	\N
+      	               	  	       	  	    ^
+[1.10] failure: `	' expected but `-' found
+
+166790	J.-H. Winterhall	\N	Winterhall	\N	\N	\N	\N	\N	\N	22	\N
+      	  ^
+[1.12] failure: `	' expected but `/' found
+
+167169	AURA/STScI	\N	AURA/STScI	\N	\N	\N	\N	\N	\N	\N	\N
+      	    ^
+[1.21] failure: `	' expected but `/' found
+
+167263	Jessie Tracer/Electric Keet	\N	Keet	\N	\N	\N	\N	\N	\N	\N	\N
+      	             ^
+[1.17] failure: `	' expected but `'' found
+
+167475	M. C. A. 'Micah' Hogarth	\N	Hogarth	\N	\N	\N	\N	\N	\N	17	\N
+      	         ^
+[1.17] failure: `	' expected but `/' found
+
+167479	Hiemstra / Bouthoorn	\N	Bouthoorn	\N	\N	\N	\N	\N	\N	\N	\N
+      	         ^
+[1.120] failure: `	' expected but `1' found
+
+167825	Jonnalaga&#7693;&#7693;a R&#257;dh&#257;k&#7771;&#7779;&#7751;ayya	\N	R&#257;dh&#257;k&#7771;&#7779;&#7751;ayya 1	\N	\N	\N	\N	\N	\N	93	\N
+      	                                                                  	  	                                          ^
+[1.82] failure: date format invalid
+
+167948	Ellen Meister	\N	Meister	\N	Bronx, New York City, New York, USA	0000-11-18	\N	ellen@ellenmeister.com	\N	17	\N
+      	             	  	       	  	                                   	          ^
+[1.59] failure: string matching regex `\p{IsLatin}+' expected but `8' found
+
+168006	Raymond Roussel	Roussel, Raymond	Roussel	\N	Paris (8th arrondissement), Seine, France	1877-01-20	1933-07-14	\N	http://www.isfdb.org/wiki/images/c/c0/Raymond_Roussel.JPG	22	\N
+      	               	                	       	  	       ^
+[1.10] failure: `	' expected but `-' found
+
+168603	J.-L. Rivera	\N	Rivera	\N	\N	\N	\N	\N	\N	\N	\N
+      	  ^
+[1.95] failure: `	' expected but `[' found
+
+169105	Jaros&#322;aw Iwaszkiewicz	\N	Iwaszkiewicz	\N	Kalnik, Kiev Governorate, Russian Empire [now Vinnytsia Oblast, Ukraine]	1894-02-20	1980-03-02	\N	\N	52	\N
+      	                          	  	            	  	                                         ^
+[1.14] failure: `	' expected but `š' found
+
+169202	Mikuláš Rachlík	\N	Rachlík	\N	\N	\N	\N	\N	\N	14	\N
+      	      ^
+[1.18] failure: `	' expected but `&' found
+
+169439	Heinrichs & Piloty	\N	Piloty	206718	\N	\N	\N	\N	\N	26	\N
+      	          ^
+[1.49] failure: `	' expected but `/' found
+
+169730	Günter Zettl	Zettl, Günter	Zettl	\N	Bruck/Mur, Styria, Austria	1961-03-13	\N	\N	\N	26	\N
+      	            	             	     	  	     ^
+[1.10] failure: `	' expected but `-' found
+
+169937	G.-J. Arnaud	Arnaud, Georges-Jean	Arnaud	\N	Saint-Gilles-du-Gard, Gard, France	1928-07-03	\N	\N	http://www.fantascienza.com/catalogo/imgbank/foto/7051.jpg	22	\N
+      	  ^
+[1.10] failure: `	' expected but `-' found
+
+169980	P.-J. Hérault	Rigaud, Michel	Hérault	210907	Paris, Seine, France	1934-09-22	\N	\N	http://www.isfdb.org/wiki/images/f/f0/Paul-Jean_H%C3%A9rault.JPG	22	\N
+      	  ^
+[1.15] failure: `	' expected but `8' found
+
+170128	TheSupe87	\N	TheSupe87	\N	\N	\N	\N	\N	\N	\N	\N
+      	       ^
+[1.10] failure: `	' expected but `-' found
+
+170151	M.-A. Rayjean	\N	Rayjean	\N	\N	\N	\N	\N	\N	22	\N
+      	  ^
+[1.10] failure: `	' expected but `-' found
+
+170176	J.-P. Garen	Goiran, Jean-Pierre	Garen	176869	Paris (8th arrondissement), Seine, France	1932-11-10	2004-03-04	\N	\N	22	\N
+      	  ^
+[1.10] failure: `	' expected but `-' found
+
+170182	K.-H. Scheer	\N	Scheer	\N	\N	\N	\N	\N	\N	26	\N
+      	  ^
+[1.15] failure: `	' expected but `/' found
+
+170235	Adelson/Eichinger	\N	Adelson/Eichinger	\N	\N	\N	\N	\N	\N	\N	\N
+      	       ^
+[1.20] failure: `	' expected but `!' found
+
+170524	Misako Rocks!	\N	Rocks!	\N	\N	\N	\N	\N	\N	\N	\N
+      	            ^
+[1.15] failure: `	' expected but `š' found
+
+170651	Erih Koš	&#1050;&#1086;&#1096;, &#1045;&#1088;&#1080;&#1093;	Koš	170650	Sarajevo, Bosnia Herzegovina, Austro-Hungarian Empire	1913-04-15	2010-05-25	\N	\N	60	\N
+      	       ^
+[1.14] failure: `	' expected but `&' found
+
+170766	Pieko & van Venden	\N	Venden	\N	\N	\N	\N	\N	\N	\N	\N
+      	      ^
+[1.59] failure: date format invalid
+
+170842	Maureen Doyle McQuerry	\N	McQuerry	\N	\N	0000-12-22	\N	\N	\N	17	\N
+      	                      	  	        	  	  	          ^
+[1.20] failure: `	' expected but `[' found
+
+170869	David Drake [I]	\N	Drake	\N	Baltimore, Maryland, USA	1963-06-27	\N	\N	\N	17	\N
+      	            ^
+[1.54] failure: `)' expected but ` ' found
+
+171192	Mlle de Lubert	de Lubert, Marie-Madeleine (aka Marguerite de Lubert)	Lubert	\N	Paris, Île-de-France, France	1702-12-17	1785-08-25	\N	\N	22	\N
+      	              	                               ^
+[1.19] failure: `	' expected but `&' found
+
+171240	Tony Greco & Associates	\N	Associates	173761	\N	\N	\N	\N	\N	\N	\N
+      	           ^
+[1.16] failure: `	' expected but `&' found
+
+172118	Huntley & Muir	\N	Muir	\N	\N	\N	\N	\N	\N	\N	\N
+      	        ^
+[1.67] failure: date format invalid
+
+172156	Cat Patrick	\N	Patrick	\N	Cheyenne, Wyoming, USA	0000-01-18	\N	\N	\N	\N	\N
+      	           	  	       	  	                      	          ^
+[1.8] failure: unexpected character in name part
+
+172159	'4SJ' Ackerman	\N	Ackerman	\N	\N	\N	\N	\N	\N	17	\N
+      	^
+[1.13] failure: `	' expected but `œ' found
+
+172301	L. Frœlich	\N	Frœlich	\N	\N	\N	\N	\N	\N	22	\N
+      	     ^
+[1.16] failure: `	' expected but `/' found
+
+172422	Spectral/Fotolia	\N	Spectral/Fotolia	\N	\N	\N	\N	\N	\N	\N	\N
+      	        ^
+[1.16] failure: unexpected character in name part
+
+172886	Piggy N-	\N	N-	\N	\N	\N	\N	\N	\N	17	\N
+      	        ^
+[1.10] failure: `	' expected but `-' found
+
+173352	J.-Ch. Bergman	\N	Bergman	\N	\N	\N	\N	\N	\N	22	\N
+      	  ^
+[1.81] failure: `	' expected but `–' found
+
+173535	Giuseppe O. Longo	Longo, Giuseppe O.	Longo	\N	Forlì, Forlì-Cesena, Emilia–Romagna, Italy	1941-03-02	\N	\N	\N	36	\N
+      	                 	                  	     	  	                           ^
+[1.20] failure: `	' expected but `ž' found
+
+173750	Petar Meseldžija	\N	Meseldžija	\N	\N	\N	\N	\N	\N	17	\N
+      	            ^
+[1.25] failure: `s' expected but `–' found
+
+174770	James Mason (1971–)	\N	Mason	\N	\N	\N	\N	\N	\N	\N	\N
+      	                 ^
+[1.19] failure: `	' expected but `!' found
+
+174948	Rick Sneary!	\N	Sneary!	\N	\N	\N	\N	\N	\N	\N	\N
+      	           ^
+[1.8] failure: unexpected character in name part
+
+175098	'Nathan Burgoine	\N	Burgoine	\N	UK	\N	\N	\N	\N	17	\N
+      	^
+[1.8] failure: unexpected character in name part
+
+175172	17th Street Productions	\N	Productions	\N	\N	\N	\N	\N	\N	\N	\N
+      	^
+[1.24] failure: `	' expected but `/' found
+
+175299	Henrik Sorensen / Getty Images	\N	Images	\N	\N	\N	\N	\N	\N	\N	\N
+      	                ^
+[1.10] failure: `	' expected but `3' found
+
+175449	C.3.3	\N	C.3.3	\N	\N	\N	\N	\N	\N	\N	\N
+      	  ^
+[1.18] failure: `	' expected but `&' found
+
+175617	Schriemer & Schriemer	\N	Schriemer	\N	\N	\N	\N	\N	\N	\N	\N
+      	          ^
+[1.8] failure: unexpected character in name part
+
+176034	2K Games	\N	Games	\N	\N	\N	\N	\N	\N	\N	\N
+      	^
+[1.18] failure: `	' expected but `#' found
+
+176166	Anonymous #1	\N	Anonymous #1	\N	\N	\N	\N	\N	\N	\N	\N
+      	          ^
+[1.10] failure: `	' expected but `-' found
+
+176581	J.-C. Lamart	\N	Lamart	\N	\N	\N	\N	\N	\N	22	\N
+      	  ^
+[1.10] failure: `	' expected but `-' found
+
+176866	J.-C. Chaumette	Chaumette, Jean-Christophe	Chaumette	\N	Charente, France	1961-00-00	\N	\N	\N	22	\N
+      	  ^
+[1.91] failure: date format invalid
+
+176923	Heather Vogel Frederick	\N	Frederick	\N	Peterborough, New Hampshire, USA	0000-01-03	\N	\N	\N	17	\N
+      	                       	  	         	  	                                	          ^
+[1.37] failure: unexpected character in name part
+
+177077	The Author of 'Fallen Angels'	\N	Author	\N	\N	\N	\N	\N	\N	17	\N
+      	                             ^
+[1.51] failure: `	' expected but `)' found
+
+177268	Paul Williams (Doctor Who author)	\N	author)	\N	\N	\N	\N	\N	\N	\N	\N
+      	                                 	  	      ^
+[1.28] failure: `c.' expected but `1' found
+
+177697	Editors of Galaxie (1ère série)	\N	Editors of Galaxie (1ère série)	\N	\N	\N	\N	\N	\N	22	\N
+      	                    ^
+[1.70] failure: date format invalid
+
+177743	Mckenzie Wagner	\N	Wagner	\N	West Jordan, Utah, USA	0000-11-29	\N	\N	\N	17	\N
+      	               	  	      	  	                      	          ^
+[1.10] failure: `	' expected but `-' found
+
+177801	J.-T. M'Intosh	\N	M'Intosh	\N	\N	\N	\N	\N	\N	17	\N
+      	  ^
+[1.40] failure: `	' expected but `)' found
+
+177966	Paul Anderson (II)	\N	mispelling)	\N	\N	\N	\N	\N	\N	17	\N
+      	                  	  	          ^
+[1.11] failure: `	' expected but `-' found
+
+178058	Ch.-L. Souvelier	\N	Souvelier	\N	\N	\N	\N	\N	\N	22	\N
+      	   ^
+[1.17] failure: `	' expected but `š' found
+
+178096	Hrvoje Bešli&#263;	\N	Bešli&#263;	\N	\N	\N	\N	\N	\N	\N	\N
+      	         ^
+[1.10] failure: `	' expected but `-' found
+
+178253	D.-F. Galouye	\N	Galouye	\N	\N	\N	\N	\N	\N	17	\N
+      	  ^
+[1.10] failure: `	' expected but `-' found
+
+178456	J.-L. Le May	\N	May	\N	\N	\N	\N	\N	\N	22	\N
+      	  ^
+[1.19] failure: `	' expected but `&' found
+
+178601	Dodd, Mead & Company, Inc.	\N	Inc.	\N	\N	\N	\N	\N	\N	\N	\N
+      	           ^
+[1.15] failure: `	' expected but `Š' found
+
+179097	Michal Špa&#269;ek	\N	Špa&#269;ek	\N	Praha, Czechoslovakia	1971-10-17	\N	\N	\N	14	\N
+      	       ^
+[1.79] failure: date format invalid
+
+179351	Robert William Iveniuk	Ivenuik, Robert William	Iveniuk	\N	\N	0000-11-10	\N	\N	\N	\N	\N
+      	                      	                       	       	  	  	          ^
+[1.16] failure: `	' expected but `1' found
+
+179392	Amazing 15	\N	Amazing 15	\N	\N	\N	\N	\N	\N	\N	\N
+      	        ^
+[1.11] failure: `	' expected but `3' found
+
+179707	Mik3y	\N	Mik3y	\N	\N	\N	\N	\N	\N	\N	\N
+      	   ^
+[1.11] failure: `	' expected but `'' found
+
+179872	R. 'Martin' Armstrong	\N	Armstrong	\N	\N	\N	\N	\N	\N	\N	\N
+      	   ^
+[1.28] failure: `	' expected but `*' found
+
+179959	Redactie Meulenhoff *M	\N	Meulenhoff	\N	\N	\N	\N	\N	\N	16	\N
+      	                    ^
+[1.8] failure: unexpected character in name part
+
+180623	'Geoffrey Mundane'	\N	Mundane'	\N	\N	\N	\N	\N	\N	\N	\N
+      	^
+[1.20] failure: `	' expected but `/' found
+
+180776	diversepixel/Shutterstock.com	\N	diversepixel/Shutterstock.com	\N	\N	\N	\N	\N	\N	\N	\N
+      	            ^
+[1.20] failure: `	' expected but `/' found
+
+180966	Kamil Vojnar/FPG	\N	Vojnar/FPG	\N	\N	\N	\N	\N	\N	\N	\N
+      	            ^
+[1.21] failure: `	' expected but `š' found
+
+180979	Gabriel Gajdoš	\N	Gajdoš	\N	\N	\N	\N	\N	\N	\N	\N
+      	             ^
+[1.66] failure: `\N' expected but `'' found
+
+181105	Willy van der Heide	van den Hout, Willem	van der Heide	\N	's-Hertogenbosch, North Brabant, Netherlands	1915-06-03	1985-02-24	\N	\N	16	\N
+      	                   	                    	             	  	^
+[1.50] failure: string matching regex `\p{IsLatin}+' expected but `4' found
+
+181147	Léon Daudet	Daudet, Léon	Daudet	\N	Paris (4th arrondissement), Seine, France	1867-11-16	1942-06-30	\N	http://www.isfdb.org/wiki/images/9/94/L%C3%A9on_Daudet.JPG	22	\N
+      	           	            	      	  	       ^
+[1.28] failure: `)' expected but `a' found
+
+181285	John Rowland (1950s author)	\N	author)	\N	\N	\N	\N	\N	\N	\N	\N
+      	                    ^
+[1.16] failure: `	' expected but `/' found
+
+181615	Corsillo/Manzone	\N	Corsillo/Manzone	\N	\N	\N	\N	\N	\N	\N	\N
+      	        ^
+[1.27] failure: `	' expected but `:' found
+
+181719	The Sleeping Beauty: An Old Fairy Tale	\N	Tale	\N	\N	\N	\N	\N	\N	\N	\N
+      	                   ^
+[1.10] failure: `	' expected but `-' found
+
+181835	J.-M. Staub	\N	Staub	\N	\N	\N	\N	\N	\N	22	\N
+      	  ^
+[1.44] failure: unexpected character in name part
+
+181852	Thomas Lyttelton	Lyttelton, Thomas, 2nd Baron Lyttelton of Frankley	Lyttelton	\N	Hagley, Worcestershire, England, Kingdom of Great Britain	1744-01-30	1779-11-27	\N	\N	17	\N
+      	                	                   ^
+[1.14] failure: `	' expected but `9' found
+
+182042	Mobius9	\N	Mobius9	\N	\N	\N	\N	\N	\N	\N	\N
+      	      ^
+[1.23] failure: `	' expected but `/' found
+
+182050	Carlos Caetano / Shutterstock	\N	Shutterstock	\N	\N	\N	\N	\N	\N	\N	\N
+      	               ^
+[1.8] failure: unexpected character in name part
+
+182190	'Astra' Zimmer	\N	Zimmer	\N	\N	\N	\N	\N	\N	\N	\N
+      	^
+[1.8] failure: unexpected character in name part
+
+182197	4-E Ackerman	\N	Ackerman	\N	\N	\N	\N	\N	\N	17	\N
+      	^
+[1.10] failure: `	' expected but `3' found
+
+182395	SF3	\N	SF3	\N	\N	\N	\N	\N	\N	\N	\N
+      	  ^
+[1.14] failure: `	' expected but `2' found
+
+182462	dreams2media	\N	dreams2media	\N	\N	\N	\N	\N	\N	\N	\N
+      	      ^
+[1.15] failure: `	' expected but `&' found
+
+182680	Antler & Baldwin, Inc.	\N	Inc.	\N	\N	\N	\N	\N	\N	\N	\N
+      	       ^
+[1.12] failure: `	' expected but `&' found
+
+182773	You & Me Creative	\N	Creative	\N	\N	\N	\N	\N	\N	\N	\N
+      	    ^
+[1.49] failure: `	' expected but `)' found
+
+182805	The Publishers (of the Oz Books)	\N	Books)	\N	\N	\N	\N	\N	\N	\N	\N
+      	                                	  	     ^
+[1.10] failure: `	' expected but `<' found
+
+182816	SF<sup>3</sup> Publications Committee	\N	Committee	\N	\N	\N	\N	\N	\N	\N	\N
+      	  ^
+[1.20] failure: `	' expected but `!' found
+
+183179	David Malki !	\N	Malki !	178863	\N	\N	\N	\N	\N	\N	\N
+      	            ^
+[1.8] failure: unexpected character in name part
+
+183324	'H. P. Lovecraft'	\N	Lovecraft'	\N	\N	\N	\N	\N	\N	\N	\N
+      	^
+[1.15] failure: `	' expected but `/' found
+
+183338	Mozart / Luca Petrillo	\N	Petrillo	\N	\N	\N	\N	\N	\N	\N	\N
+      	       ^
+[1.10] failure: `	' expected but `&' found
+
+183405	L & L Dreamspell	\N	Dreamspell	\N	\N	\N	\N	\N	\N	\N	\N
+      	  ^
+[1.8] failure: unexpected character in name part
+
+183545	[Our Readers]	\N	Readers]	\N	\N	\N	\N	\N	\N	\N	\N
+      	^
+[1.14] failure: `	' expected but `'' found
+
+183697	N. E. 'Gus' Willmorth, Ph.D.	\N	Willmorth	\N	\N	\N	\N	\N	\N	\N	\N
+      	      ^
+[1.15] failure: `	' expected but `1' found
+
+184459	Number 17	\N	Number 17	\N	\N	\N	\N	\N	\N	17	\N
+      	       ^
+[1.14] failure: `	' expected but `5' found
+
+184560	Beast 5	\N	Beast 5	\N	\N	\N	\N	\N	\N	17	\N
+      	      ^
+[1.20] failure: `	' expected but `š' found
+
+184704	Václav Kajdoš	Kajdoš, Václav	Kajdoš	\N	Frenštát pod Radhošt&#283;m, Moravian-Silesian Region, Czechoslovakia	1922-05-13	1990-00-00	\N	\N	14	\N
+      	            ^
+[1.10] failure: `	' expected but `-' found
+
+184934	J.-L. Clary	\N	Clary	\N	\N	\N	\N	\N	\N	22	\N
+      	  ^
+[1.10] failure: `	' expected but `-' found
+
+184954	L.-J. July	\N	July	\N	\N	\N	\N	\N	\N	22	\N
+      	  ^
+[1.16] failure: `	' expected but `4' found
+
+185048	Wu Ming 4	\N	Ming 4	\N	\N	\N	\N	\N	\N	17	\N
+      	        ^
+[1.11] failure: `	' expected but `'' found
+
+185054	E. 'Gomma' Guarneri	\N	Guarneri	\N	\N	\N	\N	\N	\N	36	\N
+      	   ^
+[1.53] failure: date format invalid
+
+185099	Jane Nickerson	\N	Nickerson	\N	USA	0000-11-17	\N	\N	\N	17	\N
+      	              	  	         	  	   	          ^
+[1.16] failure: `	' expected but `3' found
+
+185122	Wu Ming 3	\N	Ming 3	\N	\N	\N	\N	\N	\N	17	\N
+      	        ^
+[1.60] failure: `)' expected but ` ' found
+
+185424	Fred Eng	Eng, Frederick Ronald	Eng	\N	Nam Chieu (now Nanzhao), China	1917-02-25	1995-02-16	\N	\N	17	\N
+      	        	                     	   	  	              ^
+[1.44] failure: unexpected character in name part
+
+186114	The Author of 'Lady Audley's Secret,' 'Aurora Floyd,' Etc. Etc. Etc.	\N	Author	\N	\N	\N	\N	\N	\N	17	\N
+      	                                    ^
+[1.44] failure: unexpected character in name part
+
+186123	The Author of 'Lady Audley's Secret,' Etc. Etc. Etc.	\N	Author	\N	\N	\N	\N	\N	\N	17	\N
+      	                                    ^
+[1.44] failure: unexpected character in name part
+
+186170	The Author of 'Lady Audley's Secret,' 'Vixen,' 'Ishmael,' 'The Day Will Come' Etc.	\N	Author	\N	\N	\N	\N	\N	\N	17	\N
+      	                                    ^
+[1.29] failure: `)' expected but `?' found
+
+186208	Michael Bailey (1944-?)	\N	Bailey	\N	\N	1944-00-00	\N	\N	\N	17	\N
+      	                     ^
+[1.30] failure: unexpected character in name part
+
+186214	The Author of 'Pelham,' 'Eugene Aram,' &c. &c.	\N	Author	\N	\N	\N	\N	\N	\N	17	\N
+      	                      ^
+[1.30] failure: unexpected character in name part
+
+186249	The Author of 'Pelham,' 'Eugene Aram,' &c.	\N	Author	\N	\N	\N	\N	\N	\N	17	\N
+      	                      ^
+[1.35] failure: unexpected character in name part
+
+186283	The Author of 'Eugene Aram,' 'England and the English,' &c. &c.	\N	Author	\N	\N	\N	\N	\N	\N	17	\N
+      	                           ^
+[1.41] failure: unexpected character in name part
+
+186299	The Author of 'Night and Morning,' 'Rienzi,' etc.	\N	Author	\N	\N	\N	\N	\N	\N	17	\N
+      	                                 ^
+[1.14] failure: `	' expected but `'' found
+
+186632	R. C. 'Bob' Baker	\N	Baker	\N	\N	\N	\N	\N	\N	\N	\N
+      	      ^
+[1.19] failure: `	' expected but `š' found
+
+186886	Jaroslav Olša	\N	Olša	\N	\N	\N	\N	\N	\N	\N	\N
+      	           ^
+[1.9] failure: `	' expected but `*' found
+
+186889	J*hn Cl*te	\N	Cl*te	\N	\N	\N	\N	\N	\N	\N	\N
+      	 ^
+[1.42] failure: string matching regex `\p{IsLatin}+' expected but `&' found
+
+187063	Valentine Williams (female writer & poet)	Williams, Valentine	Williams	\N	\N	\N	\N	\N	\N	17	\N
+      	                                  ^
+[1.28] failure: `	' expected but `G' found
+
+187217	S. E. (The Seagull) Goll	\N	Goll	\N	\N	\N	\N	\N	\N	\N	\N
+      	                    ^
+[1.35] failure: unexpected character in name part
+
+187243	The Author of 'Vivian Grey,' 'Contarini Fleming,' &c.	\N	Author	\N	\N	\N	\N	\N	\N	17	\N
+      	                           ^
+[1.22] failure: `	' expected but `/' found
+
+187536	Margaret Noori/Giiwedinoodin	Noori, Margaret	Noori	\N	\N	1965-00-00	\N	\N	\N	17	\N
+      	              ^
+[1.20] failure: `	' expected but `/' found
+
+187578	diversepixel/shutterstock	\N	diversepixel/shutterstock	\N	\N	\N	\N	\N	\N	\N	\N
+      	            ^
+[1.11] failure: `	' expected but `Œ' found
+
+187628	E. Œ. Somerville	Somerville, Edith Anna Œnone	Somerville	\N	Corfu, United States of the Ionian Islands	1858-05-02	1949-10-08	\N	\N	17	\N
+      	   ^
+[1.15] failure: `	' expected but `&' found
+
+187717	Albert & Charles Boni, Inc.	\N	Inc.	\N	\N	\N	\N	\N	\N	\N	\N
+      	       ^
+[1.74] failure: date format invalid
+
+187757	Lauren Miller	\N	Miller	\N	New York City, New York, USA	0000-03-04	\N	\N	\N	17	\N
+      	             	  	      	  	                            	          ^
+[1.84] failure: string matching regex `\p{IsLatin}+' expected but `1' found
+
+187811	Marcel Proust	Proust, Valentin Louis Georges Eugène Marcel	Proust	\N	Paris (16th arrondissement), Seine, France	1871-07-10	1922-11-18	\N	http://www.isfdb.org/wiki/images/5/5e/Marcel_Proust.jpg	22	\N
+      	             	                                            	      	  	       ^
+[1.13] failure: `	' expected but `&' found
+
+187964	Wolf & Wolf	\N	Wolf	\N	\N	\N	\N	\N	\N	\N	\N
+      	     ^
+[1.79] failure: date format invalid
+
+188062	Christian Schoon	\N	Schoon	\N	Sioux Falls, South Dakota, USA	0000-12-23	\N	\N	\N	17	\N
+      	                	  	      	  	                              	          ^
+[1.8] failure: unexpected character in name part
+
+188343	'J. Anthony Pierce'	\N	Pierce'	\N	\N	\N	\N	\N	\N	\N	\N
+      	^
+[1.28] failure: `	' expected but `:' found
+
+188464	Editors of Pathlight: New Chinese Writing	\N	Writing	\N	\N	\N	\N	\N	\N	\N	\N
+      	                    ^
+[1.31] failure: `)' expected but `'' found
+
+188497	Marcia Martin (children's author)	Levin, Marcia Lauter Obrasky	Martin	\N	Philadelphia, Pennsylvania, USA	1918-10-29	2006-04-18	\N	\N	17	\N
+      	                       ^
+[1.15] failure: `	' expected but `/' found
+
+188529	Aristia/Hive Studios	\N	Studios	\N	\N	\N	\N	\N	\N	\N	\N
+      	       ^
+[1.53] failure: date format invalid
+
+188773	Cat Devon	Linz, Cathie	Devon	\N	\N	0000-11-29	\N	\N	\N	17	\N
+      	         	            	     	  	  	          ^
+[1.12] failure: `	' expected but `š' found
+
+189082	Lukáš Zídka	\N	Zídka	\N	\N	\N	\N	\N	\N	\N	\N
+      	    ^
+[1.9] failure: `	' expected but `2' found
+
+189095	T23	\N	T23	\N	\N	\N	\N	\N	\N	\N	\N
+      	 ^
+[1.18] failure: `	' expected but `'' found
+
+189128	Marion K. 'Doc' Smith	\N	Smith	\N	\N	\N	\N	\N	\N	\N	\N
+      	          ^
+[1.29] failure: `	' expected but `:' found
+
+189163	Editors of Renditions: A Chinese-English Translation Magazine	\N	Magazine	\N	\N	\N	\N	\N	\N	\N	\N
+      	                     ^
+[1.22] failure: unexpected character in name part
+
+189215	Nikolaj Gogol'	\N	Gogol'	\N	\N	\N	\N	\N	\N	\N	\N
+      	              ^
+[1.29] failure: `	' expected but `/' found
+
+189408	Can Stock Photo Inc. / Patrick	\N	Patrick	\N	\N	\N	\N	\N	\N	\N	\N
+      	                     ^
+[1.10] failure: `	' expected but `-' found
+
+189729	J.-P. Peltriaux	\N	Peltriaux	\N	\N	\N	\N	\N	\N	\N	\N
+      	  ^
+[1.37] failure: `	' expected but `/' found
+
+190029	Lightscapes Photographs, Inc / Corbis	\N	Corbis	\N	\N	\N	\N	\N	\N	\N	\N
+      	                             ^
+[1.22] failure: `	' expected but `š' found
+
+190156	Andreas &#278;šbach	\N	&#278;šbach	\N	\N	\N	\N	\N	\N	26	\N
+      	              ^
+[1.68] failure: date format invalid
+
+190201	Isaac Hooke	\N	Hooke	\N	Edmonton, Alberta, Canada	0000-03-20	\N	\N	\N	17	\N
+      	           	  	     	  	                         	          ^
+[1.31] failure: unexpected character in name part
+
+190279	The Author of 'Darnley,' &c.	\N	Author	\N	\N	\N	\N	\N	\N	17	\N
+      	                       ^
+[1.21] failure: `	' expected but `[' found
+
+190291	Alan Seymour [2]	\N	Seymour	\N	Fremantle, Western Australia, Australia	1927-06-06	\N	\N	\N	17	\N
+      	             ^
+[1.15] failure: `	' expected but `&' found
+
+190558	Genkis & Sev	\N	Sev	\N	\N	\N	\N	\N	\N	\N	\N
+      	       ^
+[1.79] failure: string matching regex `\p{IsLatin}+' expected but `9' found
+
+190619	Jean-Claude Zylberstein	Zylberstein, Jean-Claude	Zylberstein	\N	Paris (9th arrondissement), Seine, France	1938-11-17	\N	\N	\N	22	\N
+      	                       	                        	           	  	       ^
+[1.15] failure: `	' expected but `Ž' found
+
+190735	Slavoj Žižek	\N	Žižek	\N	\N	\N	\N	\N	\N	17	\N
+      	       ^
+[1.19] failure: `	' expected but `Ž' found
+
+190891	Aleksandar Žiljak	\N	Žiljak	\N	\N	\N	\N	\N	\N	31	\N
+      	           ^
+[1.10] failure: `	' expected but `š' found
+
+190958	Aušra Marija Misi&#363;nait&#279;	\N	Misi&#363;nait&#279;	\N	\N	\N	\N	\N	\N	\N	\N
+      	  ^
+[1.16] failure: `	' expected but `Š' found
+
+190975	Audrius Šimakauskas	\N	Šimakauskas	\N	\N	\N	\N	\N	\N	\N	\N
+      	        ^
+[1.14] failure: `	' expected but `Š' found
+
+190982	Dalia Šimavi&#269;i&#363;t&#279;	\N	Šimavi&#269;i&#363;t&#279;	\N	\N	\N	\N	\N	\N	\N	\N
+      	      ^
+[1.57] failure: `	' expected but `[' found
+
+191128	William Margrie	\N	Margrie	\N	Camberwell, Surrey [now Southwark, London], England, UK	1877-04-07	1960-01-09	\N	\N	17	\N
+      	               	  	       	  	                   ^
+[1.53] failure: `	' expected but `[' found
+
+191181	James Kenward	\N	Kenward	\N	New Eltham, Kent [now London], England, UK	1908-01-01	1994-06-12	\N	\N	17	\N
+      	             	  	       	  	                 ^
+[1.74] failure: `	' expected but `[' found
+
+191185	Thomas Le Breton	Ford, Thomas Murray	Breton	\N	Hackney, Middlesex [now London], England, UK	1854-05-04	1932-01-12	\N	\N	17	\N
+      	                	                   	      	  	                   ^
+[1.8] failure: unexpected character in name part
+
+191223	'Titus'	Simon, Titus H. J.	'Titus'	\N	\N	\N	\N	\N	\N	26	\N
+      	^
+[1.83] failure: `	' expected but `[' found
+
+191556	Lester Lurgan	Knowles, Mabel Winifred	Lurgan	\N	Streatham, Lambeth, Surrey [now London], England, UK	1875-01-01	1949-11-29	\N	\N	17	\N
+      	             	                       	      	  	                           ^
+[1.13] failure: `	' expected but `_' found
+
+191774	Horst_Ragnarok	\N	Ragnarok	\N	\N	\N	\N	\N	\N	17	\N
+      	     ^
+[1.14] failure: `	' expected but `/' found
+
+191793	Pat SM/Fotolia	\N	SM/Fotolia	\N	\N	\N	\N	\N	\N	\N	\N
+      	      ^
+[1.14] failure: `	' expected but `/' found
+
+191810	Choikh/Fotolia	\N	Choikh/Fotolia	\N	\N	\N	\N	\N	\N	\N	\N
+      	      ^
+[1.17] failure: `	' expected but `_' found
+
+191881	nevermore_66	\N	nevermore_66	\N	\N	\N	\N	\N	\N	\N	\N
+      	         ^
+[1.48] failure: `	' expected but `?' found
+
+191921	Donald Stallman	\N	Stallman	\N	Australia?	1951-00-00	\N	\N	\N	17	\N
+      	               	  	        	  	         ^
+[1.15] failure: `	' expected but ` ' found
+
+191949	Raimond Paley	\N	Raimond Paley	\N	\N	\N	\N	\N	\N	36	\N
+      	       ^
+[1.37] failure: `	' expected but `V' found
+
+192000	The (Deep and Authoritative) Voice o' History	\N	History	\N	\N	\N	\N	\N	\N	\N	\N
+      	                             ^
+[1.10] failure: `	' expected but `_' found
+
+192013	HR_Duff_n_Stuff	\N	Stuff	\N	\N	\N	\N	\N	\N	17	\N
+      	  ^
+[1.10] failure: `	' expected but `-' found
+
+192139	H.-J. Weißfuß	\N	Weißfuß	\N	\N	\N	\N	\N	\N	\N	\N
+      	  ^
+[1.13] failure: `	' expected but `8' found
+
+192467	uncre8d1	\N	uncre8d1	\N	\N	\N	\N	\N	\N	\N	\N
+      	     ^
+[1.11] failure: `	' expected but `_' found
+
+192891	Sir_Ignatz	\N	Ignatz	\N	\N	\N	\N	\N	\N	17	\N
+      	   ^
+[1.13] failure: `	' expected but `_' found
+
+192988	Shiny_Object	\N	Shiny_Object	\N	\N	\N	\N	\N	\N	17	\N
+      	     ^
+[1.8] failure: unexpected character in name part
+
+193108	'Naj'	\N	'Naj'	\N	\N	\N	\N	\N	\N	\N	\N
+      	^
+[1.10] failure: `	' expected but `-' found
+
+193129	H.-P. Lovecraft	\N	Lovecraft	\N	\N	\N	\N	\N	\N	17	\N
+      	  ^
+[1.13] failure: `	' expected but `_' found
+
+193184	ursus_arctos	\N	ursus_arctos	\N	\N	\N	\N	\N	\N	\N	\N
+      	     ^
+[1.10] failure: `	' expected but `-' found
+
+193500	K.-H. v. Berg	\N	Berg	\N	\N	\N	\N	\N	\N	26	\N
+      	  ^
+[1.14] failure: `	' expected but `1' found
+
+193759	mtrimm1	\N	mtrimm1	\N	\N	\N	\N	\N	\N	\N	\N
+      	      ^
+[1.9] failure: `	' expected but `_' found
+
+193761	p_a_smith	\N	p_a_smith	\N	\N	\N	\N	\N	\N	\N	\N
+      	 ^
+[1.15] failure: `	' expected but `1' found
+
+194057	Amazing15	\N	Amazing15	\N	\N	\N	\N	\N	\N	\N	\N
+      	       ^
+[1.8] failure: unexpected character in name part
+
+194328	'Ingulphus'	\N	'Ingulphus'	\N	\N	\N	\N	\N	\N	\N	\N
+      	^
+[1.12] failure: `	' expected but `š' found
+
+194353	Siniša Vukovi&#263;	\N	Vukovi&#263;	\N	\N	\N	\N	\N	\N	\N	\N
+      	    ^
+[1.8] failure: unexpected character in name part
+
+194354	Željko Pahek	\N	Pahek	\N	\N	\N	\N	\N	\N	\N	\N
+      	^
+[1.112] failure: `	' expected but `[' found
+
+194371	Ernst Augustin	Augustin, Ernst	Augustin	\N	Hirschberg im Riesengebirge, Lower Silesia, Prussia, Germany [now Jelenia Góra, Poland]	1927-10-31	\N	\N	\N	26	\N
+      	              	               	        	  	                                                             ^
+[1.15] failure: `	' expected but `6' found
+
+194382	Number 6	\N	Number 6	\N	\N	\N	\N	\N	\N	17	\N
+      	       ^
+[1.16] failure: `	' expected but `ž' found
+
+194458	Rene Beržavel	\N	Beržavel	\N	\N	\N	\N	\N	\N	22	\N
+      	        ^
+[1.20] failure: `	' expected but `ž' found
+
+194461	Teodor Sterdžen	\N	Sterdžen	\N	\N	\N	\N	\N	\N	\N	\N
+      	            ^
+[1.16] failure: `	' expected but `š' found
+
+194462	Vasko Taškovski	\N	Taškovski	\N	\N	\N	\N	\N	\N	\N	\N
+      	        ^
+[1.9] failure: `	' expected but `ž' found
+
+194463	Dž. G. Balard	\N	Balard	\N	\N	\N	\N	\N	\N	17	\N
+      	 ^
+[1.9] failure: `	' expected but `ž' found
+
+194551	Džon Vindhem	\N	Vindhem	\N	\N	\N	\N	\N	\N	17	\N
+      	 ^
+[1.8] failure: unexpected character in name part
+
+194600	Žerar Klajn	\N	Klajn	\N	\N	\N	\N	\N	\N	\N	\N
+      	^
+[1.19] failure: `	' expected but `ž' found
+
+194603	Miodrag Kneževi&#263;	\N	Kneževi&#263;	\N	\N	\N	\N	\N	\N	\N	\N
+      	           ^
+[1.10] failure: `	' expected but `š' found
+
+194604	Mišel Žeri	\N	Žeri	\N	\N	\N	\N	\N	\N	\N	\N
+      	  ^
+[1.12] failure: `	' expected but `ž' found
+
+194616	Nadežda Petrovi&#263;	\N	Petrovi&#263;	\N	\N	\N	\N	\N	\N	\N	\N
+      	    ^
+[1.9] failure: `	' expected but `ž' found
+
+194640	Džejms Bliš	\N	Bliš	\N	\N	\N	\N	\N	\N	17	\N
+      	 ^
+[1.15] failure: `	' expected but `Š' found
+
+194646	Robert Šekli	\N	Šekli	\N	\N	\N	\N	\N	\N	\N	\N
+      	       ^
+[1.14] failure: `	' expected but `9' found
+
+194760	noctem93	Nocerino, Marc	noctem93	\N	\N	\N	\N	\N	\N	17	\N
+      	      ^
+[1.61] failure: `	' expected but `:' found
+
+194976	Henry Olerich	\N	Olerich	\N	Hazel Green, Grant County: Wisconsin, USA	1851-02-00	1927-05-10	\N	\N	17	\N
+      	             	  	       	  	                         ^
+[1.8] failure: unexpected character in name part
+
+195121	'Wanderer'	\N	'Wanderer'	\N	\N	\N	\N	\N	\N	\N	\N
+      	^
+[1.29] failure: `	' expected but `/' found
+
+195473	SelfPubBookCovers.com/Shardel	\N	SelfPubBookCovers.com/Shardel	\N	\N	\N	\N	\N	\N	\N	\N
+      	                     ^
+[1.10] failure: `	' expected but `-' found
+
+196081	J.-M. Monod	\N	Monod	\N	\N	\N	\N	\N	\N	22	\N
+      	  ^
+[1.12] failure: `	' expected but `/' found
+
+196158	Aura/Noao	\N	Aura/Noao	\N	\N	\N	\N	\N	\N	\N	\N
+      	    ^
+[1.13] failure: `	' expected but `3' found
+
+196526	NyCon3 Committee	\N	Committee	\N	\N	\N	\N	\N	\N	\N	\N
+      	     ^
+[1.20] failure: `	' expected but `/' found
+
+196540	Gromovataya / Shutterstock	\N	Shutterstock	\N	\N	\N	\N	\N	\N	\N	\N
+      	            ^
+[1.38] failure: `	' expected but `U' found
+
+196650	Joseph Hiam Levy	\N	Levy	\N	7 Upper East Smithfield, Aldgate, London, England, UK	1838-07-17	1913-11-11	\N	\N	17	\N
+      	                	  	    	  	  ^
+[1.21] failure: `	' expected but `/' found
+
+196736	Jupiterimages/Veer	\N	Jupiterimages/Veer	\N	\N	\N	\N	\N	\N	\N	\N
+      	             ^
+[1.19] failure: `	' expected but `/' found
+
+196804	iStockPhoto/Zhenikeyev	\N	iStockPhoto/Zhenikeyev	\N	\N	\N	\N	\N	\N	\N	\N
+      	           ^
+[1.16] failure: `	' expected but `8' found
+
+196864	kentblue82	\N	kentblue82	\N	\N	\N	\N	\N	\N	\N	\N
+      	        ^
+[1.15] failure: unexpected character in name part
+
+197064	HotRod-302	\N	HotRod-302	\N	\N	\N	\N	\N	\N	\N	\N
+      	       ^
+[1.10] failure: `	' expected but `-' found
+
+197149	H.-H. Browning	\N	Browning	\N	\N	\N	\N	\N	\N	22	\N
+      	  ^
+[1.46] failure: `	' expected but `)' found
+
+197195	Frederick Rolfe (Baron Corvo)	\N	Corvo)	\N	\N	\N	\N	\N	\N	\N	\N
+      	                             	  	     ^
+[1.15] failure: `	' expected but `1' found
+
+197253	nowicki1283	\N	nowicki1283	\N	\N	\N	\N	\N	\N	\N	\N
+      	       ^
+[1.26] failure: `	' expected but `/' found
+
+197404	Brandtner Staedeli/Veer	\N	Staedeli/Veer	\N	\N	\N	\N	\N	\N	\N	\N
+      	                  ^
+[1.63] failure: unexpected character in name part
+
+197978	Edward Hardingham	\N	Hardingham	\N	Chelsea, Middlesex, [now London], England, UK	1842-09-22	1929-11-17	\N	\N	17	\N
+      	                 	  	          	  	                    ^
+[1.9] failure: `	' expected but `5' found
+
+198101	F5iver	\N	F5iver	\N	\N	\N	\N	\N	\N	\N	\N
+      	 ^
+[1.26] failure: `	' expected but `&' found
+
+198155	Editors of Barnes & Noble Review	\N	Review	\N	\N	\N	\N	\N	\N	\N	\N
+      	                  ^
+[1.14] failure: `	' expected but `&' found
+
+198253	Jewel & Frasier	\N	Frasier	\N	\N	\N	\N	\N	\N	22	\N
+      	      ^
+[1.10] failure: `	' expected but `-' found
+
+198503	J.-M. Roc	\N	Roc	\N	\N	\N	\N	\N	\N	22	\N
+      	  ^
+[1.27] failure: `	' expected but `œ' found
+
+198514	Henri Loevenbruck	Lœvenbruck, Henri	Loevenbruck	126787	Paris, department of Paris, France	1972-03-21	\N	\N	http://www.isfdb.org/wiki/images/a/ae/Henri_L%C5%93venbruck.jpg	22	\N
+      	                 	 ^
+[1.14] failure: `	' expected but `/' found
+
+198662	Rceeh / Dreamstime	\N	Dreamstime	\N	\N	\N	\N	\N	\N	\N	\N
+      	      ^
+[1.14] failure: `	' expected but `3' found
+
+198786	menton3	\N	menton3	\N	\N	\N	\N	\N	\N	\N	\N
+      	      ^
+[1.56] failure: date format invalid
+
+198793	Theo Prins	Prins, Theo W.	Prins	\N	\N	0000-04-06	\N	theo.w.prins@gmail.com	\N	17	\N
+      	          	              	     	  	  	          ^
+[1.15] failure: `	' expected but `3' found
+
+198977	Menton 3	\N	3	\N	\N	\N	\N	\N	\N	\N	\N
+      	       ^
+[1.41] failure: `	' expected but `)' found
+
+199011	Patricia Schmitt (Picky Me)	\N	Me)	\N	\N	\N	\N	\N	\N	\N	\N
+      	                           	  	  ^
+[1.13] failure: `	' expected but `?' found
+
+199034	Mitch?	Mitchell, Anthony	Mitch?	\N	\N	\N	\N	\N	\N	17	\N
+      	     ^
+[1.20] failure: `	' expected but `ž' found
+
+199195	Peter Meseldžija	\N	Meseldžija	\N	\N	\N	\N	\N	\N	\N	\N
+      	            ^
+[1.11] failure: `	' expected but `'' found
+
+199249	D. 'domynoe' Loeb	\N	Loeb	\N	\N	\N	\N	\N	\N	\N	\N
+      	   ^
+[1.12] failure: `	' expected but `7' found
+
+199274	Sym 7	\N	7	\N	\N	\N	\N	\N	\N	\N	\N
+      	    ^
+[1.35] failure: unexpected character in name part
+
+200094	Andrew Jones, aka 'Android'	\N	Jones	\N	\N	\N	\N	\N	\N	17	\N
+      	                           ^
+[1.10] failure: `	' expected but `6' found
+
+200186	il67	\N	il67	\N	\N	\N	\N	\N	\N	\N	\N
+      	  ^
+[1.34] failure: unexpected character in name part
+
+200253	Andrew Jones aka 'Android'	\N	Jones	\N	\N	\N	\N	\N	\N	17	\N
+      	                          ^
+[1.23] failure: unexpected character in name part
+
+200323	Jeffrey Scott '1019'	\N	Scott	\N	\N	\N	\N	\N	\N	17	\N
+      	               ^
+[1.44] failure: date format invalid
+
+200494	Mary Behre	\N	Behre	\N	\N	0000-04-10	\N	\N	\N	17	\N
+      	          	  	     	  	  	          ^
+[1.8] failure: unexpected character in name part
+
+200592	'Kino' Scialabba	\N	Scialabba	\N	\N	\N	\N	\N	\N	\N	\N
+      	^
+[1.21] failure: `c.' expected but `2' found
+
+200940	M. R. James (21 century)	\N	James	\N	\N	\N	\N	mrjamesspooky@gmail.com	\N	17	\N
+      	             ^
+[1.35] failure: `	' expected but `&' found
+
+201011	Oddworld Production Design & CG Departments	\N	Departments	\N	\N	\N	\N	\N	\N	\N	\N
+      	                           ^
+[1.18] failure: `	' expected but `—' found
+
+201077	Framestore—CFC	\N	Framestore—CFC	\N	\N	\N	\N	\N	\N	\N	\N
+      	          ^
+[1.63] failure: unexpected character in name part
+
+201150	Nicolas d'Estienne d'Orves	Estienne d'Orves, Nicolas d'	Estienne d'Orves	\N	Neuilly-sur-Seine, Hauts-de-Seine, France	1974-09-10	\N	nicolas.destienne-dorves@orange.fr	\N	22	\N
+      	                          	                            ^
+[1.10] failure: `	' expected but `-' found
+
+201416	J.-P. Boon	\N	Boon	\N	\N	\N	\N	\N	\N	\N	\N
+      	  ^
+[1.8] failure: unexpected character in name part
+
+201442	'Doc' Weir	\N	Weir	\N	\N	\N	\N	\N	\N	\N	\N
+      	^
+[1.24] failure: `c.' expected but `1' found
+
+201473	James Reynolds (19th Century)	\N	Century)	\N	\N	\N	\N	\N	\N	\N	\N
+      	                ^
+[1.68] failure: `	' expected but `[' found
+
+201713	Maurice B. Dix	Dix, Maurice Burton	Dix	\N	Barnet, Middlesex [now London], England, UK	1889-07-21	1977-02-04	\N	\N	17	\N
+      	              	                   	   	  	                  ^
+[1.20] failure: `	' expected but `ž' found
+
+201796	Petar Meselvžija	\N	Meselvžija	\N	\N	\N	\N	\N	\N	17	\N
+      	            ^
+[1.16] failure: `	' expected but `ž' found
+
+201947	Krsto Mažurani&#263;	\N	Mažurani&#263;	\N	\N	\N	\N	\N	\N	97	\N
+      	        ^
+[1.12] failure: `	' expected but `š' found
+
+202472	Tomáš P&#345;idal	\N	P&#345;idal	\N	\N	\N	\N	\N	\N	17	\N
+      	    ^
+[1.16] failure: `	' expected but `&' found
+
+202631	Cumbrous&Unlovely	\N	Cumbrous&Unlovely	\N	\N	\N	\N	\N	\N	\N	\N
+      	        ^
+[1.10] failure: `	' expected but `-' found
+
+203148	J.-J. Bridenne	\N	Bridenne	204819	\N	\N	\N	\N	\N	22	\N
+      	  ^
+[1.10] failure: `	' expected but `-' found
+
+203327	P.-A. Hourey	\N	Hourey	\N	\N	\N	\N	\N	\N	22	\N
+      	  ^
+[1.14] failure: `	' expected but `š' found
+
+203640	s.BENeš	Beneš, Susanne	s.BENeš	214307	\N	\N	\N	\N	\N	26	\N
+      	      ^
+[1.21] failure: `	' expected but `–' found
+
+203749	Javier Grillo–Marxuach	\N	Grillo–Marxuach	\N	\N	\N	\N	\N	\N	\N	\N
+      	             ^
+[1.73] failure: `	' expected but `L' found
+
+203837	Joseph Lyons (1847-1917)	Lyons, Sir Joseph Nathaniel	Lyons	\N	50 Lant Street, Southwark, Surrey, England, UK	1847-12-29	1917-06-22	\N	\N	17	\N
+      	                        	                           	     	  	   ^
+[1.16] failure: `	' expected but `š' found
+
+203842	Ilja Varšavski	\N	Varšavski	\N	\N	\N	\N	\N	\N	55	\N
+      	        ^
+[1.55] failure: `	' expected but `œ' found
+
+203954	Octave Béliard	Béliard, Octave	Béliard	\N	Paimbœuf, Loire-Atlantique, France	1876-12-12	1951-06-24	\N	\N	22	\N
+      	              	               	       	  	     ^
+[1.80] failure: `	' expected but `–' found
+
+203984	Giles Cooper	Cooper, Giles Stannus	Cooper	\N	Carrickmines, Dún Laoghaire–Rathdown, Leinster, Ireland, UK	1918-08-09	1966-12-03	\N	\N	17	\N
+      	            	                     	      	  	                           ^
+[1.51] failure: `	' expected but `S' found
+
+204029	Sidney Dark	Dark, Sidney Ernest	Dark	\N	35 St John's Wood Road, St Marylebone, Middlesex, England, UK	1872-01-14	1947-10-11	\N	\N	17	\N
+      	           	                   	    	  	   ^
+[1.17] failure: `	' expected but `&' found
+
+204266	Fiorello & Marmaras	\N	Marmaras	\N	\N	\N	\N	\N	\N	\N	\N
+      	         ^
+[1.87] failure: `	' expected but `[' found
+
+204422	F. Ratcliffe Holmes	Ratcliffe-Holmes, Frederick William	Holmes	\N	Notting Hill [now London], England, UK	\N	1952-00-00	\N	\N	17	\N
+      	                   	                                   	      	  	             ^
+[1.26] failure: `	' expected but `[' found
+
+204711	Richard Middleton [artist]	\N	Middleton	\N	\N	\N	\N	\N	\N	17	\N
+      	                  ^
+[1.13] failure: `	' expected but `1' found
+
+204843	Squee1313	\N	Squee1313	\N	\N	\N	\N	\N	\N	\N	\N
+      	     ^
+[1.18] failure: `	' expected but `_' found
+
+205059	bryanwitha_y	\N	bryanwitha_y	\N	\N	\N	\N	\N	\N	\N	\N
+      	          ^
+[1.16] failure: `	' expected but `4' found
+
+205092	Darkrose42	\N	Darkrose42	\N	\N	\N	\N	\N	\N	\N	\N
+      	        ^
+[1.115] failure: `	' expected but `[' found
+
+205153	F. A. Mitchell-Hedges	Mitchell-Hedges, Frederick Albert	Mitchell-Hedges	\N	Barnsbury, Islington, Middlesex [now London], England, UK	1882-10-22	1959-06-12	\N	\N	17	\N
+      	                     	                                 	               	  	                                ^
+[1.30] failure: `	' expected but `1' found
+
+205189	Charles Lee Riddle, PN1, USNavy	\N	USNavy	\N	\N	\N	\N	\N	\N	\N	\N
+      	                      ^
+[1.10] failure: `	' expected but `-' found
+
+205262	L.-J. Stecher, Jr.	\N	Stecher	\N	\N	\N	\N	\N	\N	17	\N
+      	  ^
+[1.42] failure: unexpected character in name part
+
+205352	Nicholas Mosley	Mosley, Nicholas, 3rd Baron Ravensdale, 7th Baronet	Mosley	\N	London, England, UK	1923-06-25	\N	\N	\N	17	\N
+      	               	                  ^
+[1.20] failure: `	' expected but `š' found
+
+205361	Bohumil Kubišta	Kubišta, Bohumil	Kubišta	\N	Vl&#269;kovice, Bohemia, Austro-Hungarian Empire	1884-00-00	1918-00-00	\N	http://www.isfdb.org/wiki/images/c/ce/Bohumil_Kubi%C5%A1ta.png	14	\N
+      	            ^
+[1.95] failure: date format invalid
+
+205585	Kerry Donovan Brown	\N	Brown	\N	Waikuku Beach, North Canterbury, New Zealand	0000-07-28	\N	\N	\N	17	\N
+      	                   	  	     	  	                                            	          ^
+[1.14] failure: `	' expected but `'' found
+
+205699	M. T. 'Penny' Ross	Ross, M. T.	Ross	213347	\N	1881-00-00	1937-00-00	\N	\N	17	\N
+      	      ^
+[1.10] failure: `	' expected but `-' found
+
+205924	J.-M. Ponziot	\N	Ponziot	\N	\N	\N	\N	\N	\N	\N	\N
+      	  ^
+[1.20] failure: `	' expected but `š' found
+
+206120	Rostislav Koš&#357;ál	\N	Koš&#357;ál	\N	\N	\N	\N	\N	\N	\N	\N
+      	            ^
+[1.8] failure: unexpected character in name part
+
+206452	116861	\N	116861	\N	\N	\N	\N	\N	\N	\N	\N
+      	^
+[1.8] failure: unexpected character in name part
+
+206475	'An Old Reader'	\N	Reader'	\N	\N	\N	\N	\N	\N	\N	\N
+      	^
+[1.55] failure: date format invalid
+
+206624	Michelle L. Johnson	\N	Johnson	\N	\N	0000-12-11	\N	\N	\N	17	\N
+      	                   	  	       	  	  	          ^
+[1.14] failure: `	' expected but `&' found
+
+206868	Nihil & Rat	\N	Rat	\N	\N	\N	\N	\N	\N	\N	\N
+      	      ^
+[1.14] failure: `	' expected but `/' found
+
+206880	Rolfe / Sutton	\N	Sutton	\N	\N	\N	\N	\N	\N	\N	\N
+      	      ^
+[1.52] failure: `	' expected but `œ' found
+
+206894	Jacques Boucher de Perthes	Boucher de Crèvecœur, Jacques	Boucher de Perthes	205522	Perthes, Champagne, France	1788-12-10	1868-08-05	\N	http://www.isfdb.org/wiki/images/9/90/Boucher_de_Perthes.jpg	22	\N
+      	                          	                 ^
+[1.12] failure: `	' expected but `!' found
+
+206925	Argh! Oxford	\N	Oxford	\N	\N	\N	\N	\N	\N	\N	\N
+      	    ^
+[1.12] failure: `	' expected but `!' found
+
+206926	Argh! Nottingham	\N	Nottingham	\N	\N	\N	\N	\N	\N	\N	\N
+      	    ^
+[1.22] failure: `	' expected but `R' found
+
+206936	M. T. (Penny) Ross	\N	Ross	\N	\N	\N	\N	\N	\N	\N	\N
+      	              ^
+[1.33] failure: `	' expected but `/' found
+
+207417	Jean Printemps	Lhuissier / L'Huissier, Léon-Henri	Printemps	\N	\N	\N	\N	\N	\N	22	\N
+      	              	          ^
+[1.12] failure: `	' expected but `Š' found
+
+207542	Iva Šaki&#263; Risti&#263;	\N	Risti&#263;	\N	Zagreb, Croatia	\N	\N	\N	\N	17	\N
+      	    ^
+[1.51] failure: unexpected character in name part
+
+207872	Robin Maugham	Maugham, Robert Cecil Romer, 2nd Viscount	Maugham	\N	Collingham Gardens, Kensington, London, England, UK	1916-05-17	1981-03-13	\N	\N	17	\N
+      	             	                             ^
+[1.8] failure: unexpected character in name part
+
+207894	? ? ?	\N	? ? ?	\N	\N	\N	\N	\N	\N	17	\N
+      	^
+[1.15] failure: `	' expected but `1' found
+
+207994	Maurice120	\N	Maurice120	\N	\N	\N	\N	\N	\N	\N	\N
+      	       ^
+[1.19] failure: `c.' expected but `1' found
+
+208028	John Gray (1)	\N	Gray	\N	\N	\N	\N	\N	\N	17	\N
+      	           ^
+[1.75] failure: `	' expected but `–' found
+
+208185	Rabbi Nakhman of Bratslev	\N	Nakhman	\N	Medzhybizh, Podolia, Polish–Lithuanian Commonwealth	1772-04-04	1810-10-16	\N	\N	73	\N
+      	                         	  	       	  	                           ^
+[1.64] failure: `	' expected but `š' found
+
+208447	Ödön von Horváth	Horváth, Edmund Josef von	Horváth	\N	Sušak, Croatia, Austro-Hungarian Empire	1901-12-09	1938-06-01	\N	http://www.isfdb.org/wiki/images/b/b2/%C3%96d%C3%B6n_von_Horv%C3%A1th.jpg	26	\N
+      	                	                         	       	  	  ^
+[1.57] failure: `	' expected but `š' found
+
+208449	Andreas Okopenko	Okopenko, Andreas	Okopenko	\N	Košice, Slovakia, Czechoslovakia	1930-03-15	2010-06-27	\N	http://www.isfdb.org/wiki/images/e/e2/Andreas_Okopenko.jpg	26	\N
+      	                	                 	        	  	  ^
+[1.20] failure: `c.' expected but `2' found
+
+208724	John Bowen (21st century)	\N	Bowen	\N	\N	\N	\N	johnybwrites@gmail.com	\N	17	\N
+      	            ^
+[1.10] failure: `	' expected but `-' found
+
+208731	J.-M. Leprince de Beaumont	\N	Beaumont	\N	\N	\N	\N	\N	\N	22	\N
+      	  ^
+[1.19] failure: `	' expected but `/' found
+
+208772	Rolffimages/Dreamstime	\N	Rolffimages/Dreamstime	\N	\N	\N	\N	\N	\N	\N	\N
+      	           ^
+[1.13] failure: `	' expected but `/' found
+
+208777	Httin/Dreamstime	\N	Httin/Dreamstime	\N	\N	\N	\N	\N	\N	\N	\N
+      	     ^
+[1.13] failure: `	' expected but `/' found
+
+208781	Algol/Dreamstime	\N	Algol/Dreamstime	\N	\N	\N	\N	\N	\N	\N	\N
+      	     ^
+[1.38] failure: `	' expected but `[' found
+
+209269	Jean Ferry	Medous, Jean André [then Lévy, Jean-André, in 1910]	Ferry	\N	Capens, Haute-Garonne, France	1906-06-16	1974-09-05	\N	\N	22	\N
+      	          	                   ^
+[1.8] failure: unexpected character in name part
+
+209581	123rf	\N	123rf	\N	\N	\N	\N	\N	\N	\N	\N
+      	^
+[1.16] failure: `	' expected but `/' found
+
+209585	Catmando/Shutterstock.com	\N	Catmando/Shutterstock.com	\N	\N	\N	\N	\N	\N	\N	\N
+      	        ^
+[1.10] failure: `	' expected but `&' found
+
+209723	PB&Jellyphish320	\N	PB&Jellyphish320	\N	\N	\N	\N	\N	\N	\N	\N
+      	  ^
+[1.60] failure: unexpected character in name part
+
+209871	Mario Vargas Llosa	Vargas Llosa, Jorge Mario Pedro, 1st Marquis of Vargas Llosa	Vargas Llosa	\N	Arequipa, Arequipa Region, Peru	1936-03-28	\N	\N	http://www.isfdb.org/wiki/images/9/9a/Mario_Vargas_Llosa.jpg	59	\N
+      	                  	                                 ^
+[1.20] failure: `c.' expected but `?' found
+
+209926	John Moore (?-)	\N	Moore	\N	\N	\N	\N	\N	\N	\N	\N
+      	            ^
+[1.16] failure: `	' expected but `Ž' found
+
+210001	Aivaras Ži&#363;kas	\N	Ži&#363;kas	\N	\N	\N	\N	\N	\N	\N	\N
+      	        ^
+[1.11] failure: `	' expected but `_' found
+
+210122	The_Hol-Man	Holman, Andy	The_Hol-Man	\N	\N	\N	\N	\N	\N	17	\N
+      	   ^
+[1.28] failure: `	' expected but `/' found
+
+210183	Derek James Seaward / Corbis	\N	Corbis	\N	\N	\N	\N	\N	\N	\N	\N
+      	                    ^
+[1.8] failure: unexpected character in name part
+
+210318	'Captain Future' (Huh?)	\N	Future'	\N	\N	\N	\N	\N	\N	\N	\N
+      	^
+[1.14] failure: `	' expected but `5' found
+
+210488	jasonb57	\N	jasonb57	\N	\N	\N	\N	\N	\N	\N	\N
+      	      ^
+[1.59] failure: unexpected character in name part
+
+210513	Reinhold Andert	Andert, Reinhold	Andert	\N	Teplice-Šanov, Protectorate of Bohemia and Moravia	1944-03-00	\N	\N	\N	26	\N
+      	               	                	      	  	        ^
+[1.19] failure: `	' expected but `1' found
+
+210541	Fotografía 1606	\N	1606	\N	\N	\N	\N	\N	\N	\N	\N
+      	           ^
+[1.9] failure: `	' expected but `0' found
+
+210749	L0rdEntr0py	Widdowson, Sam	L0rdEntr0py	\N	\N	\N	\N	\N	\N	17	\N
+      	 ^
+[1.12] failure: `	' expected but `/' found
+
+210903	BCAD/alamy	\N	BCAD/alamy	\N	\N	\N	\N	\N	\N	\N	\N
+      	    ^
+[1.21] failure: `	' expected but `&' found
+
+211280	saso content & design	\N	design	\N	\N	\N	\N	\N	\N	\N	\N
+      	             ^
+[1.8] failure: unexpected character in name part
+
+211453	-M-I-S-H-A-	\N	-M-I-S-H-A-	\N	\N	\N	\N	\N	\N	\N	\N
+      	^
+[1.16] failure: `	' expected but `*' found
+
+211458	M. de V.***	\N	V.***	\N	\N	\N	\N	\N	\N	22	\N
+      	        ^
+[1.127] failure: string matching regex `\p{IsLatin}+' expected but `8' found
+
+211784	la baronne de Zuylen de Nyevelt	Zuylen de Nyevelt de Haar, Hélène Betty Louise Caroline de	Zuylen de Nyevelt	\N	Paris (8th arrondissement), Seine, France	1863-08-21	1947-10-17	\N	http://www.isfdb.org/wiki/images/8/8a/H%C3%A9l%C3%A8ne_de_Zuylen_de_Nyevelt.jpg	22	\N
+      	                               	                                                          	                 	  	       ^
+[1.58] failure: `)' expected but ` ' found
+
+211894	Rzewuski	Rzewuski, Aleksander Czes&#322;aw (Polish form) / Rzewuski, Alex-Ceslas (French form)	Rzewuski	\N	\N	1892-00-00	1983-00-00	\N	\N	22	\N
+      	        	                                         ^
+[1.15] failure: `c.' expected but `'' found
+
+212052	James ('Jocko') Allen	\N	James	\N	\N	\N	\N	\N	\N	\N	\N
+      	       ^
+[1.8] failure: unexpected character in name part
+
+212076	#3	\N	#3	\N	\N	\N	\N	\N	\N	\N	\N
+      	^
+[1.16] failure: `	' expected but `2' found
+
+212141	beachbum21k	\N	beachbum21k	\N	\N	\N	\N	\N	\N	\N	\N
+      	        ^
+[1.19] failure: `	' expected but `/' found
+
+212601	Mido SemSem/Shutterstock	\N	SemSem/Shutterstock	\N	\N	\N	\N	\N	\N	\N	\N
+      	           ^
+[1.20] failure: `	' expected but `/' found
+
+212602	Vioirel Sima/Shutterstock	\N	Sima/Shutterstock	\N	\N	\N	\N	\N	\N	\N	\N
+      	            ^
+[1.10] failure: `	' expected but `-' found
+
+212662	H.-G. Wells	\N	Wells	\N	\N	\N	\N	\N	\N	17	\N
+      	  ^
+[1.20] failure: `	' expected but `&' found
+
+212827	Louis Prang & Co.	\N	Co.	\N	\N	\N	\N	\N	\N	\N	\N
+      	            ^
+[1.30] failure: `	' expected but `1' found
+
+212847	VVAO Congrescommissie 1985	\N	VVAO Congrescommissie 1985	\N	\N	\N	\N	\N	\N	16	\N
+      	                      ^
+[1.30] failure: `	' expected but `!' found
+
+213191	The Editors of Far Out!	\N	Out!	\N	\N	\N	\N	\N	\N	\N	\N
+      	                      ^
+[1.9] failure: `	' expected but `œ' found
+
+213328	Gœthe	\N	Gœthe	\N	\N	\N	\N	\N	\N	26	\N
+      	 ^
+[1.15] failure: `	' expected but `3' found
+
+213540	HotRod 302	\N	302	\N	\N	\N	\N	\N	\N	\N	\N
+      	       ^
+[1.65] failure: string matching regex `\p{IsLatin}+' expected but `9' found
+
+213588	Maurice Lalau	Lalau, Maurice George-Élie	Lalau	\N	Paris (9th arrondissement), Seine, France	1881-07-27	1961-04-14	\N	\N	22	\N
+      	             	                          	     	  	       ^
+[1.19] failure: `	' expected but `š' found
+
+213659	Jaroslav Fišer	\N	Fišer	\N	\N	\N	\N	\N	\N	\N	\N
+      	           ^
+[1.28] failure: unexpected character in name part
+
+213956	Editors of Iskatel' / &#1048;&#1089;&#1082;&#1072;&#1090;&#1077;&#1083;&#1100;	\N	Editors of Iskatel' / &#1048;&#1089;&#1082;&#1072;&#1090;&#1077;&#1083;&#1100;	\N	\N	\N	\N	\N	\N	55	\N
+      	                    ^
+[1.74] failure: string matching regex `\p{IsLatin}+' expected but `1' found
+
+214116	Maurice Druon	Druon, Maurice Samuel Roger Charles	Druon	\N	Paris (13th arrondissement), Seine, France	1918-04-23	2009-04-14	\N	http://www.isfdb.org/wiki/images/8/8c/Maurice_Druon.jpg	22	\N
+      	             	                                   	     	  	       ^
+[1.8] failure: unexpected character in name part
+
+214173	3D4Medical/Getty Image	\N	Image	\N	\N	\N	\N	\N	\N	\N	\N
+      	^
+[1.13] failure: `	' expected but `@' found
+
+214202	Jacey@ début art	\N	art	\N	\N	\N	\N	\N	\N	\N	\N
+      	     ^
+[1.12] failure: `	' expected but `1' found
+
+214576	Gori1984	\N	Gori1984	\N	\N	\N	\N	\N	\N	\N	\N
+      	    ^
+[1.49] failure: `\N' expected but `'' found
+
+214630	Leon de Winter	Winter, Leon de	Winter	\N	's-Hertogenbosch, North Brabant, Netherlands	1954-02-24	\N	\N	\N	16	\N
+      	              	               	      	  	^
+[1.22] failure: `	' expected but `/' found
+
+215100	S. R. Nicholl / Fotolia	\N	Fotolia	\N	\N	\N	\N	\N	\N	\N	\N
+      	              ^
+[1.21] failure: `	' expected but `/' found
+
+215334	B. Willoughby/Sygma	\N	Willoughby/Sygma	\N	\N	\N	\N	\N	\N	\N	\N
+      	             ^
+[1.12] failure: `	' expected but `1' found
+
+215536	mari1408	\N	mari1408	\N	\N	\N	\N	\N	\N	\N	\N
+      	    ^
+[1.20] failure: `	' expected but `/' found
+
+215724	A. Zaplavny / &#1040;. &#1047;&#1072;&#1087;&#1083;&#1072;&#1074;&#1085;&#1099;&#1081;	\N	&#1047;&#1072;&#1087;&#1083;&#1072;&#1074;&#1085;&#1099;&#1081;	\N	\N	\N	\N	\N	\N	\N	\N
+      	            ^
+[1.38] failure: unexpected character in name part
+
+215838	Jan-A. Rey	Argès, Jean-René d'	Rey	\N	\N	\N	\N	\N	\N	22	\N
+      	          	                   ^
+[1.8] failure: unexpected character in name part
+
+215975	(Doc) Robert W. Lowndes	\N	Lowndes	\N	\N	\N	\N	\N	\N	\N	\N
+      	^
+[1.13] failure: `	' expected but `2' found
+
+216229	Algol2 / Dreamstime	\N	Dreamstime	\N	\N	\N	\N	\N	\N	\N	\N
+      	     ^
+[1.10] failure: `	' expected but `-' found
+
+216303	D.-H. Keller	Keller, Dominique-Henri	Keller	216302	\N	\N	\N	\N	\N	22	\N
+      	  ^
+[1.26] failure: `	' expected but `/' found
+
+216589	Sylvain Grandadam / Getty Images	\N	Images	\N	\N	\N	\N	\N	\N	\N	\N
+      	                  ^
+[1.11] failure: `	' expected but `&' found
+
+217196	E. & H. Heron	\N	Heron	\N	\N	\N	\N	\N	\N	\N	\N
+      	   ^
+[1.14] failure: `	' expected but `'' found
+
+217209	C. E. 'Caz' Cazedessus, Jr.	\N	Cazedessus	\N	\N	\N	\N	\N	\N	\N	\N
+      	      ^
+[1.20] failure: `	' expected but `š' found
+
+217316	Gintaras Vaišnoras	\N	Vaišnoras	\N	\N	\N	\N	\N	\N	26	\N
+      	            ^
+[1.8] failure: unexpected character in name part
+
+217407	______ ______	\N	unknown	\N	\N	\N	\N	\N	\N	17	\N
+      	^
+[1.45] failure: unexpected character in name part
+
+217676	Ernest d'Hervilly	Hervilly, Ernest d'	Hervilly	\N	Paris, Seine, France	1839-05-26	1911-11-18	\N	http://www.isfdb.org/wiki/images/7/78/Ernest_d%27Hervilly.jpg	22	\N
+      	                 	                   ^
+[1.59] failure: date format invalid
+
+217679	Tom Angleberger	\N	Angleberger	165782	\N	0000-10-24	\N	\N	\N	17	\N
+      	               	  	           	      	  	          ^
+[1.19] failure: `	' expected but `/' found
+
+218079	Bliznetsov / istockphoto.com	\N	istockphoto.com	\N	\N	\N	\N	\N	\N	\N	\N
+      	           ^
+[1.20] failure: `	' expected but `/' found
+
+218108	Shutterstock/Dreamstime	\N	Shutterstock/Dreamstime	\N	\N	\N	\N	\N	\N	\N	\N
+      	            ^
+[1.11] failure: `	' expected but `3' found
+
+218397	mik38	\N	mik38	\N	\N	\N	\N	\N	\N	\N	\N
+      	   ^
+[1.11] failure: `	' expected but `6' found
+
+218415	The6thDoctor	\N	The6thDoctor	\N	\N	\N	\N	\N	\N	\N	\N
+      	   ^
+[1.16] failure: `	' expected but `8' found
+
+218512	bikerboy82	\N	bikerboy82	\N	\N	\N	\N	\N	\N	\N	\N
+      	        ^
+[1.15] failure: `	' expected but `_' found
+
+218550	Frankie_Lee	\N	Frankie_Lee	\N	\N	\N	\N	\N	\N	\N	\N
+      	       ^
+[1.10] failure: `	' expected but `-' found
+
+218655	J.-C. Maillard	\N	Maillard	\N	\N	\N	\N	\N	\N	22	\N
+      	  ^
+[1.8] failure: unexpected character in name part
+
+218852	...oid design	\N	design	\N	\N	\N	\N	\N	\N	17	\N
+      	^
+[1.49] failure: string matching regex `\p{IsLatin}+' expected but `8' found
+
+219218	A. Pécoud	Pécoud, André	Pécoud	\N	Paris (8th arrondissement), Seine, France	1880-07-22	1951-01-28	\N	\N	22	\N
+      	         	             	      	  	       ^
+[1.62] failure: `\N' expected but `'' found
+
+219552	Paul Rodenko	Rodenko, Paul Thomas Basilius	Rodenko	\N	's-Gravenhage, Netherlands	1920-11-26	1976-06-09	\N	\N	16	\N
+      	            	                             	       	  	^
+[1.9] failure: `	' expected but `2' found
+
+219647	i2i Design	\N	Design	\N	\N	\N	\N	\N	\N	17	\N
+      	 ^
+[1.13] failure: `	' expected but `7' found
+
+219835	Raid 71	\N	71	\N	\N	\N	\N	\N	\N	\N	\N
+      	     ^
+[1.10] failure: `	' expected but `-' found
+
+220137	K.-W. Schalk	\N	Schalk	\N	\N	\N	\N	\N	\N	26	\N
+      	  ^
+[1.19] failure: `	' expected but `+' found
+
+220190	Montalbetti+Campbell	\N	Montalbetti+Campbell	\N	\N	\N	\N	\N	\N	17	\N
+      	           ^
+[1.9] failure: `	' expected but `/' found
+
+220207	S/Sgt. A. Morris	\N	Morris	\N	\N	\N	\N	\N	\N	\N	\N
+      	 ^
+[1.15] failure: `	' expected but `&' found
+
+220298	Rhythm & Hues Design	\N	Design	\N	\N	\N	\N	\N	\N	\N	\N
+      	       ^
+[1.8] failure: unexpected character in name part
+
+220362	2Happy	\N	2Happy	\N	\N	\N	\N	\N	\N	\N	\N
+      	^
+[1.12] failure: `	' expected but `/' found
+
+220363	NASA/JPL	\N	NASA/JPL	\N	\N	\N	\N	\N	\N	\N	\N
+      	    ^
+[1.14] failure: `	' expected but `&' found
+
+220398	Bruck & Moss	\N	Moss	\N	\N	\N	\N	\N	\N	\N	\N
+      	      ^
+[1.8] failure: unexpected character in name part
+
+220477	'Ye Editor'	\N	Editor'	\N	\N	\N	\N	\N	\N	\N	\N
+      	^
+[1.49] failure: date format invalid
+
+220990	Robin Epstein	\N	Epstein	\N	\N	0000-11-15	\N	Robin@godisinthepancakes.com	\N	17	\N
+      	             	  	       	  	  	          ^
+[1.15] failure: `	' expected but `9' found
+
+221043	garysan97	\N	garysan97	\N	\N	\N	\N	\N	\N	\N	\N
+      	       ^
+[1.26] failure: `c.' expected but `2' found
+
+221134	William Holloway (21st century)	\N	Holloway	\N	Texas, USA	\N	\N	\N	\N	17	\N
+      	                  ^
+[1.14] failure: `	' expected but `-' found
+
+221369	Lieut.-Commander Trevor Blore	\N	Blore	\N	\N	\N	\N	\N	\N	\N	\N
+      	      ^
+[1.45] failure: unexpected character in name part
+
+221974	By the Author of 'Friends in Council'	\N	By the Author of 'Friends in Council'	\N	\N	\N	\N	\N	\N	17	\N
+      	                                     ^
+[1.36] failure: unexpected character in name part
+
+222062	The Author of 'Jewel Sowers'	\N	Sowers'	\N	\N	\N	\N	\N	\N	\N	\N
+      	                            ^
+[1.31] failure: unexpected character in name part
+
+222070	The Author of 'Bertram,' &c.	\N	The Author of 'Bertram,' &c.	\N	\N	\N	\N	\N	\N	17	\N
+      	                       ^
+[1.52] failure: unexpected character in name part
+
+222119	The Author of 'The Dancing Imps of the Wine'	\N	Author	\N	\N	\N	\N	\N	\N	17	\N
+      	                                            ^
+[1.23] failure: `c.' expected but `2' found
+
+222184	Charles Dixon (20th century)	\N	Dixon	\N	\N	\N	\N	\N	\N	\N	\N
+      	               ^
+[1.16] failure: `c.' expected but `1' found
+
+222269	Thomas (12th century)	Thomas	Thomas	\N	\N	\N	\N	\N	\N	100	\N
+      	        ^
+[1.11] failure: `	' expected but `3' found
+
+222300	pio3	\N	pio3	\N	\N	\N	\N	\N	\N	\N	\N
+      	   ^
+[1.58] failure: string matching regex `\p{IsLatin}+' expected but `2' found
+
+222452	Pierre Veber	Veber, Pierre Eugène	Veber	\N	Paris (2nd arrondissement), Seine, France	1869-05-15	1942-00-00	\N	http://www.isfdb.org/wiki/images/e/ee/Pierre_Veber.jpg	22	\N
+      	            	                    	     	  	       ^
+[1.20] failure: `	' expected but `/' found
+
+222479	FrozenStarro/Fotalia	\N	FrozenStarro/Fotalia	\N	\N	\N	\N	\N	\N	17	\N
+      	            ^
+[1.12] failure: `	' expected but `_' found
+
+222634	Auto_K	\N	Auto_K	\N	\N	\N	\N	\N	\N	\N	\N
+      	    ^
+[1.10] failure: `	' expected but `ž' found
+
+222853	Alžb&#283;ta Šerberová	Šerberová, Alžb&#283;ta	Šerberová	\N	P&#345;íbram, Central Bohemian Region, Czechoslovakia	1946-08-23	\N	\N	\N	14	\N
+      	  ^
+[1.22] failure: `	' expected but `Š' found
+
+222965	Kate&#345;ina Št&#283;pánová	\N	Št&#283;pánová	\N	\N	\N	\N	\N	\N	14	\N
+      	              ^
+[1.10] failure: `	' expected but `-' found
+
+223136	A.-M. Debet	Debet, Anne-Marie	Debet	\N	France	\N	\N	\N	\N	22	\N
+      	  ^
+[1.14] failure: `	' expected but `'' found
+
+223481	M. J. 'Simo' Simpson	\N	Simpson	\N	\N	\N	\N	\N	\N	\N	\N
+      	      ^
+[1.28] failure: `	' expected but `œ' found
+
+223638	The Editor of the Phœnix	\N	Phœnix	\N	\N	\N	\N	\N	\N	\N	\N
+      	                    ^
+[1.36] failure: unexpected character in name part
+
+223678	The Author of 'Frankenstein'	\N	'Frankenstein'	\N	\N	\N	\N	\N	\N	\N	\N
+      	                            ^
+[1.10] failure: `	' expected but `-' found
+
+223753	P.-B. Gheusi	\N	Gheusi	\N	\N	\N	\N	\N	\N	22	\N
+      	  ^
+[1.21] failure: `c.' expected but `1' found
+
+223763	John Wilson (19th century)	\N	Wilson	\N	Paisley, Renfrewshire, Scotland, Kingdom of Great Britain	1785-05-18	1854-04-03	\N	\N	17	\N
+      	             ^
+[1.16] failure: `	' expected but `š' found
+
+224133	Pavel Vešinov	\N	Vešinov	\N	\N	\N	\N	\N	\N	10	\N
+      	        ^
+[1.115] failure: `@' expected but `:' found
+
+225218	Tatsuya Hamazaki	&#27996;&#23822;&#36948;&#20063;	Hamazaki	\N	Ibaraki Prefecture, Japan	1973-03-04	\N	https://ja.wikipedia.org/wiki/%E6%B5%9C%E5%B4%8E%E9%81%94%E4%B9%9F	\N	37	\N
+      	                	                                	        	  	                         	          	  	     ^
+[1.98] failure: date format invalid
+
+225220	Rei Idumi	&#20381;&#28548;&#12428;&#12356;	Idumi	225219	Iwate Prefecture, Japan	0000-04-12	\N	\N	\N	37	\N
+      	         	                                	     	      	                       	          ^
+[1.20] failure: `	' expected but `2' found
+
+225264	CyberConnect2	\N	CyberConnect2	\N	\N	\N	\N	\N	\N	\N	\N
+      	            ^

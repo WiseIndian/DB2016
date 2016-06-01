@@ -132,7 +132,7 @@ def createAllTables():
 	  synopsis TEXT,
 	  note TEXT,
 	  story_len ENUM('nv', 'ss', 'jvn', 'nvz', 'sf'),
-	  type ENUM('ANTHOLOGY', 'BACKCOVERART', 'COLLECTION', 'COVERART', 'INTERIORART',
+	  title_type ENUM('ANTHOLOGY', 'BACKCOVERART', 'COLLECTION', 'COVERART', 'INTERIORART',
 		  'EDITOR', 'ESSAY', 'INTERVIEW', 'NOVEL', 'NONFICTION', 'OMNIBUS', 'POEM',
 		  'REVIEW', 'SERIAL', 'SHORTFICTION', 'CHAPBOOK'),
 	  parent INTEGER,
@@ -339,11 +339,7 @@ def createAllTables():
 	publications_temp = '''
 	CREATE TABLE Publications_temp (
 	  id INTEGER,
-	  /* we should use a view/relationship that just describes the many to many relationship
-	   * and references of Titles id and Publications id, see todoFromDeliv1Feedback file(on github)
-	   * for more info on how to do it.
-	   */
-	  title VARCHAR(255), /*stay closer to definition of the csv file as described in todoFromDeliv1Feedback */
+	  title VARCHAR(255), /*stay closer to definition of the csv file as described in todoFromDeliv1Feedback and then we'll use this field to create view Title_Publications*/
 	  pb_date DATE,
 	  publisher_id INTEGER,
 	  nb_pages INTEGER,
@@ -356,20 +352,18 @@ def createAllTables():
 				 aura pas un prix > un million dans n'importe quelle currency?*/
 	  currency VARCHAR(1),
 	  note_id INTEGER,
+	  publication_series_id INTEGER,
+	  publication_series_number INTEGER,
 	  PRIMARY KEY (id),
 	  FOREIGN KEY (note_id) REFERENCES Notes(id) ON DELETE SET NULL,
-	  FOREIGN KEY (publisher_id) REFERENCES Publishers(id) ON DELETE CASCADE
+	  FOREIGN KEY (publisher_id) REFERENCES Publishers(id) ON DELETE CASCADE,
+	  FOREIGN KEY (publication_series_id) REFERENCES Publication_Series(id)
 	) ENGINE=InnoDB;'''
 	createTable(publications_temp)
 
 	publications = '''
 	CREATE TABLE Publications (
 	  id INTEGER,
-	  /* we should use a view/relationship that just describes the many to many relationship
-	   * and references of Titles id and Publications id, see todoFromDeliv1Feedback file(on github)
-	   * for more info on how to do it.
-	   */
-	  title VARCHAR(255), /*stay closer to definition of the csv file as described in todoFromDeliv1Feedback */
 	  pb_date DATE,
 	  publisher_id INTEGER,
 	  nb_pages INTEGER,
@@ -382,22 +376,13 @@ def createAllTables():
 				 aura pas un prix > un million dans n'importe quelle currency?*/
 	  currency VARCHAR(1),
 	  note TEXT,
+	  publication_series_id INTEGER,
+	  publication_series_number INTEGER,
 	  PRIMARY KEY (id),
-	  FOREIGN KEY (publisher_id) REFERENCES Publishers(id) ON DELETE CASCADE
+	  FOREIGN KEY (publisher_id) REFERENCES Publishers(id) ON DELETE CASCADE,
+	  FOREIGN KEY (publication_series_id) REFERENCES Publication_Series(id)
 	) ENGINE=InnoDB;'''
 	createTable(publications)
-
-	publication_is_of_Publication_Series = '''
-	CREATE TABLE Publication_is_of_Publication_Series (
-	publication_id  INTEGER,
-	series_id INTEGER,
-	series_number INTEGER,
-	PRIMARY KEY (publication_id),
-	FOREIGN KEY (publication_id) REFERENCES Publications(id) ON DELETE CASCADE,
-	FOREIGN KEY (series_id) REFERENCES Publication_Series(id) ON DELETE CASCADE
-	) ENGINE=InnoDB;'''
-	createTable(publication_is_of_Publication_Series)
-
 
 	authors_have_publications = '''
 	CREATE TABLE authors_have_publications (
