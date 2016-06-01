@@ -13,23 +13,23 @@ import csv
 
 # Parse data from csv file
 
-db = DB.Database('localhost', 'group8', 'toto123', 'cs322')
+filename = 'Books/authors.csv'
+f = open(filename, 'rU')
+f.seek(0)
 
-# this query should populate the Authors table if Authors_temp 
-# has already been populated.
-db.query('''
-	INSERT INTO
-	Authors (id,  name,  legal_name ,  last_name,
-	  pseudo,  birthplace,  birthdate,  deathdate,  email, 
-	  img_link,  language_id,  note)
-	SELECT a.id, a.name, a.legal_name, a.last_name, a.pseudo, a.birthplace,
-        a.birthdate, a.deathdate, a.email, a.img_link, a.language_id, NULL
-	FROM Authors_temp a
-	WHERE a.note_id = NULL
-	UNION
-	SELECT a.id, a.name, a.legal_name, a.last_name, a.pseudo, a.birthplace,
-		a.birthdate, a.deathdate, a.email, a.img_link, a.language_id, n.note
-	FROM Authors_temp a, Notes n
-	WHERE a.note_id = n.id;''')
-	
+fields = ['id', 'name', 'legal_name', 'last_name', 'pseudo', 'birthplace', 'birthdate', 'deathdate', 'email', 'img', 'language_id', 'note_id']
+reader = csv.DictReader(f, dialect='excel-tab', fieldnames=fields)
 
+data = []
+for row in reader:
+    tuple = ( row['id'], row['name'], row['legal_name'], row['last_name'], row['pseudo'], row['birthplace'], row['birthdate'], row['deathdate'], row['email'], row['img'], row['language_id'], row['note_id'] )
+    data.append(tuple)
+
+
+# Create a clean CSV file
+
+with open('authorsCLEAN.csv','w') as out:
+    csv_out = csv.writer(out, delimiter='\t')
+
+    for tuple in data:
+        csv_out.writerow(tuple)
