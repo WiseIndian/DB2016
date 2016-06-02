@@ -66,8 +66,17 @@ sqlConn '<' awards.sql
 
 #see http://stackoverflow.com/questions/4202564/how-to-insert-selected-columns-from-csv-file-to-mysql-using-load-data-infile  
 #for following 2 lines of code
-csvColumnsTitleAwards="(@col1, @col2, @col3) set award_id=@col2, title_id=@col3"
-loadTuples "titles_awards_rem.csv,title_wins_award" "$csvColumnsTitleAwards"
+
+function keepOnly2LastOf3 {
+	TAB=`echo -e "\t"`
+	int=' *[0-9][0-9]* *'
+	subst='s/^'"${int}${TAB}"'\('"${int}"'\)'"${TAB}"'\('"${int}"'\)$/\1'"$TAB"'\2/g'
+	sed -i.old "$subst" "$CSVLoc"/"$1"
+}
+
+keepOnly2LastOf3 titles_awards_rem.csv
+
+loadTuples "titles_awards_rem.csv,title_wins_award" 
 
 loadTuples "tags_rem.csv,Tags titles_tag_rem.csv,title_has_tag publishers_rem.csv,Publishers_temp"
 sqlConn '<' publishers.sql
@@ -80,8 +89,9 @@ cd -
 loadTuples "publicationsCLEAN.csv,Publications_temp"
 
 
-csvColumnsPublicationAuthors="(@col1, @col2, @col3) set author_id=@col3, pub_id=@col2"
-loadTuples "publications_authors_rem.csv,authors_have_publications" "$csvColumnsPublicationAuthors"
+keepOnly2LastOf3 publications_authors_rem.csv
+loadTuples "publications_authors_rem.csv,authors_have_publications" 
+
 
 #	authors_have_publications = '''
 #	CREATE TABLE authors_have_publications (
