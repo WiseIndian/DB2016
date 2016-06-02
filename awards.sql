@@ -1,4 +1,4 @@
-INSERT INTO Awards(id, title, aw_date, type_id, category_id, note_id)
+INSERT INTO Awards(id, title, aw_date, type_id, category_id, note)
 SELECT aw.id, title, aw_date, type_id, category_id, note
 FROM Awards_temp aw, Notes n
 WHERE n.id = note_id

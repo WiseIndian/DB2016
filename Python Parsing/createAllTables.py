@@ -264,7 +264,7 @@ def createAllTables():
 	  aw_date DATE,
 	  type_id INTEGER,
 	  category_id INTEGER,
-	  note_id TEXT,
+	  note TEXT,
 	  PRIMARY KEY (id),
 	  FOREIGN KEY (category_id) REFERENCES Award_Categories(id) ON DELETE SET NULL,
 	  FOREIGN KEY (type_id) REFERENCES Award_Types(id) ON DELETE SET NULL
