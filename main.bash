@@ -54,13 +54,13 @@ else
 	deleteAllRowsFromAllTables		
 fi
 
-nbRows=countRowsFromEveryTables
+nbRows=$(countRowsFromEveryTables)
 echo "number of rows in all tables: $nbRows"  #to check if deleting all rows worked
 
 bash loadAll.bash #load all data into the database (can take around 5 minutes)
 
 #useful feedback to check if inserting has worked well
-totalRowsInDB=countRowsFromEveryTables
+totalRowsInDB=$(countRowsFromEveryTables)
 totalRowsInCSVs=`cat CSV/*.csv | wc -l`
 echo "total number of rows: _ in CSVs = $totalRowsInCSVs\n         _ in DB = $totalRowsInDB"
 
