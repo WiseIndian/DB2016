@@ -55,8 +55,7 @@ sqlConn '<' title_series.sql #checked
 loadTuples "titles_rem.csv,Titles_temp"
 sqlConn  '<' titles.sql
 sqlConn '<' title_is_translated_in.sql
-loadTuples "reviews_rem.csv,title_is_reviewed_by 
-	    titles_series_rem.csv,title_is_part_of_Title_Series
+loadTuples "reviews_rem.csv,title_is_reviewed_by
 	    award_types_rem.csv,Award_Types_temp"
 sqlConn '<' awardTypes.sql
 loadTuples "award_categories_rem.csv,Award_Categories_temp"
