@@ -1,10 +1,10 @@
 INSERT INTO Publishers(id, name, note)
-SELECT pb.id, name, note
-FROM Publishers_temp AS pb, Notes AS n
+SELECT pb.id, pb.name, note
+FROM Publishers_temp pb, Notes n
 WHERE n.id = pb.note_id
 UNION
-SELECT id, name, NULL
-FROM Publishers_temp
+SELECT pb.id, pb.name, NULL
+FROM Publishers_temp pb, Notes n
 WHERE n.id IS NULL
 ;
 
