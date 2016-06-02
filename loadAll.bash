@@ -114,7 +114,7 @@ loadTuples "titles_awards_rem.csv,title_wins_award" "$csvColumnsTitleAwards"
 loadTuples "tags_rem.csv,Tags titles_tag_rem.csv,title_has_tag publishers_rem.csv,Publishers_temp"
 sqlConn '<' publishers.sql
 loadTuples "publications_series_rem.csv,Publication_Series_temp"
-sqlConn '<' publications_series.sql
+sqlConn '<' publication_series.sql
 
 cd Python\ Parsing
 python publications.py
