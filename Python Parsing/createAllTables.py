@@ -131,6 +131,8 @@ def createAllTables():
 	  title VARCHAR(255) NOT NULL,
 	  synopsis TEXT,
 	  note TEXT,
+	  series_id INTEGER,
+	  series_number INTEGER,
 	  story_len ENUM('nv', 'ss', 'jvn', 'nvz', 'sf'),
 	  title_type ENUM('ANTHOLOGY', 'BACKCOVERART', 'COLLECTION', 'COVERART', 'INTERIORART',
 		  'EDITOR', 'ESSAY', 'INTERVIEW', 'NOVEL', 'NONFICTION', 'OMNIBUS', 'POEM',
@@ -168,16 +170,16 @@ def createAllTables():
 	) ENGINE=InnoDB;'''
 	createTable(title_is_reviewed_by)
 
-	title_is_part_of_Title_Series = '''
-	CREATE TABLE title_is_part_of_Title_Series (
-	title_id  INTEGER,
-	series_id INTEGER NOT NULL,
-	series_number INTEGER,
-	PRIMARY KEY (title_id),
-	FOREIGN KEY (title_id) REFERENCES Titles(id) ON DELETE CASCADE,
-	FOREIGN KEY (series_id) REFERENCES Title_Series(id) ON DELETE CASCADE
-	) ENGINE=InnoDB;'''
-	createTable(title_is_part_of_Title_Series)
+#	title_is_part_of_Title_Series = '''
+#	CREATE TABLE title_is_part_of_Title_Series (
+#	title_id  INTEGER,
+#	series_id INTEGER NOT NULL,
+#	series_number INTEGER,
+#	PRIMARY KEY (title_id),
+#	FOREIGN KEY (title_id) REFERENCES Titles(id) ON DELETE CASCADE,
+#	FOREIGN KEY (series_id) REFERENCES Title_Series(id) ON DELETE CASCADE
+#	) ENGINE=InnoDB;'''
+#	createTable(title_is_part_of_Title_Series)
 
 
 	award_types_temp = '''
