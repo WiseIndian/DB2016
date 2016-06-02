@@ -60,7 +60,12 @@ loadTuples "reviews_rem.csv,title_is_reviewed_by
 sqlConn '<' awardTypes.sql
 loadTuples "award_categories_rem.csv,Award_Categories_temp"
 sqlConn '<' awardCategories.sql
-loadTuples "awards_rem.csv,Awards_temp"
+
+cd Python\ Parsing
+python awards.py
+cd -
+loadTuples "awardsCLEAN.csv,Awards_temp"
+
 sqlConn '<' awards.sql
 
 #see http://stackoverflow.com/questions/4202564/how-to-insert-selected-columns-from-csv-file-to-mysql-using-load-data-infile  
