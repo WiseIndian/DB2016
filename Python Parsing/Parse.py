@@ -5,6 +5,13 @@ def nullize(string):
     else:
         return string
 
+def writeRows(data, base_csv_name):
+	with open('../CSV/' + base_csv_name + 'CLEAN.csv','w') as out:
+		csv_out = csv.writer(out, delimiter='\t')
+		for tuple in data:
+			csv_out.writerow(tuple)
+	
+
 def booleanize(string):
     if string.lower() == 'no':
         return False
