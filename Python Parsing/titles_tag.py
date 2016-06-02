@@ -20,7 +20,7 @@ reader = csv.DictReader(f, dialect='excel-tab', fieldnames=fields)
 
 data = []
 for row in reader:
-    data.append( (row['title_id'], row['tag_id']) )
+    data.append( (row['tag_id'], row['title_id']) )
 
 with open('../CSV/titles_tagCLEAN.csv','w') as out:
     csv_out = csv.writer(out, delimiter='\t')
