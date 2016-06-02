@@ -116,7 +116,9 @@ sqlConn '<' publishers.sql
 loadTuples "publications_series_rem.csv,Publication_Series_temp"
 sqlConn '<' publications_series.sql
 
-python Python\ Parsing/publications.py
+cd Python\ Parsing
+python publications.py
+cd -
 loadTuples "publicationsCLEAN.csv,Publications_temp"
 
 
