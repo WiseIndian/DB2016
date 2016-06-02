@@ -86,9 +86,7 @@ cd Python\ Parsing
 python titles_tag.py
 cd -
 loadTuples "tags_rem.csv,Tags titles_tagCLEAN.csv,title_has_tag publishers_rem.csv,Publishers_temp"
-#107456 for titles_tag_rem.csv and title_has_tag just 382 :o
-sqlConn '<' publishers.sql # doesn't load well publishers.csv=19545 publishers_temp=19528
-#but Publishers=1961!
+sqlConn '<' publishers.sql 
 loadTuples "publications_series_rem.csv,Publication_Series_temp"
 sqlConn '<' publication_series.sql
 
@@ -96,22 +94,12 @@ cd Python\ Parsing
 python publications.py
 cd -
 loadTuples "publicationsCLEAN.csv,Publications_temp"
-
+sqlConn '<' publications.sql
 
 keepOnly2LastOf3 publications_authors_rem.csv
 loadTuples "publications_authors_rem.csv,authors_have_publications" 
 
 
-#	authors_have_publications = '''
-#	CREATE TABLE authors_have_publications (
-#	  author_id  INTEGER,
-#	  pub_id INTEGER,
-#	  PRIMARY KEY (author_id, pub_id),
-#	  FOREIGN KEY (author_id) REFERENCES Authors(id) ON DELETE CASCADE,
-#	  FOREIGN KEY (pub_id) REFERENCES Publications(id) ON DELETE CASCADE
-#	) ENGINE=InnoDB;'''
-#	createTable(authors_have_publications)
-#
 #	title_publications = '''
 #	CREATE TABLE Title_Publications (
 #                title_id INTEGER,
