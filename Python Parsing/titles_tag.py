@@ -22,8 +22,4 @@ data = []
 for row in reader:
     data.append( (row['tag_id'], row['title_id']) )
 
-with open('../CSV/titles_tagCLEAN.csv','w') as out:
-    csv_out = csv.writer(out, delimiter='\t')
-    for tuple in data:
-        csv_out.writerow(tuple)
-
+writeRows(data, 'titles_tag')

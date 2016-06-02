@@ -46,9 +46,4 @@ for row in reader:
 
 
 # Create a clean CSV file
-
-with open('../CSV/publicationsCLEAN.csv','w') as out:
-    csv_out = csv.writer(out, delimiter='\t')
-
-    for tuple in data:
-        csv_out.writerow(tuple)
+writeRows(data, 'publications')

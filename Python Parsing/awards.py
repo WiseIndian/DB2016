@@ -26,8 +26,4 @@ for row in reader:
     data.append( (row['id'], row['title'], row['date'],
 		 row['type_id'], row['category_id'], row['note_id']) )
 
-with open('../CSV/awardsCLEAN.csv','w') as out:
-    csv_out = csv.writer(out, delimiter='\t')
-    for tuple in data:
-        csv_out.writerow(tuple)
-
+writeRows(data, 'awards')
