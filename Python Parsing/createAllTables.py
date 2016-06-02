@@ -386,8 +386,8 @@ def createAllTables():
 
 	authors_have_publications = '''
 	CREATE TABLE authors_have_publications (
-	  author_id  INTEGER,
 	  pub_id INTEGER,
+	  author_id  INTEGER,
 	  PRIMARY KEY (author_id, pub_id),
 	  FOREIGN KEY (author_id) REFERENCES Authors(id) ON DELETE CASCADE,
 	  FOREIGN KEY (pub_id) REFERENCES Publications(id) ON DELETE CASCADE
