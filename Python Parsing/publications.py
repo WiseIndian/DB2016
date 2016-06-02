@@ -47,7 +47,7 @@ for row in reader:
 
 # Create a clean CSV file
 
-with open('publicationsCLEAN.csv','w') as out:
+with open('../CSV/publicationsCLEAN.csv','w') as out:
     csv_out = csv.writer(out, delimiter='\t')
 
     for tuple in data:
