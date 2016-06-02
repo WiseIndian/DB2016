@@ -4,6 +4,7 @@ source dbConfig.bash
 source dbUtils.bash
 
 loadCommand1="LOAD DATA LOCAL INFILE '$csvLocation/"
+echo "load command1: $loadCommand1"
 #add csv file name in between loadCommand1 and 2 in for loop
 loadCommand2="'
 INTO TABLE " #add a table name here
@@ -25,7 +26,7 @@ function loadTuples {
         for t in $tuples; do
                 IFS=','
                 set $t
-                base="${loadCommand1}${CSVLoc}${1}${loadCommand2}${2}${loadCommand3}"
+                base="${loadCommand1}${1}${loadCommand2}${2}${loadCommand3}"
                 echo "${base}${appendable};" > sqlLoadFile.sql
         done
         IFS=$OLDIFS
