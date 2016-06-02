@@ -1,22 +1,14 @@
 #!/bin/bash
 
 source dbConfig.bash
+source dbUtils.bash
+source loadTuples.bash
 
 #you have to execute this script in base of repo i.e. from DB2016
 #and that because the load*.sql files use paths relative to the current directory!
 
-csvLocation=CSV #don't put a directory name containing spaces it won't work
-
 
 #used to connect to the database and execute some sql script
-
-function sqlConn { # "$@" could be < aSqlScript.sql 
-	bash sqlConn.bash "$@"
-}
-
-function countRowsFromEveryTables { # can be used as useful feedback
-	bash countRowsNumber.bash "$database"
-}
 
 function clean {
 	lsOutput=`ls $csvLocation/*_rem.csv` 
@@ -27,45 +19,11 @@ function clean {
 }
 
 
-loadCommand1="LOAD DATA LOCAL INFILE '"$csvLocation"/"
-#add csv file name in between loadCommand1 and 2 in for loop
-loadCommand2="'
-INTO TABLE " #add a table name here
-loadCommand3="
-CHARACTER SET UTF8
-FIELDS TERMINATED BY '\\t' ENCLOSED BY '' ESCAPED BY '\\\\'
-LINES TERMINATED BY '\\n' STARTING BY ''
-"
-
-
 #call this function like:
 #loadTuples "csv1.csv,Table1 csv2.csv,Table2" "<additional-sql-code-to-append-to-loadCommand3>"
 #tuples is "csv1.csv,...,Table2" 
 #and appendable is "<additional-sql-code-to-append-to-loadCommand3>"
 #loadTuples "titles_awards_rem.csv,title_wins_award" "$csvColumnsTitleAwards"
-function loadTuples { 
-	OLDIFS=$IFS
-	tuples="$1" #load arguments of loadTuples into tuples
-	appendable="$2" #will be an empty string if nothing specified
-	
-	if [ -f sqlLoadFile.sql ]; then
-		rm sqlLoadFile.sql
-	fi
-
-	for t in $tuples; do 
-		IFS=","
-		set -- $t  
-		#set $1, $2 ... to all comma separated values
-		temp1="${loadCommand1}${1}"
-		temp2="${loadCommand2}${2}${loadCommand3}"
-		sqlCmd="${temp1}${temp2}${appendable};"
-		echo "$sqlCmd" >> sqlLoadFile.sql
-	done
-	sqlConn --local-infile=1 '<' sqlLoadFile.sql
-	#--local-infile=1 option used to be able to import from csv
-	IFS=$OLDIFS
-	echo "loaded csvs into: $tuples"
-}
 
 function deleteFromTables {
 	tables="$@" #argument can be like "Notes Authors"
