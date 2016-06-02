@@ -8,13 +8,25 @@ function replaceConfigVar {
 	sed -i 's/^.*\('"$varToReplace"'\)=.*/\1='"$newValue"'/g' "$configFile" 
 }
 
+function countRowsFromEveryTables { # can be used as useful feedback
+        bash countRowsNumber.bash "$database"
+}
+
+function deleteAllRowsFromAllTables {
+        sqlConn '<' deleteAll.sql
+        echo "deleted all rows"
+}
+
+
+
+
 if [ "$needInstall" -eq 1 ]
 then 
 	echo doingInstall
 	sudo bash installSql.bash 
 	sudo apt-get install python-mysqldb #for python scripts in Python\ Parsing
+	replaceConfigVar needInstall 0
 fi
-replaceConfigVar needInstall 0
 
 if [ "$needConfig" -eq 1 ] 
 then
@@ -24,8 +36,8 @@ then
 	GRANT ALL PRIVILEGES ON $db"".* TO '$user'@'localhost';" > sqlConfTmp.sql
 	echo "connecting as root to create user group8 and create database!!"
 	mysql -u root -h "$host" -p < sqlConfTmp.sql
+	replaceConfigVar needConfig 0
 fi
-replaceConfigVar needConfig 0
 
 if [ "$needCreateTables" -eq 1 ]
 then    
@@ -37,7 +49,19 @@ then
 	cd Python\ Parsing				#but its painful o.w.
 	python createAllTables.py
 	cd -
+	replaceConfigVar needCreateTables 0
+else 
+	deleteAllRowsFromAllTables		
 fi
-replaceConfigVar needCreateTables 0
+
+nbRows=countRowsFromEveryTables
+echo "number of rows in all tables: $nbRows"  #to check if deleting all rows worked
 
 bash loadAll.bash #load all data into the database (can take around 5 minutes)
+
+#useful feedback to check if inserting has worked well
+totalRowsInDB=countRowsFromEveryTables
+totalRowsInCSVs=`cat CSV/*.csv | wc -l`
+echo "total number of rows: _ in CSVs = $totalRowsInCSVs\n         _ in DB = $totalRowsInDB"
+
+
