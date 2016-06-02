@@ -34,7 +34,7 @@ INTO TABLE " #add a table name here
 loadCommand3="
 CHARACTER SET UTF8
 FIELDS TERMINATED BY '\\t' ENCLOSED BY '' ESCAPED BY '\\\\'
-LINES TERMINATED BY '\\n' STARTING BY '';
+LINES TERMINATED BY '\\n' STARTING BY ''
 "
 
 
@@ -42,6 +42,7 @@ LINES TERMINATED BY '\\n' STARTING BY '';
 #loadTuples "csv1.csv,Table1 csv2.csv,Table2" "<additional-sql-code-to-append-to-loadCommand3>"
 #tuples is "csv1.csv,...,Table2" 
 #and appendable is "<additional-sql-code-to-append-to-loadCommand3>"
+#loadTuples "titles_awards_rem.csv,title_wins_award" "$csvColumnsTitleAwards"
 function loadTuples { 
 	OLDIFS=$IFS
 	tuples="$1" #load arguments of loadTuples into tuples
@@ -55,9 +56,9 @@ function loadTuples {
 		IFS=","
 		set -- $t  
 		#set $1, $2 ... to all comma separated values
-		temp1="$loadCommand1""$1"
-		temp2="$loadCommand2""$2""$loadCommand3"
-		sqlCmd="$temp1""$temp2""$appendable"
+		temp1="${loadCommand1}${1}"
+		temp2="${loadCommand2}${2}${loadCommand3}"
+		sqlCmd="${temp1}${temp2}${appendable};"
 		echo "$sqlCmd" >> sqlLoadFile.sql
 	done
 	sqlConn --local-infile=1 '<' sqlLoadFile.sql
@@ -80,20 +81,8 @@ function deleteFromTables {
 	sqlConn '<' sqlDeleteFile 
 }
 
-function deleteAllRowsFromAllTables {
-	sqlConn '<' deleteAll.sql
-	echo "deleted all rows"
-}
-
-
 clean
-
 sh rmRet.sh #delete ^M and other bullshit carriage return \r...
-
-deleteAllRowsFromAllTables
-
-nbRows=countRowsFromEveryTables
-echo "number of rows in all tables: $nbRows"  #to check if deleting all rows worked
 
 #calling loadTuples
 loadTuples "notes_rem.csv,Notes
@@ -111,7 +100,7 @@ sqlConn '<' title_is_translated_in.sql
 loadTuples "reviews_rem.csv,title_is_reviewed_by 
 	    titles_series_rem.csv,title_is_part_of_Title_Series
 	    award_types_rem.csv,Award_Types_temp"
-sqlConn '<' awardsTypes.sql
+sqlConn '<' awardTypes.sql
 loadTuples "award_categories_rem.csv,Award_Categories_temp"
 sqlConn '<' awardCategories.sql
 loadTuples "awards_rem.csv,Awards_temp"
@@ -131,14 +120,8 @@ python Python\ Parsing/publications.py
 loadTuples "publicationsCLEAN.csv,Publications_temp"
 
 
-#useful feedback to check if inserting has worked well
-totalRowsInDB=countRowsFromEveryTables 
-totalRowsInCSVs=`cat CSV/*.csv | wc -l`
-echo "total number of rows: _ in CSVs = $totalRowsInCSVs\n         _ in DB = $totalRowsInDB"
-
-
-#csvColumnsPublicationAuthors="(@col1, @col2, @col3) set author_id=@col3, pub_id=@col2"
-#loadTuples "publications_authors_rem.csv,authors_have_publications" "$csvColumnsPublicationAuthors"
+csvColumnsPublicationAuthors="(@col1, @col2, @col3) set author_id=@col3, pub_id=@col2"
+loadTuples "publications_authors_rem.csv,authors_have_publications" "$csvColumnsPublicationAuthors"
 
 #	authors_have_publications = '''
 #	CREATE TABLE authors_have_publications (
