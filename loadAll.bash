@@ -85,7 +85,7 @@ loadTuples "titles_awards_rem.csv,title_wins_award"
 cd Python\ Parsing
 python titles_tag.py
 cd -
-loadTuples "tags_rem.csv,Tags titles_tag_rem.csv,title_has_tag publishers_rem.csv,Publishers_temp"
+loadTuples "tags_rem.csv,Tags titles_tagCLEAN.csv,title_has_tag publishers_rem.csv,Publishers_temp"
 #107456 for titles_tag_rem.csv and title_has_tag just 382 :o
 sqlConn '<' publishers.sql # doesn't load well publishers.csv=19545 publishers_temp=19528
 #but Publishers=1961!
