@@ -341,7 +341,7 @@ def createAllTables():
 	publications_temp = '''
 	CREATE TABLE Publications_temp (
 	  id INTEGER,
-	  title VARCHAR(255), /*stay closer to definition of the csv file as described in todoFromDeliv1Feedback and then we'll use this field to create view Title_Publications*/
+	  title VARCHAR(255),
 	  pb_date DATE,
 	  publisher_id INTEGER,
 	  nb_pages INTEGER,
@@ -366,6 +366,7 @@ def createAllTables():
 	publications = '''
 	CREATE TABLE Publications (
 	  id INTEGER,
+	  title VARCHAR(255),
 	  pb_date DATE,
 	  publisher_id INTEGER,
 	  nb_pages INTEGER,
