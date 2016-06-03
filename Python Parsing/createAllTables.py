@@ -400,7 +400,7 @@ def createAllTables():
 	createTable(authors_have_publications)
 
 	title_publications = '''
-	CREATE TABLE Title_Publications (
+	CREATE TABLE Titles_published_as_Publications (
                 title_id INTEGER,
                 pub_id INTEGER,
                 PRIMARY KEY (title_id, pub_id),
