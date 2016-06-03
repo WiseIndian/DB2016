@@ -65,6 +65,8 @@ cd Python\ Parsing
 python awards.py
 cd -
 loadTuples "awardsCLEAN.csv,Awards_temp"
+#should have 37655 entries in awards only have 60 .. which could be linked with
+# the fact that title_wins_award doesn't have many entries
 
 sqlConn '<' awards.sql
 
@@ -74,13 +76,14 @@ sqlConn '<' awards.sql
 function keepOnly2LastOf3 {
 	TAB=`echo -e "\t"`
 	int=' *[0-9][0-9]* *'
-	subst='s/^'"${int}${TAB}"'\('"${int}"'\)'"${TAB}"'\('"${int}"'\)$/\1'"$TAB"'\2/g'
+	subst='s/^'"${int}${TAB}"'\('"${int}${TAB}${int}"'\)$/\1/g'
 	sed -i.old "$subst" "$CSVLoc"/"$1"
 }
 
 keepOnly2LastOf3 titles_awards_rem.csv
 
 loadTuples "titles_awards_rem.csv,title_wins_award" 
+#24 found in title_wins_award should have something around 25000
 
 cd Python\ Parsing
 python titles_tag.py
@@ -98,18 +101,6 @@ sqlConn '<' publications.sql
 
 keepOnly2LastOf3 publications_authors_rem.csv
 loadTuples "publications_authors_rem.csv,authors_have_publications" 
-
-
-#	title_publications = '''
-#	CREATE TABLE Title_Publications (
-#                title_id INTEGER,
-#                pub_id INTEGER,
-#                PRIMARY KEY (title_id, pub_id),
-#                FOREIGN KEY (title_id) REFERENCES Titles(id),
-#                FOREIGN KEY (pub_id) REFERENCES Publications(id)
-#        ) ENGINE=InnoDB;'''
-#	createTable(title_publications)
-#
 #	webpages = '''
 #	CREATE TABLE Webpages (
 #	id INTEGER,
