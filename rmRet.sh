@@ -1,8 +1,16 @@
 #!/bin/sh
 
-#this is relative to DB2016 directory
 csvLocation=CSV
-for f in `ls $csvLocation/*.csv` ; do
+
+#this is relative to DB2016 directory
+function rmRet {
+	f="$1"
 	suffix=.csv
 	cat $f | sed 's/\r//g' > ${f%$suffix}_rem.csv
-done
+}
+
+function rmRetAllFiles {
+	for f in `ls $csvLocation/*.csv` ; do
+		rmRet $f
+	done
+}
