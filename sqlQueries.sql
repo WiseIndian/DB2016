@@ -207,7 +207,23 @@ ORDER BY nb_of_awards DESC
 LIMIT 1;
 
 --f) For every language, find the top three title types with most translations.
+
 --g) For each year, compute the average number of authors per publisher.
+SELECT years2.y, AVG(result1.authors_per_publisher)
+FROM
+(SELECT DISTINCT YEAR(pb_date) AS y FROM Publications ORDER BY y) AS years2,
+(
+	SELECT pbshr.name, COUNT(*) as authors_per_publisher, years.y as y
+	FROM 
+	(SELECT DISTINCT YEAR(pb_date) AS y FROM Publications ORDER BY y) AS years,
+	Publishers pbshr, Publications p, authors_have_publications a_p, Authors a
+	WHERE pbshr.id = p.publisher_id AND p.id = a_p.pub_id AND a_p.author_id = a.id
+	AND YEAR(p.pb_date) = years.y
+	GROUP BY pbshr.id
+) as result1
+WHERE years2.y = result1.y
+GROUP BY years2.y;
+
 --h) Find the publication series with most titles that have been given awards of “World Fantasy Award”
 --type.
 --i) For every award category, list the names of the three most awarded authors.
