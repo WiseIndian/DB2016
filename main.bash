@@ -42,7 +42,8 @@ then
 	cd Python\ Parsing				#but its painful o.w.
 	python createAllTables.py
 	cd -
-	replaceConfigVar needCreateTables 0
+	replaceConfigVar needCreateTables 0 #If you're too lazy to change needCreateTables to 1
+					#everytime just comment this line  
 else 
 	deleteAllRowsFromAllTables		
 fi
