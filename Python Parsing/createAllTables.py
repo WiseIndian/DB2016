@@ -409,6 +409,21 @@ def createAllTables():
         ) ENGINE=InnoDB;'''
 	createTable(title_publications)
 
+	webpages_temp = '''
+	CREATE TABLE Webpages_temp (
+	id INTEGER,
+	author_id INTEGER,
+	publisher_id INTEGER,
+	url VARCHAR(255),
+	publication_series_id INTEGER,
+	title_id INTEGER,
+	award_type_id INTEGER,
+	title_series_id INTEGER,
+	award_category_id INTEGER,
+	PRIMARY KEY (id)
+	) ENGINE=InnoDB;'''
+	createTable(webpages_temp)
+
 	webpages = '''
 	CREATE TABLE Webpages (
 	id INTEGER,
@@ -423,7 +438,7 @@ def createAllTables():
 	author_id INTEGER,
 	PRIMARY KEY (webpage_id, author_id),
 	FOREIGN KEY (webpage_id) REFERENCES Webpages(id) ON DELETE CASCADE,
-	FOREIGN KEY (webpage_id) REFERENCES Authors(id) ON DELETE CASCADE
+	FOREIGN KEY (author_id) REFERENCES Authors(id) ON DELETE CASCADE
 	) ENGINE=InnoDB;'''
 	createTable(authors_referenced_by)
 
