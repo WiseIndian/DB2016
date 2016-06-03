@@ -150,8 +150,8 @@ WHERE aw.aw_date IS NOT NULL AND a.deathdate IS NOT NULL AND
 	)
 ) AND
 aw.id = t_w_a.award_id AND t_w_a.title_id = t_p.title_id AND 
-t_p.title_id IS NOT NULL AND t_p.pub_id = a_p.pub_id AND
-a_p.pub_id IS NOT NULL AND a_p.author_id = a.id
+t_p.title_id AND t_p.pub_id = a_p.pub_id AND
+a_p.pub_id AND a_p.author_id = a.id
 GROUP BY a.id 
 ORDER BY nb_awards_when_dead DESC
 LIMIT 10
@@ -196,7 +196,7 @@ FROM (
 SELECT a.name, COUNT(t_w_b.review_title_id) AS "number of reviews written"
 FROM title_is_reviewed_by t_w_b, Titles_published_as_Publications t_p,
 authors_have_publications a_p, Authors a
-WHERE t_w_b.review_title_id = t_p.title_id AND t_p.pub_id IS NOT NULL AND
+WHERE t_w_b.review_title_id = t_p.title_id AND t_p.pub_id AND
 t_p.pub_id = a_p.pub_id AND a_p.author_id = a.id  
 GROUP BY a.id
 ORDER BY `number of reviews written` DESC 
@@ -216,4 +216,54 @@ LIMIT 10;
 --o) For publications that have been awarded the Nebula award, find the top 10 with the most extensive
 --web presence (i.e, the highest number of author websites, publication websites, publisher websites,
 --publication series websites, and title series websites in total)
-
+SELECT pid, SUM(inner_sum) as tot_refs
+FROM (
+	(SELECT p.id AS pid, COUNT(*) as inner_sum
+	FROM Publications p, authors_have_publications a_p, authors_referenced_by a_r_b
+	WHERE p.id = a_p.pub_id AND  a_p.author_id = a_r_b.author_id
+	GROUP BY p.id) 
+	UNION
+	(SELECT p.id AS pid, COUNT(*) as inner_sum
+	FROM Publications p, Titles_published_as_Publications t_p, title_wins_award t_w_a,
+		Awards aw, award_categories_referenced_by a_c_r
+	WHERE p.id = t_p.pub_id AND t_p.title_id = t_w_a.title_id AND 
+		t_w_a.award_id = aw.id AND aw.category_id = a_c_r.award_category_id
+	GROUP BY p.id)
+	UNION
+	(SELECT p.id AS pid, COUNT(*) as inner_sum
+	FROM Publications p, Titles_published_as_Publications t_p, title_wins_award t_w_a,
+		Awards aw, award_types_referenced_by a_t_r
+	WHERE p.id = t_p.pub_id AND t_p.title_id = t_w_a.title_id AND
+		t_w_a.award_id = aw.id AND aw.type_id = a_t_r.award_type_id
+	GROUP BY p.id)
+	UNION
+	(SELECT p.id AS pid, COUNT(*) as inner_sum
+	FROM Publications p, Publication_Series p_s, publication_series_referenced_by p_s_r
+	WHERE p.publication_series_id = p_s.id AND p_s.id = p_s_r.publication_series_id
+	GROUP BY p.id)
+	UNION
+	(SELECT p.id AS pid, COUNT(*) as inner_sum
+	FROM Publications p, publishers_referenced_by p_r
+	WHERE p.publisher_id = p_r.publisher_id
+	GROUP BY p.id)
+	UNION
+	(SELECT p.id AS pid, COUNT(*) as inner_sum
+	FROM Publications p, Titles_published_as_Publications t_p, Titles t, 
+		title_series_referenced_by t_s_r
+	WHERE p.id = t_p.pub_id AND t_p.title_id = t.id AND 
+		t.series_id = t_s_r.title_series_id
+	GROUP BY p.id)
+	UNION
+	(SELECT p.id AS pid, COUNT(*) as inner_sum
+	FROM Publications p, Titles_published_as_Publications t_p, titles_referenced_by t_r
+	WHERE p.id = t_p.pub_id AND t_p.title_id = t_r.title_id
+	GROUP BY p.id)
+) AS r,
+Titles_published_as_Publications outter_t_p, title_wins_award outter_t_w_a, 
+	Awards outter_aw, Award_Types outter_a_t
+WHERE r.pid = outter_t_p.pub_id AND outter_t_p.title_id = outter_t_w_a.title_id AND
+	outter_t_w_a.award_id = outter_aw.id AND 
+	outter_aw.type_id = (SELECT id FROM Award_Types WHERE name = 'Nebula award')
+GROUP BY pid 
+ORDER BY tot_refs DESC
+LIMIT 10;
