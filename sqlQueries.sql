@@ -193,6 +193,15 @@ FROM (
 ) AS r1;
 
 --l) Find the author who has reviewed the most titles.
+SELECT a.name, COUNT(t_w_b.review_title_id) AS "number of reviews written"
+FROM title_is_reviewed_by t_w_b, Titles_published_as_Publications t_p,
+authors_have_publications a_p, Authors a
+WHERE t_w_b.review_title_id = t_p.title_id AND t_p.pub_id IS NOT NULL AND
+t_p.pub_id = a_p.pub_id AND a_p.author_id = a.id  
+GROUP BY a.id
+ORDER BY `number of reviews written` DESC 
+LIMIT 1;
+
 --m) For every language, list the three authors with the most translated titles of “novel” type.
 --n) Order the top ten authors whose publications have the largest pages per dollar ratio (considering all
 --publications of an author that have a dollar price).
