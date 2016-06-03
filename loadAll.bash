@@ -40,6 +40,13 @@ function deleteFromTables {
 	sqlConn '<' sqlDeleteFile 
 }
 
+function keepOnly2LastOf3 {
+	TAB=`echo -e "\t"`
+	int=' *[0-9][0-9]* *'
+	subst='s/^'"${int}${TAB}"'\('"${int}${TAB}${int}"'\)$/\1/g'
+	sed -i.old "$subst" "$CSVLoc"/"$1"
+}
+
 clean
 rmRetAllFiles #in rmRet.sh
 
@@ -61,6 +68,8 @@ loadTuples "titlesCLEAN_rem.csv,Titles_temp"
 
 sqlConn  '<' titles.sql
 sqlConn '<' title_is_translated_in.sql
+
+keepOnly2LastOf3 reviews_rem.csv
 loadTuples "reviews_rem.csv,title_is_reviewed_by
 	    award_types_rem.csv,Award_Types_temp"
 sqlConn '<' awardTypes.sql
@@ -74,12 +83,7 @@ sqlConn '<' awards.sql
 #see http://stackoverflow.com/questions/4202564/how-to-insert-selected-columns-from-csv-file-to-mysql-using-load-data-infile  
 #for following 2 lines of code
 
-function keepOnly2LastOf3 {
-	TAB=`echo -e "\t"`
-	int=' *[0-9][0-9]* *'
-	subst='s/^'"${int}${TAB}"'\('"${int}${TAB}${int}"'\)$/\1/g'
-	sed -i.old "$subst" "$CSVLoc"/"$1"
-}
+
 
 keepOnly2LastOf3 titles_awards_rem.csv
 
