@@ -17,9 +17,6 @@ function deleteAllRowsFromAllTables {
         echo "deleted all rows"
 }
 
-
-
-
 if [ "$needInstall" -eq 1 ]
 then 
 	echo doingInstall
@@ -28,22 +25,18 @@ then
 	replaceConfigVar needInstall 0
 fi
 
-if [ "$needConfig" -eq 1 ] 
-then
-	echo doingConfig
-	echo "create database $db;
-	CREATE USER '$user'@'localhost' IDENTIFIED BY '$password';
-	GRANT ALL PRIVILEGES ON $db"".* TO '$user'@'localhost';" > sqlConfTmp.sql
-	echo "connecting as root to create user group8 and create database!!"
-	mysql -u root -h "$host" -p < sqlConfTmp.sql
-	replaceConfigVar needConfig 0
-fi
+sqlCreateCmd="
+DELETE FROM mysql.user WHERE user = '$user';
+DROP USER '${user}'@'${host}';
+FLUSH PRIVILEGES;
+CREATE USER '${user}'@'${host}' IDENTIFIED BY '${password}';
+DROP DATABASE IF EXISTS ${db}; 
+CREATE DATABASE ${db};
+GRANT ALL PRIVILEGES ON ${db}"".* TO '${user}'@'${host}';" 
 
 if [ "$needCreateTables" -eq 1 ]
 then    
-	echo "DROP DATABASE IF EXISTS $db; 
-	create database $db;
-	GRANT ALL PRIVILEGES ON $db"".* TO '$user'@'localhost';" > tmpSql.sql
+	echo "$sqlCreateCmd" > tmpSql.sql
 	echo "connecting as root to create databases!!"
 	mysql -u root -h "$host" -p  < tmpSql.sql #need root here sorry a bit annoying
 	cd Python\ Parsing				#but its painful o.w.
