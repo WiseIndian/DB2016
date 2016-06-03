@@ -61,10 +61,7 @@ sqlConn '<' awardTypes.sql
 loadTuples "award_categories_rem.csv,Award_Categories_temp"
 sqlConn '<' awardCategories.sql
 
-cd Python\ Parsing
-python awards.py
-cd -
-loadTuples "awardsCLEAN.csv,Awards_temp"
+loadTuples "awards_rem.csv,Awards_temp"
 #should have 37655 entries in awards only have 60 .. which could be linked with
 # the fact that title_wins_award doesn't have many entries
 
