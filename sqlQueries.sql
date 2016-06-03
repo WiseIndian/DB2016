@@ -203,8 +203,17 @@ ORDER BY `number of reviews written` DESC
 LIMIT 1;
 
 --m) For every language, list the three authors with the most translated titles of “novel” type.
+
+
 --n) Order the top ten authors whose publications have the largest pages per dollar ratio (considering all
 --publications of an author that have a dollar price).
+SELECT a.name, a.id, AVG(p.nb_pages / p.price) AS "pages per dollar ratio"
+FROM Publications p, authors_have_publications a_p, Authors a
+WHERE p.id = a_p.pub_id AND a_p.author_id = a.id AND p.currency = 'DOLLAR'
+GROUP BY a.id
+ORDER BY `pages per dollar ratio` DESC
+LIMIT 10;
 --o) For publications that have been awarded the Nebula award, find the top 10 with the most extensive
 --web presence (i.e, the highest number of author websites, publication websites, publisher websites,
 --publication series websites, and title series websites in total)
+
