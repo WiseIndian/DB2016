@@ -21,6 +21,14 @@ def booleanize(string):
     else:
         return string
 
+def booleanize2(string):
+	if string.lower() == 'no':
+		return 0
+	if string.lower() == 'yes':
+		return 1
+	else:
+		return string
+
 def storyLengthFormat(story_length):
     story_length_formats = ['nv', 'ss', 'jvn', 'nvz', 'sf']
     if story_length in story_length_formats:
