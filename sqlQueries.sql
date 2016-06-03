@@ -122,6 +122,29 @@ FROM (
 --a) Compute the average price per currency of the publications of the most popular title (i.e, the title with
 --most publications overall).
 
+QUERY1 =
+SELECT title_id FROM (
+	SELECT title_id, COUNT(*) AS nbPublications
+	FROM Title_Publications
+	GROUP BY title_id
+	ORDER BY nbPublications DESC
+	LIMIT 1
+)
+
+/* Returns the table containing all the Publications (pub_id) of the most popupar title : */
+QUERY2 = 
+SELECT pub_id AS pid
+FROM Title_Publications
+WHERE title_id = QUERY1
+
+/* Returns the average price of these publications in Dollar/Pound : */
+QUERY3 =
+SELECT Avg(price) 
+FROM Publications P, QUERY2
+WHERE pid = P.id  AND  currency = 'DOLLAR'/*'POUND'*/
+
+
+
 --b) Output the names of the top ten title series with most awards.
 SELECT t_s.title, 
 	SUM(tit_awrds.nb_awards) AS "number of awards received"
