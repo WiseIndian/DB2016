@@ -159,14 +159,18 @@ LIMIT 10
 		
 
 --d) For a given year, output the three publishers that published the most publications.
-SELECT pbshr.name, COUNT(*) AS "number of publications for publisher"
+--we understood that by for a given year we could put a 
+--value given by the interface. We put 1989 for the moment. 
+SELECT pbshr.name as pbshr_name, p.pb_date,
+	 COUNT(*) AS nb_publications_by_publisher
 FROM Publications p, Publishers pbshr
-WHERE p.publisher_id = pbshr.id
+WHERE p.publisher_id = pbshr.id AND YEAR(p.pb_date) = 1989
 GROUP BY pbshr.id
-ORDER BY `number of publications for publisher` DESC
+ORDER BY nb_publications_by_publisher DESC
 LIMIT 3;
 
 --e) Given an author, compute his/her most reviewed title(s).
+
 --f) For every language, find the top three title types with most translations.
 --g) For each year, compute the average number of authors per publisher.
 --h) Find the publication series with most titles that have been given awards of “World Fantasy Award”
