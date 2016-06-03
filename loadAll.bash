@@ -95,7 +95,9 @@ loadTuples "publicationsCLEAN.csv,Publications_temp"
 sqlConn '<' publications.sql
 
 keepOnly2LastOf3 publications_authors_rem.csv
+keepOnly2LastOf3 publications_content_rem.csv 
 loadTuples "publications_authors_rem.csv,authors_have_publications
+	    publications_content_rem.csv,Titles_published_as_Publications	
 	    webpages_rem.csv,Webpages_temp" 
 
 echo "
