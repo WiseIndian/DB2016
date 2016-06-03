@@ -159,6 +159,7 @@ LIMIT 10
 		
 
 --d) For a given year, output the three publishers that published the most publications.
+
 --e) Given an author, compute his/her most reviewed title(s).
 --f) For every language, find the top three title types with most translations.
 --g) For each year, compute the average number of authors per publisher.
@@ -167,7 +168,30 @@ LIMIT 10
 --i) For every award category, list the names of the three most awarded authors.
 --j) Output the names of all living authors that have published at least one anthology from youngest to
 --oldest.
+--here we make the approximation that someones who's unknowingly dead (i.e. not marked as dead
+-- and has been born less 100 year ago is still alive).
+SELECT a.id, a.name, COUNT(a_p.pub_id) AS nb_published_anthologies
+FROM Authors a, authors_have_publications a_p,
+Titles_published_as_Publications t_p, Titles t
+WHERE a.deathdate IS NULL AND a.birthdate IS NOT NULL AND 
+DATEDIFF(CURDATE(), a.birthdate) / 365 < 100  AND
+a.id = a_p.author_id AND a_p.pub_id IS NOT NULL AND
+a_p.pub_id = t_p.pub_id AND t_p.title_id = t.id AND 
+t.title_type = 'ANTHOLOGY'
+GROUP BY a.id
+HAVING nb_published_anthologies > 0
+ORDER BY nb_published_anthologies;
+
 --k) Compute the average number of publications per publication series (single result/number expected).
+SELECT AVG(nb_publications_for_this_serie) AS "average number of publications per serie"
+FROM (
+	SELECT p.title, COUNT(p.id) AS nb_publications_for_this_serie
+	FROM Publication_Series ps, Publications p
+	WHERE p.publication_series_id = ps.id AND 
+	ps.name IS NOT NULL AND p.title IS NOT NULL
+	GROUP BY ps.id
+) AS r1;
+
 --l) Find the author who has reviewed the most titles.
 --m) For every language, list the three authors with the most translated titles of “novel” type.
 --n) Order the top ten authors whose publications have the largest pages per dollar ratio (considering all
