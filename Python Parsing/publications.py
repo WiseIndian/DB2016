@@ -46,4 +46,4 @@ for row in reader:
 
 
 # Create a clean CSV file
-writeRows(data, 'publications')
+Parse.writeRows(data, 'publications')

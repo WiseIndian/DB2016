@@ -23,7 +23,6 @@ reader = csv.DictReader(f, dialect='excel-tab', fieldnames=fields)
 #here we omit type code because that we want as end input of load data
 data = []
 for row in reader:
-    data.append( (row['id'], row['title'], row['date'],
-		 row['type_id'], row['category_id'], row['note_id']) )
+    data.append( (row['id'], row['title'], row['date'], row['type_id'], row['category_id'], row['note_id']) )
 
-writeRows(data, 'awards')
+Parse.writeRows(data, 'awards')

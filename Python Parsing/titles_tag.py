@@ -22,4 +22,4 @@ data = []
 for row in reader:
     data.append( (row['tag_id'], row['title_id']) )
 
-writeRows(data, 'titles_tag')
+Parse.writeRows(data, 'titles_tag')

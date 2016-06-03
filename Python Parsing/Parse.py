@@ -1,3 +1,4 @@
+import csv
 
 def nullize(string):
     if string == '\N' or string == '':
