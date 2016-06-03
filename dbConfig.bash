@@ -9,5 +9,4 @@ db="cs322"
 database="$db"
 
 needInstall=0
-needConfig=0
 needCreateTables=1
