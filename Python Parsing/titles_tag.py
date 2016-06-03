@@ -11,7 +11,7 @@ import csv
 
 # Parse data from csv file
 
-filename = 'Books/titles_tag.csv'
+filename = '../CSV/titles_tag_rem.csv'
 f = open(filename, 'rU')
 f.seek(0)
 
@@ -20,12 +20,6 @@ reader = csv.DictReader(f, dialect='excel-tab', fieldnames=fields)
 
 data = []
 for row in reader:
-    data.append( (row['id'], row['title_id'], row['tag_id']) )
+    data.append( (row['tag_id'], row['title_id']) )
 
-
-# Insert data into Database
-
-# db = DB.Database('db4free.net','group8','toto123', 'cs322')
-#
-# sql = 'INSERT INTO has_tag (tag_id, title_id) VALUES (%s, %s);'
-# db.insertMany(sql, data)
+Parse.writeRows(data, 'titles_tag')

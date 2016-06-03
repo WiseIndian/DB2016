@@ -131,6 +131,8 @@ def createAllTables():
 	  title VARCHAR(255) NOT NULL,
 	  synopsis TEXT,
 	  note TEXT,
+	  series_id INTEGER,
+	  series_number INTEGER,
 	  story_len ENUM('nv', 'ss', 'jvn', 'nvz', 'sf'),
 	  title_type ENUM('ANTHOLOGY', 'BACKCOVERART', 'COLLECTION', 'COVERART', 'INTERIORART',
 		  'EDITOR', 'ESSAY', 'INTERVIEW', 'NOVEL', 'NONFICTION', 'OMNIBUS', 'POEM',
@@ -168,16 +170,16 @@ def createAllTables():
 	) ENGINE=InnoDB;'''
 	createTable(title_is_reviewed_by)
 
-	title_is_part_of_Title_Series = '''
-	CREATE TABLE title_is_part_of_Title_Series (
-	title_id  INTEGER,
-	series_id INTEGER NOT NULL,
-	series_number INTEGER,
-	PRIMARY KEY (title_id),
-	FOREIGN KEY (title_id) REFERENCES Titles(id) ON DELETE CASCADE,
-	FOREIGN KEY (series_id) REFERENCES Title_Series(id) ON DELETE CASCADE
-	) ENGINE=InnoDB;'''
-	createTable(title_is_part_of_Title_Series)
+#	title_is_part_of_Title_Series = '''
+#	CREATE TABLE title_is_part_of_Title_Series (
+#	title_id  INTEGER,
+#	series_id INTEGER NOT NULL,
+#	series_number INTEGER,
+#	PRIMARY KEY (title_id),
+#	FOREIGN KEY (title_id) REFERENCES Titles(id) ON DELETE CASCADE,
+#	FOREIGN KEY (series_id) REFERENCES Title_Series(id) ON DELETE CASCADE
+#	) ENGINE=InnoDB;'''
+#	createTable(title_is_part_of_Title_Series)
 
 
 	award_types_temp = '''
@@ -245,6 +247,7 @@ def createAllTables():
 	  id INTEGER,
 	  title VARCHAR(255),
 	  aw_date DATE,
+	  type_code VARCHAR(5),
 	  type_id INTEGER,
 	  category_id INTEGER,
 	  note_id INTEGER,
@@ -260,9 +263,10 @@ def createAllTables():
 	  id INTEGER,
 	  title VARCHAR(255),
 	  aw_date DATE,
+	  type_code VARCHAR(5),
 	  type_id INTEGER,
 	  category_id INTEGER,
-	  note_id TEXT,
+	  note TEXT,
 	  PRIMARY KEY (id),
 	  FOREIGN KEY (category_id) REFERENCES Award_Categories(id) ON DELETE SET NULL,
 	  FOREIGN KEY (type_id) REFERENCES Award_Types(id) ON DELETE SET NULL
@@ -339,7 +343,7 @@ def createAllTables():
 	publications_temp = '''
 	CREATE TABLE Publications_temp (
 	  id INTEGER,
-	  title VARCHAR(255), /*stay closer to definition of the csv file as described in todoFromDeliv1Feedback and then we'll use this field to create view Title_Publications*/
+	  title VARCHAR(255),
 	  pb_date DATE,
 	  publisher_id INTEGER,
 	  nb_pages INTEGER,
@@ -348,9 +352,9 @@ def createAllTables():
 				 'NOVEL', 'OMNIBUS', 'FANZINE', 'CHAPBOOK'),
 	  isbn INTEGER,
 	  cover_img VARCHAR(255),
+	  currency ENUM('DOLLAR', 'POUND'),
 	  price DECIMAL(6, 5), /*valeurs un peu arbitraires, mais on peut imaginer qu'un livre 
 				 aura pas un prix > un million dans n'importe quelle currency?*/
-	  currency VARCHAR(1),
 	  note_id INTEGER,
 	  publication_series_id INTEGER,
 	  publication_series_number INTEGER,
@@ -364,6 +368,7 @@ def createAllTables():
 	publications = '''
 	CREATE TABLE Publications (
 	  id INTEGER,
+	  title VARCHAR(255),
 	  pb_date DATE,
 	  publisher_id INTEGER,
 	  nb_pages INTEGER,
@@ -372,9 +377,9 @@ def createAllTables():
 				 'NOVEL', 'OMNIBUS', 'FANZINE', 'CHAPBOOK'),
 	  isbn INTEGER,
 	  cover_img VARCHAR(255),
+	  currency ENUM('DOLLAR', 'POUND'),
 	  price DECIMAL(6, 5), /*valeurs un peu arbitraires, mais on peut imaginer qu'un livre 
 				 aura pas un prix > un million dans n'importe quelle currency?*/
-	  currency VARCHAR(1),
 	  note TEXT,
 	  publication_series_id INTEGER,
 	  publication_series_number INTEGER,
@@ -386,8 +391,8 @@ def createAllTables():
 
 	authors_have_publications = '''
 	CREATE TABLE authors_have_publications (
-	  author_id  INTEGER,
 	  pub_id INTEGER,
+	  author_id  INTEGER,
 	  PRIMARY KEY (author_id, pub_id),
 	  FOREIGN KEY (author_id) REFERENCES Authors(id) ON DELETE CASCADE,
 	  FOREIGN KEY (pub_id) REFERENCES Publications(id) ON DELETE CASCADE
@@ -395,7 +400,7 @@ def createAllTables():
 	createTable(authors_have_publications)
 
 	title_publications = '''
-	CREATE TABLE Title_Publications (
+	CREATE TABLE Titles_published_as_Publications (
                 title_id INTEGER,
                 pub_id INTEGER,
                 PRIMARY KEY (title_id, pub_id),
@@ -403,6 +408,21 @@ def createAllTables():
                 FOREIGN KEY (pub_id) REFERENCES Publications(id)
         ) ENGINE=InnoDB;'''
 	createTable(title_publications)
+
+	webpages_temp = '''
+	CREATE TABLE Webpages_temp (
+	id INTEGER,
+	author_id INTEGER,
+	publisher_id INTEGER,
+	url VARCHAR(255),
+	publication_series_id INTEGER,
+	title_id INTEGER,
+	award_type_id INTEGER,
+	title_series_id INTEGER,
+	award_category_id INTEGER,
+	PRIMARY KEY (id)
+	) ENGINE=InnoDB;'''
+	createTable(webpages_temp)
 
 	webpages = '''
 	CREATE TABLE Webpages (
@@ -418,7 +438,7 @@ def createAllTables():
 	author_id INTEGER,
 	PRIMARY KEY (webpage_id, author_id),
 	FOREIGN KEY (webpage_id) REFERENCES Webpages(id) ON DELETE CASCADE,
-	FOREIGN KEY (webpage_id) REFERENCES Authors(id) ON DELETE CASCADE
+	FOREIGN KEY (author_id) REFERENCES Authors(id) ON DELETE CASCADE
 	) ENGINE=InnoDB;'''
 	createTable(authors_referenced_by)
 

@@ -13,21 +13,16 @@ import csv
 
 # Parse data from csv file
 
-filename = 'Books/awards.csv'
+filename = '../CSV/awards_rem.csv'
 f = open(filename, 'rU')
 f.seek(0)
 
-fields = ['id', 'title', 'date', 'type_id', 'category_id', 'note_id']
+fields = ['id', 'title', 'date', 'type_code', 'type_id', 'category_id', 'note_id']
 reader = csv.DictReader(f, dialect='excel-tab', fieldnames=fields)
 
+#here we omit type code because that we want as end input of load data
 data = []
 for row in reader:
-    type_id = Parse.nullize(row['type_id'])
-    data.append( (row['id'], row['title'], row['date'], type_id, row['category_id'], row['note_id']) )
+    data.append( (row['id'], row['title'], row['date'], row['type_id'], row['category_id'], row['note_id']) )
 
-# Insert data into Database
-
-# db = DB.Database('db4free.net','group8','toto123', 'cs322')
-#
-# sql = 'INSERT INTO Awards (id, title, date, type_id, category_id, note_id) VALUES (%s, %s, %s, %s, %s, %s);'
-# db.insertMany(sql, to_db)
+Parse.writeRows(data, 'awards')

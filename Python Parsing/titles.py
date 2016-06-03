@@ -11,7 +11,7 @@ import csv
 
 # Parse data from csv file
 
-filename = 'Books/titles.csv'
+filename = '../CSV/titles_rem.csv'
 f = open(filename, 'rU')
 f.seek(0)
 
@@ -21,22 +21,12 @@ reader = csv.DictReader(f, dialect='excel-tab', fieldnames=fields)
 data = []
 for row in reader:
 
-    translator = Parse.nullize(row['translator'])
-    synopsis = Parse.nullize(row['synopsis'])
-    note_id = Parse.nullize(row['note_id'])
-    series_id = Parse.nullize(row['series_id'])
-    series_nb = Parse.nullize(row['series_nb'])
-    story_length = Parse.storyLengthFormat(row['story_length'])
-    story_type = Parse.storyTypeFormat(row['story_type'])
-    language_id = Parse.nullize(row['language_id'])
-    title_graphic = Parse.booleanize(row['title_graphic'])
+    title_graphic = Parse.booleanize2(row['title_graphic'])
+    data.append(
+		(row['id'], row['title'], row['translator'], row['synopsis'], 
+		 row['note_id'], row['series_id'], row['series_nb'], 
+		 row['story_length'], row['story_type'], row['parent'], 
+		 row['language_id'], title_graphic)
+	       ) 
 
-    data.append( (row['id'], row['title'], translator, synopsis, note_id, series_id, series_nb, story_length, story_type, row['parent'], language_id, title_graphic) )
-
-
-# Insert data into Database
-
-# db = DB.Database('db4free.net','group8','toto123', 'cs322')
-#
-# sql = 'INSERT INTO Awards (id, title, date, type_id, category_id, note_id) VALUES (%s, %s, %s, %s, %s, %s);'
-# db.insertMany(sql, to_db)
+Parse.writeRows(data, 'titles')

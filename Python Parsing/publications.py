@@ -14,7 +14,7 @@ import re
 
 # Parse data from csv file
 
-filename = 'Books/publications.csv'
+filename = '../CSV/publications_rem.csv'
 f = open(filename, 'rU')
 f.seek(0)
 

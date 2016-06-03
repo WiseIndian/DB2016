@@ -13,7 +13,7 @@ import csv
 
 # Parse data from csv file
 
-filename = 'Books/publications_content.csv'
+filename = '../CSV/publications_content_rem.csv'
 f = open(filename, 'rU')
 f.seek(0)
 
@@ -22,12 +22,6 @@ reader = csv.DictReader(f, dialect='excel-tab', fieldnames=fields)
 
 data = []
 for row in reader:
-    data.append( (row['id'], row['title_id'], row['publication_id']) )
+    data.append( (row['title_id'], row['publication_id']) )
 
-
-# Insert data into Database
-
-# db = DB.Database('db4free.net','group8','toto123', 'cs322')
-#
-# sql = 'INSERT INTO Title_is_part_of_Publication (title_id, publication_id) VALUES (%s, %s);'
-# db.insertMany(sql, data)
+writeRows(data, 'publications_content')
