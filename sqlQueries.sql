@@ -122,25 +122,22 @@ FROM (
 --a) Compute the average price per currency of the publications of the most popular title (i.e, the title with
 --most publications overall).
 
-QUERY1 =
-SELECT title_id FROM (
-	SELECT title_id, COUNT(*) AS nbPublications
-	FROM Title_Publications
-	GROUP BY title_id
-	ORDER BY nbPublications DESC
-	LIMIT 1
-)
-
-/* Returns the table containing all the Publications (pub_id) of the most popupar title : */
-QUERY2 = 
-SELECT pub_id AS pid
-FROM Title_Publications
-WHERE title_id = QUERY1
 
 /* Returns the average price of these publications in Dollar/Pound : */
-QUERY3 =
 SELECT Avg(price) 
-FROM Publications P, QUERY2
+FROM Publications P, 
+/* Query as from input Returns the table containing all the Publications 
+ * (pub_id) of the most popupar title : */
+(SELECT pub_id AS pid
+FROM Titles_published_as_Publications
+WHERE title_id = (SELECT title_id FROM (
+                        SELECT title_id, COUNT(*) AS nbPublications
+                        FROM Titles_published_as_Publications
+                        GROUP BY title_id
+                        ORDER BY nbPublications DESC
+                        LIMIT 1
+                  ) as r1 ) 
+) as r2
 WHERE pid = P.id  AND  currency = 'DOLLAR'/*'POUND'*/
 
 
@@ -183,7 +180,8 @@ LIMIT 10
 
 --d) For a given year, output the three publishers that published the most publications.
 --we understood that by for a given year we could put a 
---value given by the interface. We put 1989 for the moment. 
+--value given by the interface. We put 1989 for the moment.  
+--TODO with interface input a value to the YEAR(p.pb_date) = ... 
 SELECT pbshr.name as pbshr_name, p.pb_date,
 	 COUNT(*) AS nb_publications_by_publisher
 FROM Publications p, Publishers pbshr
@@ -193,7 +191,9 @@ ORDER BY nb_publications_by_publisher DESC
 LIMIT 3;
 
 --e) Given an author, compute his/her most reviewed title(s).
-
+--TODO link with interface in such a way that the name will replace current 'Isaac Asimov'
+SELECT 
+FROM Titles_published_as_Publications t_p
 --f) For every language, find the top three title types with most translations.
 --g) For each year, compute the average number of authors per publisher.
 --h) Find the publication series with most titles that have been given awards of “World Fantasy Award”
