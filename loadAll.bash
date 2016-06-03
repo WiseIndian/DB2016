@@ -62,8 +62,6 @@ loadTuples "award_categories_rem.csv,Award_Categories_temp"
 sqlConn '<' awardCategories.sql
 
 loadTuples "awards_rem.csv,Awards_temp"
-#should have 37655 entries in awards only have 60 .. which could be linked with
-# the fact that title_wins_award doesn't have many entries
 
 sqlConn '<' awards.sql
 
@@ -97,82 +95,35 @@ loadTuples "publicationsCLEAN.csv,Publications_temp"
 sqlConn '<' publications.sql
 
 keepOnly2LastOf3 publications_authors_rem.csv
-loadTuples "publications_authors_rem.csv,authors_have_publications" 
-#	webpages = '''
-#	CREATE TABLE Webpages (
-#	id INTEGER,
-#	url VARCHAR(255),
-#	PRIMARY KEY (id)
-#	) ENGINE=InnoDB;'''
-#	createTable(webpages)
-#
-#	authors_referenced_by = '''
-#	CREATE TABLE authors_referenced_by (
-#	webpage_id INTEGER,
-#	author_id INTEGER,
-#	PRIMARY KEY (webpage_id, author_id),
-#	FOREIGN KEY (webpage_id) REFERENCES Webpages(id) ON DELETE CASCADE,
-#	FOREIGN KEY (webpage_id) REFERENCES Authors(id) ON DELETE CASCADE
-#	) ENGINE=InnoDB;'''
-#	createTable(authors_referenced_by)
-#
-#	publishers_referenced_by = '''
-#	CREATE TABLE publishers_referenced_by (
-#	webpage_id INTEGER,
-#	publisher_id INTEGER,
-#	PRIMARY KEY (webpage_id, publisher_id),
-#	FOREIGN KEY (webpage_id) REFERENCES Webpages(id) ON DELETE CASCADE,
-#	FOREIGN KEY (publisher_id) REFERENCES Publishers(id) ON DELETE CASCADE
-#	) ENGINE=InnoDB;'''
-#	createTable(publishers_referenced_by)
-#
-#	titles_referenced_by = '''
-#	CREATE TABLE titles_referenced_by (
-#	webpage_id INTEGER,
-#	title_id INTEGER,
-#	PRIMARY KEY (webpage_id, title_id),
-#	FOREIGN KEY (webpage_id) REFERENCES Webpages(id) ON DELETE CASCADE,
-#	FOREIGN KEY (title_id) REFERENCES Titles(id) ON DELETE CASCADE
-#	) ENGINE=InnoDB;'''
-#	createTable(titles_referenced_by)
-#
-#	title_series_referenced_by = '''
-#	CREATE TABLE title_series_referenced_by (
-#	webpage_id INTEGER,
-#	title_series_id INTEGER,
-#	PRIMARY KEY (webpage_id, title_series_id),
-#	FOREIGN KEY (webpage_id) REFERENCES Webpages(id) ON DELETE CASCADE,
-#	FOREIGN KEY (title_series_id) REFERENCES Title_Series(id) ON DELETE CASCADE
-#	) ENGINE=InnoDB;'''
-#	createTable(title_series_referenced_by)
-#
-#	publication_series_referenced_by = '''
-#	CREATE TABLE publication_series_referenced_by (
-#	webpage_id INTEGER,
-#	publication_series_id INTEGER,
-#	PRIMARY KEY (webpage_id, publication_series_id),
-#	FOREIGN KEY (webpage_id) REFERENCES Webpages(id) ON DELETE CASCADE,
-#	FOREIGN KEY (publication_series_id) REFERENCES Publication_Series(id) ON DELETE CASCADE
-#	) ENGINE=InnoDB;'''
-#	createTable(publication_series_referenced_by)
-#
-#	award_types_referenced_by = '''
-#	CREATE TABLE award_types_referenced_by (
-#	webpage_id INTEGER,
-#	award_type_id INTEGER,
-#	PRIMARY KEY (webpage_id, award_type_id),
-#	FOREIGN KEY (webpage_id) REFERENCES Webpages(id) ON DELETE CASCADE,
-#	FOREIGN KEY (award_type_id) REFERENCES Award_Types(id) ON DELETE CASCADE
-#	) ENGINE=InnoDB;'''
-#	createTable(award_types_referenced_by)
-#
-#	award_categories_referenced_by = '''
-#	CREATE TABLE award_categories_referenced_by (
-#	webpage_id INTEGER,
-#	award_category_id INTEGER,
-#	PRIMARY KEY (webpage_id, award_category_id),
-#	FOREIGN KEY (webpage_id) REFERENCES Webpages(id) ON DELETE CASCADE,
-#	FOREIGN KEY (award_category_id) REFERENCES Award_Categories(id) ON DELETE CASCADE
-#	) ENGINE=InnoDB;'''
-#	createTable(award_categories_referenced_by)
+loadTuples "publications_authors_rem.csv,authors_have_publications
+	    webpages_rem.csv,Webpages_temp" 
 
+echo "
+INSERT INTO Webpages(id, url)
+SELECT id, url FROM Webpages_temp" > tmpSql.sql
+sqlConn '<' tmpSql.sql
+
+function loadDataInWebpageTable {
+	# $1 can be authors or publishers or..
+	newTableName="$1"_referenced_by 
+	referenceID="$2"_id #$2 could be publisher or author or..
+	referencedTable="$3"
+	echo "
+	INSERT INTO ${newTableName}(webpage_id, ${referenceID})
+	SELECT wb.id, ${referenceID} 
+	FROM Webpages_temp wb, ${referencedTable} refTable 
+	WHERE ${referenceID} IS NOT NULL AND 
+	refTable.id = wb.${referenceID};
+	" > ${newTableName}.sql
+	cat ${newTableName}.sql
+
+	sqlConn '<' ${newTableName}.sql 
+}
+
+loadDataInWebpageTable authors author Authors
+loadDataInWebpageTable publishers publisher Publishers
+loadDataInWebpageTable titles title Titles
+loadDataInWebpageTable title_series title_series Title_Series
+loadDataInWebpageTable publication_series publication_series Publication_Series
+loadDataInWebpageTable award_types award_type Award_Types
+loadDataInWebpageTable award_categories award_category Award_Categories
