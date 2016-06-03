@@ -121,9 +121,10 @@ FROM (
 -----------DELIV 3 QUERRIES-------------
 --a) Compute the average price per currency of the publications of the most popular title (i.e, the title with
 --most publications overall).
+
 --b) Output the names of the top ten title series with most awards.
 SELECT t_s.title, 
-	SUM(tit_awrds.nb_awards) AS popularity
+	SUM(tit_awrds.nb_awards) AS "number of awards received"
 FROM Titles t, Title_Series t_s,
 (SELECT title_id, COUNT(*) AS nb_awards
 FROM title_wins_award
@@ -132,7 +133,30 @@ WHERE t.series_id = t_s.id AND t.id = tit_awrds.title_id
 GROUP BY t_s.id
 ORDER BY popularity DESC
 LIMIT 20;
+
 --c) Output the name of the author who has received the most awards after his/her death.
+SELECT a.name,  COUNT(*) AS nb_awards_when_dead
+FROM Awards aw, title_wins_award t_w_a, 
+	Titles_published_as_Publications t_p, authors_have_publications a_p,
+	Authors a
+WHERE aw.aw_date IS NOT NULL AND a.deathdate IS NOT NULL AND
+(
+	DATEDIFF(aw.aw_date, a.deathdate) > 0  OR
+	YEAR(aw.aw_date) > YEAR(a.deathdate) OR 
+	(
+		YEAR(aw.aw_date) >= YEAR(a.deathdate) AND
+		MONTH(aw.aw_date) > MONTH(a.deathdate) AND 
+		MONTH(aw.aw_date) != 0 AND MONTH(a.deathdate) != 0
+	)
+) AND
+aw.id = t_w_a.award_id AND t_w_a.title_id = t_p.title_id AND 
+t_p.title_id IS NOT NULL AND t_p.pub_id = a_p.pub_id AND
+a_p.pub_id IS NOT NULL AND a_p.author_id = a.id
+GROUP BY a.id 
+ORDER BY nb_awards_when_dead DESC
+LIMIT 10
+;
+		
 
 --d) For a given year, output the three publishers that published the most publications.
 --e) Given an author, compute his/her most reviewed title(s).
