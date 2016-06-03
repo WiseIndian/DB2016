@@ -3,6 +3,7 @@
 source dbConfig.bash
 source dbUtils.bash
 source loadTuples.bash
+source rmRet.sh
 
 #you have to execute this script in base of repo i.e. from DB2016
 #and that because the load*.sql files use paths relative to the current directory!
@@ -40,7 +41,7 @@ function deleteFromTables {
 }
 
 clean
-sh rmRet.sh #delete ^M and other bullshit carriage return \r...
+rmRetAllFiles #in rmRet.sh
 
 #calling loadTuples
 loadTuples "notes_rem.csv,Notes
@@ -52,7 +53,12 @@ sqlConn '<' authors.sql #checked
 loadTuples "titles_series_rem.csv,Title_Series_temp"
 sqlConn '<' title_series.sql #checked
 
-loadTuples "titles_rem.csv,Titles_temp"
+cd Python\ Parsing
+python titles.py
+cd -
+rmRet CSV/titlesCLEAN.csv
+loadTuples "titlesCLEAN_rem.csv,Titles_temp"
+
 sqlConn  '<' titles.sql
 sqlConn '<' title_is_translated_in.sql
 loadTuples "reviews_rem.csv,title_is_reviewed_by
@@ -83,7 +89,8 @@ loadTuples "titles_awards_rem.csv,title_wins_award"
 cd Python\ Parsing
 python titles_tag.py
 cd -
-loadTuples "tags_rem.csv,Tags titles_tagCLEAN.csv,title_has_tag publishers_rem.csv,Publishers_temp"
+rmRet CSV/titles_tagCLEAN.csv
+loadTuples "tags_rem.csv,Tags titles_tagCLEAN_rem.csv,title_has_tag publishers_rem.csv,Publishers_temp"
 sqlConn '<' publishers.sql 
 loadTuples "publications_series_rem.csv,Publication_Series_temp"
 sqlConn '<' publication_series.sql
@@ -91,7 +98,8 @@ sqlConn '<' publication_series.sql
 cd Python\ Parsing
 python publications.py
 cd -
-loadTuples "publicationsCLEAN.csv,Publications_temp"
+rmRet CSV/publicationsCLEAN.csv
+loadTuples "publicationsCLEAN_rem.csv,Publications_temp"
 sqlConn '<' publications.sql
 
 keepOnly2LastOf3 publications_authors_rem.csv
