@@ -192,8 +192,20 @@ LIMIT 3;
 
 --e) Given an author, compute his/her most reviewed title(s).
 --TODO link with interface in such a way that the name will replace current 'Isaac Asimov'
-SELECT 
-FROM Titles_published_as_Publications t_p
+
+SELECT t.title, COUNT(*) AS nb_of_awards
+FROM Titles t, authors_have_publications a_p, Titles_published_as_Publications t_p, 
+	title_wins_award t_w_a 
+WHERE 
+	a_p.author_id =
+	(SELECT a.id
+	FROM Authors a WHERE a.name = 'Isaac Asimov'
+	LIMIT 1) AND  a_p.pub_id = t_p.pub_id AND 
+	t.id = t_p.title_id AND t_p.title_id = t_w_a.title_id 
+GROUP BY t_w_a.title_id
+ORDER BY nb_of_awards DESC
+LIMIT 1;
+
 --f) For every language, find the top three title types with most translations.
 --g) For each year, compute the average number of authors per publisher.
 --h) Find the publication series with most titles that have been given awards of “World Fantasy Award”
