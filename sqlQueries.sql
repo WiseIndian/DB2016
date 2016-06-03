@@ -159,6 +159,12 @@ LIMIT 10
 		
 
 --d) For a given year, output the three publishers that published the most publications.
+SELECT pbshr.name, COUNT(*) AS "number of publications for publisher"
+FROM Publications p, Publishers pbshr
+WHERE p.publisher_id = pbshr.id
+GROUP BY pbshr.id
+ORDER BY `number of publications for publisher` DESC
+LIMIT 3;
 
 --e) Given an author, compute his/her most reviewed title(s).
 --f) For every language, find the top three title types with most translations.
