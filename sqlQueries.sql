@@ -144,7 +144,7 @@ WHERE pid = P.id  AND  currency = 'DOLLAR'/*'POUND'*/
 
 --b) Output the names of the top ten title series with most awards.
 SELECT t_s.title, 
-	SUM(tit_awrds.nb_awards) AS "number of awards received"
+	SUM(tit_awrds.nb_awards) AS popularity
 FROM Titles t, Title_Series t_s,
 (SELECT title_id, COUNT(*) AS nb_awards
 FROM title_wins_award
@@ -152,7 +152,7 @@ GROUP BY title_id) AS tit_awrds
 WHERE t.series_id = t_s.id AND t.id = tit_awrds.title_id
 GROUP BY t_s.id
 ORDER BY popularity DESC
-LIMIT 20;
+LIMIT 10;
 
 --c) Output the name of the author who has received the most awards after his/her death.
 SELECT a.name,  COUNT(*) AS nb_awards_when_dead
@@ -207,6 +207,16 @@ ORDER BY nb_of_awards DESC
 LIMIT 1;
 
 --f) For every language, find the top three title types with most translations.
+SELECT 
+FROM 
+Languages l, 
+(
+	SELECT t.id, t_t.language_id  
+	FROM Titles t, title_is_translated_in t_t
+	WHERE 
+)
+GROUP BY t_t.language_id)
+
 
 --g) For each year, compute the average number of authors per publisher.
 SELECT years2.y, AVG(result1.authors_per_publisher)
@@ -327,4 +337,5 @@ WHERE r.pid = outter_t_p.pub_id AND outter_t_p.title_id = outter_t_w_a.title_id 
 	outter_aw.type_id = (SELECT id FROM Award_Types WHERE name = 'Nebula award')
 GROUP BY pid 
 ORDER BY tot_refs DESC
-LIMIT 10;
+ LIMIT 10;
+
