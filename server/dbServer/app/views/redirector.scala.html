@@ -1,20 +1,35 @@
 @(data: String)
-@import scala.collection.JavaConverters._
 <!DOCTYPE html>
 <html>
-  <head>
-    <title> Query output </title>
-  </head>
+<head>
+  <style type="text/css">      
+    div.resultCol {
+      float:left; margin:0;
+      width:@{ 100.0 / (data.takeWhile(_ == '\n').split("\t").length + 1) }%;
+    }
+  </style>
+
+  <title> Query output </title>
+
+</head>
 
   <body>
     <a href="http://localhost:9000/">Return to index</a>
-    <textarea rows="@{data.split("\r\n|\r|\n").length + 1}"
-           cols="@{
-                    data.split("\r\n|\r|\n").maxBy(_.length)
-                  }">
-      @data
-    </textArea>
-
+    <div id="contentBox" style="margin:0px auto; width:70%">
+      @{
+        val rowsThenCols: Seq[String] =
+          for {
+            (r, rInd) <- data.split("\n|\r\n|\r").zipWithIndex
+            (c, cInd) <- (r.split("\t").toStream :+ "\n").zipWithIndex
+          } yield c match {
+            case "\n" => 
+              "<br>" 
+            case els => 
+              s"""<div id="row${rInd}column${cInd}" class="resultCol"> ${els} </div>"""
+          }
+        play.twirl.api.HtmlFormat.raw(rowsThenCols.mkString(" "))
+      }
+    </div>
     <a href="http://localhost:9000/">Return to index</a>
   </body>
 </html>
