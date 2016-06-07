@@ -35,7 +35,7 @@
                 <option value="o3"> query o - Deliverable 3</option>
             </select>
 
-            <input id="custom" type="text" name="custom" value="">
+            <input id="queryParams" type="text" name="queryParams" value="">
 
             <button type="submit">Submit</button>
 
@@ -47,8 +47,8 @@
 
         var showOrHideCustom = function(value) {
 
-            if(optionsWithInput.indexOf(value) > -1) document.getElementById('custom').style.display = 'inline';
-            else document.getElementById('custom').style.display = 'none';
+            if(optionsWithInput.indexOf(value) > -1) document.getElementById('queryParams').style.display = 'inline';
+            else document.getElementById('queryParams').style.display = 'none';
         };
 
         document.getElementById('select').addEventListener('change', function(e) {
