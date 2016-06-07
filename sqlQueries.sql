@@ -139,6 +139,7 @@ WHERE title_id = (SELECT title_id FROM (
                   ) as r1 ) 
 ) as r2
 WHERE pid = P.id  AND  currency = 'DOLLAR'/*'POUND'*/
+;
 
 
 
@@ -215,7 +216,7 @@ Languages l,
 	FROM Titles t, title_is_translated_in t_t
 	WHERE 
 )
-GROUP BY t_t.language_id)
+GROUP BY t_t.language_id);
 
 
 --g) For each year, compute the average number of authors per publisher.
