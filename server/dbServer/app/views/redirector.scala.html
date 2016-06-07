@@ -1,0 +1,21 @@
+@(data: String)
+@import scala.collection.JavaConverters._
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Query output </title>
+  </head>
+
+  <body>
+    <a href="http://localhost:9000/">Return to index</a>
+    <textarea rows="@{data.split("\r\n|\r|\n").length + 1}"
+           cols="@{
+                    data.split("\r\n|\r|\n").maxBy(_.length)
+                  }">
+      @data
+    </textArea>
+
+    <a href="http://localhost:9000/">Return to index</a>
+  </body>
+</html>
+
