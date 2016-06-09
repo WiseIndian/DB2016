@@ -1,3 +1,5 @@
+@(errorMessage: Option[String] = None)
+@import play.twirl.api.HtmlFormat._
 <!DOCTYPE html>
 <html>
     <head>
@@ -5,6 +7,15 @@
     </head>
 
     <body>
+       @{
+          errorMessage.map{ m => 
+            HtmlFormat.raw{
+               "<h1> you've been redirected here for the "+
+                 "following error: m </h1>"
+            } 
+          } 
+        }
+
         <h1> list of queries </h1>
 
         <form id="main-form" action="http://localhost:9000/queries" method="get">
