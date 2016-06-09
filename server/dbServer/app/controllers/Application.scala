@@ -295,6 +295,35 @@ object PredefQueries {
         """WHERE years2.y = result1.y""" ::
         """GROUP BY years2.y;""" :: Nil ), 
 
+        "h3" -> (in => 
+          """SELECT p_s.name AS "publication series name",""" ::
+          """    COUNT(*) AS "number of titles of the publication serie awarded the world fantasy award"""" ::
+          """FROM Publication_Series p_s, Publications p, Titles_published_as_Publications t_p, """ ::
+          """     Titles t, title_wins_award t_w_a, Awards aw, Award_Types a_t""" ::
+          """WHERE p_s.id = p.publication_series_id AND p.id = t_p.pub_id AND """ ::
+          """    t_p.title_id = t.id AND t.id = t_w_a.title_id AND t_w_a.award_id = aw.id AND""" ::
+          """    aw.type_id = a_t.id AND a_t.name = 'World Fantasy Award'""" ::
+          """GROUP BY p_s.id""" ::
+          """ORDER BY `number of titles of the publication serie awarded the world fantasy award` DESC""" ::
+          """LIMIT 1;""" :: Nil), 
+
+        "i3" -> 
+          ("""SET @currcount = NULL, @currvalue = NULL, @str = NULL;""" ::
+          """SELECT r.aname, r.a_c_name, r.nb_awards_for_author  FROM (""" ::
+          """  SELECT a.name AS aname, a_c.name AS a_c_name, a_c.id AS a_c_id,""" ::
+          """       COUNT(*) AS nb_awards_for_author,""" ::
+          """       @currcount := IF(@currvalue = a_c.id, @currcount + 1, 1) AS rank,""" ::
+          """       @currvalue := a_c.id""" ::
+          """  FROM Award_Categories a_c, Awards aw, title_wins_award t_w_a,""" ::
+          """    Titles_published_as_Publications t_p, authors_have_publications a_h_p, Authors a""" ::
+          """  WHERE a_c.id = aw.category_id AND aw.id = t_w_a.award_id AND""" ::
+          """    t_w_a.title_id = t_p.title_id AND t_p.pub_id = a_h_p.pub_id AND""" ::
+          """    a_h_p.author_id = a.id""" ::
+          """  GROUP BY a_c.id, a.id""" ::
+          """  ORDER BY a_c.id, nb_awards_for_author DESC""" ::
+          """  ) AS r""" ::
+          """WHERE r.rank <= 3;""" :: Nil),
+
 
       "j3" -> (in =>   
         """SELECT a.id, a.name, a.birthdate, COUNT(a_p.pub_id) AS nb_published_anthologies""" ::
