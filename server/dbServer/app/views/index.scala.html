@@ -7,7 +7,7 @@
     <body>
         <h1> list of queries </h1>
 
-        <form id="main-form" action="localhost:9000/queries" method="get">
+        <form id="main-form" action="http://localhost:9000/queries" method="get">
 
             <select id="select" name="needed" size="1">
                 <option value="a2"> query a - Deliverable 2</option>
@@ -35,9 +35,9 @@
                 <option value="o3"> query o - Deliverable 3</option>
             </select>
 
-            <input id="queryParams" type="text" name="queryParams" value="">
+            <input id="queryParams" type="text" name="queryParams" value=""> <br>
 
-            <button type="submit">Submit</button>
+            <input id="querySubmit" type="submit" value="Submit">
 
         </form>
 
@@ -55,7 +55,8 @@
 
             showOrHideCustom(e.currentTarget.value);
         });
-
+        
+                
         showOrHideCustom(document.getElementById('select').value);
 
         </script>
