@@ -1,11 +1,17 @@
-@(data: String)
+@(queryExplanation: String, data: String)
 <!DOCTYPE html>
 <html>
 <head>
   <style type="text/css">      
     div.resultCol {
       float:left; margin:0;
-      width:@{ 100.0 / (data.takeWhile(_ == '\n').split("\t").length + 1) }%;
+      width:@{ 100.0 / (data.takeWhile(_ != '\n').filter(_ == '\t').length + 1) }%;
+      height: 5em;
+    }
+
+    sup {
+      font-size: inherit;
+      vertical-align: inherit;
     }
   </style>
 
@@ -15,7 +21,10 @@
 
   <body>
     <a href="http://localhost:9000/">Return to index</a>
-    <div id="contentBox" style="margin:0px auto; width:70%">
+    <h1> Query explanation </h1> <br>
+    <pre> @queryExplanation </pre> <br>
+    
+    <div id="contentBox" style="margin:0px auto; width:100%">
       @{
         val rowsThenCols: Seq[String] =
           for {
