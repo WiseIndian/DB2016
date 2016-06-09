@@ -17,19 +17,20 @@ class Application extends Controller {
   import queriesInfos._
 
   val redirector = views.html.redirector
+  val index = views.html.index
 
   def executeQuery(query: String): String = 
       (s"""echo ${query}""" #| baseConn).!! 
 
-  def executeQueryWrapper(qid: String, queryStrFun: String => String, 
+  def executeQueryWrapper(qid: String, qExpl: String, queryStrFun: String => String, 
      userExtraInpt: Option[String]): Result = 
     userExtraInpt.map { in => 
-      Ok(redirector(executeQuery(queryStrFun(in))))
+      Ok(redirector(qExpl, executeQuery(queryStrFun(in))))
     }.getOrElse { //userExtraInpt is None 
       if (!queriesWithInput.contains(qid))
-        Ok(redirector(executeQuery(queryStrFun("some bullshit"))))
+        Ok(redirector(qExpl, executeQuery(queryStrFun("some bullshit"))))
       else 
-        BadRequest(redirector("provide some extra input for query "+qid))
+        BadRequest(index(Some("provide some extra input for query "+qid)))
     } 
 
   def getQueryOut(qidOpt: Option[String], userExtraInpt: Option[String]) = 
@@ -37,33 +38,63 @@ class Application extends Controller {
       (for {
         qid <- qidOpt
         qStrFun <- idToQuery.get(qid)
+        qStrExpl <- idToQueryExplanation.get(qid)
       } yield {
-        try { executeQueryWrapper(qid, qStrFun, userExtraInpt) }
+        try { executeQueryWrapper(qid, qStrExpl, qStrFun, userExtraInpt) }
         catch { 
           case invE: InvalidSqlInputException =>
-            BadRequest(redirector("invalid input in additional query info"))
+            BadRequest(index(Some("invalid input in additional query info")))
           case e: Exception => 
             Redirect("localost:9000/", 500) //internal server error
         }
       }).getOrElse {
-        BadRequest(redirector("Provide which query you need! format: [a-g]2 or [a-o]3"))
+        BadRequest(index(Some("Provide which query you need! format: [a-g]2 or [a-o]3")))
       }
     }
 
 }
 
-object queriesInfos {
-  val queriesWithInput: Seq[String] = Seq("d3", "e3")
-}
-
 object PredefQueries {
 
-  val idToQueryExplanation: Map[String, List[String]] = 
+  val idToQueryExplanation: Map[String, String] = 
     Map(
       "a2" -> 
-        ("a)For every year, output the year and the number of publications for said year." ::
-        "then we can groupby result by year and then for each set by year we count nb of elements" ::
-        "in the subset, and we output that number and the year" :: Nil)
+        ("a)For every year, output the year and the number of publications for said year.\n" +
+        "then we can groupby result by year and then for each set by year we count nb of elements\n" +
+        "in the subset, and we output that number and the year" ),
+      "b2" -> 
+        """b)Output the names of the ten authors with most publications.""" ,
+      "c2" -> 
+        """c)What are the names of the youngest and oldest authors to publish something in 2010?""" , 
+      "d2" -> 
+        ("How many comics (graphic titles) have publications with less than 50 pages, less than 100 pages, and\n" +
+        """ more (or equal) than 100 pages?""" ),
+      "e2" -> 
+        ("For every publisher, calculate the average price of its published novels (the ones that have\n" +
+         """a dollar price).""" ),
+      "f2" -> 
+        ("""f) What is the name of the author with the highest number of titles that are tagged as """ +
+             """“science fiction”?""" ),
+      "g2" -> """List the three most popular titles (i.e., the ones with the most awards and reviews)""" ,
+      "a3" -> ("""Compute the average price per currency of the publications of the most popular title (i.e, the title with\n""" + 
+               """most publications overall """ ),
+      "b3" -> """Output the names of the top ten title series with most awards""" ,
+      "c3" -> """Output the name of the author who has received the most awards after his/her death""" ,
+      "d3" -> """For a given year, output the three publishers that published the most publications""" ,
+      "e3" -> """Given an author, compute his/her most reviewed title(s)""" ,
+      "f3" -> """For every language, find the top three title types with most translations.""" ,
+      "g3" -> """For each year, compute the average number of authors per publisher.""" ,
+      "h3" -> """Find the publication series with most titles that have been given awards of “World Fantasy Award”""" ,
+      "i3" -> """For every award category, list the names of the three most awarded authors.""" ,
+      "j3" -> "Output the names of all living authors that have published at least one anthology from youngest to oldest" ,
+      "k3" -> """Compute the average number of publications per publication series (single result/number expected).""" ,
+      "l3" -> "Find the author who has reviewed the most titles.",
+      "m3" -> """ For every language, list the three authors with the most translated titles of “novel” type.""" ,
+      "n3" -> ("Order the top ten authors whose publications have the largest pages per dollar ratio (considering all\n" +
+              """publications of an author that have a dollar price).""" ),
+      "o3" -> ("For publications that have been awarded the Nebula award, find the top 10 with the most extensive\n" + 
+              "web presence (i.e, the highest number of author websites, publication websites, publisher websites,\n" +
+              """publication series websites, and title series websites in total).""" )
     ) 
 
   //list of strings because of \n to insert in queries otherwise
@@ -84,14 +115,14 @@ object PredefQueries {
 
 
       "c2" -> (in =>   
-        s"""SELECT a.name, pb_date, a.birthdate""" ::
+        s"""SELECT a.name AS "oldest author name", pb_date, a.birthdate""" ::
         """FROM Authors a, authors_have_publications pb_as, Publications pb""" ::
         """WHERE YEAR(pb_date) = 2010 AND a.id = pb_as.author_id AND pb.id = pb_as.pub_id""" ::
         """AND a.birthdate IS NOT NULL AND a.birthdate != Date(0000-00-00)""" ::
         """AND Year(a.birthdate) != Year(0000-00-00) """ ::
         """ORDER BY a.birthdate""" ::
         """LIMIT 1;""" ::
-        """SELECT a.name, pb_date, a.birthdate""" ::
+        """SELECT a.name AS "youngest author name", pb_date, a.birthdate""" ::
         """FROM Authors a, authors_have_publications pb_as, Publications pb""" ::
         """WHERE YEAR(pb_date) = 2010 AND a.id = pb_as.author_id AND pb.id = pb_as.pub_id""" ::
         """AND a.birthdate IS NOT NULL AND a.birthdate != Date(0000-00-00)""" ::
@@ -228,33 +259,25 @@ object PredefQueries {
 
       "e3" -> (in =>   
         """PREPARE stmtE3 FROM '""" ::
-        """SELECT t.title, COUNT(*) AS nb_of_awards""" ::
-        """FROM Titles t, authors_have_publications a_p, Titles_published_as_Publications t_p, """ ::
-        """ title_wins_award t_w_a """ ::
-        """WHERE """ ::
-        """ a_p.author_id =""" ::
-        """ (SELECT a.id""" ::
-        """ FROM Authors a WHERE a.name = ?""" :: /*notice the in*/
-        """ LIMIT 1) AND  a_p.pub_id = t_p.pub_id AND """ ::
-        """ t.id = t_p.title_id AND t_p.title_id = t_w_a.title_id """ ::
-        """GROUP BY t_w_a.title_id""" ::
-        """ORDER BY nb_of_awards DESC""" ::
-        """LIMIT 1; """ ::
+        """SELECT t.title, COUNT(*) AS "nb of reviews"""" ::
+        """FROM Titles t, Titles_published_as_Publications t_p, authors_have_publications a_p,""" ::
+        """  title_is_reviewed_by t_r_b""" ::
+        """WHERE a_p.author_id =""" ::
+        """  (SELECT a.id""" ::
+        """  FROM Authors a WHERE a.name = ?""" ::
+        """  LIMIT 1) AND""" ::
+        """a_p.pub_id = t_p.pub_id AND t.id = t_p.title_id AND  """ ::
+        """t_p.title_id = t_r_b.title_id""" ::
+        """GROUP BY a_p.pub_id""" ::
+        """ORDER BY `nb of reviews` DESC""" ::
+        """LIMIT 1;""" ::
         """ '; """ ::
         s"""SET @authName='${in}';""" ::
         """EXECUTE stmtE3 using @authName;""" :: Nil ), 
 
 
       "f3" -> (in =>   
-        """SELECT """ ::
-        """FROM """ ::
-        """Languages l, """ ::
-        """(""" ::
-        """ SELECT t.id, t_t.language_id  """ ::
-        """ FROM Titles t, title_is_translated_in t_t""" ::
-        """ WHERE """ ::
-        """)""" ::
-        """GROUP BY t_t.language_id) ;""" :: Nil ), 
+        """SELECT * FROM Titles;""" :: Nil ), //TODO find what the query should be 
 
       "g3" -> (in =>  
         """SELECT years2.y, AVG(result1.authors_per_publisher)""" ::
@@ -274,7 +297,7 @@ object PredefQueries {
 
 
       "j3" -> (in =>   
-        """SELECT a.id, a.name, COUNT(a_p.pub_id) AS nb_published_anthologie""" ::
+        """SELECT a.id, a.name, a.birthdate, COUNT(a_p.pub_id) AS nb_published_anthologies""" ::
         """FROM Authors a, authors_have_publications a_p,""" ::
         """Titles_published_as_Publications t_p, Titles t""" ::
         """WHERE a.deathdate IS NULL AND a.birthdate IS NOT NULL AND """ ::
@@ -284,7 +307,7 @@ object PredefQueries {
         """t.title_type = 'ANTHOLOGY'""" ::
         """GROUP BY a.id""" ::
         """HAVING nb_published_anthologies > 0""" ::
-        """ORDER BY nb_published_anthologies;""" :: Nil ), 
+        """ORDER BY a.birthdate DESC, nb_published_anthologies;""" :: Nil ), 
 
 
       "k3" -> (in =>   
@@ -319,7 +342,9 @@ object PredefQueries {
 
 
       "o3" -> (in =>   
-        """SELECT pid, SUM(inner_sum) as tot_ref""" ::
+        """SELECT pid AS "publication ID", """ ::
+        """ (SELECT p.title FROM Publications p WHERE p.id = pid) AS "publication name",""" ::
+        """SUM(inner_sum) as tot_refs""" ::
         """FROM (""" ::
         """ (SELECT p.id AS pid, COUNT(*) as inner_sum""" ::
         """ FROM Publications p, authors_have_publications a_p, authors_referenced_by a_r_b""" ::
