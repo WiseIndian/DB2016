@@ -277,7 +277,27 @@ object PredefQueries {
 
 
       "f3" -> (in =>   
-        """SELECT * FROM Titles;""" :: Nil ), //TODO find what the query should be 
+          """SET @currcount = NULL, @currvalue = NULL;""" :: 
+          """SELECT lname AS "language name", """ :: 
+          """  tname AS "title",""" :: 
+          """  nb_translations AS "number of translation of this title originally written in this language"""" :: 
+          """FROM""" :: 
+          """  (""" :: 
+          """    SELECT """ :: 
+          """      lid, tid, nb_translations, lname, tname,""" :: 
+          """      @currcount := IF(@currvalue = lid, @currcount + 1, 1) AS rank,""" :: 
+          """      @currvalue := lid""" :: 
+          """    FROM(""" :: 
+          """      SELECT""" :: 
+          """        l.id AS lid, t.id AS tid,""" :: 
+          """        l.name AS lname, t.title AS tname, COUNT(*) AS nb_translations""" :: 
+          """      FROM Languages l, Titles t, title_is_translated_in t_i_t""" :: 
+          """      WHERE l.id = t.language_id AND t.id = t_i_t.title_id """ :: 
+          """      GROUP BY l.id, t.id""" :: 
+          """      ORDER BY l.id, nb_translations DESC""" :: 
+          """    ) AS r1""" :: 
+          """  ) as r2""" :: 
+          """WHERE rank <= 3""" :: Nil),
 
       "g3" -> (in =>  
         """SELECT years2.y, AVG(result1.authors_per_publisher)""" ::
@@ -307,8 +327,8 @@ object PredefQueries {
           """ORDER BY `number of titles of the publication serie awarded the world fantasy award` DESC""" ::
           """LIMIT 1;""" :: Nil), 
 
-        "i3" -> 
-          ("""SET @currcount = NULL, @currvalue = NULL, @str = NULL;""" ::
+        "i3" -> (in => 
+          """SET @currcount = NULL, @currvalue = NULL, @str = NULL;""" ::
           """SELECT r.aname, r.a_c_name, r.nb_awards_for_author  FROM (""" ::
           """  SELECT a.name AS aname, a_c.name AS a_c_name, a_c.id AS a_c_id,""" ::
           """       COUNT(*) AS nb_awards_for_author,""" ::
