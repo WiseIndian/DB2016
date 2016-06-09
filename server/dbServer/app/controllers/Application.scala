@@ -144,7 +144,7 @@ object PredefQueries {
       "g2" -> (in =>   
         """SELECT r1.title /*if testing the query use * instead of tr.title_id to see the popularity column*/""" ::
         """FROM (""" ::
-        """ SELECT t.title AS title, (tit_rev.nb_reviews :: tit_awrds.nb_awards) AS popularity""" ::
+        """ SELECT t.title AS title, (tit_rev.nb_reviews + tit_awrds.nb_awards) AS popularity""" ::
         """ FROM Titles t,""" ::
         """ (SELECT title_id, COUNT(*) AS nb_reviews""" ::
         """ FROM title_is_reviewed_by """ ::
@@ -278,7 +278,7 @@ object PredefQueries {
         """FROM Authors a, authors_have_publications a_p,""" ::
         """Titles_published_as_Publications t_p, Titles t""" ::
         """WHERE a.deathdate IS NULL AND a.birthdate IS NOT NULL AND """ ::
-        """DATEDIFF(CURDATE(:: Nil ), a.birthdate) / 365 < 100  AND""" ::
+        """DATEDIFF(CURDATE(), a.birthdate) / 365 < 100  AND""" ::
         """a.id = a_p.author_id AND a_p.pub_id IS NOT NULL AND""" ::
         """a_p.pub_id = t_p.pub_id AND t_p.title_id = t.id AND """ ::
         """t.title_type = 'ANTHOLOGY'""" ::
