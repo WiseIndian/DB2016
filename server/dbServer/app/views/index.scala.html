@@ -1,60 +1,105 @@
 @(errorMessage: Option[String] = None)
+@import controllers.queriesInfos._
 @import play.twirl.api.HtmlFormat._
 <!DOCTYPE html>
 <html>
     <head>
         <title> DB2016 index </title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: arial;
+        }
+
+        .wrap {
+            width: 300px;
+            margin: 200px auto 0 auto;
+            text-align: center;
+        }
+
+        select {
+            padding: 8px 12px;
+        }
+
+        input, select {
+            display: block;
+            width: 100%;
+            margin-bottom: 20px;
+            margin-top: 0;
+            padding: 8px 12px;
+            box-sizing: border-box;
+        }
+
+        input[type='submit'] {
+            background-color: #007799;
+            text-shadow: 1px 1px #005577;
+            border: solid 1px #007799;
+            display: block;
+            color: white;
+            cursor: pointer;
+        }
+        </style>
+
     </head>
 
     <body>
-       @{
-          errorMessage.map{ m => 
-            HtmlFormat.raw{
-               "<h1> you've been redirected here for the "+
-                 "following error: m </h1>"
+
+        <div class="wrap">
+          <h1> list of queries </h1>
+          @{
+            errorMessage.map{ m => 
+              HtmlFormat.raw{
+                 "<h1> you've been redirected here for the " +
+                   s"""following error: ${m} </h1>"""
+              } 
             } 
-          } 
-        }
+          }
 
-        <h1> list of queries </h1>
+          <form id="main-form" action="http://localhost:9000/queries" method="get">
 
-        <form id="main-form" action="http://localhost:9000/queries" method="get">
+              <select id="select" name="needed" size="1">
+                  <option value="a2"> query a - Deliverable 2</option>
+                  <option value="b2"> query b - Deliverable 2</option>
+                  <option value="c2"> query c - Deliverable 2</option>
+                  <option value="d2"> query d - Deliverable 2</option>
+                  <option value="e2"> query e - Deliverable 2</option>
+                  <option value="f2"> query f - Deliverable 2</option>
+                  <option value="g2"> query g - Deliverable 2</option>
 
-            <select id="select" name="needed" size="1">
-                <option value="a2"> query a - Deliverable 2</option>
-                <option value="b2"> query b - Deliverable 2</option>
-                <option value="c2"> query c - Deliverable 2</option>
-                <option value="d2"> query d - Deliverable 2</option>
-                <option value="e2"> query e - Deliverable 2</option>
-                <option value="f2"> query f - Deliverable 2</option>
-                <option value="g2"> query g - Deliverable 2</option>
+                  <option value="a3"> query a - Deliverable 3</option>
+                  <option value="b3"> query b - Deliverable 3</option>
+                  <option value="c3"> query c - Deliverable 3</option>
+                  <option value="d3"> query d - Deliverable 3</option>
+                  <option value="e3"> query e - Deliverable 3</option>
+                  <option value="f3"> query f - Deliverable 3</option>
+                  <option value="g3"> query g - Deliverable 3</option>
+                  <option value="h3"> query h - Deliverable 3</option>
+                  <option value="i3"> query i - Deliverable 3</option>
+                  <option value="j3"> query j - Deliverable 3</option>
+                  <option value="k3"> query k - Deliverable 3</option>
+                  <option value="l3"> query l - Deliverable 3</option>
+                  <option value="m3"> query m - Deliverable 3</option>
+                  <option value="n3"> query n - Deliverable 3</option>
+                  <option value="o3"> query o - Deliverable 3</option>
+              </select>
 
-                <option value="a3"> query a - Deliverable 3</option>
-                <option value="b3"> query b - Deliverable 3</option>
-                <option value="c3"> query c - Deliverable 3</option>
-                <option value="d3"> query d - Deliverable 3</option>
-                <option value="e3"> query e - Deliverable 3</option>
-                <option value="f3"> query f - Deliverable 3</option>
-                <option value="g3"> query g - Deliverable 3</option>
-                <option value="h3"> query h - Deliverable 3</option>
-                <option value="i3"> query i - Deliverable 3</option>
-                <option value="j3"> query j - Deliverable 3</option>
-                <option value="k3"> query k - Deliverable 3</option>
-                <option value="l3"> query l - Deliverable 3</option>
-                <option value="m3"> query m - Deliverable 3</option>
-                <option value="n3"> query n - Deliverable 3</option>
-                <option value="o3"> query o - Deliverable 3</option>
-            </select>
+              <input id="queryParams" type="text" 
+                  name="queryParams" value="" placeholder="Query parameters..."> 
 
-            <input id="queryParams" type="text" name="queryParams" value=""> <br>
+              <input id="querySubmit" type="submit" value="Submit">
 
-            <input id="querySubmit" type="submit" value="Submit">
-
-        </form>
+          </form>
+        </div>
 
         <script type="text/javascript">
 
-        var optionsWithInput = ['d3', 'e3']; 
+        var optionsWithInput = @{
+          HtmlFormat.raw {
+            "[" + queriesWithInput.map{qid => s"""'${qid}'"""}.mkString(", ") + "];"
+          }
+        } 
 
         var showOrHideCustom = function(value) {
 
