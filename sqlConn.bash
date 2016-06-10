@@ -8,7 +8,7 @@ pWarn="Warning: Using a password on the command line interface can be insecure"
 function sqlConn { 
 	sqlCmd="$sqlConnBase $@"
 	echo "executing $sqlCmd"
-        `eval "$sqlCmd" 2>stderrFile`
+  eval "$sqlCmd" 2>stderrFile
 	cat stderrFile | sed '/^.*'"$pWarn"'.*$/d' 1>&2 ;
 	#the before code redirects stderr to a file so that we can
 	#ignore $pWarn which really pollutes the terminal when

@@ -25,4 +25,5 @@ WHERE t.note_id IS NULL AND t.synopsis_id IS NULL;
 
 ALTER TABLE Titles
 ADD CONSTRAINT fk_series_id
-FOREIGN KEY(series_id) REFERENCES Title_Series(id);
+FOREIGN KEY(series_id) REFERENCES Title_Series(id); 
+/*add foreign key constraint after table creation so that all titles rows are imported!*/
