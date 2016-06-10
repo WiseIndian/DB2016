@@ -56,4 +56,6 @@ totalRowsInDB=$(countRowsFromEveryTables cs322)
 totalRowsInCSVs=`cat CSV/*.csv | wc -l`
 echo "total number of rows: _ in CSVs = $totalRowsInCSVs\n         _ in DB = $totalRowsInDB"
 
-
+cd server/dbServer 
+ln -s server/activatorDir/activator-1.3.10-minimal/bin/activator activator
+cd -

@@ -24,4 +24,11 @@ They are all wrapped inside scala string quotes so they are not very readible.
 Then once you've filled and created the tables, you can launch the server.
 Normally you just need the jdk8 and jre8 installed and it should work.
 
-To launch the server 
+Normally main.bash should have created a soft link (see end of main.bash) that links 
+activator from the bin directory of activator(its a scala play bash script to install
+scala play).
+To launch the server you just have to go server/dbServer/ (it's important to be in this directory
+with the terminal so that the following works)
+then just have to do bash activator run
+this is going to install scala play framework and then run the server.
+Then you can access the server on localhost:9000 via a browser like firefox for example.
