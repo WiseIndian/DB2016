@@ -1,5 +1,5 @@
-configFile=dbConfig.bash
-source "$configFile" #contains needInstall and needConfig...
+source dbConfig.bash #contains needInstall and needConfig...
+source countRowsNumber.bash 
 
 function replaceConfigVar {
 	# $1 should be the name of the variable in config and $2 its new value
@@ -8,9 +8,6 @@ function replaceConfigVar {
 	sed -i 's/^.*\('"$varToReplace"'\)=.*/\1='"$newValue"'/g' "$configFile" 
 }
 
-function countRowsFromEveryTables { # can be used as useful feedback
-        bash countRowsNumber.bash "$database"
-}
 
 function deleteAllRowsFromAllTables {
         sqlConn '<' deleteAll.sql
