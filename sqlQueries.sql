@@ -186,7 +186,7 @@ LIMIT 10
 SELECT pbshr.name as pbshr_name, p.pb_date,
 	 COUNT(*) AS nb_publications_by_publisher
 FROM Publications p, Publishers pbshr
-WHERE p.publisher_id = pbshr.id AND YEAR(p.pb_date) = 1989
+WHERE p.publisher_id = pbshr.id AND YEAR(p.pb_date) = 1989 OR 1
 GROUP BY pbshr.id
 ORDER BY nb_publications_by_publisher DESC
 LIMIT 3;
@@ -194,30 +194,72 @@ LIMIT 3;
 --e) Given an author, compute his/her most reviewed title(s).
 --TODO link with interface in such a way that the name will replace current 'Isaac Asimov'
 
-SELECT t.title, COUNT(*) AS nb_of_awards
-FROM Titles t, authors_have_publications a_p, Titles_published_as_Publications t_p, 
-	title_wins_award t_w_a 
-WHERE 
-	a_p.author_id =
-	(SELECT a.id
-	FROM Authors a WHERE a.name = 'Isaac Asimov'
-	LIMIT 1) AND  a_p.pub_id = t_p.pub_id AND 
-	t.id = t_p.title_id AND t_p.title_id = t_w_a.title_id 
-GROUP BY t_w_a.title_id
-ORDER BY nb_of_awards DESC
+SELECT t.title, COUNT(*) AS "nb of reviews"
+FROM Titles t, Titles_published_as_Publications t_p, authors_have_publications a_p,
+  title_is_reviewed_by t_r_b
+WHERE a_p.author_id =
+  (SELECT a.id
+  FROM Authors a WHERE a.name = ?
+  LIMIT 1) AND
+a_p.pub_id = t_p.pub_id AND t.id = t_p.title_id AND 
+t_p.title_id = t_r_b.title_id
+GROUP BY a_p.pub_id
+ORDER BY `nb of reviews` DESC
 LIMIT 1;
 
---f) For every language, find the top three title types with most translations.
-SELECT 
-FROM 
-Languages l, 
+--m) For every language, list the three authors with the most translated titles of “novel” type.
+SET @currcount = NULL, @currvalue = NULL;
+SELECT lname AS "language name",
+  tname AS "title", aname,
+  nb_translations AS "number of translation of this title originally written in this language"
+FROM
 (
-	SELECT t.id, t_t.language_id  
-	FROM Titles t, title_is_translated_in t_t
-	WHERE 
-)
-GROUP BY t_t.language_id);
+  SELECT
+    lid, tid, nb_translations, lname, tname, a.name AS aname,
+    @currcount := IF(@currvalue = lid, @currcount + 1, 1) AS rank,
+    @currvalue := lid
+  FROM(
+    SELECT
+      l.id AS lid, t.id AS tid,
+      l.name AS lname, t.title AS tname, COUNT(*) AS nb_translations
+    FROM Languages l, Titles t, title_is_translated_in t_i_t
+    WHERE l.id = t.language_id AND t.id = t_i_t.title_id AND
+      t.title_type='NOVEL'  
+    GROUP BY l.id, t.id
+    ORDER BY l.id
+  ) AS r1,
+  Authors a, authors_have_publications a_p, 
+  Titles_published_as_Publications t_p
+  WHERE a.id = a_p.author_id AND
+      a_p.pub_id = t_p.pub_id AND t_p.title_id = tid
+) as r2
+WHERE rank <= 3
+GROUP BY r2.lname, r2.tname, r2.aname, r2.nb_translations
+ORDER BY lid, nb_translations DESC;
 
+  
+--f) For every language, find the top three title types with most translations.
+SET @currcount = NULL, @currvalue = NULL;
+SELECT lname AS "language name",
+  tname AS "title", 
+  nb_translations AS "number of translation of this title originally written in this language"
+FROM
+  (
+    SELECT 
+      lid, tid, nb_translations, lname, tname,
+      @currcount := IF(@currvalue = lid, @currcount + 1, 1) AS rank,
+      @currvalue := lid
+    FROM(
+      SELECT
+        l.id AS lid, t.id AS tid,
+        l.name AS lname, t.title AS tname, COUNT(*) AS nb_translations
+      FROM Languages l, Titles t, title_is_translated_in t_i_t
+      WHERE l.id = t.language_id AND t.id = t_i_t.title_id 
+      GROUP BY l.id, t.id
+      ORDER BY l.id
+    ) AS r1
+  ) as r2
+WHERE rank <= 3
 
 --g) For each year, compute the average number of authors per publisher.
 SELECT years2.y, AVG(result1.authors_per_publisher)
@@ -237,7 +279,36 @@ GROUP BY years2.y;
 
 --h) Find the publication series with most titles that have been given awards of “World Fantasy Award”
 --type.
+SELECT p_s.name AS "publication series name", 
+    COUNT(*) AS "number of titles of the publication serie awarded the world fantasy award"
+FROM Publication_Series p_s, Publications p, Titles_published_as_Publications t_p,
+     Titles t, title_wins_award t_w_a, Awards aw, Award_Types a_t
+WHERE p_s.id = p.publication_series_id AND p.id = t_p.pub_id AND 
+    t_p.title_id = t.id AND t.id = t_w_a.title_id AND t_w_a.award_id = aw.id AND
+    aw.type_id = a_t.id AND a_t.name = 'World Fantasy Award'
+GROUP BY p_s.id
+ORDER BY `number of titles of the publication serie awarded the world fantasy award` DESC
+LIMIT 1;
 --i) For every award category, list the names of the three most awarded authors.
+-- of every category
+
+SET @currcount = NULL, @currvalue = NULL, @str = NULL;
+
+SELECT r.aname, r.a_c_name, r.nb_awards_for_author  FROM (
+  SELECT a.name AS aname, a_c.name AS a_c_name, a_c.id AS a_c_id,
+       COUNT(*) AS nb_awards_for_author,
+       @currcount := IF(@currvalue = a_c.id, @currcount + 1, 1) AS rank,
+       @currvalue := a_c.id
+  FROM Award_Categories a_c, Awards aw, title_wins_award t_w_a,
+    Titles_published_as_Publications t_p, authors_have_publications a_h_p, Authors a
+  WHERE a_c.id = aw.category_id AND aw.id = t_w_a.award_id AND 
+    t_w_a.title_id = t_p.title_id AND t_p.pub_id = a_h_p.pub_id AND 
+    a_h_p.author_id = a.id 
+  GROUP BY a_c.id, a.id
+  ORDER BY a_c.id, nb_awards_for_author DESC
+  ) AS r
+WHERE r.rank <= 3;
+
 --j) Output the names of all living authors that have published at least one anthology from youngest to
 --oldest.
 --here we make the approximation that someones who's unknowingly dead (i.e. not marked as dead
