@@ -8,10 +8,10 @@ function sqlConn { # "$@" could be < aSqlScript.sql
 
 function countRowsFromNotTempTables {
   sqlQuery="SELECT SUM(Tables.TABLE_ROWS) FROM INFORMATION_SCHEMA.TABLES
-     AS Tables WHERE TABLE_SCHEMA = '$1' AND
+     AS Tables WHERE TABLE_SCHEMA = '${1}' AND
      NOT Tables.TABLE_NAME REGEXP '^.*temp.*$';"
   echo "$sqlQuery" > tempSqlScript.sql 
-  sqlConn < tempSqlScript.sql
+  sqlConn '<' tempSqlScript.sql | grep '^[0-9][0-9]*$'
 }
 
 function countRowsFromEveryTables { # can be used as useful feedback
@@ -19,7 +19,7 @@ function countRowsFromEveryTables { # can be used as useful feedback
          FROM INFORMATION_SCHEMA.TABLES 
          WHERE TABLE_SCHEMA = '$1';"
         echo "$sqlQuery" > tempSqlScript.sql
-        sqlConn < tempSqlScript.sql | grep '^[0-9][0-9]*$'
+        sqlConn '<' tempSqlScript.sql | grep '^[0-9][0-9]*$'
         #could rm tempSqlScript.sql if we wanted
 }
 
