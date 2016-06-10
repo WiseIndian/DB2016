@@ -380,6 +380,36 @@ object PredefQueries {
         """ORDER BY `number of reviews written` DESC """ ::
         """LIMIT 1;""" :: Nil ), 
 
+      "m3" -> (in =>
+          """SET @currcount = NULL, @currvalue = NULL;""" ::
+          """SELECT lname AS "language name",""" ::
+          """  tname AS "title", aname,""" ::
+          """  nb_translations AS "number of translation of this title originally written in this language"""" ::
+          """FROM""" ::
+          """(""" ::
+          """  SELECT""" ::
+          """    lid, tid, nb_translations, lname, tname, a.name AS aname,""" ::
+          """    @currcount := IF(@currvalue = lid, @currcount + 1, 1) AS rank,""" ::
+          """    @currvalue := lid""" ::
+          """  FROM(""" ::
+          """    SELECT""" ::
+          """      l.id AS lid, t.id AS tid,""" ::
+          """      l.name AS lname, t.title AS tname, COUNT(*) AS nb_translations""" ::
+          """    FROM Languages l, Titles t, title_is_translated_in t_i_t""" ::
+          """    WHERE l.id = t.language_id AND t.id = t_i_t.title_id AND""" ::
+          """      t.title_type='NOVEL'  """ ::
+          """    GROUP BY l.id, t.id""" ::
+          """    ORDER BY l.id""" ::
+          """  ) AS r1,""" ::
+          """  Authors a, authors_have_publications a_p,""" ::
+          """  Titles_published_as_Publications t_p""" ::
+          """  WHERE a.id = a_p.author_id AND""" ::
+          """      a_p.pub_id = t_p.pub_id AND t_p.title_id = tid""" ::
+          """) as r2""" ::
+          """WHERE rank <= 3""" ::
+          """GROUP BY r2.lname, r2.tname, r2.aname, r2.nb_translations""" ::
+          """ORDER BY lid, nb_translations DESC;""" :: Nil),
+
 
       "n3" -> (in =>   
         """SELECT a.name, a.id, AVG(p.nb_pages / p.price) AS "pages per dollar ratio"""" ::
