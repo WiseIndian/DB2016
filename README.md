@@ -32,3 +32,9 @@ with the terminal so that the following works)
 then just have to do bash activator run
 this is going to install scala play framework and then run the server.
 Then you can access the server on localhost:9000 via a browser like firefox for example.
+
+![DBHomePage1](DBHomePage.png)
+
+![DBHomePageList](homePageList.png)
+
+![DBres](DBresult.png)
