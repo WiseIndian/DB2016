@@ -63,8 +63,8 @@ sqlConn '<' title_series.sql #checked
 cd Python\ Parsing
 python titles.py
 cd -
-rmRet CSV/titlesCLEAN.csv
-loadTuples "titlesCLEAN_rem.csv,Titles_temp"
+rmRet CSV/titles.csv
+loadTuples "titles_rem.csv,Titles_temp"
 
 sqlConn  '<' titles.sql
 sqlConn '<' title_is_translated_in.sql
@@ -93,8 +93,8 @@ loadTuples "titles_awards_rem.csv,title_wins_award"
 cd Python\ Parsing
 python titles_tag.py
 cd -
-rmRet CSV/titles_tagCLEAN.csv
-loadTuples "tags_rem.csv,Tags titles_tagCLEAN_rem.csv,title_has_tag publishers_rem.csv,Publishers_temp"
+rmRet CSV/titles_tag.csv
+loadTuples "tags_rem.csv,Tags titles_tag_rem.csv,title_has_tag publishers_rem.csv,Publishers_temp"
 sqlConn '<' publishers.sql 
 loadTuples "publications_series_rem.csv,Publication_Series_temp"
 sqlConn '<' publication_series.sql
@@ -102,8 +102,8 @@ sqlConn '<' publication_series.sql
 cd Python\ Parsing
 python publications.py
 cd -
-rmRet CSV/publicationsCLEAN.csv
-loadTuples "publicationsCLEAN_rem.csv,Publications_temp"
+rmRet CSV/publications.csv
+loadTuples "publications_rem.csv,Publications_temp"
 sqlConn '<' publications.sql
 
 keepOnly2LastOf3 publications_authors_rem.csv

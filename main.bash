@@ -23,21 +23,41 @@ then
 	replaceConfigVar needInstall 0
 fi
 
+
+#default version of sql_mode in 5.7.16 version of mysql ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
+echo "enter root password for mysql server"
+old_sql_mode="$(mysql -u root -h localhost -p <<< "show variables like 'sql_mode'" | sed -n 's/^sql_mode[ \t]*\(.*\)$/\1/p')"
+#get it with mysql + sed
+new_sql_mode='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION'
+
+echo "enter sudo password (modifying sql_mode)."
+printedSQL_MODE=0
+while read -r line; do
+	if [[ "$line" == *'[mysqld]'* ]] && [ $printedSQL_MODE -eq 0 ]; then
+		toPrint+=$'\n'"$line"$'\n'"sql_mode = $new_sql_mode"
+		printedSQL_MODE=1
+	else
+		toPrint+=$'\n'"$line"
+	fi
+done <<<"$(sed '/sql_mode/d' /etc/mysql/my.cnf)"
+
+echo "${toPrint}" | sudo tee /etc/mysql/my.cnf 
 sqlCreateCmd="
 DELETE FROM mysql.user WHERE user = '$user';
-DROP USER '${user}'@'${host}';
+DROP USER IF EXISTS '${user}'@'${host}';
 FLUSH PRIVILEGES;
 CREATE USER '${user}'@'${host}' IDENTIFIED BY '${password}';
 DROP DATABASE IF EXISTS ${db}; 
-CREATE DATABASE ${db};
-GRANT ALL PRIVILEGES ON ${db}"".* TO '${user}'@'${host}';" 
+CREATE DATABASE ${db}
+	DEFAULT CHARACTER SET latin1 
+	DEFAULT COLLATE latin1_swedish_ci;
+GRANT ALL PRIVILEGES ON ${db}"".* TO '${user}'@'${host}';"
 
 if [ "$needCreateTables" -eq 1 ]
 then    
-	echo "$sqlCreateCmd" > tmpSql.sql
 	echo "connecting as root to create databases!!"
-	mysql -u root -h "$host" -p  < tmpSql.sql #need root here sorry a bit annoying
-	cd Python\ Parsing				#but its painful o.w.
+	mysql -u root -h "$host" -p  <<<"$sqlCreateCmd" 
+	cd Python\ Parsing				
 	python createAllTables.py
 	cd -
 	replaceConfigVar needCreateTables 0 #If you're too lazy to change needCreateTables to 1
@@ -57,5 +77,5 @@ totalRowsInCSVs=`cat CSV/*.csv | wc -l`
 echo "total number of rows: _ in CSVs = $totalRowsInCSVs\n         _ in DB = $totalRowsInDB"
 
 cd server/dbServer 
-ln -s server/activatorDir/activator-1.3.10-minimal/bin/activator activator
+ln -s ../activatorDir/activator-1.3.10-minimal/bin/activator activator
 cd -

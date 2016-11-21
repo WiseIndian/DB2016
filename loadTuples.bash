@@ -8,7 +8,6 @@ loadCommand1="LOAD DATA LOCAL INFILE '$csvLocation/"
 loadCommand2="'
 INTO TABLE " #add a table name here
 loadCommand3="
-CHARACTER SET UTF8
 FIELDS TERMINATED BY '\\t' ENCLOSED BY '' ESCAPED BY '\\\\'
 LINES TERMINATED BY '\\n' STARTING BY '' 
 "

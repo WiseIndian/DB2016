@@ -6,7 +6,8 @@ csvLocation=CSV
 function rmRet {
 	f="$1"
 	suffix=.csv
-	cat $f | sed 's/\r//g' > ${f%$suffix}_rem.csv
+	fWithoutSuff="$(sed 's/\..*//' <<< "$f")"
+	cat "$f" | sed 's/\r//g' > "${fWithoutSuff}"_rem.csv
 }
 
 function rmRetAllFiles {
