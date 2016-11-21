@@ -9,7 +9,6 @@ CREATE TABLE Notes (
 	
 LOAD DATA LOCAL INFILE '/home/simonlbc/workspace/DB/DB2016/CSV/notes_rem.csv'
 INTO TABLE Notes
-CHARACTER SET UTF8
 FIELDS TERMINATED BY '\t' ENCLOSED BY '' ESCAPED BY '\\'
 LINES TERMINATED BY '\n' STARTING BY '';
 
@@ -26,7 +25,6 @@ CREATE TABLE Languages (
 
 LOAD DATA LOCAL INFILE '/home/simonlbc/workspace/DB/DB2016/CSV/languages_rem.csv'
 INTO TABLE Languages 
-CHARACTER SET UTF8
 FIELDS TERMINATED BY '\t' ENCLOSED BY '' ESCAPED BY '\\'
 LINES TERMINATED BY '\n' STARTING BY '';
 
@@ -51,7 +49,6 @@ CREATE TABLE Authors_temp (
 
 LOAD DATA LOCAL INFILE '/home/simonlbc/workspace/DB/DB2016/CSV/authors_rem.csv'
 INTO TABLE Authors_temp 
-CHARACTER SET UTF8
 FIELDS TERMINATED BY '\t' ENCLOSED BY '' ESCAPED BY '\\'
 LINES TERMINATED BY '\n' STARTING BY '';
 
@@ -102,7 +99,6 @@ CREATE TABLE Title_Series_temp (
 
 LOAD DATA LOCAL INFILE '/home/simonlbc/workspace/DB/DB2016/CSV/title_series_rem.csv'
 INTO TABLE Title_Series_temp
-CHARACTER SET UTF8
 FIELDS TERMINATED BY '\t' ENCLOSED BY '' ESCAPED BY '\\'
 LINES TERMINATED BY '\n' STARTING BY '';
 
@@ -147,7 +143,6 @@ CREATE TABLE Titles_temp (
 
 LOAD DATA LOCAL INFILE '/home/simonlbc/workspace/DB/DB2016/CSV/titles_rem.csv'
 INTO TABLE Titles_temp
-CHARACTER SET UTF8
 FIELDS TERMINATED BY '\t' ENCLOSED BY '' ESCAPED BY '\\'
 LINES TERMINATED BY '\n' STARTING BY '';
 
@@ -219,7 +214,6 @@ CREATE TABLE title_is_reviewed_by (
 
 LOAD DATA LOCAL INFILE '/home/simonlbc/workspace/DB/DB2016/CSV/reviews_rem.csv'
 INTO TABLE title_is_reviewed_by 
-CHARACTER SET UTF8
 FIELDS TERMINATED BY '\t' ENCLOSED BY '' ESCAPED BY '\\'
 LINES TERMINATED BY '\n' STARTING BY '';
 
@@ -235,7 +229,6 @@ CREATE TABLE title_is_part_of_Title_Series (
 
 LOAD DATA LOCAL INFILE '/home/simonlbc/workspace/DB/DB2016/CSV/titles_series_rem.csv'
 INTO TABLE title_is_part_of_Title_Series 
-CHARACTER SET UTF8
 FIELDS TERMINATED BY '\t' ENCLOSED BY '' ESCAPED BY '\\'
 LINES TERMINATED BY '\n' STARTING BY '';
 
@@ -261,7 +254,6 @@ CREATE TABLE Award_Types_temp (
 
 LOAD DATA LOCAL INFILE '/home/simonlbc/workspace/DB/DB2016/CSV/award_types_rem.csv'
 INTO TABLE Award_Types_temp
-CHARACTER SET UTF8
 FIELDS TERMINATED BY '\t' ENCLOSED BY '' ESCAPED BY '\\'
 LINES TERMINATED BY '\n' STARTING BY '';
 
@@ -305,7 +297,6 @@ CREATE TABLE Award_Categories_temp (
 
 LOAD DATA LOCAL INFILE '/home/simonlbc/workspace/DB/DB2016/CSV/award_categories_rem.csv'
 INTO TABLE Award_Categories_temp
-CHARACTER SET UTF8
 FIELDS TERMINATED BY '\t' ENCLOSED BY '' ESCAPED BY '\\'
 LINES TERMINATED BY '\n' STARTING BY '';
 
@@ -347,7 +338,6 @@ CREATE TABLE Awards_temp (
 
 LOAD DATA LOCAL INFILE '/home/simonlbc/workspace/DB/DB2016/CSV/awards_rem.csv'
 INTO TABLE Awards_temp
-CHARACTER SET UTF8
 FIELDS TERMINATED BY '\t' ENCLOSED BY '' ESCAPED BY '\\'
 LINES TERMINATED BY '\n' STARTING BY '';
 
@@ -522,7 +512,6 @@ CREATE TABLE authors_have_publications (
 
 LOAD DATA LOCAL INFILE '/home/simonlbc/workspace/DB/DB2016/CSV/publications_authors_rem.csv'
 INTO TABLE authors_have_publications
-CHARACTER SET UTF8
 FIELDS TERMINATED BY '\t' ENCLOSED BY '' ESCAPED BY '\\'
 LINES TERMINATED BY '\n' STARTING BY '';
 
