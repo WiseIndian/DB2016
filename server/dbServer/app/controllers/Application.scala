@@ -45,7 +45,7 @@ class Application extends Controller {
           case invE: InvalidSqlInputException =>
             BadRequest(index(Some("invalid input in additional query info")))
           case e: Exception => 
-            Redirect("localost:9000/", 500) //internal server error
+            Redirect("localhost:9000/", 500) //internal server error
         }
       }).getOrElse {
         BadRequest(index(Some("Provide which query you need! format: [a-g]2 or [a-o]3")))

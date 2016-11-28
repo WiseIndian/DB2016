@@ -2,7 +2,7 @@
 #called like: bash sqlConn < aSqlScript.sql 
 source dbConfig.bash
 
-sqlConnBase="mysql -h $host -u $user -p$password $db"
+sqlConnBase="mysql -f -h $host -u $user -p$password $db"
 
 pWarn="Warning: Using a password on the command line interface can be insecure"
 function sqlConn { 

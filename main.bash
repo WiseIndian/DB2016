@@ -34,14 +34,19 @@ echo "enter sudo password (modifying sql_mode)."
 printedSQL_MODE=0
 while read -r line; do
 	if [[ "$line" == *'[mysqld]'* ]] && [ $printedSQL_MODE -eq 0 ]; then
-		toPrint+=$'\n'"$line"$'\n'"sql_mode = $new_sql_mode"
+		toPrint+=$'\n'"$line"$'\n'"sql-mode=\"${new_sql_mode}\""
 		printedSQL_MODE=1
-	else
+	elif [[ "$line" != *'sql-mode'* ]]; then
 		toPrint+=$'\n'"$line"
 	fi
-done <<<"$(sed '/sql_mode/d' /etc/mysql/my.cnf)"
-
+done <<<"$(sed '/sql-mode/d' /etc/mysql/my.cnf)"
+if [ $printedSQL_MODE -eq 0 ]; then
+	toPrint+=$'\n''[mysqld]'
+	toPrint+=$'\n'"sql-mode=\"${new_sql_mode}\""
+fi
 echo "${toPrint}" | sudo tee /etc/mysql/my.cnf 
+echo "restarting mysql so that sql-mode changes"
+service mysql restart
 sqlCreateCmd="
 DELETE FROM mysql.user WHERE user = '$user';
 DROP USER IF EXISTS '${user}'@'${host}';
@@ -73,7 +78,9 @@ bash loadAll.bash #load all data into the database (can take around 5 minutes)
 
 #useful feedback to check if inserting has worked well
 totalRowsInDB=$(countRowsFromEveryTables cs322)
-totalRowsInCSVs=`cat CSV/*.csv | wc -l`
+cd CSV
+totalRowsInCSVs=$(ls | grep csv | sed /rem/d | wc -l | sed -n 's/total/p' | sed 's/total//')
+cd -
 echo "total number of rows: _ in CSVs = $totalRowsInCSVs\n         _ in DB = $totalRowsInDB"
 
 cd server/dbServer 

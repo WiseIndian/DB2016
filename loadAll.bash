@@ -56,7 +56,6 @@ loadTuples "notes_rem.csv,Notes
 	    authors_rem.csv,Authors_temp"
  
 sqlConn '<' authors.sql #checked
-
 loadTuples "titles_series_rem.csv,Title_Series_temp"
 sqlConn '<' title_series.sql #checked
 
