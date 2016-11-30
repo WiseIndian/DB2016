@@ -2,7 +2,7 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-GET     /         @controllers.HomeController.index
+GET     /index         @controllers.HomeController.index
 # @ for dependency injection http://stackoverflow.com/questions/30543960/play-framework-for-scala-compilation-errortype-application-is-not-a-member-of
 GET     /queries  @controllers.Application.getQueryOut(needed: Option[String] ?= None, queryParams: Option[String] ?= None)
 
