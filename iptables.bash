@@ -1,5 +1,4 @@
 sudo iptables -A INPUT -p tcp -i eth0 --dport ssh -j ACCEPT
-sudo iptables -A INPUT -p tcp -i eth0 --dport 9000 -j ACCEPT
 sudo iptables -A INPUT -p tcp -i eth0 --dport 443 -j ACCEPT
 sudo iptables -I INPUT 1 -i lo -j ACCEPT
 sudo iptables -P INPUT DROP
